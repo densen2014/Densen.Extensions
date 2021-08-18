@@ -1,0 +1,48 @@
+﻿@inherits AmeBlazorComponentBase
+@namespace AmeBlazor.Components
+
+<button class="@Class"
+        style="@($"height:{Height}px;max-width:{MaxWidth}px")" @onclick='(() => Goto(Url))'>
+    <span class="@(!string.IsNullOrEmpty(ClassOi)? ClassOi:"oi oi-book")" aria-hidden="true"></span> <br />@Text
+</button>
+
+@code{
+
+    /// <summary>
+    /// 获得/设置 组件 class
+    /// <para></para>
+    /// 默认 <para></para> "card col-sm-6 col-md-4 col-lg-2 card bg-light text-dark"
+    /// </summary>
+    [Parameter]
+    public string Class { get; set; } = "card col-sm-6 col-md-4 col-lg-2 card bg-light text-dark";
+
+    /// <summary>
+    /// 获得/设置 组件 oi 图标<para></para>默认 oi oi-book
+    /// </summary>
+    [Parameter]
+    public string ClassOi { get; set; } = "oi oi-book";
+
+    /// <summary>
+    /// 获得/设置 组件 跳转的Url
+    /// </summary>
+    [Parameter]
+    public string Url { get; set; }
+
+    /// <summary>
+    /// 获得/设置 组件显示文本
+    /// </summary>
+    [Parameter]
+    public string Text { get; set; }
+
+    /// <summary>
+    /// 获得/设置 按钮高度<para></para>默认120px
+    /// </summary>
+    [Parameter]
+    public int Height { get; set; } = 120;
+
+    /// <summary>
+    /// 获得/设置 按钮高度<para></para>默认200px
+    /// </summary>
+    [Parameter]
+    public int MaxWidth { get; set; } = 200;
+}

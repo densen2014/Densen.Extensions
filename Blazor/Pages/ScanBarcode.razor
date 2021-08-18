@@ -1,0 +1,70 @@
+﻿@page "/ScanBarcodeB"
+@inject IJSRuntime JsRuntime
+<h3>Two Way Binding</h3>
+<p>Slider Value: <b>@SliderValue</b></p>
+<input type="range" step="1"
+       @bind-value="SliderValue"
+       @bind-value:event="oninput" />
+
+<button type="button" class="btn btn-primary" @onclick="SayMyName">启动扫码</button>
+<input type="hidden" name="imgValue" id="imgValue" />
+<button id="btnOpen1" class="btn btn-primary" type="button">Open WebCam</button>
+<select id="videoSource"></select>
+
+
+<div id="vdoOne">
+    @*style="display:none"*@
+    <video id="video" style="margin-top:15px;margin-bottom:15px;" width="300" webkit-playsinline="true" playsinline="true" controls="controls" autoplay></video>
+    <canvas id="canvasPreview" style="margin-top:15px;" width="300" height="224"></canvas>
+    <canvas id="canvasUpload" style="display:none;" width='300' height='224'></canvas>
+    <button id="snap" class="btn btn-primary" type="button">Snap Photo</button>
+</div>
+
+<div>
+    <br />
+    <p>@strSayMyName</p>
+</div>
+
+@code {
+    int SliderValue = 0;
+
+
+    //// To prevent making JavaScript interop calls during prerendering
+    //protected override async Task OnAfterRenderAsync(bool firstRender)
+    //{
+    //    //await JsRuntime.InvokeAsync<string>("scanBarcode.start2");
+    //}
+
+    string strSayMyName = "";
+    public async void SayMyName()
+    {
+        // showPrompt is implemented in wwwroot/example2JsInterop.js
+        var NameFromJavaScript =
+            await JsRuntime.InvokeAsync<string>("scanBarcode.start2");
+        strSayMyName = $"Your name is: {NameFromJavaScript}";
+        // Must call StateHasChanged() because Blazor
+        // will not know to refresh page because
+        // it was updated by JavaScript
+        StateHasChanged();
+    }
+
+}
+
+
+
+@code {
+    bool myChecked { get; set; } = true;
+}
+@*<video src="https://cdn.xiaobei.beer/event/public/reserve/assets/video/intro.mp4"
+           poster="./assets/images/video-area.jpg"
+           webkit-playsinline="true" playsinline="true" controls="controls" autoplay="autoplay"
+           id="video2" width="300" height="244">
+        您的浏览器不支持视频标记
+    </video>*@
+
+
+<button type="button" class="btn btn-primary" @onclick='(async()=>await JsRuntime.InvokeAsync<string>("scanBarcode.start"))'>码</button>
+<video id="video2" width="300" height="244" webkit-playsinline="true" playsinline="true" controls="controls" autoplay="autoplay"></video>
+<canvas id="canvas" width="300" height="244"></canvas>
+
+

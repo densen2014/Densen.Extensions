@@ -1,0 +1,122 @@
+﻿@typeparam TItem
+@inherits BootstrapComponentBase
+@namespace AmeBlazor.Components
+
+<h4>@Title</h4>
+
+@if (多点数据.HasDelegate || 查询.HasDelegate || ShowDateTimeRange)
+{
+    <div class="form-group row highlight-color rounded no-gutters">
+        @if (多点数据.HasDelegate)
+        {
+            <div class="form-inline col-sm-12 col-md-1">
+                <Dropdown TItem="string" Items="多点数据Items" OnSelectedItemChanged="@Select多点数据Item" Color="Color.Success" />
+            </div>
+        }
+        @if (查询.HasDelegate)
+        {
+            <div class="form-inline col-sm-12 col-md-2">
+                <BootstrapInput @bind-Value="@SearchText" />
+            </div>
+        }
+        @if (ShowDateTimeRange)
+        {
+            <div class="form-inline col-sm-12 col-md-3">
+                <DateTimeRange @bind-Value="@DateTimeRange" OnConfirm="OnConfirm" OnClearValue="OnClear" IsDisabled="@(!EnableDateTimeRange)" />
+            </div>
+            <div class="form-inline col-sm-12 col-md-2">
+                <Switch @bind-Value="@EnableDateTimeRange" Color="Color.Success" />
+            </div>
+        }
+        @if (查询.HasDelegate)
+        {
+            <div class="form-inline col-sm-12 col-md-2">
+                <Button Color="Color.Success" IsAsync Text="@查询文本" OnClickWithoutRender="@查询Click" />
+            </div>
+        }
+    </div>
+}
+
+<Table TItem="TItem"
+       @ref="@mainTable"
+       IsStriped="@IsStriped"
+       IsBordered="@IsBordered"
+       IsPagination="@IsPagination"
+       PageItemsSource="@PageItemsSource"
+       IsAutoRefresh="@IsAutoRefresh"
+       AutoRefreshInterval="@AutoRefreshInterval"
+       AutoGenerateColumns="true"
+       DataService="LazyHeroDataService"
+       UseInjectDataService="true"
+       OnSaveAsync="LazyHeroDataService.SaveAsync"
+       DoubleClickToEdit="@DoubleClickToEdit"
+       IsMultipleSelect="@IsMultipleSelect"
+       EditMode="@EditMode"
+       HeaderStyle="@HeaderStyle"
+       TableSize="@TableSize"
+       AllowResizing="@AllowResizing"
+       RenderMode="@RenderMode"
+       ShowLineNo="@ShowLineNo"
+       ShowSkeleton="@ShowSkeleton"
+       ShowToolbar="@ShowToolbar"
+       ShowDefaultButtons="@ShowDefaultButtons"
+       ShowExtendButtons="@ShowExtendButtons"
+       ShowSearch="@ShowSearch"
+       ShowDetailRow="@ShowDetailRow"
+       ShowFooter="@ShowFooter"
+       ShowColumnList="@ShowColumnList"
+       ShowRefresh="@ShowRefresh">
+
+    <TableToolbarTemplate>
+        @if (Excel导入.HasDelegate)
+        {
+            <TableToolbarButton TItem="TItem" Color="Color.Primary" Text="@Excel导入文本" IsAsync OnClickCallback="@ImportExcel" />
+        }
+        @if (执行添加.HasDelegate)
+        {
+            <TableToolbarButton TItem="TItem" Color="Color.Primary" Text="@执行添加文本" IsAsync OnClickCallback="@执行添加Cmd" />
+        }
+        @if (导入.HasDelegate)
+        {
+            <TableToolbarButton TItem="TItem" Color="Color.Primary" Text="@导入文本" IsAsync OnClickCallback="@ImportItems" />
+        }
+        @if (导入II.HasDelegate)
+        {
+            <TableToolbarButton TItem="TItem" Color="Color.Primary" Text="@导入II文本" IsAsync OnClickCallback="@ImportItemsII" />
+        }
+        @if (导出.HasDelegate)
+        {
+            <TableToolbarButton TItem="TItem" Color="Color.Primary" Text="@导出文本" IsAsync OnClickCallback="@ExportExcel" />
+        }
+        @if (刷新.HasDelegate)
+        {
+            <TableToolbarButton TItem="TItem" Color="Color.Secondary" Text="@刷新文本" IsAsync OnClickCallback="@Reset" />
+        }
+        @if (ShowToolbarType == ShowToolbarType.打印)
+        {
+            <TableToolbarButton TItem="TItem" Color="Color.Secondary" Text="@打印文本" IsAsync OnClickCallback="@PrintPreview" />
+        }
+    </TableToolbarTemplate>
+
+
+    <TableFooter Context="context1">
+        @if (!string.IsNullOrEmpty(FooterText))
+        {
+            <TableFooterCell colspan="@Footercolspan1" Text="@FooterText" />
+        }
+        @if (!string.IsNullOrEmpty(FooterText2))
+        {
+            <TableFooterCell colspan="@Footercolspan2" Text="@FooterText2" />
+        }
+        @if (!string.IsNullOrEmpty(FooterText3))
+        {
+            <TableFooterCell colspan="@Footercolspan3" Text="@FooterText3" />
+        }
+        @if (!string.IsNullOrEmpty(FooterTotal))
+        {
+            <TableFooterCell colspan="@FootercolspanTotal" Text="@FooterTotal" />
+        }
+    </TableFooter>
+
+
+</Table>

@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.0;netstandard2.1;net461;net5.0</TargetFrameworks>
+    <Authors>alex_zou</Authors>
+    <Version>1.5.1</Version>
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <None Include="logo.png" Pack="true" PackagePath="" />
+  </ItemGroup>
+
+  <PropertyGroup Condition="$([System.Text.RegularExpressions.Regex]::IsMatch('$(TargetFramework)', '^net\d'))">
+    <DefineConstants>NETFRAMEWORK</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="$([System.Text.RegularExpressions.Regex]::IsMatch('$(TargetFramework)', '^netstandard\d'))">
+    <DefineConstants>NETSTANDARD</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="$([System.Text.RegularExpressions.Regex]::IsMatch('$(TargetFramework)', '^netcoreapp\d'))">
+    <DefineConstants>NETCORE</DefineConstants>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+  </ItemGroup>
+
+</Project>

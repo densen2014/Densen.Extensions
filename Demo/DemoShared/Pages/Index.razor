@@ -1,0 +1,40 @@
+﻿@page "/"
+
+<h1>Demo de Densen.Extensions.BootstrapBlazor</h1>
+<p><em>@DateTime.Now.ToString("HH:mm:ss")</em></p>
+
+@if (mines == null)
+{
+    <p><em>Loading...</em></p>
+    <h8><em>build001</em></h8>
+}
+else
+{
+    <Tab>
+        <TabItem Text="TableLazyHero">
+            <Table TItem="Rootobject"
+               Items="@mineStatuss"
+               AutoGenerateColumns="true" />
+            <TableLazyHero @ref="list1"
+                       TItem="NowInfo"
+                       ShowColumnList="true"
+                       刷新="刷新数据"
+                       TableSize="TableSize.Normal"
+                       DoubleClickToEdit="false"
+                       HeaderStyle=TableHeaderStyle.None
+                       IsPagination="false"
+                       ShowRefresh="false"
+                       IsStriped="false" 
+					   RenderMode="TableRenderMode.Auto" />
+        </TabItem>
+         <TabItem Text="TimerAme">
+             <TimerAme />
+        </TabItem>
+         <TabItem Text="IP">
+                        <Badge Color="Color.Success">
+                            IP: @WebClientInfo.ClientIpAddress;
+                        </Badge>
+        </TabItem>
+
+    </Tab>
+}

@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <SupportedPlatform Include="browser" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Blazor\Densen.Extensions.BootstrapBlazor.csproj" />
+    <ProjectReference Include="..\DemoLib\DemoLib.csproj" />
+  </ItemGroup>
+
+  <ProjectExtensions><VisualStudio><UserProperties wwwroot_4manifest_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
+
+</Project>
