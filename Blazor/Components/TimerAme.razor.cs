@@ -21,7 +21,7 @@ namespace AmeBlazor.Components
         {
             base.OnInitialized();
             worker();
-        }
+        } 
 
         /// <summary>
         /// Dispose 方法
