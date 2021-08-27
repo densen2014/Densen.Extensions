@@ -9,8 +9,8 @@
     <div class="form-group row highlight-color rounded no-gutters">
         @if (多点数据.HasDelegate)
         {
-            <div class="form-inline col-sm-12 col-md-1">
-                <Dropdown TItem="string" Items="多点数据Items" OnSelectedItemChanged="@Select多点数据Item" Color="Color.Success" />
+            <div class="form-inline col-sm-12 col-md-1"> 
+                <Dropdown TValue="string" Items="多点数据Items" OnSelectedItemChanged="@Select多点数据Item" Color="Color.Success" />
             </div>
         }
         @if (查询.HasDelegate)
