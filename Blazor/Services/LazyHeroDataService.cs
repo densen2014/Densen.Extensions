@@ -30,7 +30,14 @@ namespace AME.Services
         /// </summary>
         [NotNull]
         public string Field { get; set; }
-        public override Task<bool> SaveAsync(TModel model)
+
+        /// <summary>
+        /// 保存方法
+        /// </summary>
+        /// <param name="model"></param>
+        /// <param name="changedType"></param>
+        /// <returns></returns>
+        public override Task<bool> SaveAsync(TModel model, ItemChangedType changedType)
         {
             // 增加数据演示代码
 
