@@ -1,13 +1,14 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
-using System.Text;
-using Newtonsoft.Json;
+using System.ComponentModel;
+using System.Data;
 using System.IO;
 using System.Linq;
 using System.Runtime.Serialization.Json;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using System.ComponentModel;
 
 namespace AME
 {
@@ -189,6 +190,30 @@ namespace AME
             return result;
         }
 
+
+        /// <summary>
+        /// 转换List到DataTable
+        /// </summary>
+        /// <param name="list"></param>
+        /// <returns></returns>
+        public static DataTable GenericToDataTable<T>(IList<T> list)
+        {
+            var json = JsonConvert.SerializeObject(list);
+            DataTable dt = (DataTable)JsonConvert.DeserializeObject(json, (typeof(DataTable)));
+            return dt;
+        }
+
+        /// <summary>
+        /// 转换DataTable到List
+        /// </summary>
+        /// <param name="dt"></param>
+        /// <returns></returns>
+        public static IList<T> DataTableToGeneric<T>(DataTable dt)
+        {
+            var json = JsonConvert.SerializeObject(dt);
+            IList<T> list = JsonConvert.DeserializeObject<IList<T>>(json);
+            return list;
+        }
 
     }
 }
