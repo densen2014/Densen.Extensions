@@ -39,10 +39,18 @@ namespace AME
         ///https://docs.microsoft.com/en-us/dotnet/api/microsoft.extensions.filesystemglobbing.matcher?view=dotnet-plat-ext-5.0
         /// </summary>
         /// <param name="searchDirectory">../starting-folder/</param>
-        /// <param name="includeMatchers">new[] { "*.txt", "*.asciidoc", "*.md" }</param>
-        /// <param name="excludeMatchers">new[] { "*.txt", "*.asciidoc", "*.md" }</param>
+        /// <param name="include">包含项 "*.txt"</param>
+        /// <param name="exclude">排除项 "*.txt"</param>
+        /// <param name="includeMatchers">多个包含项 new[] { "*.txt", "*.asciidoc", "*.md" }</param>
+        /// <param name="excludeMatchers">多个排除项 new[] { "*.txt", "*.asciidoc", "*.md" }</param>
         /// <param name="matchfilename"></param>
-        public static IEnumerable<string> GetDirFiles(this string searchDirectory, string include = null, string exclude = null,string[] includeMatchers = null, string[] excludeMatchers = null, string matchfilename = null)
+        public static IEnumerable<string> GetDirFiles(
+            this string searchDirectory, 
+            string include = null, 
+            string exclude = null,
+            string[] includeMatchers = null, 
+            string[] excludeMatchers = null, 
+            string matchfilename = null)
         {
             Matcher matcher = new Matcher();
             if (include != null) matcher.AddInclude(include);
@@ -50,7 +58,7 @@ namespace AME
             if (includeMatchers != null) matcher.AddIncludePatterns(includeMatchers);
             if (excludeMatchers != null) matcher.AddExcludePatterns(excludeMatchers);
             if (string.IsNullOrEmpty(searchDirectory)) searchDirectory = ".";
-            if (include == null && exclude == null && includeMatchers == null && excludeMatchers == null) matcher.AddInclude("*.*");
+            if (include == null && includeMatchers == null) matcher.AddInclude("*.*");
 
             IEnumerable<string> matchingFiles = matcher.GetResultsInFullPath(searchDirectory);
 

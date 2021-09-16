@@ -11,17 +11,17 @@ namespace ConsoleTest
 
             var FileNames2 = CurrentDirectory.GetDirFiles("*.*");
             FileNames2 = "".GetDirFiles();
-            FileNames2 = "F:/Repos/wwwroot/uploads/demo/Product".GetDirFiles(include: "chk");
+            FileNames2 = "F:\\Repos\\wwwroot\\uploads\\demo\\Product".GetDirFiles(exclude: "chk");
             foreach (string file in FileNames2)
             {
                 Console.WriteLine(file);
             }
             Console.WriteLine("-------------- \n------------");
-            FileNames2 = "F:\\Repos\\wwwroot\\uploads\\demo\\Product".GetDirFiles(include: "\\*1.jpg");
-            foreach (string file in FileNames2)
-            {
-                Console.WriteLine(file);
-            }
+            //FileNames2 = "F:\\Repos\\wwwroot\\uploads\\demo\\Product".GetDirFiles(include: "*1.jpg");
+            //foreach (string file in FileNames2)
+            //{
+            //    Console.WriteLine(file);
+            //}
         }
     }
 }
