@@ -1035,6 +1035,13 @@ namespace AME
 
             }
         }
+        public static string FormatUrl(string sdfd)
+        {
+            string se = @"((http|https)://)?(www.)?[a-z0-9\.]+(\.(com|es|net|cn|com\.cn|com\.net|net\.cn))(/[^\s\n]*)?";
+            Regex rg = new Regex(se);
+            string link = rg.Match(sdfd).Value;
+            return link;
+        }
 
     }
 
