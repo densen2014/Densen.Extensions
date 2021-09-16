@@ -13,11 +13,7 @@ namespace AME
 
     public static class PathExtensions
     {
-        //添加各种要从结果中排除或包含文件名模式
-
-        //多个排除模式
-
-        //获取所有匹配文件
+        //https://docs.microsoft.com/zh-cn/dotnet/core/extensions/file-globbing
 
 
         /// <summary>
