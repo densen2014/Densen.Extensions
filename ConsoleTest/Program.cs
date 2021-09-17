@@ -17,11 +17,10 @@ namespace ConsoleTest
                 Console.WriteLine(file);
             }
             Console.WriteLine("-------------- \n------------");
-            //FileNames2 = "F:\\Repos\\wwwroot\\uploads\\demo\\Product".GetDirFiles(include: "*1.jpg");
-            //foreach (string file in FileNames2)
-            //{
-            //    Console.WriteLine(file);
-            //}
+ 
+            Type t1 = Type.GetType("System.String", false, true);
+            Console.WriteLine(t1.FullName);
+
         }
     }
 }
