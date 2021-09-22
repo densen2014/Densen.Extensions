@@ -5,6 +5,8 @@
 // **********************************
 
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Reflection; 
 
 namespace AME.Extensions
@@ -62,6 +64,44 @@ namespace AME.Extensions
 
         }
 
- 
+
+
+        /// <summary>  
+        /// 获取一个命名空间下的所有类  
+        /// </summary>
+        /// <param name="amespaceName"></param>
+        /// <param name="assemblyString"></param>   
+        /// <returns></returns>  
+        public static List<Type> GetTypes(string amespaceName = "AME.Models.Entity.", string assemblyString = null)
+        {
+            List<Type> lt = new List<Type>();
+            try
+            {
+                var lists = assemblyString == null ?
+                    System.Reflection.Assembly.GetExecutingAssembly().GetTypes().Where(a => a.IsClass == true && a.FullName.StartsWith(amespaceName)).ToList() :
+                    System.Reflection.Assembly.Load(assemblyString).GetTypes().Where(a => a.IsClass == true && a.FullName.StartsWith(amespaceName)).ToList();
+                lt.AddRange(lists);
+            }
+            catch { }
+            return lt;
+        }
+
+        public static void LoadInfoByAssembly()
+        {
+            var query = from t in System.Reflection.Assembly.Load("AME.Models.Entity").GetTypes()
+                        where t.IsClass && t.Namespace.Equals("AssemblyDemo.Business.Security", StringComparison.InvariantCultureIgnoreCase)
+                        select t;
+
+            query.ToList().ForEach(x =>
+            {
+                Console.WriteLine("类命名:{0}", x.Name);
+                foreach (var field in x.GetFields())
+                {
+                    Console.WriteLine("字段名称:{0},字段值:{1}", field.Name, field.GetValue(field.Name));
+                }
+                Console.WriteLine("========================================\n");
+
+            });
+        }
     }
 }
