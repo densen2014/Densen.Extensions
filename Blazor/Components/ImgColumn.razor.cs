@@ -1,0 +1,29 @@
+﻿// ********************************** 
+// Densen Informatica 中讯科技 
+// 作者：Alex Chow
+// e-mail:zhouchuanglin@gmail.com 
+// **********************************
+
+using Microsoft.AspNetCore.Components;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
+
+namespace AmeBlazor.Components
+{
+    public partial class ImgColumn : ComponentBase 
+    {
+        [Parameter] public string Url { get; set; } = "https://freepos.es/uploads/demo/fage.jpg";
+        [Parameter] public string Name { get; set; } = "Name";
+        [Parameter] public string Title { get; set; } = "Title";
+        [Parameter] public string Style { get; set; } = "height:50px;weight=50px;";
+
+        protected override void OnInitialized()
+        {
+            base.OnInitialized();
+        } 
+         
+    }
+}

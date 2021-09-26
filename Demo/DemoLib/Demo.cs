@@ -43,6 +43,7 @@ namespace AmeApi
         public string vis { get; set; }
         public string cloud { get; set; }
         public string dew { get; set; }
+        public string Photo { get; set; }
     }
 
     public class Refer
