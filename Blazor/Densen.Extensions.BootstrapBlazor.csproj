@@ -13,7 +13,7 @@
   </PropertyGroup>
   
   <ItemGroup>
-    <PackageReference Include="BootstrapBlazor" Version="5.12.1" />
+    <PackageReference Include="BootstrapBlazor" Version="5.12.3" />
     <PackageReference Include="Toolbelt.Blazor.I18nText" Version="9.4.1" />
     <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />
   </ItemGroup>
