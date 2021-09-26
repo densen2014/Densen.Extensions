@@ -69,21 +69,25 @@
        ShowCardView="true">
 
     <TableToolbarTemplate>
+        @if (!string.IsNullOrEmpty(新窗口打开Url))
+        {
+            <TableToolbarButton TItem="TItem" Color="Color.Light" Text="@新窗口打开文字" IsAsync OnClick="@新窗口打开" />
+        }
         @if (Excel导入.HasDelegate)
         {
-            <TableToolbarButton TItem="TItem" Color="Color.Primary" Text="@Excel导入文本" IsAsync OnClickCallback="@ImportExcel" />
+            <TableToolbarButton TItem="TItem" Color="Color.Primary" Text="@Excel导入文本" IsAsync OnClick="@ImportExcel" />
         }
         @if (执行添加.HasDelegate)
         {
-            <TableToolbarButton TItem="TItem" Color="Color.Primary" Text="@执行添加文本" IsAsync OnClickCallback="@执行添加Cmd" />
+            <TableToolbarButton TItem="TItem" Color="Color.Primary" Text="@执行添加文本" IsAsync OnClick="@执行添加Cmd" />
         }
         @if (导入.HasDelegate)
         {
-            <TableToolbarButton TItem="TItem" Color="Color.Primary" Text="@导入文本" IsAsync OnClickCallback="@ImportItems" />
+            <TableToolbarButton TItem="TItem" Color="Color.Primary" Text="@导入文本" IsAsync OnClick="@ImportItems" />
         }
         @if (导入II.HasDelegate)
         {
-            <TableToolbarButton TItem="TItem" Color="Color.Primary" Text="@导入II文本" IsAsync OnClickCallback="@ImportItemsII" />
+            <TableToolbarButton TItem="TItem" Color="Color.Primary" Text="@导入II文本" IsAsync OnClick="@ImportItemsII" />
         }
         @if (导出.HasDelegate)
         {
@@ -91,7 +95,7 @@
         }
         @if (刷新.HasDelegate)
         {
-            <TableToolbarButton TItem="TItem" Color="Color.Secondary" Text="@刷新文本" IsAsync OnClickCallback="@Reset" />
+            <TableToolbarButton TItem="TItem" Color="Color.Secondary" Text="@刷新文本" IsAsync OnClick="@Reset" />
         }
         @if (ShowToolbarType == ShowToolbarType.打印)
         {

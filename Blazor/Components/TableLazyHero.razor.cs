@@ -65,6 +65,8 @@ namespace AmeBlazor.Components
         [Parameter] public string 刷新文本 { get; set; } = "刷新";
         [Parameter] public string 打印文本 { get; set; } = "打印";
         [Parameter] public string 查询文本 { get; set; } = "查询";
+        [Parameter] public string 新窗口打开文字 { get; set; } = "新窗口打开";
+        [Parameter] public string 新窗口打开Url { get; set; }
         [Parameter] public int Footercolspan1 { get; set; } = 3;
         [Parameter] public int Footercolspan2 { get; set; }
         [Parameter] public int Footercolspan3 { get; set; }
@@ -121,7 +123,7 @@ namespace AmeBlazor.Components
             await mainTable.QueryAsync();
         }
 
-        private async Task ImportExcel(IEnumerable<TItem> item)
+        private async Task ImportExcel()
         {
             if (!Items.Any())
             {
@@ -160,7 +162,7 @@ namespace AmeBlazor.Components
             await mainTable.QueryAsync();
         }
 
-        private async Task ImportItems(IEnumerable<TItem> item)
+        private async Task ImportItems()
         {
             if (!导入.HasDelegate)
             {
@@ -200,7 +202,7 @@ namespace AmeBlazor.Components
 
             await mainTable.QueryAsync();
         }
-        private async Task ImportItemsII(IEnumerable<TItem> item)
+        private async Task ImportItemsII()
         {
             if (!导入II.HasDelegate)
             {
@@ -240,7 +242,7 @@ namespace AmeBlazor.Components
 
             await mainTable.QueryAsync();
         }
-        private async Task 执行添加Cmd(IEnumerable<TItem> item)
+        private async Task 执行添加Cmd()
         {
             var option = new ToastOption()
             {
@@ -312,7 +314,7 @@ namespace AmeBlazor.Components
             return Task.CompletedTask;
         }
 
-        private async Task Reset(IEnumerable<TItem> item = null)
+        private async Task Reset()
         {
             if (刷新.HasDelegate)
             {
@@ -376,7 +378,7 @@ namespace AmeBlazor.Components
         {
             DateTimeRange.Start = value.Start.FirstSecond();
             DateTimeRange.End = value.End.Year == 1 ? value.Start.LastSecond() : value.End.LastSecond();
-            await Reset(null);
+            await Reset();
         }
 
         /// <summary>
@@ -388,7 +390,17 @@ namespace AmeBlazor.Components
         {
             DateTimeRange.Start = DateTime.Today.FirstSecond();
             DateTimeRange.End = DateTime.Today.LastSecond();
-            await Reset(null);
+            await Reset();
+        } 
+        private Task 新窗口打开()
+        {
+            if (string.IsNullOrEmpty(新窗口打开Url))
+            {
+                ToastService?.Error("提示", "Url为空!");
+                return Task.CompletedTask;
+            }
+            JsRuntime.NavigateToNewTab(新窗口打开Url);
+            return Task.CompletedTask;
         }
         #endregion
 
