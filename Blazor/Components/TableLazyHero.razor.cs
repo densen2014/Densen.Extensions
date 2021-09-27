@@ -76,16 +76,21 @@ namespace AmeBlazor.Components
         [Parameter] public string FooterText2 { get; set; }
         [Parameter] public string FooterText3 { get; set; }
         [Parameter] public string FooterTotal { get; set; }
-        [Parameter] public string Field { get; set; } = "ID";
         [Parameter] public bool ShowDateTimeRange { get; set; }
         [Parameter] public bool DateTimeRangeDefaultMotherly { get; set; }
         [Parameter] public bool RenderImgField { get; set; } 
+        /// <summary>
+        /// 动态附加查询条件, 主键字段类型
+        /// </summary>
+        [Parameter] public Type FieldType { get; set; } = typeof(int);
+        [Parameter] public string Field { get; set; } = "ID";
+
         [Parameter] public bool RenderImgFieldII { get; set; } 
-        [Parameter] public string ImgColumnText { get; set; } = "头像";
+        [Parameter] public Type ImgFieldType { get; set; } = typeof(string);
         [Parameter] public string ImgField { get; set; } = "Photo";
+        [Parameter] public string ImgColumnText { get; set; } = "头像";
         [Parameter] public string ImgFieldTitle { get; set; } 
         [Parameter] public string ImgFieldName { get; set; } 
-        [Parameter] public Type ImgFieldType { get; set; } = typeof(string);
 
         /// <summary>
         /// 使用日期范围
@@ -98,10 +103,6 @@ namespace AmeBlazor.Components
         public List<SelectedItem> 多点数据Items { get; set; } = new List<SelectedItem>()
         { new SelectedItem { Text = "本机", Value = "",Active=true }};
 
-        /// <summary>
-        /// 动态附加查询条件, 主键字段类型
-        /// </summary>
-        [Parameter] public Type FieldType { get; set; } = typeof(int);
 
         /// <summary>
         /// 标题
@@ -407,7 +408,7 @@ namespace AmeBlazor.Components
         private RenderFragment RenderTableImgColumnII(object model) => builder =>
         {
             var fieldExpresson = GetExpression(model, ImgField, ImgFieldType); 
-            builder.OpenComponent(0, typeof(TableColumn<>).MakeGenericType(FieldType));
+            builder.OpenComponent(0, typeof(TableColumn<>).MakeGenericType(ImgFieldType));
             builder.AddAttribute(1, "FieldExpression", fieldExpresson);
             builder.AddAttribute(2, "Width", 200);
             builder.AddAttribute(4, "Text", ImgColumnText);
