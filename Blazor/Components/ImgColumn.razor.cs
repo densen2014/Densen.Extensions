@@ -15,10 +15,10 @@ namespace AmeBlazor.Components
 {
     public partial class ImgColumn : ComponentBase 
     {
-        [Parameter] public string Url { get; set; } = "https://freepos.es/uploads/demo/fage.jpg";
+        [Parameter] public string Url { get; set; } //= "https://freepos.es/uploads/demo/fage.jpg";
         [Parameter] public string Name { get; set; } = "Name";
         [Parameter] public string Title { get; set; } = "Title";
-        [Parameter] public string Style { get; set; } = "height:50px;weight=50px;";
+        [Parameter] public string Style { get; set; } = "max-height:50px;max-weight=50px;";
 
         protected override void OnInitialized()
         {

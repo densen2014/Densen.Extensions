@@ -108,15 +108,11 @@
 		{
 			@RenderTableImgColumn(context)
 		}
+		@if (RenderImgFieldII)
+		{
+			@RenderTableImgColumnII(context)
+		}
 	</TableColumns>
-
-	<RowButtonTemplate>
-		<TableCellButton Size="Size.ExtraSmall" Color="Color.Primary" Icon="fa fa-edit" Text="明细" />
-		<TableCellButton Size="Size.ExtraSmall" Color="Color.Success" Icon="fa fa-edit" Text="编辑" />
-		<TableCellButton Size="Size.ExtraSmall" Color="Color.Warning" Icon="fa fa-edit" Text="权限" />
-		<TableCellButton Size="Size.ExtraSmall" Color="Color.Danger" Icon="fa fa-edit" Text="审批" />
-		<PopConfirmButton Text="确认" Color="Color.Info" Icon="fa fa-edit" Size="Size.ExtraSmall" />
-	</RowButtonTemplate>
 
 	<TableFooter Context="context1">
 		@if (!string.IsNullOrEmpty(FooterText))

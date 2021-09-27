@@ -72,6 +72,10 @@ namespace DemoShared.Pages
             mineStatus = JsonConvert.DeserializeObject<Rootobject>(res);
             mineStatuss = new List<Rootobject> { mineStatus };
             mines = mineStatus.now ;
+            for (int i = 0; i < mines.Count-1; i++)
+            {
+                mines[i].Photo = $"https://freepos.es/uploads/demo/Product/{i}.jpg";
+            }
         }
         private async Task 刷新数据()
         {

@@ -80,6 +80,7 @@ namespace AmeBlazor.Components
         [Parameter] public bool ShowDateTimeRange { get; set; }
         [Parameter] public bool DateTimeRangeDefaultMotherly { get; set; }
         [Parameter] public bool RenderImgField { get; set; } 
+        [Parameter] public bool RenderImgFieldII { get; set; } 
         [Parameter] public string ImgColumnText { get; set; } = "头像";
         [Parameter] public string ImgField { get; set; } = "Photo";
         [Parameter] public string ImgFieldTitle { get; set; } 
@@ -381,8 +382,32 @@ namespace AmeBlazor.Components
         /// <returns></returns>
         private RenderFragment RenderTableImgColumn(object model) => builder =>
         {
-            var fieldExpresson = GetExpression(model, ImgField, ImgFieldType); // 刚才你的那个获取表达式 GetExpression() 的返回值的
-            builder.OpenComponent(0, typeof(TableColumn<>).MakeGenericType(ImgFieldType));
+            var fieldExpresson = GetExpression(model, Field, FieldType); 
+            builder.OpenComponent(0, typeof(TableColumn<>).MakeGenericType(FieldType));
+            builder.AddAttribute(1, "FieldExpression", fieldExpresson);
+            builder.AddAttribute(2, "Width", 200);
+            builder.AddAttribute(4, "Text", ImgColumnText);
+            builder.AddAttribute(3, "Template", new RenderFragment<TableColumnContext<object, int>>(context => buttonBuilder =>
+            {
+                buttonBuilder.OpenComponent<ImgColumn>(0);
+                if (!string.IsNullOrEmpty(ImgFieldTitle)) buttonBuilder.AddAttribute(1, nameof(ImgColumn.Title), ImgFieldTitle);
+                if (!string.IsNullOrEmpty(ImgFieldName)) buttonBuilder.AddAttribute(2, nameof(ImgColumn.Name), ImgFieldName);
+                var value = ((TItem)context.Row).GetIdentityKey(ImgField);
+                buttonBuilder.AddAttribute(3, nameof(ImgColumn.Url), value);
+                buttonBuilder.CloseComponent();
+            }));
+            builder.CloseComponent();
+        };
+
+        /// <summary>
+        /// 动态生成控件 TableColumn 图片列
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        private RenderFragment RenderTableImgColumnII(object model) => builder =>
+        {
+            var fieldExpresson = GetExpression(model, ImgField, ImgFieldType); 
+            builder.OpenComponent(0, typeof(TableColumn<>).MakeGenericType(FieldType));
             builder.AddAttribute(1, "FieldExpression", fieldExpresson);
             builder.AddAttribute(2, "Width", 200);
             builder.AddAttribute(4, "Text", ImgColumnText);
@@ -391,8 +416,8 @@ namespace AmeBlazor.Components
                 buttonBuilder.OpenComponent<ImgColumn>(0);
                 buttonBuilder.AddAttribute(1, nameof(ImgColumn.Title), ImgFieldTitle);
                 buttonBuilder.AddAttribute(2, nameof(ImgColumn.Name), ImgFieldName);
-                //var value = ((TItem)context.Row).GetIdentityKey(ImgField);
-                //buttonBuilder.AddAttribute(3, nameof(ImgColumn.Url), ((TItem)context.Row).GetIdentityKey(ImgField));
+                var value = ((TItem)context.Row).GetIdentityKey(ImgField);
+                buttonBuilder.AddAttribute(3, nameof(ImgColumn.Url), value);
                 buttonBuilder.CloseComponent();
             }));
             builder.CloseComponent();
