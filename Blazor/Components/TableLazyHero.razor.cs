@@ -84,12 +84,10 @@ namespace AmeBlazor.Components
         [Parameter] public Type FieldType { get; set; } = typeof(int);
         [Parameter] public string Field { get; set; } = "ID";
 
-        [Parameter] public bool RenderImgField { get; set; } 
-        [Parameter] public Type ImgFieldType { get; set; } = typeof(string);
-        [Parameter] public string ImgField { get; set; } = "Photo";
-        [Parameter] public string ImgColumnText { get; set; } = "图";
-        [Parameter] public string ImgFieldTitle { get; set; } 
-        [Parameter] public string ImgFieldName { get; set; } 
+        /// <summary>
+        /// 图片列参数
+        /// </summary>
+        [Parameter] public TableImgField TableImgField { get; set; } = new TableImgField();
 
         /// <summary>
         /// 使用日期范围
@@ -383,17 +381,17 @@ namespace AmeBlazor.Components
         /// <returns></returns>
         private RenderFragment RenderTableImgColumn(object model) => builder =>
         {
-            var fieldExpresson = GetExpression(model, ImgField, ImgFieldType);
-            builder.OpenComponent(0, typeof(TableColumn<>).MakeGenericType(ImgFieldType));
+            var fieldExpresson = GetExpression(model, TableImgField.ImgField, TableImgField.ImgFieldType);
+            builder.OpenComponent(0, typeof(TableColumn<>).MakeGenericType(TableImgField.ImgFieldType));
             builder.AddAttribute(1, "FieldExpression", fieldExpresson);
             builder.AddAttribute(2, "Width", 200);
-            builder.AddAttribute(4, "Text", ImgColumnText);
+            builder.AddAttribute(4, "Text", TableImgField.ImgColumnText);
             builder.AddAttribute(3, "Template", new RenderFragment<TableColumnContext<object, string>>(context => buttonBuilder =>
             {
                 buttonBuilder.OpenComponent<ImgColumn>(0);
-                buttonBuilder.AddAttribute(1, nameof(ImgColumn.Title), ImgFieldTitle);
-                buttonBuilder.AddAttribute(2, nameof(ImgColumn.Name), ImgFieldName);
-                var value = ((TItem)context.Row).GetIdentityKey(ImgField);
+                buttonBuilder.AddAttribute(1, nameof(ImgColumn.Title), TableImgField.ImgFieldTitle);
+                buttonBuilder.AddAttribute(2, nameof(ImgColumn.Name), TableImgField.ImgFieldName);
+                var value = ((TItem)context.Row).GetIdentityKey(TableImgField.ImgField);
                 buttonBuilder.AddAttribute(3, nameof(ImgColumn.Url), value);
                 buttonBuilder.CloseComponent();
             }));
