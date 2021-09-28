@@ -11,12 +11,13 @@ namespace AmeBlazor.Components
     /// </summary>
     public class TableImgField
     {
-        public bool RenderImgField { get; set; }
-        public Type ImgFieldType { get; set; } = typeof(string);
-        public string ImgField { get; set; } = "Photo";
-        public string ImgColumnText { get; set; }
-        public string ImgFieldTitle { get; set; }
-        public string ImgFieldName { get; set; }
-        public string ImgBaseUrl {  get; set;}
+        public bool Render { get; set; }
+        public Type FieldType { get; set; } = typeof(string);
+        public string Field { get; set; } = "Photo";
+        public string ColumnText { get; set; }
+        public string Title { get; set; }
+        public string Name { get; set; }
+        public string BaseUrl {  get; set;}
+        public string Style { get; set; }
     }
 }

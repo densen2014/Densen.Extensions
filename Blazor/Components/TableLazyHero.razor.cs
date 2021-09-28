@@ -390,21 +390,22 @@ namespace AmeBlazor.Components
         private RenderFragment RenderTableImgColumn(object model, TableImgField tableImgField = null) => builder =>
         {
             tableImgField = tableImgField ?? TableImgField;
-            var fieldExpresson = GetExpression(model, tableImgField.ImgField, tableImgField.ImgFieldType);
-            builder.OpenComponent(0, typeof(TableColumn<>).MakeGenericType(tableImgField.ImgFieldType));
+            var fieldExpresson = GetExpression(model, tableImgField.Field, tableImgField.FieldType);
+            builder.OpenComponent(0, typeof(TableColumn<>).MakeGenericType(tableImgField.FieldType));
             builder.AddAttribute(1, "FieldExpression", fieldExpresson);
             //builder.AddAttribute(2, "Width", 200);
             builder.AddAttribute(3, "Template", new RenderFragment<TableColumnContext<object, string>>(context => buttonBuilder =>
             {
                 buttonBuilder.OpenComponent<ImgColumn>(0);
-                buttonBuilder.AddAttribute(1, nameof(ImgColumn.Title), tableImgField.ImgFieldTitle);
-                buttonBuilder.AddAttribute(2, nameof(ImgColumn.Name), tableImgField.ImgFieldName);
-                var value = ((TItem)context.Row).GetIdentityKey(tableImgField.ImgField);
+                buttonBuilder.AddAttribute(1, nameof(ImgColumn.Title), tableImgField.Title);
+                buttonBuilder.AddAttribute(2, nameof(ImgColumn.Name), tableImgField.Name);
+                var value = ((TItem)context.Row).GetIdentityKey(tableImgField.Field);
                 buttonBuilder.AddAttribute(3, nameof(ImgColumn.Url), value);
-                buttonBuilder.AddAttribute(4, nameof(ImgColumn.BaseUrl), tableImgField.ImgBaseUrl);
+                buttonBuilder.AddAttribute(4, nameof(ImgColumn.BaseUrl), tableImgField.BaseUrl);
+                if (!string.IsNullOrEmpty(tableImgField.Style)) buttonBuilder.AddAttribute(5, nameof(ImgColumn.Style), tableImgField.Style);
                 buttonBuilder.CloseComponent();
             }));
-            if (!string.IsNullOrEmpty(tableImgField.ImgColumnText)) builder.AddAttribute(4, "Text", tableImgField.ImgColumnText);
+            if (!string.IsNullOrEmpty(tableImgField.ColumnText)) builder.AddAttribute(4, "Text", tableImgField.ColumnText);
             builder.CloseComponent();
         };
 
