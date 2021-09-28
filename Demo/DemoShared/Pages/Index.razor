@@ -26,7 +26,9 @@ else
                        ShowRefresh="false"
                        IsStriped="false" 
 					   RenderMode="TableRenderMode.Auto" 
-                       TableImgField="new TableImgField(){RenderImgField=true}"
+                       ShowDefaultButtons =true
+                       IsFixedHeader="true" Height="500"
+                       TableImgFields='new List<TableImgField>(){new TableImgField(),new TableImgField(){ImgField="Photo2",ImgColumnText="历史头像",ImgFieldName ="发哥",ImgFieldTitle ="abcdefg"}}' 
                        />
         </TabItem>
          <TabItem Text="TimerAme">
@@ -39,4 +41,8 @@ else
         </TabItem>
 
     </Tab>
+}
+
+@code{
+
 }

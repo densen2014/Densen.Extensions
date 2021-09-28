@@ -84,10 +84,17 @@ namespace AmeBlazor.Components
         [Parameter] public Type FieldType { get; set; } = typeof(int);
         [Parameter] public string Field { get; set; } = "ID";
 
+#nullable enable 
         /// <summary>
-        /// 图片列参数
+        /// 图片列参数,图片列参数集合优先
         /// </summary>
-        [Parameter] public TableImgField TableImgField { get; set; } = new TableImgField();
+        [Parameter] public TableImgField? TableImgField { get; set; } 
+
+        /// <summary>
+        /// 图片列参数集合,优先读取
+        /// </summary>
+        [Parameter] public List<TableImgField>? TableImgFields { get; set; } 
+#nullable disable 
 
         /// <summary>
         /// 使用日期范围
@@ -378,25 +385,29 @@ namespace AmeBlazor.Components
         /// 动态生成控件 TableColumn 图片列
         /// </summary>
         /// <param name="model"></param>
+        /// <param name="tableImgField"></param>
         /// <returns></returns>
-        private RenderFragment RenderTableImgColumn(object model) => builder =>
+        private RenderFragment RenderTableImgColumn(object model, TableImgField tableImgField = null) => builder =>
         {
-            var fieldExpresson = GetExpression(model, TableImgField.ImgField, TableImgField.ImgFieldType);
-            builder.OpenComponent(0, typeof(TableColumn<>).MakeGenericType(TableImgField.ImgFieldType));
+            tableImgField = tableImgField ?? TableImgField;
+            var fieldExpresson = GetExpression(model, tableImgField.ImgField, tableImgField.ImgFieldType);
+            builder.OpenComponent(0, typeof(TableColumn<>).MakeGenericType(tableImgField.ImgFieldType));
             builder.AddAttribute(1, "FieldExpression", fieldExpresson);
             builder.AddAttribute(2, "Width", 200);
-            builder.AddAttribute(4, "Text", TableImgField.ImgColumnText);
+            if (!string.IsNullOrEmpty ( tableImgField.ImgColumnText)) builder.AddAttribute(4, "Text", tableImgField.ImgColumnText);
             builder.AddAttribute(3, "Template", new RenderFragment<TableColumnContext<object, string>>(context => buttonBuilder =>
             {
                 buttonBuilder.OpenComponent<ImgColumn>(0);
-                buttonBuilder.AddAttribute(1, nameof(ImgColumn.Title), TableImgField.ImgFieldTitle);
-                buttonBuilder.AddAttribute(2, nameof(ImgColumn.Name), TableImgField.ImgFieldName);
-                var value = ((TItem)context.Row).GetIdentityKey(TableImgField.ImgField);
+                buttonBuilder.AddAttribute(1, nameof(ImgColumn.Title), tableImgField.ImgFieldTitle);
+                buttonBuilder.AddAttribute(2, nameof(ImgColumn.Name), tableImgField.ImgFieldName);
+                var value = ((TItem)context.Row).GetIdentityKey(tableImgField.ImgField);
                 buttonBuilder.AddAttribute(3, nameof(ImgColumn.Url), value);
+                buttonBuilder.AddAttribute(4, nameof(ImgColumn.BaseUrl), tableImgField.ImgBaseUrl);
                 buttonBuilder.CloseComponent();
             }));
             builder.CloseComponent();
         };
+
         #endregion
 
         #region 日期选择控件
@@ -456,6 +467,13 @@ namespace AmeBlazor.Components
             JsRuntime.NavigateToNewTab(新窗口打开Url);
             return Task.CompletedTask;
         }
+        private Task IsExcelToggle()
+        {
+            IsExcel = !IsExcel;
+            StateHasChanged();
+            return Task.CompletedTask;
+        }
+
         #endregion
 
         #region 继承bbtable的设置
@@ -610,6 +628,40 @@ namespace AmeBlazor.Components
         /// </summary>
         [Parameter]
         public TableRenderMode RenderMode { get; set; } = TableRenderMode.Table;
+
+        /// <summary>
+        /// 获得/设置 组件是否采用 Tracking 模式对编辑项进行直接更新 默认 false
+        /// </summary>
+        [Parameter]
+        public bool IsTracking { get; set; }
+
+        /// <summary>
+        /// 获得/设置 组件工作模式为 Excel 模式 默认 false
+        /// </summary>
+        [Parameter]
+        public bool IsExcel { get; set; }
+        /// <summary>
+        /// 获得/设置 Table 高度 默认为 null
+        /// </summary>
+        /// <remarks>开启固定表头功能时生效 <see cref="IsFixedHeader"/></remarks>
+
+        [Parameter]
+        public int? Height { get; set; }
+
+        /// <summary>
+        /// 获得/设置 固定表头 默认 false
+        /// </summary>
+        /// <remarks>固定表头时设置 <see cref="Height"/> 即可出现滚动条，未设置时尝试自适应</remarks>
+        [Parameter]
+        public bool IsFixedHeader { get; set; }
+
+#nullable enable 
+        /// <summary>
+        /// 获得/设置 多表头模板
+        /// </summary>
+        [Parameter]
+        public RenderFragment? MultiHeaderTemplate { get; set; }
+#nullable disable
 
         #endregion
     }

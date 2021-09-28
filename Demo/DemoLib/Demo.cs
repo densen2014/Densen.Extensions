@@ -67,6 +67,9 @@ namespace AmeApi
 
         [DisplayName("图")]
         public string Photo { get; set; } = "https://freepos.es/uploads/demo/fage.jpg";
+
+        [DisplayName("头像")]
+        public string Photo2 { get; set; } = "https://freepos.es/uploads/demo/fage.jpg";
         public int ID { get; set; }
     }
 

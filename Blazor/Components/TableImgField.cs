@@ -14,7 +14,7 @@ namespace AmeBlazor.Components
         public bool RenderImgField { get; set; }
         public Type ImgFieldType { get; set; } = typeof(string);
         public string ImgField { get; set; } = "Photo";
-        public string ImgColumnText { get; set; } = "图";
+        public string ImgColumnText { get; set; }
         public string ImgFieldTitle { get; set; }
         public string ImgFieldName { get; set; }
         public string ImgBaseUrl {  get; set;}

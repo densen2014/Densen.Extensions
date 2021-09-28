@@ -49,8 +49,11 @@
 	   DataService="LazyHeroDataService"
 	   UseInjectDataService="true"
 	   OnSaveAsync="LazyHeroDataService.SaveAsync"
+	   OnDeleteAsync="LazyHeroDataService.DeleteAsync"
 	   DoubleClickToEdit="@DoubleClickToEdit"
 	   IsMultipleSelect="@IsMultipleSelect"
+	   IsTracking="@IsTracking"
+	   IsExcel="@IsExcel"
 	   EditMode="@EditMode"
 	   HeaderStyle="@HeaderStyle"
 	   TableSize="@TableSize"
@@ -66,7 +69,11 @@
 	   ShowFooter="@ShowFooter"
 	   ShowColumnList="@ShowColumnList"
 	   ShowRefresh="@ShowRefresh"
-	   ShowCardView="true">
+	   ShowCardView="true"
+	   Height="Height"
+	   IsFixedHeader="IsFixedHeader"
+	   MultiHeaderTemplate="MultiHeaderTemplate">
+
 
 	<TableToolbarTemplate>
 		@if (!string.IsNullOrEmpty(新窗口打开Url))
@@ -101,10 +108,21 @@
 		{
 			<TableToolbarButton TItem="TItem" Color="Color.Secondary" Text="@打印文本" IsAsync OnClickCallback="@PrintPreview" />
 		}
+		@if (ShowDefaultButtons)
+		{
+			<TableToolbarButton TItem="TItem" Color="Color.Primary" Text="自由编辑" OnClick="@IsExcelToggle" />
+		}
 	</TableToolbarTemplate>
 
 	<TableColumns>
-		@if (TableImgField.RenderImgField)
+		@if (TableImgFields!=null && TableImgFields.Any())
+		{
+			foreach (var item in TableImgFields)
+			{
+				@RenderTableImgColumn(context,item)
+			}
+		}
+		@if (TableImgField!=null)
 		{
 			@RenderTableImgColumn(context)
 		}
