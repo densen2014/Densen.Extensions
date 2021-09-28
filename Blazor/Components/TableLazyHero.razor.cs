@@ -133,10 +133,11 @@ namespace AmeBlazor.Components
         /// </summary>
         /// <param name="Items"></param>
         /// <returns></returns>
-        public async Task Load(List<TItem> Items)
+        public async Task Load(List<TItem> items)
         {
             //if (!string.IsNullOrEmpty(FooterTotal)) await InvokeAsync(StateHasChanged);
-            LazyHeroDataService.Items = Items;
+            Items = items;
+            LazyHeroDataService.Items = items;
             await mainTable.QueryAsync();
         }
 
