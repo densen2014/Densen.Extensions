@@ -88,13 +88,13 @@ namespace AmeBlazor.Components
         /// <summary>
         /// 图片列参数,图片列参数集合优先
         /// </summary>
-        [Parameter] public TableImgField? TableImgField { get; set; } 
+        [Parameter] public TableImgField? TableImgField { get; set; }
 
         /// <summary>
         /// 图片列参数集合,优先读取
         /// </summary>
-        [Parameter] public List<TableImgField>? TableImgFields { get; set; } 
-#nullable disable 
+        [Parameter] public List<TableImgField>? TableImgFields { get; set; }
+#nullable disable
 
         /// <summary>
         /// 使用日期范围
@@ -127,7 +127,7 @@ namespace AmeBlazor.Components
             InitDateTimeRange();
         }
 
- 
+
         /// <summary>
         /// 重新加载数据
         /// </summary>
@@ -371,11 +371,11 @@ namespace AmeBlazor.Components
         /// <param name="field">列名,默认"ID"</param>
         /// <param name="fieldType">列类型,默认typeof(int)</param>
         /// <returns></returns>
-        object GetExpression(object model,string field="ID", Type fieldType=null)
+        object GetExpression(object model, string field = "ID", Type fieldType = null)
         {
             // ValueExpression
             var body = Expression.Property(Expression.Constant(model), typeof(TItem), field);
-            var tDelegate = typeof(Func<>).MakeGenericType(fieldType?? typeof(int));
+            var tDelegate = typeof(Func<>).MakeGenericType(fieldType ?? typeof(int));
             var valueExpression = Expression.Lambda(tDelegate, body);
             return valueExpression;
         }
@@ -394,7 +394,6 @@ namespace AmeBlazor.Components
             builder.OpenComponent(0, typeof(TableColumn<>).MakeGenericType(tableImgField.ImgFieldType));
             builder.AddAttribute(1, "FieldExpression", fieldExpresson);
             builder.AddAttribute(2, "Width", 200);
-            if (!string.IsNullOrEmpty ( tableImgField.ImgColumnText)) builder.AddAttribute(4, "Text", tableImgField.ImgColumnText);
             builder.AddAttribute(3, "Template", new RenderFragment<TableColumnContext<object, string>>(context => buttonBuilder =>
             {
                 buttonBuilder.OpenComponent<ImgColumn>(0);
@@ -405,6 +404,7 @@ namespace AmeBlazor.Components
                 buttonBuilder.AddAttribute(4, nameof(ImgColumn.BaseUrl), tableImgField.ImgBaseUrl);
                 buttonBuilder.CloseComponent();
             }));
+            if (!string.IsNullOrEmpty(tableImgField.ImgColumnText)) builder.AddAttribute(4, "Text", tableImgField.ImgColumnText);
             builder.CloseComponent();
         };
 
@@ -456,7 +456,7 @@ namespace AmeBlazor.Components
             DateTimeRange.Start = DateTime.Today.FirstSecond();
             DateTimeRange.End = DateTime.Today.LastSecond();
             await Reset();
-        } 
+        }
         private Task 新窗口打开()
         {
             if (string.IsNullOrEmpty(新窗口打开Url))
@@ -615,7 +615,7 @@ namespace AmeBlazor.Components
         /// </summary>
         [Parameter]
         public bool ShowLineNo { get; set; }
-         
+
 
         /// <summary>
         /// 获得/设置 每页显示数据数量的外部数据源
