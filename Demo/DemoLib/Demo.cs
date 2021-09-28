@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using BootstrapBlazor.Components;
+using System.ComponentModel.DataAnnotations;
 
 namespace AmeApi
 {
@@ -64,6 +65,17 @@ namespace AmeApi
         public string cloud { get; set; }
         [AutoGenerateColumn(Visible = false)]
         public string dew { get; set; }
+
+        /// <summary>
+        /// 商品名称
+        /// </summary>
+#if NET5_0
+        [AutoGenerateColumn(TextEllipsis = true, ShowTips = true)]
+#endif
+        [Required(ErrorMessage = "商品名称不能为空")]
+        [JsonProperty, Column(Position = 3)]
+        [DisplayName("名称")]
+        public string ProductName { get; set; } = "商品名称是指为了区别于其他商品而使用的商品的称呼，可分为通用名称和特定名称。 命名的方式可以从商品功能、商品形象、商品产地、商品的象征意义等方面着手，一般以文字形式表示";
 
         [DisplayName("图")]
         public string Photo { get; set; } = "https://freepos.es/uploads/demo/fage.jpg";

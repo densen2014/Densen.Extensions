@@ -393,7 +393,7 @@ namespace AmeBlazor.Components
             var fieldExpresson = GetExpression(model, tableImgField.ImgField, tableImgField.ImgFieldType);
             builder.OpenComponent(0, typeof(TableColumn<>).MakeGenericType(tableImgField.ImgFieldType));
             builder.AddAttribute(1, "FieldExpression", fieldExpresson);
-            builder.AddAttribute(2, "Width", 200);
+            //builder.AddAttribute(2, "Width", 200);
             builder.AddAttribute(3, "Template", new RenderFragment<TableColumnContext<object, string>>(context => buttonBuilder =>
             {
                 buttonBuilder.OpenComponent<ImgColumn>(0);
