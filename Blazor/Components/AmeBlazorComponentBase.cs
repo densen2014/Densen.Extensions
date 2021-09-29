@@ -135,7 +135,6 @@ namespace AmeBlazor.Components
                 {
                     [nameof(TabItem.Text)] = item.Key,
                     [nameof(TabItem.ChildContent)] = flag ? null : item.Value.Render()
-                    //[nameof(TabItem.ChildContent)] = new Lazy< RenderFragment>(()=> item.Value.Render())
                 });
                 flag = true;
             }

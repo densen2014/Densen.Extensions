@@ -42,7 +42,7 @@ namespace AME.CommonUtils
                 }
                 return httpContext?.Connection?.RemoteIpAddress?.ToString();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 //Logger.LogWarning(ex.ToString());
             }
