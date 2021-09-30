@@ -655,15 +655,7 @@ namespace AmeBlazor.Components
         /// </summary>
         /// <remarks>固定表头时设置 <see cref="Height"/> 即可出现滚动条，未设置时尝试自适应</remarks>
         [Parameter]
-        public bool IsFixedHeader { get; set; }
-
-#nullable enable 
-        /// <summary>
-        /// 获得/设置 多表头模板
-        /// </summary>
-        [Parameter]
-        public RenderFragment? MultiHeaderTemplate { get; set; }
-#nullable disable
+        public bool IsFixedHeader { get; set; } 
 
         #endregion
     }
