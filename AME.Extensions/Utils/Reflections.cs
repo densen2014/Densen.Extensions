@@ -72,7 +72,7 @@ namespace AME.Extensions
         /// <param name="amespaceName"></param>
         /// <param name="assemblyString"></param>   
         /// <returns></returns>  
-        public static List<Type> GetTypes(string amespaceName = "AME.Models.Entity.", string assemblyString = null)
+        public static List<Type> GetTypes(string amespaceName = "AME.Models.Entity.", string assemblyString = null) //"AME.Models.Entity.", "AME.API"
         {
             List<Type> lt = new List<Type>();
             try

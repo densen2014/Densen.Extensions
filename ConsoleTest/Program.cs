@@ -23,8 +23,8 @@ namespace ConsoleTest
             var enums = "SectionType";
             var xxx= typeof(SectionType);
             var res3 =typeof(销售单状态_销售经营历程_补充).GetEnumValueAndDescriptions();
-            var res1 = GetValuesFromEnumsName(enums);
-            var res = GetEnumValueAndDescriptionsFromEnumsName("销售登记表付款方式");
+            var res = GetEnumValueAndDescriptionsFromEnumsName("销售登记表付款方式", assemblyString: "AME.API");
+            var res1 = GetValuesFromEnumsName(enums, assemblyString: "AME.API");
 
         }
     }

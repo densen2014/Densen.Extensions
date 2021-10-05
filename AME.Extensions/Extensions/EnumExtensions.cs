@@ -16,8 +16,8 @@ namespace AME
         /// 通过文本名获取Enum枚举Type
         /// </summary>
         /// <param name="name"></param>
-        /// <param name="pre"></param>
-        /// <param name="assemblyString"></param>
+        /// <param name="pre">默认 AME.Enums+</param>
+        /// <param name="assemblyString">默认空 eg: AME.API</param>
         /// <returns></returns>
         /// <exception cref="ArgumentNullException"></exception>
         public static Type GetTypeFromEnumsName(string name, string pre = "AME.Enums+", string assemblyString = null)
@@ -27,7 +27,11 @@ namespace AME
             {
                 t1 = Type.GetType(pre + name, false, true);
             }
-            t1 = Assembly.Load(assemblyString).GetType(pre + name, false, true);
+            else
+            {
+                //eg:assemblyString: "AME.API"
+                t1 = Assembly.Load(assemblyString).GetType(pre + name, false, true);
+            }
             if (t1 == null) throw new ArgumentNullException(pre + name);
             return t1;
         }
