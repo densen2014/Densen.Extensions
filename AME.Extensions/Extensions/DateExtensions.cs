@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 
 namespace AME
 {
@@ -40,6 +41,7 @@ namespace AME
         /// <param name="obj"></param>
         /// <returns></returns>
         public static DateTime FirstSecond(this DateTime obj) => new DateTime(obj.Year, obj.Month, obj.Day, 0, 0, 0);
+        public static string FirstSecondString(this DateTime obj) => FirstSecond(obj).ToString("yyyy-MM-dd HH:mm:ss");
 
         /// <summary>
         /// 日期开始范围,带自定义时间
@@ -55,6 +57,7 @@ namespace AME
         /// <param name="obj"></param>
         /// <returns></returns>
         public static DateTime LastSecond(this DateTime obj) => new DateTime(obj.Year, obj.Month, obj.Day, 23, 59, 59);
+        public static string LastSecondString(this DateTime obj) => LastSecond(obj).ToString("yyyy-MM-dd HH:mm:ss");
 
         /// <summary>
         /// 日期结束范围,带自定义时间
@@ -64,6 +67,75 @@ namespace AME
         /// <returns></returns>
         public static DateTime LastSecond(this DateTime obj, DateTime obj2) => new DateTime(obj.Year, obj.Month, obj.Day, obj2.Hour, obj2.Minute, obj2.Second);
 
+        /// <summary>
+        /// 将日期转换成yyyy-MM-dd HH:mm:ss字符串
+        /// </summary>
+        public static string TransformDataLong(this DateTime? dateTime)
+        {
+            string result = "";
+            if (dateTime.HasValue)
+            {
+                result = dateTime.Value.ToString("yyyy-MM-dd HH:mm:ss");
+            }
+            return result;
+        }
+
+        /// <summary>
+        /// 将日期转换成yyyy-MM-dd字符串
+        /// </summary>
+        public static string TransformDataShort(this DateTime? dateTime)
+        {
+            string result = "";
+            if (dateTime.HasValue)
+            {
+                result = dateTime.Value.ToString("yyyy-MM-dd");
+            }
+            return result;
+        }
+
+        /// <summary>
+        /// 将日期转换成decimal
+        /// </summary>
+        public static decimal TransDateTimeToDecimal(this DateTime date)
+        {
+            decimal ret = 0;
+            ret = Convert.ToDecimal(date.ToString("yyyyMMddHHmmss"));
+            return ret;
+        }
+
+        /// <summary>
+        ///  字符串日期转DateTime
+        /// </summary>
+        public static DateTime TransStrToDateTime(this string strDateTime)
+        {
+            DateTime now;
+            string[] format = new string[]
+            {
+            "yyyyMMddHHmmss", "yyyy-MM-dd HH:mm:ss", "yyyy年MM月dd日 HH时mm分ss秒",
+            "yyyyMdHHmmss","yyyy年M月d日 H时mm分ss秒", "yyyy.M.d H:mm:ss", "yyyy.MM.dd HH:mm:ss","yyyy-MM-dd","yyyyMMdd"
+            ,"yyyy/MM/dd","yyyy/M/d","ddMMyyyyHHmmss","dd/MM/yyyy","dd-MM-yyyy","dd-MM-yyyy HH:mm:ss","dd.MM.yyyy HH:mm:ss","dd/MM/yyyy "
+            };
+            if (DateTime.TryParseExact(strDateTime, format, CultureInfo.InvariantCulture, DateTimeStyles.None, out now))
+            {
+                return now;
+            }
+            return DateTime.MinValue;
+        }
+
+
+
+        /// <summary>
+        /// 将decimal转换成日期格式
+        /// </summary>
+        /// <param name="date">yyyyMMddHHmmss</param>
+        /// <returns>yyyy-MM-dd HH:mm:ss</returns>
+        public static string TransDecimalToDateTime(this string date)
+        {
+            DateTimeFormatInfo dtfi = new CultureInfo("zh-CN", false).DateTimeFormat;
+            DateTime dateTime = DateTime.Now;
+            DateTime.TryParseExact(date, "yyyyMMddHHmmss", dtfi, DateTimeStyles.None, out dateTime);
+            return dateTime.ToString("yyyy-MM-dd HH:mm:ss"); ;
+        }
     }
 
 }
