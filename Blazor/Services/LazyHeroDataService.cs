@@ -76,7 +76,7 @@ namespace AME.Services
         int 计数 = 0;
         public override Task<QueryData<TModel>> QueryAsync(QueryPageOptions options)
         {
-            System.Console.WriteLine($"LazyHero QueryAsync {计数} 数据:{Items.Count}"); 计数++;
+            System.Console.WriteLine($"LazyHero QueryAsync {计数} 数据:{Items?.Count}"); 计数++;
 
             IEnumerable<TModel> items = Items;
 
