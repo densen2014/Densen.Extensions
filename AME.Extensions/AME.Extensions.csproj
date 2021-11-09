@@ -1,9 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;netstandard2.1;net461;net5.0</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;netstandard2.1;net461;net6.0</TargetFrameworks>
     <Authors>alex_zou</Authors>
-    <Version>1.5.1</Version>
+    <Version>1.6.1</Version>
   </PropertyGroup>
   
   <ItemGroup>
