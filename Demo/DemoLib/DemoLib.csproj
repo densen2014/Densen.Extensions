@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net5.0</TargetFrameworks>
+    <TargetFrameworks>net6.0</TargetFrameworks>
     <Version>0.0.1</Version>
     <!--<Nullable>enable</Nullable>-->
   </PropertyGroup>
@@ -9,7 +9,7 @@
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="FreeSql.Provider.Sqlite" Version="2.6.100" />
-    <PackageReference Include="BootstrapBlazor" Version="5.12.4" />
+    <PackageReference Include="BootstrapBlazor" Version="5.18.4" />
   </ItemGroup>
 
 </Project>
