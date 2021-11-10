@@ -11,7 +11,8 @@ using System.Globalization;
 using System.Linq;
 using System.Net.Http;
 
-var builder = WebApplication.CreateBuilder(args);
+var builder = WebApplication.CreateBuilder(args); //    webBuilder.UseContentRoot("D:\\T9WMS\\publish");
+
 
 // Add services to the container.
 builder.Services.AddRazorPages();
