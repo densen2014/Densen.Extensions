@@ -23,11 +23,13 @@
   </ItemGroup>
   
   <ItemGroup>
-    <Folder Include="wwwroot\" />
+    <ProjectReference Include="..\AME.Extensions\AME.Extensions.csproj" />
   </ItemGroup>
   
   <ItemGroup>
-    <ProjectReference Include="..\AME.Extensions\AME.Extensions.csproj" />
+    <Content Update="wwwroot\README.md">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>
