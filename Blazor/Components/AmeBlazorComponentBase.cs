@@ -65,7 +65,8 @@ namespace AmeBlazor.Components
         //导航并添加 TabItem 方法
         protected Task OnNavigation()
         {
-            NavigationManager.NavigateTo("demo", "Demo页面");
+            //NavigationManager.NavigateTo("demo", "Demo页面");
+            NavigationManager.NavigateTo("demo");
             return Task.CompletedTask;
         }
         protected void GotoNewTab(string selectItem)
