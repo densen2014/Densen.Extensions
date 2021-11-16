@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;netstandard2.1;net461;net6.0</TargetFrameworks>
     <Authors>alex_zou</Authors>
-    <Version>1.6.1</Version>
+    <Version>6.0.0</Version>
   </PropertyGroup>
   
   <ItemGroup>
