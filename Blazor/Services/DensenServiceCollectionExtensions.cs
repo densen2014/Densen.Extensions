@@ -6,6 +6,8 @@
 
 using AME.CommonUtils;
 using AME.Services;
+using BootstrapBlazor.Components;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using System.Net.Http;
 
@@ -38,7 +40,11 @@ namespace Microsoft.Extensions.DependencyInjection
             services.AddScoped<WebClientInfoProvider>();
             return services;
         }
+
+        public static void AddDensenConfigure(this IApplicationBuilder app)
+        {         
+            app.ApplicationServices.RegisterProvider();
+        }
     }
 
- 
 }
