@@ -4,6 +4,7 @@ using System.Globalization;
 using Microsoft.Extensions.DependencyInjection;
 using System.Net.Http;
 using System;
+using BootstrapBlazor.Components;
 
 var cultureInfo = new CultureInfo("zh-CN");
 CultureInfo.DefaultThreadCurrentCulture = cultureInfo;
@@ -14,4 +15,6 @@ builder.RootComponents.Add<App>("#app");
 
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 builder.Services.AddDensenExtensions();
-await builder.Build().RunAsync();
+var host = builder.Build();
+host.AddDensenConfigure(); 
+await host.RunAsync();
