@@ -199,7 +199,7 @@ namespace Densen.Extensions
                             HtmlEncode(file.Name),
                             HtmlEncode(GetAutoSizeString(file.Length)),
                             //HtmlEncode(file.Length.ToString("n0", CultureInfo.CurrentCulture)),
-                            HtmlEncode(file.LastModified.ToString(CultureInfo.CurrentCulture)));
+                            HtmlEncode(file.LastModified.ToLocalTime().ToString("yyyy-MM-dd HH:mm:ss",CultureInfo.CurrentCulture)));
                     }
                     catch (DirectoryNotFoundException)
                     {
