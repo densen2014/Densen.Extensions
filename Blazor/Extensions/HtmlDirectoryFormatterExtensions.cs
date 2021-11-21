@@ -145,6 +145,7 @@ namespace Densen.Extensions
                 HtmlEncode(Resources.HtmlDir_LastModified));
 
                 contents = contents
+                            .Where(x => !x.Name.Contains("_content") && !x.Name.Equals("favicon.ico")&& !x.Name.Equals("private"))
                             .OrderBy(content => content.IsDirectory)
                             .ThenByDescending(content => content.LastModified);
 
