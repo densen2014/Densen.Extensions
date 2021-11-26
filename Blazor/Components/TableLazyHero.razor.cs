@@ -388,19 +388,19 @@ namespace AmeBlazor.Components
         /// <param name="model"></param>
         /// <param name="tableImgField"></param>
         /// <returns></returns>
-        private RenderFragment RenderTableImgColumn(object model, TableImgField tableImgField = null) => builder =>
+        private RenderFragment RenderTableImgColumn(TItem model, TableImgField tableImgField = null) => builder =>
         {
             tableImgField = tableImgField ?? TableImgField;
             var fieldExpresson = GetExpression(model, tableImgField.Field, tableImgField.FieldType);
-            builder.OpenComponent(0, typeof(TableColumn<TItem, TableImgField>).MakeGenericType(tableImgField.FieldType));
+            builder.OpenComponent(0, typeof(TableColumn<,>).MakeGenericType(typeof(TItem), tableImgField.FieldType));
             builder.AddAttribute(1, "FieldExpression", fieldExpresson);
             //builder.AddAttribute(2, "Width", 200);
-            builder.AddAttribute(3, "Template", new RenderFragment<TableColumnContext<object, string>>(context => buttonBuilder =>
+            builder.AddAttribute(3, "Template", new RenderFragment<TableColumnContext<TItem, string>>(context => buttonBuilder =>
             {
                 buttonBuilder.OpenComponent<ImgColumn>(0);
                 buttonBuilder.AddAttribute(1, nameof(ImgColumn.Title), tableImgField.Title);
                 buttonBuilder.AddAttribute(2, nameof(ImgColumn.Name), tableImgField.Name);
-                var value = ((TItem)context.Row).GetIdentityKey(tableImgField.Field);
+                var value = (context.Row).GetIdentityKey(tableImgField.Field);
                 buttonBuilder.AddAttribute(3, nameof(ImgColumn.Url), value);
                 buttonBuilder.AddAttribute(4, nameof(ImgColumn.BaseUrl), tableImgField.BaseUrl);
                 if (!string.IsNullOrEmpty(tableImgField.Style)) buttonBuilder.AddAttribute(5, nameof(ImgColumn.Style), tableImgField.Style);
