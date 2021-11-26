@@ -42,23 +42,6 @@ namespace Microsoft.Extensions.DependencyInjection
             return services;
         }
 
-        /// <summary>
-        /// SSR版:注册BootstrapBlazor提供程序
-        /// </summary>
-        /// <param name="host"></param>
-        public static void AddDensenConfigure(this IApplicationBuilder app)
-        {         
-            app.ApplicationServices.RegisterProvider();
-        }
-
-        /// <summary>
-        /// WASM版:注册BootstrapBlazor提供程序
-        /// </summary>
-        /// <param name="host"></param>
-        public static void AddDensenConfigure(this WebAssemblyHost host)
-        {
-            host.Services.RegisterProvider();
-        }
     }
 
 }
