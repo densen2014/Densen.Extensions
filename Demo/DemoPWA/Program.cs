@@ -1,10 +1,6 @@
-﻿using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
-using DemoShared;
+﻿using DemoShared;
+using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using System.Globalization;
-using Microsoft.Extensions.DependencyInjection;
-using System.Net.Http;
-using System;
-using BootstrapBlazor.Components;
 
 var cultureInfo = new CultureInfo("zh-CN");
 CultureInfo.DefaultThreadCurrentCulture = cultureInfo;

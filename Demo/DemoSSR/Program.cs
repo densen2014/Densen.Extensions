@@ -4,12 +4,7 @@
 // e-mail:zhouchuanglin@gmail.com 
 // **********************************
 
-using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using System.Globalization;
-using System.Linq;
-using System.Net.Http;
 
 var builder = WebApplication.CreateBuilder(args); //    webBuilder.UseContentRoot("D:\\T9WMS\\publish");
 

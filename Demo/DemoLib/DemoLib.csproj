@@ -1,15 +1,16 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFrameworks>net6.0</TargetFrameworks>
-    <Version>0.0.1</Version>
-    <!--<Nullable>enable</Nullable>-->
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFrameworks>net6.0</TargetFrameworks>
+		<Version>0.0.1</Version>
+		<!--<Nullable>enable</Nullable>-->
+		<ImplicitUsings>enable</ImplicitUsings>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-    <PackageReference Include="FreeSql.Provider.Sqlite" Version="2.6.100" />
-    <PackageReference Include="BootstrapBlazor" Version="6.0.6" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+		<PackageReference Include="FreeSql.Provider.Sqlite" Version="2.6.100" />
+		<PackageReference Include="BootstrapBlazor" Version="6.0.6" />
+	</ItemGroup>
 
 </Project>
