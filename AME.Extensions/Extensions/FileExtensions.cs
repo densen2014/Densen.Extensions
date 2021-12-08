@@ -71,10 +71,12 @@ namespace Extensions
         /// <summary>
         /// 得到适应的大小
         /// </summary>
-        /// <param name="path"></param>
+        /// <param name="sizes"></param>
+        /// <param name="roundCount"></param> 
         /// <returns>string</returns>
-        public static string GetAutoSizeString(double size, int roundCount = 2)
+        public static string GetAutoSizeString(this long sizes, int roundCount = 2)
         {
+            var size = (double)sizes;
             if (KBCount > size)
             {
                 return Math.Round(size, roundCount) + "B";

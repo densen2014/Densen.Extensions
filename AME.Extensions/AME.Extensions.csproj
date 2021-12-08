@@ -23,5 +23,8 @@
 		<PackageReference Include="Microsoft.Extensions.FileSystemGlobbing" Version="6.0.0" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
 	</ItemGroup>
-
+	<ItemGroup Condition=" '$(TargetFramework)' == 'net461' ">
+		<!-- // HttpClient for full .NET -->
+		<Reference Include="System.Net.Http" />
+	</ItemGroup>
 </Project>
