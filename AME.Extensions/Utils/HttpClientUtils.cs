@@ -16,7 +16,7 @@ namespace AME.Util
         /// <typeparam name="T"></typeparam>
         /// <param name="url"></param>
         /// <returns></returns>
-        public static List<T> JsonObject<T>(Uri url)
+        public static List<T> JsonObjects<T>(Uri url)
         {
 
             using (var client = new HttpClient())
@@ -28,6 +28,37 @@ namespace AME.Util
             }
 
         }
+
+        public static List<T> JsonObjects<T>(string url) => JsonObjects<T>( new Uri (url));
+       
+        public static T JsonObject<T>(Uri url)
+        {
+
+            using (var client = new HttpClient())
+            {
+                var result = client.GetStringAsync(url).Result;
+
+                T ds = JsonConvert.DeserializeObject<T>(result);
+                return ds;
+            }
+
+        }
+
+        public static T JsonObject<T>(string url) => JsonObject<T>( new Uri (url));
+
+        public static async Task<T> JsonObjectAsync<T>(Uri url)
+        {
+
+            using (var client = new HttpClient())
+            {
+                var result =await client.GetStringAsync(url);
+
+                T ds = JsonConvert.DeserializeObject<T>(result);
+                return ds;
+            }
+
+        }
+        public static async Task<T> JsonObjectAsync<T>(string url) => await JsonObjectAsync<T>(new Uri(url));
 
         public static async Task DownloadFileTaskAsync(this HttpClient client, Uri uri, string FileName)
         {
