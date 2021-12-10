@@ -83,7 +83,7 @@ namespace AME.Services
             // 处理 Searchable=true 列与 SeachText 模糊搜索
             if (options.Searchs.Any())
             {
-                //类加入 [AutoGenerateClass(Filterable = true, Sortable = true, AllowTextWrap = true, Searchable = true)] 就能搜索了
+                //类加入 [AutoGenerateClass(Filterable = true, Sortable = true, TextWrap = true, Searchable = true)] 就能搜索了
 
                 items = items.Where(options.Searchs.GetFilterFunc<TModel>(FilterLogic.Or));
             }

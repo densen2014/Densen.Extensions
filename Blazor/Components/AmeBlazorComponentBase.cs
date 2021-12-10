@@ -117,7 +117,7 @@ namespace AmeBlazor.Components
         protected Dictionary<string, BootstrapDynamicComponent> Pages =
             new Dictionary<string, BootstrapDynamicComponent>
             {
-                { "类别",BootstrapDynamicComponent.CreateComponent<Button>() },
+                { "类别",BootstrapDynamicComponent.CreateComponent<BootstrapBlazor.Components.Button>() },
             };
 
         /// <summary>
