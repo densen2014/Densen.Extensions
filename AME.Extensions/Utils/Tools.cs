@@ -232,7 +232,7 @@ namespace AME
         //加密
         public static string MD5Crypto2(string Password)
         {
-            MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider();
+            var md5 = new MD5CryptoServiceProvider();
             byte[] username = (new ASCIIEncoding()).GetBytes(Password);
 
             //转换为哈希值Byte数组
@@ -245,7 +245,7 @@ namespace AME
         //加密
         public static string MD5Crypto(string Password)
         {
-            MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider();
+            var md5 = new MD5CryptoServiceProvider();
             byte[] username = (new ASCIIEncoding()).GetBytes(Password);
 
             //转换为哈希值Byte数组
@@ -945,19 +945,7 @@ namespace AME
             return responseFromServer;
         }
 
-        public static string GetStringFromUrl(string url, Encoding encoding = null)
-        {
-            HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create(url);
-
-            using (HttpWebResponse httpWebReponse = (HttpWebResponse)httpWebRequest.GetResponse())
-            {
-                using (Stream stream = httpWebReponse.GetResponseStream())
-                {
-                    StreamReader sr = new StreamReader(stream, encoding ?? System.Text.Encoding.Default);
-                    return sr.ReadToEnd();
-                }
-            }
-        }
+       
 
         public static void WriteLine(string text, ConsoleColor backgroundColor)
         {

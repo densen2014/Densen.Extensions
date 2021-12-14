@@ -4,6 +4,7 @@
 // e-mail:zhouchuanglin@gmail.com 
 // **********************************
 
+using AME.Util;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
@@ -26,7 +27,8 @@ namespace AME
             var message = "";
             try
             {
-                string fjson = Tools.GetStringFromUrl("https://" + WxAPI + ".firebaseio.com/users.json", System.Text.Encoding.UTF8);
+
+                string fjson = HttpClientUtils.DownloadString("https://" + WxAPI + ".firebaseio.com/users.json");
 
                 if (!string.IsNullOrEmpty(fjson))
                 {
