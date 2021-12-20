@@ -1,27 +1,33 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
 
 	<PropertyGroup>
-		<TargetFrameworks>net6.0;net6.0-windows10.0.19041;net6.0-android</TargetFrameworks>
+		<TargetFrameworks>net6.0;net6.0-windows10.0.19041;net6.0-android;</TargetFrameworks>
+		<Version>6.0.1</Version>
+		<ImplicitUsings>enable</ImplicitUsings>
 		<IsPackable>true</IsPackable>
 		<PackageIcon>logo.png</PackageIcon>
-		<Version>6.0.0</Version>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<Company>Densen Informatica</Company>
 		<Authors>Alex Chow</Authors>
 		<Description>Densen's Blazor组件库以及BootstrapBlazor服务扩展包</Description>
-		<I18nTextFallBackLanguage>zh-CN</I18nTextFallBackLanguage>
-		<ImplicitUsings>enable</ImplicitUsings>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<PackageProjectUrl>https://github.com/densen2014/Densen.Extensions</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/densen2014/Densen.Extensions</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
+		<PackageTags>Densen Extensions for BootstrapBlazor</PackageTags>
+		<AssemblyName>Densen.Extensions.BootstrapBlazor</AssemblyName>
+		<RootNamespace>Densen.Extensions.BootstrapBlazor</RootNamespace>
 
-		<!--
-		<TargetFrameworks>net6.0;net6.0-ios;net6.0-maccatalyst</TargetFrameworks>
-		<SingleProject>true</SingleProject>
+		<I18nTextFallBackLanguage>zh-CN</I18nTextFallBackLanguage>
+		
+		<!--<SingleProject>true</SingleProject>net6.0-ios;net6.0-maccatalyst
 		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows')) and '$(MSBuildRuntimeType)' == 'Full'">$(TargetFrameworks);net6.0-windows10.0.19041</TargetFrameworks>
 		<SupportedOSPlatformVersion Condition="'$(TargetFramework)' == 'net6.0-ios'">14.2</SupportedOSPlatformVersion>
 		<SupportedOSPlatformVersion Condition="'$(TargetFramework)' == 'net6.0-maccatalyst'">14.0</SupportedOSPlatformVersion>
 		<SupportedOSPlatformVersion Condition="'$(TargetFramework)' == 'net6.0-android'">21.0</SupportedOSPlatformVersion>
 		<SupportedOSPlatformVersion Condition="$(TargetFramework.Contains('-windows'))">10.0.17763.0</SupportedOSPlatformVersion>
-		<TargetPlatformMinVersion Condition="$(TargetFramework.Contains('-windows'))">10.0.17763.0</TargetPlatformMinVersion>
-		-->
+		<TargetPlatformMinVersion Condition="$(TargetFramework.Contains('-windows'))">10.0.17763.0</TargetPlatformMinVersion>-->
+		
 	</PropertyGroup>
 
 	<ItemGroup>

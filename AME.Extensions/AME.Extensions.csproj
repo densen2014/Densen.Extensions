@@ -1,13 +1,25 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>netstandard2.0;netstandard2.1;net461;net6.0;net6.0-windows10.0.19041;net6.0-android</TargetFrameworks>
+		<TargetFrameworks>netstandard2.0;netstandard2.1;net461;net6.0;net6.0-windows10.0.19041;net6.0-android;</TargetFrameworks>
+		<Version>6.0.2</Version>
 		<Authors>alex_zou</Authors>
-		<Version>6.0.1</Version>
+		<IsPackable>true</IsPackable>
+		<PackageIcon>logo.png</PackageIcon>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<Company>Densen Informatica</Company>
+		<Authors>Alex Chow</Authors>
+		<Description>Densen的.net常用扩展库</Description>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<PackageProjectUrl>https://github.com/densen2014/Densen.Extensions</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/densen2014/Densen.Extensions</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
+		<PackageTags>Densen.Extensions</PackageTags>
+		<AssemblyName>AME.Extensions</AssemblyName>
+		<RootNamespace>AME.Extensions</RootNamespace>
 
 		<!--
-		<TargetFrameworks>netstandard2.0;netstandard2.1;net461;net6.0;net6.0-ios;net6.0-maccatalyst</TargetFrameworks>
-		<SingleProject>true</SingleProject>
+		<SingleProject>true</SingleProject>net6.0-ios;net6.0-maccatalyst
 		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows')) and '$(MSBuildRuntimeType)' == 'Full'">$(TargetFrameworks);net6.0-windows10.0.19041</TargetFrameworks>
 		<SupportedOSPlatformVersion Condition="'$(TargetFramework)' == 'net6.0-ios'">14.2</SupportedOSPlatformVersion>
 		<SupportedOSPlatformVersion Condition="'$(TargetFramework)' == 'net6.0-maccatalyst'">14.0</SupportedOSPlatformVersion>
