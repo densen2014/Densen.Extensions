@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>netstandard2.0;netstandard2.1;net461;net6.0;net6.0-windows10.0.19041;net6.0-android;net6.0-ios;net6.0-maccatalyst</TargetFrameworks>
+		<TargetFrameworks>netstandard2.0;netstandard2.1;net461;net6.0;net6.0-windows10.0.19041;net6.0-android;</TargetFrameworks>
 		<Version>6.0.3</Version>
 		<Authors>alex_zou</Authors>
 		<IsPackable>true</IsPackable>
@@ -19,7 +19,7 @@
 		<RootNamespace>AME.Extensions</RootNamespace>
 
 		<!--
-		<SingleProject>true</SingleProject>
+		<SingleProject>true</SingleProject>net6.0-ios;net6.0-maccatalyst
 		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows')) and '$(MSBuildRuntimeType)' == 'Full'">$(TargetFrameworks);net6.0-windows10.0.19041</TargetFrameworks>
 		<SupportedOSPlatformVersion Condition="'$(TargetFramework)' == 'net6.0-ios'">14.2</SupportedOSPlatformVersion>
 		<SupportedOSPlatformVersion Condition="'$(TargetFramework)' == 'net6.0-maccatalyst'">14.0</SupportedOSPlatformVersion>
