@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
 
 	<PropertyGroup>
-		<TargetFrameworks>net6.0;net6.0-windows10.0.19041;net6.0-android;</TargetFrameworks>
+		<TargetFrameworks>net6.0;net6.0-windows10.0.19041;net6.0-android;net6.0-ios;net6.0-maccatalyst</TargetFrameworks>
 		<Version>6.0.3</Version>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<IsPackable>true</IsPackable>
@@ -20,7 +20,7 @@
 
 		<I18nTextFallBackLanguage>zh-CN</I18nTextFallBackLanguage>
 		
-		<!--<SingleProject>true</SingleProject>net6.0-ios;net6.0-maccatalyst
+		<!--<SingleProject>true</SingleProject>
 		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows')) and '$(MSBuildRuntimeType)' == 'Full'">$(TargetFrameworks);net6.0-windows10.0.19041</TargetFrameworks>
 		<SupportedOSPlatformVersion Condition="'$(TargetFramework)' == 'net6.0-ios'">14.2</SupportedOSPlatformVersion>
 		<SupportedOSPlatformVersion Condition="'$(TargetFramework)' == 'net6.0-maccatalyst'">14.0</SupportedOSPlatformVersion>
