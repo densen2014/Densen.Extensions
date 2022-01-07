@@ -6,9 +6,14 @@ namespace AME.Extensions
 {
 	public class IsTypes
     {
-		public static bool IsNumericType(object o)
+		public static bool IsNumericType(Type o)
 		{
-			switch (Type.GetTypeCode(o.GetType()))
+			var Nullabletypeget = Nullable.GetUnderlyingType(o);
+			o = Nullabletypeget ?? o;
+			if (o.FullName.Contains ("Enum")) 
+				return false;
+			var typeget = Type.GetTypeCode(o);
+			switch (typeget)
 			{
 				case TypeCode.Byte:
 				case TypeCode.SByte:
@@ -30,7 +35,8 @@ namespace AME.Extensions
 
 		public static bool IsNumericTypeObj(object o)
 		{
-			var typeget = Type.GetTypeCode(o.GetType());
+			var Nullabletypeget = Nullable.GetUnderlyingType(o.GetType());
+			var typeget = Type.GetTypeCode(Nullabletypeget??o.GetType());
 			switch (typeget)
 			{
 				case TypeCode.Byte:
