@@ -22,6 +22,8 @@
 		<RootNamespace>Densen.Extensions.BootstrapBlazor</RootNamespace>
 
 		<I18nTextFallBackLanguage>zh-CN</I18nTextFallBackLanguage>
+
+		<Configurations>Debug;Release;DebugIE</Configurations>
 		
 	</PropertyGroup>
 
