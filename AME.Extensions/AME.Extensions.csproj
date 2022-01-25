@@ -5,7 +5,7 @@
 		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('ios'))">$(TargetFrameworks);net6.0-ios</TargetFrameworks>
 		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('maccatalyst'))">$(TargetFrameworks);net6.0-maccatalyst</TargetFrameworks>
 		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('android'))">$(TargetFrameworks);net6.0-android</TargetFrameworks>
-		<Version>6.0.4</Version>
+		<Version>6.1.0</Version>
 		<Authors>alex_zou</Authors>
 		<IsPackable>true</IsPackable>
 		<PackageIcon>logo.png</PackageIcon>
