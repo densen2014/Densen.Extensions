@@ -2,7 +2,7 @@
 @namespace AmeBlazor.Components
 
 <button class="@Class"
-        style="@($"height:{Height}px;max-width:{MaxWidth}px")" @onclick='(() => Goto(Url))'>
+        style="@($"height:{Height}px;max-width:{MaxWidth}px")" @onclick='gotoUrl'>
     <span class="@(!string.IsNullOrEmpty(ClassOi)? ClassOi:"oi oi-book")" aria-hidden="true"></span> <br />@Text
 </button>
 
@@ -45,4 +45,17 @@
     /// </summary>
     [Parameter]
     public int MaxWidth { get; set; } = 200;
+
+    /// <summary>
+    /// 获得/设置 组件 跳转是否开新窗口
+    /// </summary>
+    [Parameter]
+    public bool NewTab { get; set; }
+
+    Task gotoUrl(){
+        if (NewTab) GotoNewTab(Url);
+        else Goto(Url);
+        return Task.CompletedTask;
+    }
+
 }
