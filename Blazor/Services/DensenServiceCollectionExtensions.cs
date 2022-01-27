@@ -34,10 +34,10 @@ namespace Microsoft.Extensions.DependencyInjection
             services.AddTransient(typeof(LazyHeroDataService<>));
             services.AddTransient<BrowserService>();
             services.AddScoped<ClipboardService>();
-            services.AddHttpContextAccessor();
-            services.AddScoped<HttpContextAccessor>();
-            services.AddHttpClient();
-            services.AddScoped<HttpClient>();
+            services.AddHttpClient(); 
+            //services.AddHttpContextAccessor();
+            //services.AddScoped<HttpContextAccessor>();
+            //services.AddScoped<HttpClient>();
             services.AddScoped<WebClientInfoProvider>();
             return services;
         }
