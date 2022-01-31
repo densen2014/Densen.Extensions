@@ -32,7 +32,6 @@ namespace AmeBlazor.Components
         [Inject] protected ToastService ToastService { get; set; }
         [Inject] protected SwalService SwalService { get; set; }
         
-        protected bool enableHangFire;
 
         /// <summary>
         /// 获得/设置 用户自定义属性
@@ -67,7 +66,6 @@ namespace AmeBlazor.Components
         protected override void OnInitialized()
         {
             base.OnInitialized();
-            enableHangFire = config["EnableHangFireLinux"].Equals("True") || (config["EnableHangFire"].Equals("True") && RuntimeInformation.IsOSPlatform(OSPlatform.Windows));
         }
 
         //导航并添加 TabItem 方法
