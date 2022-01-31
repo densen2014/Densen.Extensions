@@ -14,6 +14,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using Toolbelt.Blazor.I18nText;
 
@@ -30,6 +31,8 @@ namespace AmeBlazor.Components
         [Inject] protected BrowserService browserService { get; set; }
         [Inject] protected ToastService ToastService { get; set; }
         [Inject] protected SwalService SwalService { get; set; }
+        
+        protected bool enableHangFire;
 
         /// <summary>
         /// 获得/设置 用户自定义属性
@@ -60,6 +63,11 @@ namespace AmeBlazor.Components
         {
             Dispose(disposing: true);
             GC.SuppressFinalize(this);
+        }
+        protected override void OnInitialized()
+        {
+            base.OnInitialized();
+            enableHangFire = config["EnableHangFireLinux"].Equals("True") || (config["EnableHangFire"].Equals("True") && RuntimeInformation.IsOSPlatform(OSPlatform.Windows));
         }
 
         //导航并添加 TabItem 方法
