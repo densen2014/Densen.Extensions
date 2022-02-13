@@ -7,7 +7,7 @@
 using System.ComponentModel;
 
 
-namespace AME.Services
+namespace AmeBlazor.Components
 {
     public class ViewerOptions
     {
@@ -17,6 +17,11 @@ namespace AME.Services
             this.fullscreen = fullscreen;
         }
         public string id { get; set; } = "images";
+
+        /// <summary>
+        /// 简化版工具条
+        /// </summary>
+        public bool toolbarlite { get; set; }
         public string container { get; set; } = "body";
 
         /// <summary>
@@ -26,7 +31,7 @@ namespace AME.Services
         public bool backdrop { get; set; } = true;
 
         /// <summary>
-        /// 关闭按钮
+        /// 右上角的关闭按钮
         /// </summary>
         [DisplayName("关闭按钮")]
         public bool button { get; set; } = true;

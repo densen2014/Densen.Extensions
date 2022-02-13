@@ -27,6 +27,10 @@ namespace DemoShared.Pages
         private CancellationTokenSource AutoRefreshCancelTokenSource { get; set; }
 
         List<string> Images;
+        ViewerOptions ViewerOptions=new ViewerOptions()
+        {
+            toolbarlite=true,
+        };
         protected override void OnInitialized()
         {
 

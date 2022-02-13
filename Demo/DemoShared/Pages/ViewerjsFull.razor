@@ -15,16 +15,6 @@
         }
     </ul>
 </div>
-<div class="docs-galley mb-3">
-    <ul id="hhhhhh" class="docs-pictures clearfix">
-        @{
-            foreach (var item in Items1)
-            {
-                <li><img src="@item" ></li>
-            }
-        }
-    </ul>
-</div>
 <Badge>选项</Badge>
 <Row ItemsPerRow="ItemsPerRow.Three" RowType="RowType.Inline" style="max-width:600px">
     <Checkbox ShowLabel="true" @bind-Value="options.loop" OnStateChanged="OnItemChanged" />
@@ -67,7 +57,6 @@
         if (firstRender)
         {
             module = await JS.InvokeAsync<IJSObjectReference>("import", "./_content/Densen.Component.Blazor/js/viewerjs.js");
-            await module.InvokeVoidAsync("initOptions", options);
             await module.InvokeVoidAsync("initOptions", options);
         }
     }

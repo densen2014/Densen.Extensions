@@ -55,19 +55,19 @@ else
             </div>
 
 
-            <Viewerjs ID="immmmm" Images="Images" UseInsideImagesDiv="false" />
-            <Viewerjs  Images="Images"  />
+            <Viewerjs ID="immmmm" Images="Images" UseInsideImagesDiv="false" Options="ViewerOptions" />
+            <Viewerjs Images="Images.Take(9).ToList()" />
         </TabItem>
-        @*<TabItem Text="ViewerjsFull">
-                <ViewerjsFull />
-            </TabItem>*@
+        <TabItem Text="ViewerjsFull">
+            <ViewerjsFull />
+        </TabItem>
 
     </Tab>
 }
 <style>
     .docs-galley22 {
-        padding: 40px;
-        width: 600px;
+        padding: 20px;
+        width: 700px;
     }
 
     .docs-pictures22 {
