@@ -26,6 +26,28 @@ namespace DemoShared.Pages
 
         private CancellationTokenSource AutoRefreshCancelTokenSource { get; set; }
 
+        List<string> Images;
+        protected override void OnInitialized()
+        {
+
+            Images = new List<string>();
+            if (!Images.Any())
+            {
+                for (int i = 9; i > 0; i--)
+                {
+                    Images.Add($"https://fengyuanchen.github.io/viewerjs/images/thumbnails/tibet-{i}.jpg");
+                }
+                for (int i = 1; i <= 9; i++)
+                {
+                    Images.Add($"https://fengyuanchen.github.io/viewerjs/images/thumbnails/tibet-{i}.jpg");
+                }
+                for (int i = 9; i > 0; i--)
+                {
+                    Images.Add($"https://fengyuanchen.github.io/viewerjs/images/thumbnails/tibet-{i}.jpg");
+                }
+            }
+        }
+
         protected override void OnAfterRender(bool firstRender)
         {
             if (firstRender) worker();

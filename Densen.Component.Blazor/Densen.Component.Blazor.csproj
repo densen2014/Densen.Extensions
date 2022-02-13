@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Version>0.0.1</Version>
+		<IsPackable>true</IsPackable>
+		<PackageIcon>logo.png</PackageIcon>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<Company>Densen Informatica</Company>
+		<Authors>Alex Chow</Authors>
+		<Description>Densen's Blazor组件库</Description>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<PackageProjectUrl>https://github.com/densen2014/Densen.Extensions</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/densen2014/Densen.Extensions</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
+		<PackageTags>Densen Component for Blazor</PackageTags>
+		<AssemblyName>Densen.Component.Blazor</AssemblyName>
+		<RootNamespace>Densen.Component.Blazor</RootNamespace>
+	</PropertyGroup>
+	
+	<ItemGroup>
+		<None Include="logo.png" Pack="true" PackagePath="" />
+	</ItemGroup>
+
+	
+	<ItemGroup>
+	  <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="6.0.2" />
+	</ItemGroup>
+
+</Project>
