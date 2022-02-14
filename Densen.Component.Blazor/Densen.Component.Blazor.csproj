@@ -4,7 +4,7 @@
 		<TargetFramework>net6.0</TargetFramework>
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
-		<Version>0.0.3</Version>
+		<Version>0.0.4</Version>
 		<IsPackable>true</IsPackable>
 		<PackageIcon>logo.png</PackageIcon>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
@@ -12,8 +12,8 @@
 		<Authors>Alex Chow</Authors>
 		<Description>Densen's Blazor组件库</Description>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
-		<PackageProjectUrl>https://github.com/densen2014/Densen.Extensions</PackageProjectUrl>
-		<RepositoryUrl>https://github.com/densen2014/Densen.Extensions</RepositoryUrl>
+		<PackageProjectUrl>https://github.com/densen2014/Densen.Extensions/tree/master/Densen.Component.Blazor</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/densen2014/Densen.Extensions/tree/master/Densen.Component.Blazor</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
 		<PackageTags>Densen Component for Blazor</PackageTags>
 		<AssemblyName>Densen.Component.Blazor</AssemblyName>

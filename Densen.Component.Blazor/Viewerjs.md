@@ -2,6 +2,10 @@
 
 封装Viewer.js库
 
+示例:
+
+https://test1.app1.es/
+
 使用方法:
 
 1.nuget包
