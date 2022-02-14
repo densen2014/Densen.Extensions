@@ -3,27 +3,28 @@
 @inject IJSRuntime JS
 @namespace AmeBlazor.Components
 
-@if (UseInsideImagesDiv) {
-<div class="docs-galley mb-3" style="height: @Height;width:@Width; ">
-    <ul id="@Options.id" class="docs-pictures clearfix">
-        @{
-            var i = 0;
-            foreach (var item in Images)
-            {
-                var alt = (Alts!=null && Alts.Any() && Alts.Count > i) ? Alts[i]:(item.Split('/').Last());
-                <li><img src="@item" alt="@alt"></li>
-                i++;
+@if (UseBuiltinImageDiv)
+{
+    <div class="docs-galley mb-3" style="height: @Height;width:@Width; ">
+        <ul id="@Options.id" class="docs-pictures clearfix">
+            @{
+                var i = 0;
+                foreach (var item in Images)
+                {
+                    var alt = (Alts != null && Alts.Any() && Alts.Count > i) ? Alts[i] : (item.Split('/').Last());
+                    <li><img src="@item" alt="@alt"></li>
+                    i++;
+                }
             }
-        }
-    </ul>
-</div>
+        </ul>
+    </div>
 }
 
 @code{
     /// <summary>
     /// 使用内置图片DIV
     /// </summary>
-    [Parameter] public bool UseInsideImagesDiv { get; set; } = true;
+    [Parameter] public bool UseBuiltinImageDiv { get; set; } = true;
 
     /// <summary>
     /// 图片列表
@@ -63,23 +64,23 @@
     /// <summary>
     /// 组件ID
     /// </summary>
-    [Parameter] public string ID { get; set; }
+    [Parameter] public string? ID { get; set; }
 
     private IJSObjectReference? module;
 
     protected override void OnInitialized()
     {
         Options ??= new ViewerOptions();
-        if (toolbarlite!=null) Options.toolbarlite = toolbarlite.Value;
+        if (toolbarlite != null) Options.toolbarlite = toolbarlite.Value;
         if (!string.IsNullOrEmpty(ID)) Options.id = ID; else Options.id = Guid.NewGuid().ToString();
         Images ??= new List<string>();
-        if (Src != null) 
+        if (Src != null)
             Images.Add(Src);
         else if (!Images.Any())
         {
             for (int i = 1; i <= 9; i++)
             {
-                Images.Add($"https://fengyuanchen.github.io/viewerjs/images/thumbnails/tibet-{i}.jpg");
+                Images.Add("./_content/Densen.Component.Blazor/logo.png");
             }
         }
     }
@@ -93,19 +94,20 @@
         }
     }
 
-    public async Task OnOptionsChanged(ViewerOptions options) => await module.InvokeVoidAsync("initOptions", options);
+    public async Task OnOptionsChanged(ViewerOptions options) => await module!.InvokeVoidAsync("initOptions", options);
 
     async ValueTask IAsyncDisposable.DisposeAsync()
     {
         if (module is not null)
         {
+            await module.InvokeVoidAsync("destroy", Options);
             await module.DisposeAsync();
         }
     }
 }
 
-<link href="https://cdnjs.cloudflare.com/ajax/libs/viewerjs/1.10.3/viewer.min.css" rel="stylesheet" />
-
+<link href="./_content/Densen.Component.Blazor/css/viewer.min.css" rel="stylesheet" />
+ 
 <style>
     .docs-galley {
         padding: 10px;

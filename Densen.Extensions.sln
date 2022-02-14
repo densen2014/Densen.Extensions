@@ -17,7 +17,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DemoShared", "Demo\DemoShar
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DemoSSR", "Demo\DemoSSR\DemoSSR.csproj", "{DE7716CE-0AA5-421F-829C-11A2933CAC11}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Densen.Component.Blazor", "Densen.Component.Blazor\Densen.Component.Blazor.csproj", "{FE57EB33-E6B6-42E5-8F36-239736B7FA4C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Densen.Component.Blazor", "Densen.Component.Blazor\Densen.Component.Blazor.csproj", "{FE57EB33-E6B6-42E5-8F36-239736B7FA4C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Antd", "Antd", "{F8ED0084-A809-4F0B-BE68-D6B2F694C52C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AntdBlazor", "Demo\Antd\BlazorTest\AntdBlazor.csproj", "{857FCBB9-C965-42EE-B671-434EBE1EEA03}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -53,6 +57,10 @@ Global
 		{FE57EB33-E6B6-42E5-8F36-239736B7FA4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FE57EB33-E6B6-42E5-8F36-239736B7FA4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FE57EB33-E6B6-42E5-8F36-239736B7FA4C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{857FCBB9-C965-42EE-B671-434EBE1EEA03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{857FCBB9-C965-42EE-B671-434EBE1EEA03}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{857FCBB9-C965-42EE-B671-434EBE1EEA03}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{857FCBB9-C965-42EE-B671-434EBE1EEA03}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -62,6 +70,8 @@ Global
 		{7EDCC43C-D22C-4A10-9334-0D60E600B17B} = {F5606303-B842-479D-B99B-4DB88AFED211}
 		{ED2EE2C9-F9C0-4A9F-B643-CE2B67FF415E} = {F5606303-B842-479D-B99B-4DB88AFED211}
 		{DE7716CE-0AA5-421F-829C-11A2933CAC11} = {F5606303-B842-479D-B99B-4DB88AFED211}
+		{F8ED0084-A809-4F0B-BE68-D6B2F694C52C} = {F5606303-B842-479D-B99B-4DB88AFED211}
+		{857FCBB9-C965-42EE-B671-434EBE1EEA03} = {F8ED0084-A809-4F0B-BE68-D6B2F694C52C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2B9698BD-88AE-4165-9322-67F121A4B26B}
