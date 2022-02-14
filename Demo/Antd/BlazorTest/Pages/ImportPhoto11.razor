@@ -1,0 +1,45 @@
+﻿@page "/ImportPhoto11"
+<PageTitle>上传和下载文件</PageTitle>
+<div class="border-box">
+    <p>
+        <Space Size=@(("8", "16")) Wrap>
+            <SpaceItem>
+                <Button OnClick="@ShowModal">
+                    打开对话框上传图片
+                </Button>
+            </SpaceItem>
+        </Space>
+    </p>
+    <p>
+        <Modal Title="@("上传照片")" Visible="_visible" OnOk="(e)=>{_visible = false;}" OnCancel="(e)=>{_visible = false;}" Footer=null Draggable="true" MaskClosable=false
+               Style="height:360px;width:800px">
+            <p style="text-align:center">
+                @if (!string.IsNullOrEmpty(_srcPhoto))
+                {
+                    @*<Image  Width="200px" Height="300px" Src="@_srcPhoto" @key="@_srcPhoto" />*@
+                    <Viewerjs Images='new List<string>() { "photo-2.jpg","photo-1.jpg","photo-3.jpg"}' Width="600px" Height="300px" toolbarlite="true" />
+
+                }
+            </p>
+        </Modal>
+    </p>
+</div>
+<br />
+<div class="border-box">
+    <p style="text-align:center">
+        @if (!string.IsNullOrEmpty(_srcPhoto))
+        {
+        @*<Image Width="200px" Height="300px" Src="@_srcPhoto" @key="@_srcPhoto" />*@
+        <Viewerjs Src="@_srcPhoto" Width="unset" Height="300px" toolbarlite="true" />
+        }
+    </p>
+</div>
+
+
+<style>
+    .border-box {
+        border: 1px solid #f0f0f0;
+        border-radius: 2px;
+        padding: 10px;
+    }
+</style>
