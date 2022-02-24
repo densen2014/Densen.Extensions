@@ -1,0 +1,37 @@
+<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Version>0.0.1</Version>
+		<IsPackable>true</IsPackable>
+		<PackageIcon>logo.png</PackageIcon>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<Company>Densen Informatica</Company>
+		<Authors>Alex Chow</Authors>
+		<Description>FontAwesome for Blazor</Description>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<PackageProjectUrl>https://github.com/densen2014/Densen.Extensions/tree/master/Densen.Extensions.Blazor</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/densen2014/Densen.Extensions/tree/master/Densen.Extensions.Blazor</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
+		<PackageTags>FontAwesome for Blazor</PackageTags>
+		<AssemblyName>Densen.FontAwesome.Blazor</AssemblyName>
+		<RootNamespace>Densen.FontAwesome.Blazor</RootNamespace>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <Content Remove="wwwroot\logo.png" />
+	</ItemGroup>
+	
+	<ItemGroup>
+		<None Include="logo.png" Pack="true" PackagePath="" />
+		<None Include="wwwroot\logo.png" />
+	</ItemGroup>
+
+	
+	<ItemGroup>
+	  <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="6.0.2" />
+	</ItemGroup>
+
+</Project>
