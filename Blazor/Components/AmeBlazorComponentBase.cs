@@ -31,7 +31,8 @@ namespace AmeBlazor.Components
         [Inject] protected BrowserService browserService { get; set; }
         [Inject] protected ToastService ToastService { get; set; }
         [Inject] protected SwalService SwalService { get; set; }
-        
+        [Inject] protected DialogService DialogService { get; set; }
+
 
         /// <summary>
         /// 获得/设置 用户自定义属性
