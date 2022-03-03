@@ -111,9 +111,13 @@ namespace AME
             DateTime now;
             string[] format = new string[]
             {
-            "yyyyMMddHHmmss", "yyyy-MM-dd HH:mm:ss", "yyyy年MM月dd日 HH时mm分ss秒",
-            "yyyyMdHHmmss","yyyy年M月d日 H时mm分ss秒", "yyyy.M.d H:mm:ss", "yyyy.MM.dd HH:mm:ss","yyyy-MM-dd","yyyyMMdd"
-            ,"yyyy/MM/dd","yyyy/M/d","ddMMyyyyHHmmss","dd/MM/yyyy","dd-MM-yyyy","dd-MM-yyyy HH:mm:ss","dd.MM.yyyy HH:mm:ss","dd/MM/yyyy "
+                "yyyy.M.d","yyyy/M/d","yyyy-M-d","d-M-yyyy","d/M/yyyy","d/M/yyyy ",
+                "yyyy.M.dd","yyyy/M/dd","yyyy-M-dd","dd-M-yyyy","dd/M/yyyy","dd/M/yyyy ",
+                "yyyy.MM.d","yyyy/MM/d","yyyy-MM-d", "d-MM-yyyy","d/MM/yyyy","d/MM/yyyy ",
+                "yyyy.MM.dd","yyyy/MM/dd","yyyy-MM-dd", "yyyyMMdd","dd-MM-yyyy","dd/MM/yyyy","dd/MM/yyyy ",
+                "yyyy-MM-dd HH:mm:ss", "yyyy-M-dd HH:mm:ss", "yyyy.M.d H:mm:ss", "yyyy.MM.dd HH:mm:ss", "dd-MM-yyyy HH:mm:ss","dd.MM.yyyy HH:mm:ss",
+                "yyyy年MM月dd日 HH时mm分ss秒","yyyy年M月d日 H时mm分ss秒",
+                "yyyyMMddHHmmss","yyyyMdHHmmss","ddMMyyyyHHmmss"
             };
             if (DateTime.TryParseExact(strDateTime, format, CultureInfo.InvariantCulture, DateTimeStyles.None, out now))
             {
