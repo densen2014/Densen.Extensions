@@ -3,8 +3,8 @@
 	<PropertyGroup>
 		<TargetFrameworks>net6.0</TargetFrameworks>
 		<TargetFrameworks Condition="'$(Configuration)'=='Preview'">$(TargetFrameworks);net6.0-windows10.0.19041;net6.0-ios;net6.0-maccatalyst;net6.0-android</TargetFrameworks>
-		<Version Condition="'$(Configuration)'!='Preview'">6.1.18</Version>
-		<Version Condition="'$(Configuration)'=='Preview'">6.1.19-preview</Version>
+		<Version Condition="'$(Configuration)'!='Preview'">6.1.19</Version>
+		<Version Condition="'$(Configuration)'=='Preview'">6.1.20-preview</Version>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<IsPackable>true</IsPackable>
 		<PackageIcon>logo.png</PackageIcon>
@@ -27,8 +27,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Condition="'$(Configuration)'!='Preview'" Include="BootstrapBlazor" Version="6.3.3" />
-		<PackageReference Condition="'$(Configuration)'=='Preview'" Include="BootstrapBlazor" Version="6.2.8" />
+		<PackageReference Include="BootstrapBlazor" Version="6.4.0" />
 		<PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.2.0" />
 		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.2" />
 		<PackageReference Include="Toolbelt.Blazor.I18nText" Version="11.1.3" />
