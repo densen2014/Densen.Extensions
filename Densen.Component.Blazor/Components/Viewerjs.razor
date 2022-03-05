@@ -1,5 +1,4 @@
-﻿@page "/viewerjs"
-@implements IAsyncDisposable
+﻿@implements IAsyncDisposable
 @inject IJSRuntime JS
 @namespace AmeBlazor.Components
 
@@ -89,7 +88,7 @@
     {
         if (firstRender)
         {
-            module = await JS.InvokeAsync<IJSObjectReference>("import", "./_content/Densen.Component.Blazor/js/viewerjs.js");
+            module = await JS.InvokeAsync<IJSObjectReference>("import", "./_content/Densen.Component.Blazor/lib/viewerjs/viewerjs.js");
             await module.InvokeVoidAsync("initOptions", Options);
         }
     }
@@ -106,7 +105,7 @@
     }
 }
 
-<link href="/_content/Densen.Component.Blazor/css/viewer.min.css" rel="stylesheet" />
+<link href="/_content/Densen.Component.Blazor/lib/viewerjs/viewer.min.css" rel="stylesheet" />
  
 <style>
     .docs-galley {

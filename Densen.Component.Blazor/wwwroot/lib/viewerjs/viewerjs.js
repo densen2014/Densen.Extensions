@@ -1,4 +1,4 @@
-﻿import '/_content/Densen.Component.Blazor/js/viewer.min.js';
+﻿import '/_content/Densen.Component.Blazor/lib/viewerjs/viewer.min.js';
 var viewer = null;
 export function initOptions(options) {
     options.title = function (image) {

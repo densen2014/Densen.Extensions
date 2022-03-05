@@ -56,7 +56,7 @@
     {
         if (firstRender)
         {
-            module = await JS.InvokeAsync<IJSObjectReference>("import", "./_content/Densen.Component.Blazor/js/viewerjs.js");
+            module = await JS.InvokeAsync<IJSObjectReference>("import", "./_content/Densen.Component.Blazor/lib/viewerjs/viewerjs.js");
             await module.InvokeVoidAsync("initOptions", options);
         }
     }
@@ -74,7 +74,7 @@
     }
 }
 
-<link href="https://cdnjs.cloudflare.com/ajax/libs/viewerjs/1.10.3/viewer.min.css" rel="stylesheet" />
+<link href="/_content/Densen.Component.Blazor/lib/viewerjs/viewer.min.css" rel="stylesheet" />
 
 <style>
     .docs-galley {
