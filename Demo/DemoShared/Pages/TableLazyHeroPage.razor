@@ -1,0 +1,33 @@
+﻿@page "/tablelazy"
+@attribute [TabItemOption(Text = "表格")]
+
+<h1>Demo de Densen.Extensions.BootstrapBlazor</h1>
+<p><em>@DateTime.Now.ToString("HH:mm:ss")</em></p>
+
+@if (mines == null)
+{
+    <p><em>Loading...</em></p>
+    <h8><em>build001</em></h8>
+}
+else
+{
+    <Table TItem="Rootobject"
+           Items="@mineStatuss"
+           AutoGenerateColumns="true" />
+    <TableLazyHero @ref="list1"
+                   TItem="NowInfo"
+                   ShowColumnList="true"
+                   刷新="刷新数据"
+                   TableSize="TableSize.Normal"
+                   DoubleClickToEdit="false"
+                   HeaderStyle=TableHeaderStyle.None
+                   IsPagination="false"
+                   ShowRefresh="false"
+                   IsStriped="false"
+                   RenderMode="TableRenderMode.Auto"
+                   ShowDefaultButtons=true
+                   IsFixedHeader="true" Height="500"
+                   IsMultipleSelect=true
+                   TableImgFields='new List<TableImgField>(){new TableImgField(),new TableImgField(){Field="Photo2",ColumnText="历史头像",Name ="发哥",Title ="abcdefg"}}' />
+
+} 

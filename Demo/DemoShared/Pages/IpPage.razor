@@ -1,0 +1,12 @@
+﻿@page "/ip"
+@using AME.CommonUtils
+@attribute [TabItemOption(Text = "IP")]
+
+
+<Badge Color="Color.Success">
+    IP: @WebClientInfo.ClientIpAddress;
+</Badge>
+
+@code{
+    [Inject] protected WebClientInfoProvider WebClientInfo { get; set; }
+}

@@ -40,12 +40,6 @@
     [Parameter]
     public string? Result { get; set; }
 
-    /// <summary>
-    /// 显示扫码框
-    /// </summary>
-    [Parameter]
-    public bool ShowHandwritten { get; set; }
-
     private IJSObjectReference? module;
 
     // To prevent making JavaScript interop calls during prerendering
