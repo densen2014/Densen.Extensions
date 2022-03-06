@@ -3,8 +3,7 @@ Densen's Blazor组件库以及BootstrapBlazor服务扩展包
 
 Densen's Blazor component library and BootstrapBlazor service extension package
 
-English | <a href="README.zh-CN.md">中文</a>  | <a href="https://blazor.app1.es/"> demo</a>
-
+English | <a href="README.zh-CN.md">中文</a>  | <a href="https://blazor.app1.es/"> demo</a> | <a href="https://github.com/densen2014/Densen.Extensions"> github </a> | <a href="https://gitee.com/densen2014/Densen.Extensions"> gitee(mirror only) </a>
 ---
 
 <a href="Densen.Component.Blazor/Viewerjs.md">Image viewer</a>
