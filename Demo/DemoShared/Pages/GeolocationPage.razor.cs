@@ -3,8 +3,6 @@
 // Website: https://www.blazor.zone or https://argozhang.github.io/
 
 using AmeBlazor.Components;
-using Microsoft.AspNetCore.Components;
-using Microsoft.Extensions.Localization;
 
 namespace DemoShared.Pages;
 
