@@ -4,7 +4,7 @@
 
 示例:
 
-https://test1.app1.es/barcodescanner
+https://blazor.app1.es/barcodescanner
 
 使用方法:
 

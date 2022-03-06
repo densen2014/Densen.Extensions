@@ -4,7 +4,7 @@
 
 示例:
 
-https://test1.app1.es/handwritten
+https://blazor.app1.es/handwritten
 
 使用方法:
 

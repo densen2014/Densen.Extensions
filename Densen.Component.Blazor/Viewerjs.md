@@ -4,7 +4,7 @@
 
 示例:
 
-https://test1.app1.es/viewer
+https://blazor.app1.es/viewer
 
 使用方法:
 

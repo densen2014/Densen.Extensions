@@ -4,7 +4,7 @@
 
 示例:
 
-https://test1.app1.es/geolocations
+https://blazor.app1.es/geolocations
 
 使用方法:
 
