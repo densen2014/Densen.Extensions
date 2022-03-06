@@ -6,7 +6,6 @@
 
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
-using System.Diagnostics.CodeAnalysis;
 
 namespace AmeBlazor.Components;
 
@@ -47,6 +46,12 @@ public partial class WebApi : IAsyncDisposable
     }
 
     /// <summary>
+    /// 获得/设置 错误回调方法
+    /// </summary>
+    [Parameter]
+    public Func<string, Task>? OnError { get; set; }
+
+    /// <summary>
     /// 获得/设置 电池信息回调方法
     /// </summary>
     [Parameter]
@@ -60,7 +65,14 @@ public partial class WebApi : IAsyncDisposable
     [JSInvokable]
     public async Task GetBatteryResult(BatteryStatus batteryStatus)
     {
-        if (OnBatteryResult != null) await OnBatteryResult.Invoke(batteryStatus);
+        try
+        {
+            if (OnBatteryResult != null) await OnBatteryResult.Invoke(batteryStatus);
+        }
+        catch (Exception e)
+        {
+            if (OnError != null) await OnError.Invoke(e.Message);
+        }
     }
 
 
@@ -86,7 +98,14 @@ public partial class WebApi : IAsyncDisposable
     [JSInvokable]
     public async Task GetNetworkInfoResult(NetworkInfoStatus networkInfoStatus)
     {
-        if (OnNetworkInfoResult != null) await OnNetworkInfoResult.Invoke(networkInfoStatus);
+        try
+        {
+            if (OnNetworkInfoResult != null) await OnNetworkInfoResult.Invoke(networkInfoStatus);
+        }
+        catch (Exception e)
+        {
+            if (OnError != null) await OnError.Invoke(e.Message);
+        }
     }
 
 
