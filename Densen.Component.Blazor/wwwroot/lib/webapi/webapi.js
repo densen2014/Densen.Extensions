@@ -1,4 +1,4 @@
-﻿export function GetBattery(wrapper, addListener = false) {
+﻿export function GetBattery(wrapper, addListener = true) {
     navigator.getBattery().then(function (battery) {
 
         console.log("Battery charging? " + (battery.charging ? "Yes" : "No"));
@@ -9,30 +9,39 @@
         if (addListener) {
             battery.addEventListener('chargingchange', function () {
                 console.log("Battery charging? " + (battery.charging ? "Yes" : "No"));
+                logbatteryitem();
             });
 
             battery.addEventListener('levelchange', function () {
                 console.log("Battery level: " + battery.level * 100 + "%");
+                logbatteryitem();
             });
 
             battery.addEventListener('chargingtimechange', function () {
                 console.log("Battery charging time: " + battery.chargingTime + " seconds");
+                logbatteryitem();
             });
 
             battery.addEventListener('dischargingtimechange', function () {
                 console.log("Battery discharging time: " + battery.dischargingTime + " seconds");
+                logbatteryitem();
             });
         }
-        var batteryitem = {
-            "charging": battery.charging,
-            "level": battery.level*100,
-            "chargingTime": battery.chargingTime == 'Infinity' ? null : battery.chargingTime,
-            "dischargingTime": battery.dischargingTime == 'Infinity' ? null : battery.dischargingTime
-        };
-        wrapper.invokeMethodAsync('GetBatteryResult', batteryitem);
 
+        function logbatteryitem() {
+
+            var batteryitem = {
+                "charging": battery.charging,
+                "level": battery.level * 100,
+                "chargingTime": battery.chargingTime == 'Infinity' ? null : battery.chargingTime,
+                "dischargingTime": battery.dischargingTime == 'Infinity' ? null : battery.dischargingTime
+            };
+            wrapper.invokeMethodAsync('GetBatteryResult', batteryitem);
+        }
+
+        logbatteryitem();
     });
-} 
+}
 
 export function GetNetworkInfo(wrapper) {
     navigator.connection.addEventListener('change', logNetworkInfo);
@@ -62,9 +71,9 @@ export function GetNetworkInfo(wrapper) {
 
         var networkInfo = {
             "type": navigator.connection.type,
-            "downlink": navigator.connection.downlink,
+            "downlink": navigator.connection.downlink == undefined ? null : navigator.connection.downlink,
             "rtt": navigator.connection.rtt,
-            "downlinkMax": navigator.connection.downlinkMax,
+            "downlinkMax": navigator.connection.downlinkMax == undefined ? null : navigator.connection.downlinkMax,
             "effectiveType": navigator.connection.effectiveType,
             "saveData": navigator.connection.saveData,
         };

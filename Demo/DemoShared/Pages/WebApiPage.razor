@@ -3,8 +3,9 @@
 
 <h3>系统信息</h3>
 
+<p>@message</p>
 
-<WebApi OnBatteryResult="@OnBatteryResult" OnNetworkInfoResult="@OnNetworkInfoResult" />
+<WebApi OnBatteryResult="@OnBatteryResult" OnNetworkInfoResult="@OnNetworkInfoResult" OnError="@OnError" />
 
 <h5>电池</h5>
 <Table TItem="BatteryStatus" Items="batteryStatus" AutoGenerateColumns="true" />

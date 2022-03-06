@@ -36,21 +36,21 @@ namespace AmeBlazor.Components
         /// </summary>
         /// <returns></returns>
         [DisplayName("下行[Mb/s]")]
-        public int downlink { get; set; }
+        public decimal? downlink { get; set; }
 
         /// <summary>
         /// 最大下行Mb/s
         /// </summary>
         /// <returns></returns>
         [DisplayName("最大下行[Mb/s]")]
-        public int downlinkMax { get; set; }
+        public decimal? downlinkMax { get; set; }
 
         /// <summary>
         /// RTT[ms]
         /// </summary>
         /// <returns></returns>
         [DisplayName("RTT[ms]")]
-        public int rtt { get; set; }
+        public int? rtt { get; set; }
 
         public bool saveData { get; set; }
 
