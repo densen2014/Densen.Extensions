@@ -104,7 +104,6 @@ public partial class Geolocation
     /// </summary>
     public virtual async Task GetLocation()
     {
-        var x = DotNetObjectReference.Create(this);
         await module!.InvokeVoidAsync("getLocation", InstanceGeo);
     }
 
