@@ -1,6 +1,4 @@
-# Blazor Viewerjs 组件
-
-封装Viewer.js库
+# Blazor Handwritten 手写签名 组件
 
 示例:
 

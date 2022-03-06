@@ -1,4 +1,4 @@
-# Blazor Viewerjs 组件
+# Blazor BarcodeScanner 条码扫描 组件
 
 封装Viewer.js库
 

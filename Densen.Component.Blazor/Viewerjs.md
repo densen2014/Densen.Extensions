@@ -1,4 +1,4 @@
-# Blazor Viewerjs 组件
+# Blazor Viewerjs 图片浏览器 组件
 
 封装Viewer.js库
 
