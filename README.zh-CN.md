@@ -1,7 +1,7 @@
 # Densen.Extensions
 Densen's Blazor组件库以及BootstrapBlazor服务扩展包
 
- <a href="README.md">English</a> | 中文 | <a href="https://blazor.app1.es/"> demo</a>
+ <a href="README.md">English</a> | 中文 | <a href="https://blazor.app1.es/"> demo</a> | <a href="https://github.com/densen2014/Densen.Extensions"> github </a> | <a href="https://gitee.com/densen2014/Densen.Extensions"> gitee(mirror only) </a>
 
 ---
  
