@@ -4,7 +4,7 @@
 		<TargetFramework>net6.0</TargetFramework>
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
-		<Version>0.0.5</Version>
+		<Version>0.0.6</Version>
 		<IsPackable>true</IsPackable>
 		<PackageIcon>logo.png</PackageIcon>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
@@ -19,18 +19,9 @@
 		<AssemblyName>Densen.Component.Blazor</AssemblyName>
 		<RootNamespace>Densen.Component.Blazor</RootNamespace>
 	</PropertyGroup>
-
-	<ItemGroup>
-	  <Content Remove="wwwroot\lib\geolocation\Geolocation.js" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Content Include="Components\Geolocation\GeolocationItem.cs" />
-	</ItemGroup>
 	
 	<ItemGroup>
 		<None Include="logo.png" Pack="true" PackagePath="" />
-		<None Include="wwwroot\lib\geolocation\geolocation.js" />
 	</ItemGroup>
 
 	
