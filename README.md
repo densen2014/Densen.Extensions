@@ -7,5 +7,10 @@ English | <a href="README.zh-CN.md">中文</a>  | <a href="https://blazor.app1.e
 
 ---
 
+<a href="Densen.Component.Blazor/Viewerjs.md">Image viewer</a>
+  
+<a href="Densen.Component.Blazor/BarcodeScanner.md">Barcode Scanner</a>
+   
+<a href="Densen.Component.Blazor/Handwritten.md">Handwritten</a>
 
-
+<a href="Densen.Component.Blazor/Geolocation.md">Geolocation</a>
