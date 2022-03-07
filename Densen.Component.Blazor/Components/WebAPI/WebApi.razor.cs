@@ -20,12 +20,19 @@ public partial class WebApi : IAsyncDisposable
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        if (firstRender)
+        try
         {
-            module = await JS!.InvokeAsync<IJSObjectReference>("import", "./_content/Densen.Component.Blazor/lib/webapi/webapi.js");
-            InstanceWebApi = DotNetObjectReference.Create(this);
-            if (OnBatteryResult != null) await GetBattery();
-            if (OnNetworkInfoResult != null) await GetNetworkInfo();
+            if (firstRender)
+            {
+                module = await JS!.InvokeAsync<IJSObjectReference>("import", "./_content/Densen.Component.Blazor/lib/webapi/webapi.js");
+                InstanceWebApi = DotNetObjectReference.Create(this);
+                if (OnBatteryResult != null) await GetBattery();
+                if (OnNetworkInfoResult != null) await GetNetworkInfo();
+            }
+        }
+        catch (Exception e)
+        {
+            if (OnError != null) await OnError.Invoke(e.Message);
         }
     }
 
@@ -42,7 +49,14 @@ public partial class WebApi : IAsyncDisposable
     /// </summary>
     public virtual async Task GetBattery()
     {
-        await module!.InvokeVoidAsync("GetBattery", InstanceWebApi);
+        try
+        {
+            await module!.InvokeVoidAsync("GetBattery", InstanceWebApi);
+        }
+        catch (Exception e)
+        {
+            if (OnError != null) await OnError.Invoke(e.Message);
+        }
     }
 
     /// <summary>
@@ -81,7 +95,14 @@ public partial class WebApi : IAsyncDisposable
     /// </summary>
     public virtual async Task GetNetworkInfo()
     {
-        await module!.InvokeVoidAsync("GetNetworkInfo", InstanceWebApi);
+        try
+        {
+            await module!.InvokeVoidAsync("GetNetworkInfo", InstanceWebApi);
+        }
+        catch (Exception e)
+        {
+            if (OnError != null) await OnError.Invoke(e.Message);
+        }
     }
 
     /// <summary>
