@@ -1,0 +1,61 @@
+﻿@implements IAsyncDisposable
+@inject IJSRuntime JS
+@namespace AmeBlazor.Components
+@inject IConfiguration config
+
+@*@CreateComponent()
+
+    @code{
+        RenderFragment CreateComponent() => builder =>
+        {
+            builder.OpenElement(1, "script");
+            builder.AddAttribute(2, "type","text/javascript");
+            builder.AddAttribute(3, "src","//api.map.baidu.com/api?type=webgl&v=1.0&ak=TwsqPElMismgGDp8Qxcsc9nS1BLISPHL");
+            builder.CloseComponent();
+        };
+
+    }*@
+<button class="btn btn-primary" type="button" onclick="@initMaps">Init</button>
+
+@code{
+
+    /// <summary>
+    /// 获得/设置 错误回调方法
+    /// </summary>
+    [Parameter]
+    public Func<string, Task>? OnError { get; set; }
+
+    private IJSObjectReference? module;
+    private string key = String.Empty;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            key = config["BaiduKey"];
+            module = await JS.InvokeAsync<IJSObjectReference>("import", "./_content/Densen.Component.Blazor/lib/baidu/baidumap.js");
+            while (!(await Init()))
+            {
+                await Task.Delay(100);
+            }
+            //await module!.InvokeVoidAsync("initMaps");
+        }
+    }
+
+    public async Task<bool> Init() => await module!.InvokeAsync<bool>("init", new object?[] { key, null, null, null, null });
+
+    public async Task OnOptionsChanged(ViewerOptions options) => await module!.InvokeVoidAsync("init", options);
+    public async Task initMaps() => await module!.InvokeVoidAsync("initMaps");
+
+    public async Task OnBtnClick(string btn) => await module!.InvokeVoidAsync(btn);
+
+    async ValueTask IAsyncDisposable.DisposeAsync()
+    {
+        if (module is not null)
+        {
+            //await module.InvokeVoidAsync("destroy", Options);
+            await module.DisposeAsync();
+        }
+    }
+}
+

@@ -3,7 +3,7 @@
 	<PropertyGroup>
 		<TargetFramework>net6.0</TargetFramework>
 		<ServiceWorkerAssetsManifest>service-worker-assets.js</ServiceWorkerAssetsManifest>
-		<UserSecretsId>ae81909f-46bd-421d-99d4-7c7e1482589d</UserSecretsId>
+		<UserSecretsId>102ba2ce-c240-49cd-a064-deee597f8998</UserSecretsId>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<BlazorWebAssemblyEnableLinking>false</BlazorWebAssemblyEnableLinking>
 	</PropertyGroup>
