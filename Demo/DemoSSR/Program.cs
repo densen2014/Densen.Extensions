@@ -44,5 +44,7 @@ app.UseRouting();
 
 app.MapBlazorHub();
 app.MapFallbackToPage("/_Host");
-
+app.MapFallbackToFile("/wasm/{param?}", "index.html");
+app.MapFallbackToFile("/pwa/{param?}", "index.html");
+app.MapFallbackToPage("/ssr2/{param?}", "/_Host");
 app.Run();
