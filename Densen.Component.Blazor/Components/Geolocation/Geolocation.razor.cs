@@ -101,7 +101,7 @@ public partial class Geolocation
         if (module is not null)
         {
             //await module.InvokeVoidAsync("destroy");
-            InstanceGeo = null;
+            InstanceGeo!.Dispose();
             await module.DisposeAsync();
         }
     }
