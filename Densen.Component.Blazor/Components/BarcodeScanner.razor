@@ -88,9 +88,16 @@
     // To prevent making JavaScript interop calls during prerendering
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        if (!firstRender) return;
-        module = await JS.InvokeAsync<IJSObjectReference>("import", "./_content/Densen.Component.Blazor/lib/zxing/zxingjs.js");
-        await module.InvokeVoidAsync("init", true, DotNetObjectReference.Create(this),null);
+        try
+        {
+            if (!firstRender) return;
+            module = await JS.InvokeAsync<IJSObjectReference>("import", "./_content/Densen.Component.Blazor/lib/zxing/zxingjs.js");
+            await module.InvokeVoidAsync("init", true, DotNetObjectReference.Create(this), null);
+        }
+        catch (Exception e)
+        {
+            if (OnError != null) await OnError.Invoke(e.Message);
+        }
 
     }
 
@@ -107,6 +114,12 @@
     {
         await Close.InvokeAsync(null);
     }
+
+    /// <summary>
+    /// 获得/设置 错误回调方法
+    /// </summary>
+    [Parameter]
+    public Func<string, Task>? OnError { get; set; }
 
     async ValueTask IAsyncDisposable.DisposeAsync()
     {

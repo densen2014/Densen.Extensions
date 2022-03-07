@@ -22,6 +22,8 @@
 
 }
 
+<p>@message</p>
+
 <AttributeTable Items="@GetAttributes()" />
 
 @code{
@@ -36,13 +38,21 @@
     /// </summary>
     public string? BarCode { get; set; }
 
+    private string message;
+
+    private Task OnError(string message)
+    {
+        this.message = message;
+        StateHasChanged();
+        return Task.CompletedTask;
+    }
 
     /// <summary>
     /// 获得属性方法
     /// </summary>
     /// <returns></returns>
     private IEnumerable<AttributeItem> GetAttributes() => new AttributeItem[]
-    {
+{
             new AttributeItem("ScanResult","扫码结果回调方法/Scan result callback method",  "","EventCallback<string>"),
             new AttributeItem("Close","关闭扫码框回调方法/Close scan code callback method","","EventCallback"),
             new AttributeItem("ShowScanBarcode","显示扫码框/Show scan box","true","bool"),
@@ -50,7 +60,7 @@
             new AttributeItem("ResetBtnTitle","复位按钮文本/Reset button title","复位"),
             new AttributeItem("CloseBtnTitle","关闭按钮文本/Close button title","关闭"),
             new AttributeItem("SelectDeviceBtnTitle","选择设备按钮文本/Select device button title","选择设备"),
-        };
-}
+            new AttributeItem("OnError","错误信息回调",  "-","Func<string, Task>"),
+    };
 
 } 

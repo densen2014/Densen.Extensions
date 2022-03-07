@@ -78,16 +78,24 @@ public partial class Geolocation
     public Func<string, Task>? OnUpdateStatus { get; set; }
 
     private IJSObjectReference? module;
-    private DotNetObjectReference<Geolocation>? InstanceGeo { get; set; }  
+    private DotNetObjectReference<Geolocation>? InstanceGeo { get; set; }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        if (firstRender)
+        try
         {
-            module = await JS!.InvokeAsync<IJSObjectReference>("import", "./_content/Densen.Component.Blazor/lib/geolocation/geolocation.js");
-            InstanceGeo = DotNetObjectReference.Create(this);
+            if (firstRender)
+            {
+                module = await JS!.InvokeAsync<IJSObjectReference>("import", "./_content/Densen.Component.Blazor/lib/geolocation/geolocation.js");
+                InstanceGeo = DotNetObjectReference.Create(this);
+            }
+        }
+        catch (Exception e)
+        {
+            if (OnError != null) await OnError.Invoke(e.Message);
         }
     }
+
     async ValueTask IAsyncDisposable.DisposeAsync()
     {
         if (module is not null)
@@ -104,7 +112,14 @@ public partial class Geolocation
     /// </summary>
     public virtual async Task GetLocation()
     {
-        await module!.InvokeVoidAsync("getLocation", InstanceGeo);
+        try
+        {
+            await module!.InvokeVoidAsync("getLocation", InstanceGeo);
+        }
+        catch (Exception e)
+        {
+            if (OnError != null) await OnError.Invoke(e.Message);
+        }
     }
 
     /// <summary>
@@ -112,7 +127,14 @@ public partial class Geolocation
     /// </summary>
     public virtual async Task WatchPosition()
     {
-        await module!.InvokeVoidAsync("getLocation", InstanceGeo, false);
+        try
+        {
+            await module!.InvokeVoidAsync("getLocation", InstanceGeo, false);
+        }
+        catch (Exception e)
+        {
+            if (OnError != null) await OnError.Invoke(e.Message);
+        }
     }
 
     /// <summary>
@@ -132,8 +154,21 @@ public partial class Geolocation
     [JSInvokable]
     public async Task GetResult(Geolocationitem geolocations)
     {
-        if (OnResult != null) await OnResult.Invoke(geolocations);
+        try
+        {
+            if (OnResult != null) await OnResult.Invoke(geolocations);
+        }
+        catch (Exception e)
+        {
+            if (OnError != null) await OnError.Invoke(e.Message);
+        }
     }
+
+    /// <summary>
+    /// 获得/设置 错误回调方法
+    /// </summary>
+    [Parameter]
+    public Func<string, Task>? OnError { get; set; }
 
     /// <summary>
     /// 状态更新回调方法
