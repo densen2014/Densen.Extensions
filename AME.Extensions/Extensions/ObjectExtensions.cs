@@ -106,7 +106,14 @@ namespace AME
 
         public static int ToInt(this object obj)
         {
-            return obj.IsNum() ? Convert.ToInt32(obj) : 0;
+            try
+            {
+                return obj.IsNum() ? Convert.ToInt32(obj) : 0;
+            }
+            catch (Exception)
+            {
+                return obj.IsNum() ? (int) Convert.ToDouble(obj) : 0;
+            }
         }
         public static decimal ToDecimal(this object obj)
         {
