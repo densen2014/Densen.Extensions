@@ -69,7 +69,6 @@
         // value too large
         if (accuracy >= 500) {
             updateStatus("Need more accurate values to calculate distance.");
-            return;
         }
 
         // calculate distance
