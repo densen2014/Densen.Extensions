@@ -1,10 +1,10 @@
 ﻿<div class="top-row ps-3 navbar navbar-dark">
-	<div class="container-fluid">
+    <div class="container-fluid">
         <a class="navbar-brand" href="">Demo</a>
-		<button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-	</div>
+        <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
 </div>
 
 <div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
@@ -42,6 +42,9 @@
         <div class="nav-item px-3">
             <NavLink class="nav-link" href="onscreenkeyboards">
                 <span aria-hidden="true"></span> 屏幕键盘 OSK
+            </NavLink>
+        </div>
+        <div class="nav-item px-3">
             <NavLink class="nav-link" href="baidumap">
                 <span aria-hidden="true"></span> 百度地图 Baidu Map
             </NavLink>
@@ -70,12 +73,12 @@
 </div>
 
 @code {
-	private bool collapseNavMenu = true;
+    private bool collapseNavMenu = true;
 
-	private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+    private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
 
-	private void ToggleNavMenu()
-	{
-		collapseNavMenu = !collapseNavMenu;
-	}
+    private void ToggleNavMenu()
+    {
+        collapseNavMenu = !collapseNavMenu;
+    }
 }

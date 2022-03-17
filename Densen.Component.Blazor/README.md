@@ -11,17 +11,17 @@ Nuget
  
 ---
  
-<a href="Densen.Component.Blazor/Viewerjs.md">Image viewer</a>
+<a href="Viewerjs.md">Image viewer</a>
   
-<a href="Densen.Component.Blazor/BarcodeScanner.md">Barcode Scanner</a>
+<a href="BarcodeScanner.md">Barcode Scanner</a>
    
-<a href="Densen.Component.Blazor/Handwritten.md">Handwritten</a>
+<a href="Handwritten.md">Handwritten</a>
 
-<a href="Densen.Component.Blazor/Geolocation.md">Geolocation</a>
+<a href="Geolocation.md">Geolocation</a>
 
-<a href="Densen.Component.Blazor/OnScreenKeyboard.md">On Screen Keyboard</a>
+<a href="OnScreenKeyboard.md">On Screen Keyboard</a>
 
-<a href="Densen.Component.Blazor/BaiduMap.md">BaiduMap</a>
+<a href="BaiduMap.md">BaiduMap</a>
 
-<a href="Densen.Component.Blazor/Map.md">Map</a> 
+<a href="Map.md">Map</a> 
 

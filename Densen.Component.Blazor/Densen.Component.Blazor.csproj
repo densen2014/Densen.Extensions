@@ -4,7 +4,7 @@
 		<TargetFramework>net6.0</TargetFramework>
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
-		<Version>0.0.8</Version>
+		<Version>0.0.10</Version>
 		<IsPackable>true</IsPackable>
 		<PackageIcon>logo.png</PackageIcon>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
@@ -27,8 +27,7 @@
 	
 	<ItemGroup>
 	  <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="6.0.3" />
-	  <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="6.0.2" />
-	  <PackageReference Include="Microsoft.Extensions.Configuration" Version="6.0.0" />
+	  <PackageReference Include="Microsoft.Extensions.Configuration" Version="6.0.1" />
 	</ItemGroup>
 
 </Project>
