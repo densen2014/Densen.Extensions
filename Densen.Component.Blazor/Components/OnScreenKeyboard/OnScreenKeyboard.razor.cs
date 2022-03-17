@@ -11,7 +11,7 @@ using Microsoft.JSInterop;
 namespace AmeBlazor.Components;
 
 /// <summary>
-/// WebApi 组件基类
+/// 屏幕键盘 OnScreenKeyboard 组件基类
 /// </summary>
 public partial class OnScreenKeyboard : IAsyncDisposable
 {
@@ -70,10 +70,19 @@ public partial class OnScreenKeyboard : IAsyncDisposable
                 module = await JS!.InvokeAsync<IJSObjectReference>("import", "./_content/Densen.Component.Blazor/lib/kioskboard/kioskboards.js");
                 InstanceWebApi = DotNetObjectReference.Create(this);
                 await module.InvokeVoidAsync("addScript", "./_content/Densen.Component.Blazor/lib/kioskboard/kioskboard-aio-2.1.0.min.js");
-                await Task.Delay(200);
+                //await Task.Delay(200);
+                Console.WriteLine("ClassName: " + ClassName);
                 Option??= new KeyboardOption();
                 if (KeyboardKeys != null) Option.KeyboardKeysType = KeyboardKeys!.Value;
-                await module.InvokeVoidAsync("init", ClassName, Option); 
+                try
+                {
+                    await module.InvokeVoidAsync("init", ClassName, Option);
+                }
+                catch (Exception)
+                {
+                    await Task.Delay(200);
+                    await module.InvokeVoidAsync("init", ClassName, Option);
+                }
             }
         }
         catch (Exception e)
@@ -89,91 +98,13 @@ public partial class OnScreenKeyboard : IAsyncDisposable
             await module.DisposeAsync();
         }
     }
-
-    /// <summary>
-    /// 获取电量
-    /// </summary>
-    public virtual async Task GetBattery()
-    {
-        try
-        {
-            await module!.InvokeVoidAsync("GetBattery", InstanceWebApi);
-        }
-        catch (Exception e)
-        {
-            if (OnError != null) await OnError.Invoke(e.Message);
-        }
-    }
+     
 
     /// <summary>
     /// 获得/设置 错误回调方法
     /// </summary>
     [Parameter]
     public Func<string, Task>? OnError { get; set; }
-
-    /// <summary>
-    /// 获得/设置 电池信息回调方法
-    /// </summary>
-    [Parameter]
-    public Func<BatteryStatus, Task>? OnBatteryResult { get; set; }
-
-    /// <summary>
-    /// 获取电池信息完成回调方法
-    /// </summary>
-    /// <param name="batteryStatus"></param>
-    /// <returns></returns>
-    [JSInvokable]
-    public async Task GetBatteryResult(BatteryStatus batteryStatus)
-    {
-        try
-        {
-            if (OnBatteryResult != null) await OnBatteryResult.Invoke(batteryStatus);
-        }
-        catch (Exception e)
-        {
-            if (OnError != null) await OnError.Invoke(e.Message);
-        }
-    }
-
-
-    /// <summary>
-    /// 获取网络信息
-    /// </summary>
-    public virtual async Task GetNetworkInfo()
-    {
-        try
-        {
-            await module!.InvokeVoidAsync("GetNetworkInfo", InstanceWebApi);
-        }
-        catch (Exception e)
-        {
-            if (OnError != null) await OnError.Invoke(e.Message);
-        }
-    }
-
-    /// <summary>
-    /// 获得/设置 网络信息回调方法
-    /// </summary>
-    [Parameter]
-    public Func<NetworkInfoStatus, Task>? OnNetworkInfoResult { get; set; }
-
-    /// <summary>
-    /// 获取网络信息完成回调方法
-    /// </summary>
-    /// <param name="NetworkInfoStatus"></param>
-    /// <returns></returns>
-    [JSInvokable]
-    public async Task GetNetworkInfoResult(NetworkInfoStatus networkInfoStatus)
-    {
-        try
-        {
-            if (OnNetworkInfoResult != null) await OnNetworkInfoResult.Invoke(networkInfoStatus);
-        }
-        catch (Exception e)
-        {
-            if (OnError != null) await OnError.Invoke(e.Message);
-        }
-    }
-
+      
 
 }

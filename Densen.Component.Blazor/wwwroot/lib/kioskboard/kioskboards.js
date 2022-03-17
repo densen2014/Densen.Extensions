@@ -1,12 +1,31 @@
 ﻿export function addScript(url) {
-    var script = document.createElement('script');
+    let scriptsIncluded = false;
+    let scriptTags = document.querySelectorAll('head > script');
+    scriptTags.forEach(scriptTag => {
+        if (scriptTag) {
+            let srcAttribute = scriptTag.getAttribute('src');
+            if (srcAttribute && srcAttribute.startsWith(url)) {
+                scriptsIncluded = true;
+                return true;
+            }
+        }
+    });
+
+    if (scriptsIncluded) { //Prevent adding JS scripts to page multiple times.
+        //if (window.KioskBoard)
+        return true;
+    }
+
+    let script = document.createElement('script');
     script.setAttribute('type', 'text/javascript');
     script.setAttribute('src', url);
     document.getElementsByTagName('head')[0].appendChild(script);
+    return false;
+
 }
 
-export function init(className,option) {
-    console.info(option);
-    KioskBoard.run('.' + className , option);
+export function init(className, option) {
+    console.info(className, option);
+    KioskBoard.run('.' + className, option);
     return true;
 }
