@@ -13,9 +13,12 @@ public sealed partial class BaiduMapPage
 {
 
     private string message;
+    private BaiduItem baiduItem;
 
-    private Task OnBatteryResult(BatteryStatus item)
+    private Task OnResult(BaiduItem geolocations)
     {
+        baiduItem = geolocations;
+        this.message = baiduItem.Status;
         StateHasChanged();
         return Task.CompletedTask;
     }

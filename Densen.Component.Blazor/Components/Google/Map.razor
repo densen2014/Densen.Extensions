@@ -3,9 +3,9 @@
 @namespace AmeBlazor.Components
 @inject IConfiguration config
 
-    <div id="map" style="height:500px;width:100%;">
+    <div @ref="map" style="height:700px;width:100%;">
     </div>
-    <button class="btn btn-primary" type="button" onclick="@OnBtnClick">Init</button>
+    <button class="btn btn-primary" type="button" onclick="@(async()=>await OnBtnClick())">Reset</button>
 
     @code{
 
@@ -14,6 +14,8 @@
         /// </summary>
         [Parameter]
         public Func<string, Task>? OnError { get; set; }
+
+        ElementReference map { get; set; }
 
         private IJSObjectReference? module;
         private string key = String.Empty ;
@@ -26,18 +28,17 @@
                 module = await JS.InvokeAsync<IJSObjectReference>("import", "./_content/Densen.Component.Blazor/lib/google/map.js");
                 while (!(await Init()))
                 {
-                    await Task.Delay(100);
+                    await Task.Delay(200);
                 }
 
                 //await module.InvokeVoidAsync("initMaps"  );
             }
         }
 
-        public async Task OnOptionsChanged(ViewerOptions options) => await module!.InvokeVoidAsync("init", options);
 
-        public async Task<bool> Init() => await module!.InvokeAsync<bool>("init", new object?[] { key, null, null, null, null });
+        public async Task<bool> Init() => await module!.InvokeAsync<bool>("addScript", new object?[] { key, map, null, null, null });
 
-        public async Task OnBtnClick() => await module!.InvokeVoidAsync("init", new object?[] { key, null, null, null, null });
+        public async Task OnBtnClick() => await module!.InvokeVoidAsync("addScript", new object?[] { key, map, null, null, null });
 
         /// <summary>
         /// 加载SDK完成回调方法
