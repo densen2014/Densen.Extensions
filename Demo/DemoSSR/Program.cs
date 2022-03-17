@@ -9,6 +9,7 @@ using System.Globalization;
 var builder = WebApplication.CreateBuilder(args); //    webBuilder.UseContentRoot("D:\\T9WMS\\publish");
 
 
+builder.Services.AddCors();
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
@@ -41,10 +42,13 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseCors(options =>
+{
+    options.AllowAnyOrigin()
+          .AllowAnyMethod()
+          .AllowAnyHeader();
+});
 
 app.MapBlazorHub();
 app.MapFallbackToPage("/_Host");
-app.MapFallbackToFile("/wasm/{param?}", "index.html");
-app.MapFallbackToFile("/pwa/{param?}", "index.html");
-app.MapFallbackToPage("/ssr2/{param?}", "/_Host");
 app.Run();
