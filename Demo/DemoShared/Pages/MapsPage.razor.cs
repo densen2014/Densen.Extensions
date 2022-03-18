@@ -14,11 +14,6 @@ public sealed partial class MapsPage
 
     private string message;
 
-    private Task OnBatteryResult(BatteryStatus item)
-    {
-        StateHasChanged();
-        return Task.CompletedTask;
-    }
 
     private Task OnError(string message)
     {
@@ -35,10 +30,8 @@ public sealed partial class MapsPage
     /// <returns></returns>
     private IEnumerable<AttributeItem> GetAttributes() => new AttributeItem[]
     {
-            new AttributeItem("GetBattery","获取电量",  "-","void"),
-            new AttributeItem("GetNetworkInfo","获取网络信息",  "-","void"),
-            new AttributeItem("OnBatteryResult","获取电量回调",  "-","Func<BatteryStatus, Task>"),
-            new AttributeItem("OnNetworkInfoResult","获取网络信息回调",  "-","Func<NetworkInfoStatus, Task>"),
+            new AttributeItem("Style","地图大小",  "height:700px;width:100%;","string"),
+            new AttributeItem("Init","初始化",  "-","Task<bool>"),
             new AttributeItem("OnError","错误信息回调",  "-","Func<string, Task>"),
     };
 }

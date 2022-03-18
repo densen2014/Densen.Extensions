@@ -7,15 +7,18 @@ using AmeBlazor.Components;
 namespace DemoShared.Pages;
 
 /// <summary>
-/// 百度地图 Baidu Map
+/// 百度地图 BaiduMap
 /// </summary>
 public sealed partial class BaiduMapPage
 {
 
     private string message;
+    private BaiduItem baiduItem;
 
-    private Task OnBatteryResult(BatteryStatus item)
+    private Task OnResult(BaiduItem geolocations)
     {
+        baiduItem = geolocations;
+        this.message = baiduItem.Status;
         StateHasChanged();
         return Task.CompletedTask;
     }
@@ -35,10 +38,11 @@ public sealed partial class BaiduMapPage
     /// <returns></returns>
     private IEnumerable<AttributeItem> GetAttributes() => new AttributeItem[]
     {
-            new AttributeItem("GetBattery","获取电量",  "-","void"),
-            new AttributeItem("GetNetworkInfo","获取网络信息",  "-","void"),
-            new AttributeItem("OnBatteryResult","获取电量回调",  "-","Func<BatteryStatus, Task>"),
-            new AttributeItem("OnNetworkInfoResult","获取网络信息回调",  "-","Func<NetworkInfoStatus, Task>"),
+            new AttributeItem("Style","地图大小",  "height:700px;width:100%;","string"),
+            new AttributeItem("Init","初始化",  "-","Task<bool>"),
+            new AttributeItem("ResetMaps","复位",  "-","Task"),
+            new AttributeItem("GetLocation","获取定位",  "-","void"),
+            new AttributeItem("OnResult","获取定位回调",  "-","Func<BaiduItem, Task>"),
             new AttributeItem("OnError","错误信息回调",  "-","Func<string, Task>"),
     };
 }

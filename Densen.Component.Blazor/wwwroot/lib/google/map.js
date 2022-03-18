@@ -1,29 +1,18 @@
-﻿export function initMaps() {
-    var latlng = new google.maps.LatLng(40.716948, -74.003563);
-    var options = {
-        zoom: 14, center: latlng,
-        mapTypeId: google.maps.MapTypeId.ROADMAP
-    };
-    var map = new google.maps.Map(document.getElementById("map"), options);
-    console.log(map);
-    return map;
-}
-
-export function init(key, elementId, dotnetRef, backgroundColor, controlSize) {
-    //if (!key || !elementId || !dotnetRef) {
-    //    return;
-    //}
+﻿export function addScript(key, elementId, dotnetRef, backgroundColor, controlSize) {
+    if (!key || !elementId) {
+        return;
+    }
 
     //storeElementIdWithDotnetRef(_mapsElementDict, elementId, dotnetRef, backgroundColor, controlSize); //Store map info
 
-    let src = "https://maps.googleapis.com/maps/api/js?key=";
+    let url = "https://maps.googleapis.com/maps/api/js?key=";
     let scriptsIncluded = false;
 
     let scriptTags = document.querySelectorAll('head > script');
     scriptTags.forEach(scriptTag => {
         if (scriptTag) {
             let srcAttribute = scriptTag.getAttribute('src');
-            if (srcAttribute && srcAttribute.startsWith(src)) {
+            if (srcAttribute && srcAttribute.startsWith(url)) {
                 scriptsIncluded = true;
                 return true;
             }
@@ -32,7 +21,7 @@ export function init(key, elementId, dotnetRef, backgroundColor, controlSize) {
 
     if (scriptsIncluded) { //Prevent adding JS scripts to page multiple times.
         if (window.google) {
-            initMaps(); //Page was navigated
+            initMaps(elementId); //Page was navigated
         }
         return true;
     }
@@ -42,12 +31,23 @@ export function init(key, elementId, dotnetRef, backgroundColor, controlSize) {
     //importedPoly.src = "https://polyfill.io/v3/polyfill.min.js?features=default";
     //document.head.appendChild(importedPoly);
 
-    src = src + key + "&callback=initGoogleMaps&libraries=&v=weekly";
-    let importedMaps = document.createElement('script');
-    importedMaps.src = src;
-    importedMaps.defer = true;
-    document.head.appendChild(importedMaps);
+    url = url + key + "&callback=initGoogleMaps&libraries=&v=weekly";
+    let script = document.createElement('script');
+    script.src = url;
+    script.defer = true;
+    document.head.appendChild(script);
     return false;
+}
+
+export function initMaps(elementId) {
+    var latlng = new google.maps.LatLng(40.26982, -3.758269);
+    var options = {
+        zoom: 14, center: latlng,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+    var map = new google.maps.Map(elementId, options);
+    console.log(map);
+    return map;
 }
 
 //Global function for Google Js callback. It will be called when "https://maps.googleapis.com/maps/api/js" loaded.

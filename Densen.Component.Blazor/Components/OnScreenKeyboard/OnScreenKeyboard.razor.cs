@@ -23,7 +23,7 @@ public partial class OnScreenKeyboard : IAsyncDisposable
     /// 获得/设置 组件class名称
     /// </summary>
     [Parameter]
-    public string ClassName { get; set; } = "js-virtual-keyboard";
+    public string ClassName { get; set; } = "virtualkeyboard";
 
     /// <summary>
     /// 获得/设置 键盘语言布局
