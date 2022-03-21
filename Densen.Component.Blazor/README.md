@@ -25,5 +25,5 @@ Nuget
 
 [BaiduMap](BaiduMap.md)
 
-[Map](Map.md)
+[GoogleMap](Map.md)
 

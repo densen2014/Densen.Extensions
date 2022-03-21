@@ -25,5 +25,5 @@ Nuget
 
 [百度地图 BaiduMap](Densen.Component.Blazor/BaiduMap.md)
 
-[谷歌地图 Map](Densen.Component.Blazor/Map.md)
+[谷歌地图 GoogleMap](Densen.Component.Blazor/Map.md)
 

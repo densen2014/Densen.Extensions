@@ -25,5 +25,5 @@ Nuget
 
 [BaiduMap](Densen.Component.Blazor/BaiduMap.md)
 
-[Map](Densen.Component.Blazor/Map.md)
+[GoogleMap](Densen.Component.Blazor/Map.md)
 

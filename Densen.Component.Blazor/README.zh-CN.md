@@ -25,5 +25,5 @@ Nuget
 
 [百度地图 BaiduMap](BaiduMap.md)
 
-[谷歌地图 Map](Map.md)
+[谷歌地图 GoogleMap](Map.md)
 
