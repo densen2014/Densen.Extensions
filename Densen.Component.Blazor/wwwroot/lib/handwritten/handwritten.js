@@ -112,7 +112,7 @@ export function init(wrapper, options) {
         //保存图片，直接转base64
         this.saveEl.addEventListener("click", function () {
             var imgBase64 = this.canvas.toDataURL();
-            console.log(imgBase64);
+            //console.log(imgBase64);
             return wrapper.invokeMethodAsync("invokeFromJS", imgBase64);
         }.bind(this), false);
         //添加日期时间

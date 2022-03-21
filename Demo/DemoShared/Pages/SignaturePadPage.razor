@@ -1,0 +1,32 @@
+﻿@page "/signaturepad"
+@attribute [TabItemOption(Text = "手写签名")]
+
+<h3>SignaturePad 签名</h3>
+
+<SignaturePad SignaturePadBase64="((e) =>  DrawBase64=e)" />
+
+<p>签名Base64</p>
+<textarea type="text" class="form-control" style="min-width: 100px;" rows="10"
+          @bind="DrawBase64"
+          placeholder="Base64" />
+
+
+<AttributeTable Items="@GetAttributes()" />
+
+@code{
+
+    /// <summary>
+    /// 签名Base64
+    /// </summary>
+    public string? DrawBase64 { get; set; }
+
+
+    /// <summary>
+    /// 获得属性方法
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerable<AttributeItem> GetAttributes() => new AttributeItem[]
+    {
+        new AttributeItem("SignaturePadBase64","签名结果回调方法",  "","EventCallback<string>") ,
+    };
+}
