@@ -18,7 +18,17 @@ https://blazor.app1.es/signaturepad
 3.razor页面
 ```
     <SignaturePad OnResult="((e) =>  Result=e)" />
-
+```
+```
+    <SignaturePad OnResult="((e) =>  Result=e)" BtnCssClass="btn btn-outline-success" />
+```
+```
+    <SignaturePad OnResult="((e) =>  Result=e)"
+                  SignAboveLabel="Sign above"
+                  UndoBtnTitle="Undo"
+                  SaveBase64BtnTitle="OK"
+                  ChangeColorBtnTitle="Change color"
+                  ClearBtnTitle="Clear" />
 ```
 @code{
 
