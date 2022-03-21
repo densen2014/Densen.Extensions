@@ -30,6 +30,8 @@ https://blazor.app1.es/signaturepad
                   ChangeColorBtnTitle="Change color"
                   ClearBtnTitle="Clear" />
 ```
+
+```
 @code{
 
     /// <summary>
