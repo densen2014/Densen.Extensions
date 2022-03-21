@@ -1,27 +1,29 @@
 # Densen.Extensions
 Densen's Blazor组件库以及BootstrapBlazor服务扩展包
 
- <a href="README.md">English</a> | 中文 | <a href="https://blazor.app1.es/"> demo</a> | <a href="https://github.com/densen2014/Densen.Extensions"> github </a> | <a href="https://gitee.com/densen2014/Densen.Extensions"> gitee(仅副本) </a>
+ [English](README.md) | [中文](README.zh-CN.md) | [demo](https://blazor.app1.es/) | [github](https://github.com/densen2014/Densen.Extensions) | [gitee(仅副本)](https://gitee.com/densen2014/Densen.Extensions)
  
 ---
 
 Nuget
 
- <a href="https://www.nuget.org/packages/Densen.Component.Blazor/">Densen.Component.Blazor</a>  | <a href="https://www.nuget.org/packages/Densen.Extensions.BootstrapBlazor/"> Densen.Extensions.BootstrapBlazor</a>  | <a href="https://www.nuget.org/packages/Densen.FreeSql.Extensions.BootstrapBlazor/"> FreeSql.Extensionsr.BootstrapBlazor</a>  | <a href="https://www.nuget.org/packages/ZXingBlazor/"> ZXingBlazorr</a>
+ [Densen.Component.Blazor](https://www.nuget.org/packages/Densen.Component.Blazor/) | [Densen.Extensions.BootstrapBlazor](https://www.nuget.org/packages/Densen.Extensions.BootstrapBlazor/)  | [FreeSql.Extensionsr.BootstrapBlazor](https://www.nuget.org/packages/Densen.FreeSql.Extensions.BootstrapBlazor/)  | [ZXingBlazor](https://www.nuget.org/packages/ZXingBlazor/)
  
 ---
  
-<a href="Viewerjs.md">图片浏览器 Viewerjs</a>
+[图片浏览器 Viewerjs](Viewerjs.md)
   
-<a href="BarcodeScanner.md">条码扫描 BarcodeScanner</a>
+[条码扫描 BarcodeScanner](BarcodeScanner.md)
    
-<a href="Handwritten.md">手写签名 Handwritten</a>
+[手写签名 Handwritten](Handwritten.md)
 
-<a href="Geolocation.md">定位/持续定位 Geolocation</a>
+[手写签名 SignaturePad](SignaturePad.md)
 
-<a href="OnScreenKeyboard.md">屏幕键盘 OnScreenKeyboard</a>
+[定位/持续定位 Geolocation](Geolocation.md)
 
-<a href="BaiduMap.md">百度地图 BaiduMap</a>
+[屏幕键盘 OnScreenKeyboard](OnScreenKeyboard.md)
 
-<a href="Map.md">谷歌地图 Map</a> 
+[百度地图 BaiduMap](BaiduMap.md)
+
+[谷歌地图 Map](Map.md)
 

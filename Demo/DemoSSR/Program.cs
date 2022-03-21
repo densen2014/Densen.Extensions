@@ -12,7 +12,17 @@ var builder = WebApplication.CreateBuilder(args); //    webBuilder.UseContentRoo
 builder.Services.AddCors();
 // Add services to the container.
 builder.Services.AddRazorPages();
-builder.Services.AddServerSideBlazor();
+builder.Services.AddServerSideBlazor(a =>
+{
+    //异步调用JavaScript函数的最大等待时间
+    a.JSInteropDefaultCallTimeout = TimeSpan.FromMinutes(2);
+}).AddHubOptions(o =>
+{
+    //单个传入集线器消息的最大大小。默认 32 KB	
+    o.MaximumReceiveMessageSize = null;
+    //可为客户端上载流缓冲的最大项数。 如果达到此限制，则会阻止处理调用，直到服务器处理流项。
+    o.StreamBufferCapacity = 20;
+}); 
 builder.Services.AddDensenExtensions();
 if (!builder.Services.Any(x => x.ServiceType == typeof(HttpClient)))
 {

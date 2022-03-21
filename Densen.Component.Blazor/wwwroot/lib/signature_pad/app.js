@@ -1,6 +1,7 @@
 import '/_content/Densen.Component.Blazor/lib/signature_pad/signature_pad.umd.js';
 
-export function init(wrapperc) {
+export function init(wrapperc, alertText) {
+    //Code modify from https://github.com/szimek/signature_pad
     var wrapper = document.getElementById("signature-pad");
     var clearButton = wrapper.querySelector("[data-action=clear]");
     var changeColorButton = wrapper.querySelector("[data-action=change-color]");
@@ -81,6 +82,7 @@ export function init(wrapperc) {
 
     clearButton.addEventListener("click", function (event) {
         signaturePad.clear();
+        return wrapperc.invokeMethodAsync("signatureResult", null);
     });
 
     undoButton.addEventListener("click", function (event) {
@@ -101,40 +103,45 @@ export function init(wrapperc) {
         signaturePad.penColor = color;
     });
 
-    saveBase64Button.addEventListener("click", function (event) {
+    if (saveBase64Button) saveBase64Button.addEventListener("click", function (event) {
         if (signaturePad.isEmpty()) {
-            alert("Please provide a signature first.");
+            alertMessage();
         } else {
-            var imgBase64 = signaturePad.toDataURL();
+            var imgBase64 = signaturePad.toDataURL("image/jpeg");
             //console.log(imgBase64);
-            return wrapperc.invokeMethodAsync("invokeFromJS", imgBase64);
+            return wrapperc.invokeMethodAsync("signatureResult", imgBase64);
         }
     });
 
-    savePNGButton.addEventListener("click", function (event) {
+    if (savePNGButton) savePNGButton.addEventListener("click", function (event) {
         if (signaturePad.isEmpty()) {
-            alert("Please provide a signature first.");
+            alertMessage();
         } else {
             var dataURL = signaturePad.toDataURL();
             download(dataURL, "signature.png");
         }
     });
 
-    saveJPGButton.addEventListener("click", function (event) {
+    if (saveJPGButton) saveJPGButton.addEventListener("click", function (event) {
         if (signaturePad.isEmpty()) {
-            alert("Please provide a signature first.");
+            alertMessage();
         } else {
             var dataURL = signaturePad.toDataURL("image/jpeg");
             download(dataURL, "signature.jpg");
         }
     });
 
-    saveSVGButton.addEventListener("click", function (event) {
+    if (saveSVGButton) saveSVGButton.addEventListener("click", function (event) {
         if (signaturePad.isEmpty()) {
-            alert("Please provide a signature first.");
+            alertMessage();
         } else {
             var dataURL = signaturePad.toDataURL('image/svg+xml');
             download(dataURL, "signature.svg");
         }
     });
+
+    function alertMessage() {
+        if (alertText) alert(alertText);
+        wrapperc.invokeMethodAsync("signatureAlert");
+    }
 }
