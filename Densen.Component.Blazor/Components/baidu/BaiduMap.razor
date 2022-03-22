@@ -14,7 +14,7 @@
         };
 
     }*@
-<div id="@ID" style="@Style" ></div>
+<div id="@ID" style="@Style"></div>
 <button class="btn btn-primary" type="button" onclick="@(async()=>await GetLocation())">Location</button>
 <button class="btn btn-primary" type="button" onclick="@(async()=>await ResetMaps())">Reset</button>
 
@@ -25,6 +25,13 @@
     /// </summary>
     [Parameter]
     public Func<string, Task>? OnError { get; set; }
+
+    /// <summary>
+    /// 获得/设置 BaiduKey<para></para>
+    /// 为空则在 IConfiguration 服务获取 "BaiduKey" , 默认在 appsettings.json 文件配置
+    /// </summary>
+    [Parameter]
+    public string? Key { get; set; }
 
     /// <summary>
     /// 获得/设置 style
@@ -53,12 +60,12 @@
     {
         if (firstRender)
         {
-            key = config["BaiduKey"];
+            key = Key ?? config["BaiduKey"];
             module = await JS.InvokeAsync<IJSObjectReference>("import", "./_content/Densen.Component.Blazor/lib/baidu/baidumap.js");
             InstanceGeo = DotNetObjectReference.Create(this);
             while (!(await Init()))
             {
-                await Task.Delay(200);
+                await Task.Delay(500);
             }
             //await module!.InvokeVoidAsync("initMaps");
         }

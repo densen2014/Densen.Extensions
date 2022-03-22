@@ -19,9 +19,9 @@
         }
     });
 
-    if (scriptsIncluded) { //Prevent adding JS scripts to page multiple times.
+    if (scriptsIncluded) { //防止多次向页面添加 JS 脚本.Prevent adding JS scripts to page multiple times.
         if (window.google) {
-            initMaps(elementId); //Page was navigated
+            initMaps(elementId); //页面已导航.Page was navigated
         }
         return true;
     }
