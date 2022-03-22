@@ -31,6 +31,10 @@ main {
         text-overflow: ellipsis;
     }
 
+.sidebar {
+    min-width: 250px;
+}
+
 @media (max-width: 640.98px) {
     .top-row:not(.auth) {
         display: none;
@@ -44,6 +48,7 @@ main {
         margin-left: 0;
     }
 }
+
 
 @media (min-width: 641px) {
     .page {
@@ -66,5 +71,12 @@ main {
     .top-row, article {
         padding-left: 2rem !important;
         padding-right: 1.5rem !important;
+    }
+}
+
+
+@media (max-height: 850px) {
+    .sidebar {
+        height: unset;
     }
 }

@@ -25,6 +25,7 @@
     font-family: Helvetica, Sans-Serif;
 }
 
+
 .signature-pad {
     position: relative;
     display: -webkit-box;
@@ -106,13 +107,75 @@
     margin-top: 8px;
 }
 
-#github img {
-    border: 0;
+
+@media (max-width: 640.98px)   {
+    .signature-pad-body-responsive {
+        -webkit-box-pack: start;
+        -ms-flex-pack: start;
+        justify-content: start;
+        -webkit-box-align: start;
+        -ms-flex-align: start;
+        align-items: start;
+        height: 100vh;
+        width: 100%;
+        padding: 0; 
+        position: fixed;
+        top: 0;
+        left: 0;
+    }
+
+    .signature-pad {
+        padding: 0;
+        max-height: 100%;
+    }
+
+    .btn-responsive {
+        -webkit-transform: rotate(90deg);
+        -moz-transform: rotate(90deg);
+        -o-transform: rotate(90deg);
+        -ms-transform: rotate(90deg);
+        transform: rotate(90deg);
+    }
+
+    .signature-pad--footer-responsive {
+        height: 90px;
+        padding: 16px;
+    }
+
+    .signature-pad--actions-responsive {
+        position: fixed;
+        bottom: 32px;
+    }
+
+    .description-responsive {
+        -webkit-transform: rotate(90deg);
+        -moz-transform: rotate(90deg);
+        -o-transform: rotate(90deg);
+        -ms-transform: rotate(90deg);
+        transform: rotate(90deg);
+        position: fixed;
+        bottom: 39px;
+        right: 65px;
+        width: 62px;
+        height: 24px;
+    }
 }
 
-@media (max-width: 940px) {
-    #github img {
-        width: 90px;
-        height: 90px;
+
+@media  (max-height: 640.98px) {
+    .signature-pad-body-responsive {
+        height: 100vh;
+        width: 100vw;
+        padding: 0;
+        position: fixed;
+        top: 0;
+        left: 0;
     }
+
+    .signature-pad {
+        padding: 0;
+        max-height: 100%;
+    }
+     
+     
 }

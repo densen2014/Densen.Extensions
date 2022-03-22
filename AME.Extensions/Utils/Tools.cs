@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
@@ -1030,8 +1031,30 @@ namespace AME
             return link;
         }
 
+
+
     }
 
  
 
+}
+
+namespace DirectoryGet
+{
+    public class Library : IEnumerable<string>
+    {
+        public IEnumerator<string> GetEnumerator()
+        {
+            yield return $"{Environment.CurrentDirectory}";
+            yield return $"{Directory.GetCurrentDirectory()}";
+            yield return $"{GetType().Assembly.Location}";
+            yield return $"{Process.GetCurrentProcess().MainModule.FileName}";
+            yield return $"{AppDomain.CurrentDomain.BaseDirectory}";
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
+    }
 }

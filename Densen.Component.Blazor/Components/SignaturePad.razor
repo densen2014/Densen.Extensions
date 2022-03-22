@@ -2,40 +2,45 @@
 @namespace AmeBlazor.Components
 @inject IJSRuntime JS
 
-<div class="signature-pad-body">
+<div class="@CssClass @(Responsive?"signature-pad-body-responsive":"")">
     <div @ref="SignaturepadElement" class="signature-pad">
         <div class="signature-pad--body">
             <canvas width="614" style="touch-action: none; user-select: none;" height="242"></canvas>
         </div>
-        <div class="signature-pad--footer">
-            <div class="description">@SignAboveLabel</div>
-
-            <div class="signature-pad--actions">
+        <div class="signature-pad--footer @(Responsive?"signature-pad--footer-responsive":"")">
+            @if (!string.IsNullOrEmpty (SignAboveLabel))
+            {
+                <div class="description @(Responsive ? "description-responsive" : "")">@SignAboveLabel</div>
+            }
+            <div class="signature-pad--actions @(Responsive?"signature-pad--actions-responsive":"")">
                 <div>
-                    <button type="button" class="@BtnCssClass" data-action="clear">@ClearBtnTitle</button>
-                    @if (EnableChangeColorBtnTitle)
+                    <button type="button" class="@BtnCssClass @(Responsive?"btn-responsive":"")" data-action="clear">@ClearBtnTitle</button>
+                    @if (EnableChangeColorBtn)
                     {
-                        <button type="button" class="@BtnCssClass" data-action="change-color">@ChangeColorBtnTitle</button>
+                        <button type="button" class="@BtnCssClass @(Responsive?"btn-responsive":"")" data-action="change-color">@ChangeColorBtnTitle</button>
                     }
-                    <button type="button" class="@BtnCssClass" data-action="undo">@UndoBtnTitle</button>
-
+                    <button type="button" class="@BtnCssClass @(Responsive?"btn-responsive":"")" data-action="undo">@UndoBtnTitle</button>
+                    @if (Responsive && OnClose.HasDelegate)
+                    {
+                        <button type="button" class="@BtnCssClass @(Responsive?"btn-responsive":"")" @onclick="(async ()=>await Close())">@CloseBtnTitle</button>
+                    }
                 </div>
                 <div>
                     @if (EnableSaveBase64Btn)
                     {
-                        <button type="button" class="@BtnCssClass" data-action="save-base64">@SaveBase64BtnTitle</button>
+                        <button type="button" class="@BtnCssClass @(Responsive?"btn-responsive":"")" data-action="save-base64">@SaveBase64BtnTitle</button>
                     }
                     @if (EnableSavePNGBtn)
                     {
-                        <button type="button" class="@BtnCssClass" data-action="save-png">@SavePNGBtnTitle</button>
+                        <button type="button" class="@BtnCssClass @(Responsive?"btn-responsive":"")" data-action="save-png">@SavePNGBtnTitle</button>
                     }
                     @if (EnableSaveJPGBtn)
                     {
-                        <button type="button" class="@BtnCssClass" data-action="save-jpg">@SaveJPGBtnTitle</button>
+                        <button type="button" class="@BtnCssClass @(Responsive?"btn-responsive":"")" data-action="save-jpg">@SaveJPGBtnTitle</button>
                     }
                     @if (EnableSaveSVGBtn)
                     {
-                        <button type="button" class="@BtnCssClass" data-action="save-svg">@SaveSVGBtnTitle</button>
+                        <button type="button" class="@BtnCssClass @(Responsive?"btn-responsive":"")" data-action="save-svg">@SaveSVGBtnTitle</button>
                     }
                 </div>
             </div>
@@ -56,6 +61,12 @@
     /// </summary>
     [Parameter]
     public EventCallback<string> OnAlert { get; set; }
+
+    /// <summary>
+    /// 手写签名关闭信息回调/SignaturePad close callback method
+    /// </summary>
+    [Parameter]
+    public EventCallback OnClose { get; set; }
 
     /// <summary>
     /// 获得/设置 错误回调方法
@@ -94,6 +105,12 @@
     public string UndoBtnTitle { get; set; } = "撤消";
 
     /// <summary>
+    /// 关闭按钮文本/Close button title
+    /// </summary>
+    [Parameter]
+    public string CloseBtnTitle { get; set; } = "关闭";
+
+    /// <summary>
     /// 保存为base64按钮文本/Save as Base64 button title
     /// </summary>
     [Parameter]
@@ -121,7 +138,7 @@
     /// 启用换颜色按钮/Enable change color button
     /// </summary>
     [Parameter]
-    public bool EnableChangeColorBtnTitle { get; set; } = true;
+    public bool EnableChangeColorBtn { get; set; } = true;
 
     /// <summary>
     /// 启用JS错误弹窗/Enable Alert from JS
@@ -159,6 +176,24 @@
     [Parameter]
     public string BtnCssClass { get; set; } = "btn btn-light";
 
+    /// <summary>
+    /// 组件CSS式样/Components css style
+    /// </summary>
+    [Parameter]
+    public string CssClass { get; set; } = "signature-pad-body";
+
+    /// <summary>
+    /// 响应式css界面,为所有用户设计最佳体验/Enable Responsive css
+    /// </summary>
+    [Parameter]
+    public bool Responsive { get; set; } = false;
+
+    /// <summary>
+    /// 组件背景/backgroundColor
+    /// </summary>
+    [Parameter]
+    public string BackgroundColor { get; set; } = "rgb(255, 255, 255)";
+
     private IJSObjectReference? module;
 
     /// <summary>
@@ -173,7 +208,7 @@
         try
         {
             module = await JS.InvokeAsync<IJSObjectReference>("import", "./_content/Densen.Component.Blazor/lib/signature_pad/app.js");
-            await module.InvokeVoidAsync("init", DotNetObjectReference.Create(this), SignaturepadElement, EnableAlertJS ? SignatureAlertText : null);
+            await module.InvokeVoidAsync("init", DotNetObjectReference.Create(this), SignaturepadElement, EnableAlertJS ? SignatureAlertText : null, BackgroundColor);
         }
         catch (Exception e)
         {
@@ -182,7 +217,7 @@
     }
 
     [JSInvokable("signatureResult")]
-    public async Task SignatureResult(string val)
+    public async Task SignatureResult(string? val)
     {
         if (OnResult.HasDelegate) await OnResult.InvokeAsync(val);
     }
@@ -193,7 +228,10 @@
         if (OnResult.HasDelegate) await OnAlert.InvokeAsync(SignatureAlertText);
     }
 
-
+    public async Task Close()
+    {
+        if (OnClose.HasDelegate) await OnClose.InvokeAsync(null);
+    }
     async ValueTask IAsyncDisposable.DisposeAsync()
     {
         if (module is not null)

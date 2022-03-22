@@ -1,6 +1,6 @@
 import '/_content/Densen.Component.Blazor/lib/signature_pad/signature_pad.umd.js';
 
-export function init(wrapperc, element, alertText,) {
+export function init(wrapperc, element, alertText, backgroundColor) {
     //Code modify from https://github.com/szimek/signature_pad
     var wrapper = element;//document.getElementById("signature-pad");
     var clearButton = wrapper.querySelector("[data-action=clear]");
@@ -14,7 +14,7 @@ export function init(wrapperc, element, alertText,) {
     var signaturePad = new SignaturePad(canvas, {
         // It's Necessary to use an opaque color when saving image as JPEG;
         // this option can be omitted if only saving as PNG or SVG
-        backgroundColor: 'rgb(255, 255, 255)'
+        backgroundColor: backgroundColor || 'rgb(255, 255, 255)'
     });
 
     // Adjust canvas coordinate space taking into account pixel ratio,
@@ -80,12 +80,12 @@ export function init(wrapperc, element, alertText,) {
         return new Blob([uInt8Array], { type: contentType });
     }
 
-    clearButton.addEventListener("click", function (event) {
+    if (clearButton) clearButton.addEventListener("click", function (event) {
         signaturePad.clear();
         return wrapperc.invokeMethodAsync("signatureResult", null);
     });
 
-    undoButton.addEventListener("click", function (event) {
+    if (undoButton) undoButton.addEventListener("click", function (event) {
         var data = signaturePad.toData();
 
         if (data) {
@@ -94,7 +94,7 @@ export function init(wrapperc, element, alertText,) {
         }
     });
 
-    changeColorButton.addEventListener("click", function (event) {
+    if (changeColorButton) changeColorButton.addEventListener("click", function (event) {
         var r = Math.round(Math.random() * 255);
         var g = Math.round(Math.random() * 255);
         var b = Math.round(Math.random() * 255);
@@ -107,7 +107,7 @@ export function init(wrapperc, element, alertText,) {
         if (signaturePad.isEmpty()) {
             alertMessage();
         } else {
-            var imgBase64 = signaturePad.toDataURL("image/jpeg");
+            var imgBase64 = signaturePad.toDataURL();
             //console.log(imgBase64);
             return wrapperc.invokeMethodAsync("signatureResult", imgBase64);
         }
