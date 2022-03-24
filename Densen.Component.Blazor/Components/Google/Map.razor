@@ -20,7 +20,7 @@
     /// 为空则在 IConfiguration 服务获取 "GoogleKey" , 默认在 appsettings.json 文件配置
     /// </summary>
     [Parameter]
-    public string? Key { get; set; }
+    public string? GoogleKey { get; set; }
 
     /// <summary>
     /// 获得/设置 style
@@ -37,7 +37,7 @@
     {
         if (firstRender)
         {
-            key = Key ?? config["GoogleKey"];
+            key = GoogleKey ?? (config != null ? config["GoogleKey"] :null) ?? "abcd";
             module = await JS.InvokeAsync<IJSObjectReference>("import", "./_content/Densen.Component.Blazor/lib/google/map.js");
             while (!(await Init()))
             {
