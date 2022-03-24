@@ -31,7 +31,7 @@
     /// 为空则在 IConfiguration 服务获取 "BaiduKey" , 默认在 appsettings.json 文件配置
     /// </summary>
     [Parameter]
-    public string? Key { get; set; }
+    public string? BaiduKey { get; set; }
 
     /// <summary>
     /// 获得/设置 style
@@ -60,7 +60,7 @@
     {
         if (firstRender)
         {
-            key = Key ?? config["BaiduKey"];
+            key = BaiduKey ?? (config!=null?config["BaiduKey"]:null) ?? "abcd";
             module = await JS.InvokeAsync<IJSObjectReference>("import", "./_content/Densen.Component.Blazor/lib/baidu/baidumap.js");
             InstanceGeo = DotNetObjectReference.Create(this);
             while (!(await Init()))
