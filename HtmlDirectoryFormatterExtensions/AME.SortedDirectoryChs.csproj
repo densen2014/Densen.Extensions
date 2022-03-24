@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <Version>0.0.1</Version>
+        <IsPackable>true</IsPackable>
+        <PackageIcon>logo.png</PackageIcon>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <Company>Densen Informatica</Company>
+        <Authors>Alex Chow</Authors>
+        <Description>DirectoryBrowserFormatter扩展: 中文界面并按修改时间逆序排序</Description>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageProjectUrl>https://github.com/densen2014/Densen.Extensions</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/densen2014/Densen.Extensions</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+        <PackageTags>DirectoryBrowserFormatter扩展: 中文界面并按修改时间逆序排序</PackageTags>
+    </PropertyGroup>
+	<ItemGroup>
+		<None Include="logo.png" Pack="true" PackagePath="" />
+	</ItemGroup>
+	<ItemGroup>
+	  <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.2.0" />
+	</ItemGroup>
+
+</Project>
