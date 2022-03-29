@@ -1,36 +1,47 @@
-﻿@page "/"
-
+﻿@page "/" 
 @page "/TreeControl"
-
 @using System.Diagnostics.CodeAnalysis
-
 <PageTitle>树型组件</PageTitle>
 
 <p>
     <Tree TItem="string" Checkable
-          @bind-CheckedKeys="_checkedKeys"
-          >
+          DefaultCheckedKeys="_checkedKeys"
+          @bind-CheckedKeys="_checkedKeys">
         <TreeNode Title="综合管理" Key="09" TItem="string">
-            <TreeNode Title="刷脸秘书信息" Key="1904" TItem="string" ></TreeNode>
-            @for (int i = 0; i < 120; i++)
+            <TreeNode Title="刷脸秘书信息" Key="1904" TItem="string"></TreeNode>
+            @for (int i = 0; i < 100; i++)
             {
-                <TreeNode Title="@($"刷脸信息管理{i}")" Key="@($"090{i}")" TItem="string" ></TreeNode>
-            } 
+                <TreeNode Title="@($"刷脸信息管理{i}")" Key="@($"090{i}")" TItem="string"></TreeNode>
+            }
         </TreeNode>
     </Tree>
 </p>
+<p>
+
+</p>
+
 <p>
     <Button @onclick="@OnSave">
         保存
     </Button>
 
-</p> 
+</p>
 
-@code{
-bool check1;
-    string[] _checkedKeys = new string[] { "09" };
+@code
+{
+    string[] _checkedKeys = new string[] { "0901" };
+    protected override void OnInitialized()
+    {
+        List<string> list = new List<string>();
+        @for (int i = 0; i < 200; i++)
+        {
+            list.Add($"090{i}");
+        }
+        _checkedKeys = list.ToArray();
+    }
     public void OnSave()
     {
     }
-
 }
+
+
