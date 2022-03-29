@@ -17,8 +17,8 @@
 {
 
     <BarcodeScanner ScanResult="((e) => { BarCode=e; ShowScanBarcode = !ShowScanBarcode; })"
-                    ShowScanBarcode="ShowScanBarcode"
-                    Close="(()=>ShowScanBarcode=!ShowScanBarcode)" />
+                    Close="(()=>ShowScanBarcode=!ShowScanBarcode)"
+                    OnError="OnError" />
 
 }
 
@@ -55,12 +55,12 @@
 {
             new AttributeItem("ScanResult","扫码结果回调方法/Scan result callback method",  "","EventCallback<string>"),
             new AttributeItem("Close","关闭扫码框回调方法/Close scan code callback method","","EventCallback"),
-            new AttributeItem("ShowScanBarcode","显示扫码框/Show scan box","true","bool"),
             new AttributeItem("ScanBtnTitle","扫码按钮文本/Scan button title","扫码"),
             new AttributeItem("ResetBtnTitle","复位按钮文本/Reset button title","复位"),
             new AttributeItem("CloseBtnTitle","关闭按钮文本/Close button title","关闭"),
             new AttributeItem("SelectDeviceBtnTitle","选择设备按钮文本/Select device button title","选择设备"),
-            new AttributeItem("OnError","错误信息回调",  "-","Func<string, Task>"),
-    };
+            new AttributeItem("OnError","错误信息回调/Error callback method",  "-","Func<string, Task>"),
+            new AttributeItem("UseBuiltinDiv","使用内置DIV/Use builtin Div",  "true","Func<string, Task>"),
+        };
 
 } 
