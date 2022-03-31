@@ -1,0 +1,83 @@
+﻿@implements IAsyncDisposable
+@namespace AmeBlazor.Components
+@inject IJSRuntime JS
+ 
+
+@code {
+
+    /// <summary>
+    /// 手写签名结果回调/SignaturePad result callback method
+    /// </summary>
+    [Parameter]
+    public EventCallback<string> OnResult { get; set; }
+
+    /// <summary>
+    /// 手写签名警告信息回调/SignaturePad alert callback method
+    /// </summary>
+    [Parameter]
+    public EventCallback<string> OnAlert { get; set; }
+
+    /// <summary>
+    /// 手写签名关闭信息回调/SignaturePad close callback method
+    /// </summary>
+    [Parameter]
+    public EventCallback OnClose { get; set; }
+
+    /// <summary>
+    /// 获得/设置 错误回调方法
+    /// </summary>
+    [Parameter]
+    public Func<string, Task>? OnError { get; set; }
+
+    /// <summary>
+    /// 在框内签名标签文本/Sign above label
+    /// </summary>
+    [Parameter]
+    public string SignAboveLabel { get; set; } = "在框内签名";
+     
+
+    private IJSObjectReference? module;
+
+    /// <summary>
+    ///
+    /// </summary>
+    protected ElementReference SignaturepadElement { get; set; }
+
+    // To prevent making JavaScript interop calls during prerendering
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (!firstRender) return;
+        try
+        {
+            module = await JS.InvokeAsync<IJSObjectReference>("import", "./_content/Densen.Component.Blazor/lib/timecatjs/app.js");
+            await module.InvokeVoidAsync("init", DotNetObjectReference.Create(this), SignaturepadElement);
+        }
+        catch (Exception e)
+        {
+            if (OnError != null) await OnError.Invoke(e.Message);
+        }
+    }
+
+    [JSInvokable("signatureResult")]
+    public async Task SignatureResult(string? val)
+    {
+        if (OnResult.HasDelegate) await OnResult.InvokeAsync(val);
+    }
+
+ 
+    public async Task Close()
+    {
+        if (OnClose.HasDelegate) await OnClose.InvokeAsync(null);
+    }
+    async ValueTask IAsyncDisposable.DisposeAsync()
+    {
+        if (module is not null)
+        {
+            //await module.InvokeVoidAsync("destroy",null);
+            await module.DisposeAsync();
+        }
+    }
+}
+
+
+
