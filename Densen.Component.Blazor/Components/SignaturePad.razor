@@ -225,7 +225,7 @@
     [JSInvokable("signatureAlert")]
     public async Task SignatureAlert()
     {
-        if (OnResult.HasDelegate) await OnAlert.InvokeAsync(SignatureAlertText);
+        if (OnAlert.HasDelegate) await OnAlert.InvokeAsync(SignatureAlertText);
     }
 
     public async Task Close()
