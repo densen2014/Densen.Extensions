@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.AspNetCore.Http;
 using System.Net.Http;
+using ClipboardService = AME.Services.ClipboardService;
 
 namespace Microsoft.Extensions.DependencyInjection
 {
