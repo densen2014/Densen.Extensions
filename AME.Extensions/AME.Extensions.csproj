@@ -3,8 +3,8 @@
 	<PropertyGroup>
 		<TargetFrameworks>netstandard2.0;netstandard2.1;net461;net6.0</TargetFrameworks>
 		<TargetFrameworks Condition="'$(Configuration)'=='Preview'">$(TargetFrameworks);net6.0-windows10.0.19041;net6.0-ios;net6.0-maccatalyst;net6.0-android</TargetFrameworks>
-		<Version Condition="'$(Configuration)'!='Preview'">6.3.2</Version>
-		<Version Condition="'$(Configuration)'=='Preview'">6.3.3-preview</Version>
+		<Version Condition="'$(Configuration)'!='Preview'">6.3.3</Version>
+		<Version Condition="'$(Configuration)'=='Preview'">6.3.4-preview</Version>
 		<IsPackable>true</IsPackable>
 		<PackageIcon>logo.png</PackageIcon>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
