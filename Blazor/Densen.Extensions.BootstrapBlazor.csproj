@@ -3,8 +3,8 @@
 	<PropertyGroup>
 		<TargetFrameworks>net6.0</TargetFrameworks>
 		<TargetFrameworks Condition="'$(Configuration)'=='Preview'">$(TargetFrameworks);net6.0-windows10.0.19041;net6.0-ios;net6.0-maccatalyst;net6.0-android</TargetFrameworks>
-		<Version Condition="'$(Configuration)'!='Preview'">6.3.2</Version>
-		<Version Condition="'$(Configuration)'=='Preview'">6.3.3-preview</Version>
+		<Version Condition="'$(Configuration)'!='Preview'">6.3.4</Version>
+		<Version Condition="'$(Configuration)'=='Preview'">6.3.5-preview</Version>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<IsPackable>true</IsPackable>
 		<PackageIcon>logo.png</PackageIcon>
@@ -27,7 +27,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="BootstrapBlazor" Version="6.5.10" />
+		<PackageReference Include="BootstrapBlazor" Version="6.5.12" />
 		<PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.2.0" />
 		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.4" />
 		<PackageReference Include="Toolbelt.Blazor.I18nText" Version="11.1.4" />
@@ -37,11 +37,11 @@
 	<ItemGroup>
 		<None Include="logo.png" Pack="true" PackagePath="" />
 	</ItemGroup>
-
+	
 	<ItemGroup>
 		<ProjectReference Include="..\AME.Extensions\AME.Extensions.csproj" />
 	</ItemGroup>
-
+	
 	<ItemGroup>
 		<Content Update="wwwroot\README.md">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
