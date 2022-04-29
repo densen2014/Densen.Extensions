@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\POS\DLL\AME.API\AME.API.csproj" />
+    <ProjectReference Include="..\..\AmeLibs\AME.API\AME.API.csproj" />
     <ProjectReference Include="..\AME.Extensions\AME.Extensions.csproj" />
   </ItemGroup>
 
