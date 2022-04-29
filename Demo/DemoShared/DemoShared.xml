@@ -1,0 +1,134 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DemoShared</name>
+    </assembly>
+    <members>
+        <member name="T:DemoShared.Pages.BaiduMapPage">
+            <summary>
+            百度地图 BaiduMap
+            </summary>
+        </member>
+        <member name="M:DemoShared.Pages.BaiduMapPage.GetAttributes">
+            <summary>
+            获得属性方法
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:DemoShared.Pages.GeolocationPage">
+            <summary>
+            Geolocation 地理定位/移动距离追踪
+            <para></para>
+            扩展阅读:Chrome中模拟定位信息，清除定位信息<para></para>
+            https://blog.csdn.net/u010844189/article/details/81163438
+            </summary>
+        </member>
+        <member name="M:DemoShared.Pages.GeolocationPage.GetAttributes">
+            <summary>
+            获得属性方法
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:DemoShared.Pages.MapsPage">
+            <summary>
+            谷歌地图 Maps
+            </summary>
+        </member>
+        <member name="M:DemoShared.Pages.MapsPage.GetAttributes">
+            <summary>
+            获得属性方法
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:DemoShared.Pages.SignaturePadPageResponsive.Result">
+            <summary>
+            签名Base64
+            </summary>
+        </member>
+        <member name="P:DemoShared.Pages.SignaturePadPageResponsive.ShowSignaturePad">
+            <summary>
+            显示响应式签名界面
+            </summary>
+        </member>
+        <member name="M:DemoShared.Pages.TableLazyHeroPage.Dispose">
+            <summary>
+            Dispose 方法
+            </summary>
+        </member>
+        <member name="T:DemoShared.Pages.WebApiPage">
+            <summary>
+            WebApi 浏览器api
+            </summary>
+        </member>
+        <member name="M:DemoShared.Pages.WebApiPage.GetAttributes">
+            <summary>
+            获得属性方法
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:DemoShared.Pages.AttributeTable.Items">
+            <summary>
+            获得/设置 项目
+            </summary>
+        </member>
+        <member name="P:DemoShared.Pages.BarcodeScannerPage.ShowScanBarcode">
+            <summary>
+            显示扫码界面
+            </summary>
+        </member>
+        <member name="P:DemoShared.Pages.BarcodeScannerPage.BarCode">
+            <summary>
+            条码
+            </summary>
+        </member>
+        <member name="M:DemoShared.Pages.BarcodeScannerPage.GetAttributes">
+            <summary>
+            获得属性方法
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:DemoShared.Pages.BarcodeScannerPageEN.ShowScanBarcode">
+            <summary>
+            显示扫码界面
+            </summary>
+        </member>
+        <member name="P:DemoShared.Pages.BarcodeScannerPageEN.BarCode">
+            <summary>
+            条码
+            </summary>
+        </member>
+        <member name="P:DemoShared.Pages.HandwrittenPage.ShowHandwritten">
+            <summary>
+            显示签名界面
+            </summary>
+        </member>
+        <member name="P:DemoShared.Pages.HandwrittenPage.DrawBase64">
+            <summary>
+            签名Base64
+            </summary>
+        </member>
+        <member name="M:DemoShared.Pages.HandwrittenPage.GetAttributes">
+            <summary>
+            获得属性方法
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:DemoShared.Pages.SignaturePadPage.Result">
+            <summary>
+            签名Base64
+            </summary>
+        </member>
+        <member name="M:DemoShared.Pages.SignaturePadPage.GetAttributes">
+            <summary>
+            获得属性方法
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DemoShared.Pages.ViewerPage.GetAttributes">
+            <summary>
+            获得属性方法
+            </summary>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

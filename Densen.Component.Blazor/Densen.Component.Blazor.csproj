@@ -4,12 +4,9 @@
 		<TargetFramework>net6.0</TargetFramework>
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
-		<Version>1.0.0</Version>
 		<IsPackable>true</IsPackable>
 		<PackageIcon>logo.png</PackageIcon>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-		<Company>Densen Informatica</Company>
-		<Authors>Alex Chow</Authors>
 		<Description>Densen's Blazor组件库</Description>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<PackageProjectUrl>https://github.com/densen2014/Densen.Extensions/tree/master/Densen.Component.Blazor</PackageProjectUrl>
@@ -20,11 +17,14 @@
 		<RootNamespace>Densen.Component.Blazor</RootNamespace>
 	</PropertyGroup>
 	
+	<PropertyGroup>
+		<PackageReadmeFile>README.nuget.md</PackageReadmeFile>
+	</PropertyGroup>
+
 	<ItemGroup>
-		<None Include="logo.png" Pack="true" PackagePath="" />
+		<None Include="README.nuget.md" Pack="true" PackagePath="" />
 	</ItemGroup>
 
-	
 	<ItemGroup>
 	  <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="6.0.4" />
 	  <PackageReference Include="Microsoft.Extensions.Configuration" Version="6.0.1" />

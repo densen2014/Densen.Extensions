@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DemoLib</name>
+    </assembly>
+    <members>
+        <member name="P:AmeApi.NowInfo.ProductName">
+            <summary>
+            商品名称
+            </summary>
+        </member>
+    </members>
+</doc>

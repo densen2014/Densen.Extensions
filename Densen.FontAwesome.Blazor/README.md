@@ -1,0 +1,1 @@
+FontAwesome for Blazor

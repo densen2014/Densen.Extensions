@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>AME.SortedDirectoryChs</name>
+    </assembly>
+    <members>
+        <member name="T:AME.HtmlDirectoryFormatterChsSorted">
+            <summary>
+            中文界面按修改时间逆序排序<para></para>
+            Generates an HTML view title chinese for a directory with soft by LastModified.
+            </summary>
+        </member>
+        <member name="M:AME.HtmlDirectoryFormatterChsSorted.#ctor(System.Text.Encodings.Web.HtmlEncoder)">
+            <summary>
+            Constructs the <see cref="T:AME.HtmlDirectoryFormatterChsSorted"/>.
+            </summary>
+            <param name="encoder">The character encoding representation to use.</param>
+        </member>
+        <member name="M:AME.HtmlDirectoryFormatterChsSorted.GenerateContentAsync(Microsoft.AspNetCore.Http.HttpContext,System.Collections.Generic.IEnumerable{Microsoft.Extensions.FileProviders.IFileInfo})">
+            <summary>
+            Generates an HTML view for a directory.
+            </summary>
+        </member>
+        <member name="M:AME.SortedHtmlDirectoryFormatter.#ctor(System.Text.Encodings.Web.HtmlEncoder)">
+            <summary>
+            Constructs the <see cref="T:AME.SortedHtmlDirectoryFormatter"/>.
+            </summary>
+            <param name="encoder">The character encoding representation to use.</param>
+        </member>
+        <member name="M:AME.SortedHtmlDirectoryFormatter.#ctor">
+            <summary>
+            Constructs the <see cref="T:AME.SortedHtmlDirectoryFormatter"/> with default encoder
+            </summary>
+        </member>
+        <member name="M:AME.AutoSize.GetAutoSizeString(System.Double,System.Int32)">
+            <summary>
+            得到适应的大小
+            </summary>
+            <param name="path"></param>
+            <returns>string</returns>
+        </member>
+    </members>
+</doc>

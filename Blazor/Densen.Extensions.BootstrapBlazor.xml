@@ -1,0 +1,561 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Densen.Extensions.BootstrapBlazor</name>
+    </assembly>
+    <members>
+        <member name="M:AME.CommonUtils.WebClientInfoProvider.#ctor(Microsoft.AspNetCore.Http.IHttpContextAccessor)">
+            <summary>
+            Creates a new  
+            </summary>
+        </member>
+        <member name="T:AME.Services.LazyHeroDataService`1">
+            <summary>
+            内存数据 的 IDataService 数据注入服务接口实现
+            </summary>
+            <typeparam name="TModel"></typeparam>
+        </member>
+        <member name="P:AME.Services.LazyHeroDataService`1.Field">
+            <summary>
+            设置主表主键,用于保存临时数据
+            </summary>
+        </member>
+        <member name="M:AME.Services.LazyHeroDataService`1.SaveAsync(`0,BootstrapBlazor.Components.ItemChangedType)">
+            <summary>
+            保存方法
+            </summary>
+            <param name="model"></param>
+            <param name="changedType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AME.Services.LazyTools.Copy``1(``0,``0)">
+            <summary>
+            泛型 Copy 方法
+            </summary>
+            <typeparam name="TModel"></typeparam>
+            <param name="source"></param>
+            <param name="destination"></param>
+            <returns></returns>
+        </member>
+        <member name="T:AME.Services.ObjectsExtensions">
+            <summary>
+            Object 扩展方法
+            </summary>
+        </member>
+        <member name="M:AME.Services.ObjectsExtensions.GetField``1(``0,System.String)">
+            <summary>
+            获取属性
+            </summary>
+            <param name="instance">object</param>
+            <param name="propertyName">需要判断的属性</param>
+            <returns>是否包含</returns>
+        </member>
+        <member name="T:AmeBlazor.Components.AmeBlazorComponentBase">
+            <summary>
+            AME组件基类
+            </summary>
+        </member>
+        <member name="P:AmeBlazor.Components.AmeBlazorComponentBase.AdditionalAttributes">
+            <summary>
+            获得/设置 用户自定义属性
+            </summary>
+        </member>
+        <member name="P:AmeBlazor.Components.AmeBlazorComponentBase.JsRuntime">
+            <summary>
+            获得/设置 IJSRuntime 实例
+            </summary>
+        </member>
+        <member name="M:AmeBlazor.Components.AmeBlazorComponentBase.Dispose(System.Boolean)">
+            <summary>
+            Dispose 方法
+            </summary>
+            <param name="disposing"></param>
+        </member>
+        <member name="M:AmeBlazor.Components.AmeBlazorComponentBase.Dispose">
+            <summary>
+            Dispose 方法
+            </summary>
+        </member>
+        <member name="P:AmeBlazor.Components.AmeBlazorComponentBase.TabSetMenu">
+            <summary>
+            懒加载Tab控件 <para></para>
+            使用方法: <para></para>
+            &lt;Tab @ref="TabSetMenu" OnClickTab="@OnClickTabItem" /&gt; 
+            </summary>
+        </member>
+        <member name="M:AmeBlazor.Components.AmeBlazorComponentBase.OnClickTabItem(BootstrapBlazor.Components.TabItem)">
+            <summary>
+            Tab控件点击懒加载TabItem
+            </summary>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="F:AmeBlazor.Components.AmeBlazorComponentBase.Pages">
+            <summary>
+            Tab控件页面Pages字典
+            <para></para>
+            1. OnAfterRenderAsync 里加入
+            <para></para>
+             Pages = new Dictionary &lt;string, BootstrapDynamicComponent&gt; 
+            </summary>
+        </member>
+        <member name="M:AmeBlazor.Components.AmeBlazorComponentBase.InitTabSet(System.Boolean,System.Int32)">
+            <summary>
+            Tab控件初始化TabSet
+            <para></para>
+            2. OnAfterRenderAsync 里加入 InitTabSet(); 
+            </summary>
+            <param name="AllPages">显示所有页面,默认 true</param>
+            <param name="PagesTake">非显示所有页面情况下,定义显示几个页面</param>
+        </member>
+        <member name="M:AmeBlazor.Components.AmeBlazorComponentBase.GetSideMenuItems">
+            <summary>
+            Menu控件MenuItem集合,点击后动态生成TabItem <para></para>
+            使用方法: <para></para>
+            &lt;Menu Items="@GetSideMenuItems()" IsVertical="true" OnClick="@OnClickMenuItem" /&gt; 
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:AmeBlazor.Components.AmeBlazorComponentBase.OnClickMenuItem(BootstrapBlazor.Components.MenuItem)">
+            <summary>
+            点击Menu
+            </summary>
+            <param name="item">点击的MenuItem</param>
+            <returns></returns>
+        </member>
+        <member name="M:AmeBlazor.Components.AmeBlazorComponentBase.AddTabItem(System.String)">
+            <summary>
+            点击Menu动态生成TabItem
+            </summary>
+            <param name="text"></param>
+        </member>
+        <member name="P:AmeBlazor.Components.BigConfigItem.ItemType">
+            <summary>
+             组件类型
+            </summary>
+        </member>
+        <member name="P:AmeBlazor.Components.BigConfigItem.Class">
+            <summary>
+             组件 class
+            </summary>
+        </member>
+        <member name="P:AmeBlazor.Components.BigConfigItem.ClassOi">
+            <summary>
+            组件 oi 图标,InputBox,CHeckBox无效
+            </summary>
+        </member>
+        <member name="P:AmeBlazor.Components.BigConfigItem.Style">
+            <summary>
+            组件Style, Button无效
+            </summary>
+        </member>
+        <member name="P:AmeBlazor.Components.BigConfigItem.Text">
+            <summary>
+            组件显示文本
+            </summary>
+        </member>
+        <member name="P:AmeBlazor.Components.BigConfigItem.FiledName">
+            <summary>
+            绑定字段名称, Button无效
+            </summary>
+        </member>
+        <member name="P:AmeBlazor.Components.BigConfigItem.Url">
+            <summary>
+            Button跳转Url,InputBox,CHeckBox无效
+            </summary>
+        </member>
+        <member name="P:AmeBlazor.Components.BigConfigItem.Height">
+            <summary>
+            按钮高度<para></para>默认120px
+            <para></para>InputBox,CheckBox无效
+            </summary>
+        </member>
+        <member name="P:AmeBlazor.Components.BigConfigItem.MaxWidth">
+            <summary>
+            按钮高度<para></para>默认200px
+            <para></para>InputBox,CheckBox无效
+            </summary>
+        </member>
+        <member name="P:AmeBlazor.Components.BigConfigItem.Roles">
+            <summary>
+            授权列表
+            </summary>
+        </member>
+        <member name="T:AmeBlazor.Components.NullClass">
+            <summary>
+            一个假的类
+            </summary>
+        </member>
+        <member name="T:AmeBlazor.Components.TableImgField">
+            <summary>
+            表格图片列
+            </summary>
+        </member>
+        <member name="T:AmeBlazor.Components.TableLazyHero`1">
+            <summary>
+            TableLazy 组件,使用注入LazyHeroDataService服务维护内存数据
+            </summary>
+            <typeparam name="TItem">主表类名</typeparam> 
+        </member>
+        <member name="P:AmeBlazor.Components.TableLazyHero`1.JsRuntime">
+            <summary>
+            获得/设置 IJSRuntime 实例
+            </summary>
+        </member>
+        <member name="P:AmeBlazor.Components.TableLazyHero`1.FieldD">
+            <summary>
+            动态附加查询条件, 详表关联字段名称, 当Field!=FieldD才需要设置
+            </summary>
+        </member>
+        <member name="P:AmeBlazor.Components.TableLazyHero`1.ShowToolbarType">
+            <summary>
+            获得/设置 显示导入,执行添加工具栏按钮
+            </summary>
+        </member>
+        <member name="P:AmeBlazor.Components.TableLazyHero`1.FieldType">
+            <summary>
+            动态附加查询条件, 主键字段类型
+            </summary>
+        </member>
+        <member name="P:AmeBlazor.Components.TableLazyHero`1.TableImgField">
+            <summary>
+            图片列参数,图片列参数集合优先
+            </summary>
+        </member>
+        <member name="P:AmeBlazor.Components.TableLazyHero`1.TableImgFields">
+            <summary>
+            图片列参数集合,优先读取
+            </summary>
+        </member>
+        <member name="P:AmeBlazor.Components.TableLazyHero`1.EnableDateTimeRange">
+            <summary>
+            使用日期范围
+            </summary>
+        </member>
+        <member name="P:AmeBlazor.Components.TableLazyHero`1.Title">
+            <summary>
+            标题
+            </summary>
+        </member>
+        <member name="M:AmeBlazor.Components.TableLazyHero`1.Load(System.Collections.Generic.List{`0})">
+            <summary>
+            重新加载数据
+            </summary>
+            <param name="Items"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AmeBlazor.Components.TableLazyHero`1.GetExpression(System.Object,System.String,System.Type)">
+            <summary>
+            动态获取表达式
+            </summary>
+            <param name="model"></param>
+            <param name="field">列名,默认"ID"</param>
+            <param name="fieldType">列类型,默认typeof(int)</param>
+            <returns></returns>
+        </member>
+        <member name="M:AmeBlazor.Components.TableLazyHero`1.RenderTableImgColumn(`0,AmeBlazor.Components.TableImgField)">
+            <summary>
+            动态生成控件 TableColumn 图片列
+            </summary>
+            <param name="model"></param>
+            <param name="tableImgField"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AmeBlazor.Components.TableLazyHero`1.InitDateTimeRange">
+            <summary>
+            初始化日期选择控件
+            </summary>
+        </member>
+        <member name="M:AmeBlazor.Components.TableLazyHero`1.OnConfirm(BootstrapBlazor.Components.DateTimeRangeValue)">
+            <summary>
+            日期选择控件确认按钮事件
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AmeBlazor.Components.TableLazyHero`1.OnClear(BootstrapBlazor.Components.DateTimeRangeValue)">
+            <summary>
+            日期选择控件清除按钮事件
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="P:AmeBlazor.Components.TableLazyHero`1.IsStriped">
+            <summary>
+            获得/设置 是否斑马线样式 默认为 true
+            </summary>
+        </member>
+        <member name="P:AmeBlazor.Components.TableLazyHero`1.IsBordered">
+            <summary>
+            获得/设置 是否带边框样式 默认为 true
+            </summary>
+        </member>
+        <member name="P:AmeBlazor.Components.TableLazyHero`1.IsAutoRefresh">
+            <summary>
+            获得/设置 是否自动刷新表格 默认为 false
+            </summary>
+        </member>
+        <member name="P:AmeBlazor.Components.TableLazyHero`1.AutoRefreshInterval">
+            <summary>
+            获得/设置 自动刷新时间间隔 默认 2000 毫秒
+            </summary>
+        </member>
+        <member name="P:AmeBlazor.Components.TableLazyHero`1.ClickToSelect">
+            <summary>
+            获得/设置 点击行即选中本行 默认为 false
+            </summary>
+        </member>
+        <member name="P:AmeBlazor.Components.TableLazyHero`1.DoubleClickToEdit">
+            <summary>
+            获得/设置 单选模式下双击即编辑本行 默认为 true
+            </summary>
+        </member>
+        <member name="P:AmeBlazor.Components.TableLazyHero`1.ShowToolbar">
+            <summary>
+            获得/设置 是否显示工具栏 默认 true 显示
+            </summary>
+        </member>
+        <member name="P:AmeBlazor.Components.TableLazyHero`1.ShowExtendButtons">
+            <summary>
+            获得/设置 是否显示扩展按钮 默认为 true 显示
+            </summary>
+        </member>
+        <member name="P:AmeBlazor.Components.TableLazyHero`1.IsPagination">
+            <summary>
+            获得/设置 是否分页 默认为 true
+            </summary>
+        </member>
+        <member name="P:AmeBlazor.Components.TableLazyHero`1.IsMultipleSelect">
+            <summary>
+            获得/设置 是否为多选模式 默认为 false 不显示
+            </summary>
+        </member>
+        <member name="P:AmeBlazor.Components.TableLazyHero`1.ShowDefaultButtons">
+            <summary>
+            获得/设置 是否显示默认添加/编辑/删除按钮 默认为 false 不显示
+            </summary>
+        </member>
+        <member name="P:AmeBlazor.Components.TableLazyHero`1.ShowSearch">
+            <summary>
+            获得/设置 是否显示搜索框 默认为 true 显示搜索框
+            </summary>
+        </member>
+        <member name="P:AmeBlazor.Components.TableLazyHero`1.ShowSkeleton">
+            <summary>
+            获得/设置 是否显示加载骨架屏 默认 false 不显示
+            </summary>
+        </member>
+        <member name="P:AmeBlazor.Components.TableLazyHero`1.ShowDetailRow">
+            <summary>
+            获得/设置 是否显示每行的明细行展开图标
+            </summary>
+        </member>
+        <member name="P:AmeBlazor.Components.TableLazyHero`1.EditMode">
+            <summary>
+            获得/设置 组件编辑模式 默认为弹窗编辑行数据 PopupEditForm
+            </summary>
+        </member>
+        <member name="P:AmeBlazor.Components.TableLazyHero`1.Items">
+            <summary>
+            获得/设置 数据集合
+            </summary>
+        </member>
+        <member name="P:AmeBlazor.Components.TableLazyHero`1.HeaderStyle">
+            <summary>
+            获取/设置 表格 thead 样式 <see cref="T:BootstrapBlazor.Components.TableHeaderStyle"/>，默认<see cref="F:BootstrapBlazor.Components.TableHeaderStyle.Light"/>
+            </summary>
+        </member>
+        <member name="P:AmeBlazor.Components.TableLazyHero`1.TableSize">
+            <summary>
+            获得/设置 表格组件大小 默认为 Compact 紧凑模式
+            </summary>
+        </member>
+        <member name="P:AmeBlazor.Components.TableLazyHero`1.AllowResizing">
+            <summary>
+            获得/设置 是否允许列宽度调整 默认 false 固定表头时此属性生效
+            </summary>
+        </member>
+        <member name="P:AmeBlazor.Components.TableLazyHero`1.ShowFooter">
+            <summary>
+            获得/设置 是否显示表脚 默认为 false
+            </summary>
+        </member>
+        <member name="P:AmeBlazor.Components.TableLazyHero`1.ShowColumnList">
+            <summary>
+            获得/设置 是否显示列选择下拉框 默认为 false 不显示
+            </summary>
+        </member>
+        <member name="P:AmeBlazor.Components.TableLazyHero`1.ShowRefresh">
+            <summary>
+            获得/设置 是否显示刷新按钮 默认为 true
+            </summary>
+        </member>
+        <member name="P:AmeBlazor.Components.TableLazyHero`1.ShowLineNo">
+            <summary>
+            获得/设置 是否显示行号列 默认为 false
+            </summary>
+        </member>
+        <member name="P:AmeBlazor.Components.TableLazyHero`1.PageItemsSource">
+            <summary>
+            获得/设置 每页显示数据数量的外部数据源
+            </summary>
+        </member>
+        <member name="P:AmeBlazor.Components.TableLazyHero`1.RenderMode">
+            <summary>
+            获得/设置 组件布局方式 默认为 Auto
+            </summary>
+        </member>
+        <member name="P:AmeBlazor.Components.TableLazyHero`1.IsTracking">
+            <summary>
+            获得/设置 组件是否采用 Tracking 模式对编辑项进行直接更新 默认 false
+            </summary>
+        </member>
+        <member name="P:AmeBlazor.Components.TableLazyHero`1.IsExcel">
+            <summary>
+            获得/设置 组件工作模式为 Excel 模式 默认 false
+            </summary>
+        </member>
+        <member name="P:AmeBlazor.Components.TableLazyHero`1.Height">
+            <summary>
+            获得/设置 Table 高度 默认为 null
+            </summary>
+            <remarks>开启固定表头功能时生效 <see cref="P:AmeBlazor.Components.TableLazyHero`1.IsFixedHeader"/></remarks>
+        </member>
+        <member name="P:AmeBlazor.Components.TableLazyHero`1.IsFixedHeader">
+            <summary>
+            获得/设置 固定表头 默认 false
+            </summary>
+            <remarks>固定表头时设置 <see cref="P:AmeBlazor.Components.TableLazyHero`1.Height"/> 即可出现滚动条，未设置时尝试自适应</remarks>
+        </member>
+        <member name="M:AmeBlazor.Components.TimerAme.Dispose">
+            <summary>
+            Dispose 方法
+            </summary>
+        </member>
+        <member name="T:AmeBlazor.Components.NavigationManagerExtensions">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:AmeBlazor.Components.NavigationManagerExtensions.NavigateToNewTab(Microsoft.JSInterop.IJSRuntime,System.String)">
+            <summary>
+            导航或打开新页面方法
+            </summary>
+            <param name="JsRuntime"></param>
+            <param name="url"></param>
+        </member>
+        <member name="P:AmeBlazor.Components.BigButton.Class">
+            <summary>
+            获得/设置 组件 class
+            <para></para>
+            默认 <para></para> "card col-sm-6 col-md-4 col-lg-2 card bg-light text-dark"
+            </summary>
+        </member>
+        <member name="P:AmeBlazor.Components.BigButton.ClassOi">
+            <summary>
+            获得/设置 组件 oi 图标<para></para>默认 oi oi-book
+            </summary>
+        </member>
+        <member name="P:AmeBlazor.Components.BigButton.Url">
+            <summary>
+            获得/设置 组件 跳转的Url
+            </summary>
+        </member>
+        <member name="P:AmeBlazor.Components.BigButton.Text">
+            <summary>
+            获得/设置 组件显示文本
+            </summary>
+        </member>
+        <member name="P:AmeBlazor.Components.BigButton.Height">
+            <summary>
+            获得/设置 按钮高度<para></para>默认120px
+            </summary>
+        </member>
+        <member name="P:AmeBlazor.Components.BigButton.MaxWidth">
+            <summary>
+            获得/设置 按钮高度<para></para>默认200px
+            </summary>
+        </member>
+        <member name="P:AmeBlazor.Components.BigButton.NewTab">
+            <summary>
+            获得/设置 组件 跳转是否开新窗口
+            </summary>
+        </member>
+        <member name="T:BootstrapBlazor.Components.AutoFocusSearch">
+            <summary>
+            自动获得焦点的搜索框
+            </summary>
+        </member>
+        <member name="P:BootstrapBlazor.Components.AutoFocusSearch.FocusInterval">
+            <summary>
+            获得/设置 自动获得焦点时间间隔 默认 5000 毫秒
+            </summary>
+        </member>
+        <member name="M:BootstrapBlazor.Components.AutoFocusSearch.OnAfterRenderAsync(System.Boolean)">
+            <summary>
+            OnAfterRender
+            </summary>
+            <param name="firstRender"></param>
+        </member>
+        <member name="M:BootstrapBlazor.Components.AutoFocusSearch.Dispose(System.Boolean)">
+            <summary>
+            
+            </summary>
+            <param name="disposing"></param>
+        </member>
+        <member name="M:BootstrapBlazor.Components.AutoFocusSearch.Dispose">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Densen.Extensions.HtmlDirectoryFormatterExtensions.SortedHtmlDirectoryFormatterChs">
+            <summary>
+            中文界面按修改时间逆序排序<para></para>
+            Generates an HTML view title chinese for a directory with soft by LastModified.
+            </summary>
+        </member>
+        <member name="M:Densen.Extensions.HtmlDirectoryFormatterExtensions.SortedHtmlDirectoryFormatterChs.#ctor(System.Text.Encodings.Web.HtmlEncoder)">
+            <summary>
+            Constructs the <see cref="T:Densen.Extensions.HtmlDirectoryFormatterExtensions.SortedHtmlDirectoryFormatterChs"/>.
+            </summary>
+            <param name="encoder">The character encoding representation to use.</param>
+        </member>
+        <member name="M:Densen.Extensions.HtmlDirectoryFormatterExtensions.SortedHtmlDirectoryFormatterChs.GenerateContentAsync(Microsoft.AspNetCore.Http.HttpContext,System.Collections.Generic.IEnumerable{Microsoft.Extensions.FileProviders.IFileInfo})">
+            <summary>
+            Generates an HTML view for a directory.
+            </summary>
+        </member>
+        <member name="M:Densen.Extensions.HtmlDirectoryFormatterExtensions.SortedHtmlDirectoryFormatter.#ctor(System.Text.Encodings.Web.HtmlEncoder)">
+            <summary>
+            Constructs the <see cref="T:Densen.Extensions.HtmlDirectoryFormatterExtensions.SortedHtmlDirectoryFormatter"/>.
+            </summary>
+            <param name="encoder">The character encoding representation to use.</param>
+        </member>
+        <member name="M:Densen.Extensions.HtmlDirectoryFormatterExtensions.SortedHtmlDirectoryFormatter.#ctor">
+            <summary>
+            Constructs the <see cref="T:Densen.Extensions.HtmlDirectoryFormatterExtensions.SortedHtmlDirectoryFormatter"/> with default encoder
+            </summary>
+        </member>
+        <member name="M:Densen.Extensions.HtmlDirectoryFormatterExtensions.GetAutoSizeString(System.Double,System.Int32)">
+            <summary>
+            得到适应的大小
+            </summary>
+            <param name="path"></param>
+            <returns>string</returns>
+        </member>
+        <member name="T:Microsoft.Extensions.DependencyInjection.DensenServiceCollectionExtensions">
+            <summary>
+            Densen BootstrapBlazor 服务扩展类
+            </summary>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.DensenServiceCollectionExtensions.AddDensenExtensions(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            增加 BootstrapBlazor Table 服务扩展类,<para></para>
+            包含BootstrapBlazor/LazyHero/WebClientInfo/BrowserService/Clipboard
+            </summary>
+            <param name="services"></param>
+            <param name="configureOptions"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

@@ -3,13 +3,10 @@
 	<PropertyGroup>
 		<TargetFrameworks>netstandard2.0;netstandard2.1;net461;net6.0</TargetFrameworks>
 		<TargetFrameworks Condition="'$(Configuration)'=='Preview'">$(TargetFrameworks);net6.0-windows10.0.19041;net6.0-ios;net6.0-maccatalyst;net6.0-android</TargetFrameworks>
-		<Version Condition="'$(Configuration)'!='Preview'">6.3.4</Version>
-		<Version Condition="'$(Configuration)'=='Preview'">6.3.5-preview</Version>
+		<Version Condition="'$(Configuration)'=='Preview'">6.4.1-preview</Version>
 		<IsPackable>true</IsPackable>
 		<PackageIcon>logo.png</PackageIcon>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-		<Company>Densen Informatica</Company>
-		<Authors>Alex Chow</Authors>
 		<Description>Densen的.net常用扩展库</Description>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<PackageProjectUrl>https://github.com/densen2014/Densen.Extensions</PackageProjectUrl>
@@ -20,26 +17,8 @@
 		<RootNamespace>AME.Extensions</RootNamespace>
 		<Configurations>Debug;Release;DebugIE;Preview</Configurations>
 	</PropertyGroup>
-
-	<ItemGroup>
-		<None Include="logo.png" Pack="true" PackagePath="" />
-	</ItemGroup>
-
-	<PropertyGroup Condition="$([System.Text.RegularExpressions.Regex]::IsMatch('$(TargetFramework)', '^net\d'))">
-		<DefineConstants>NETFRAMEWORK</DefineConstants>
-	</PropertyGroup>
-	<PropertyGroup Condition="$([System.Text.RegularExpressions.Regex]::IsMatch('$(TargetFramework)', '^netstandard\d'))">
-		<DefineConstants>NETSTANDARD</DefineConstants>
-	</PropertyGroup>
-	<PropertyGroup Condition="$([System.Text.RegularExpressions.Regex]::IsMatch('$(TargetFramework)', '^netcoreapp\d'))">
-		<DefineConstants>NETCORE</DefineConstants>
-	</PropertyGroup>
 	<ItemGroup>
 		<PackageReference Include="Microsoft.Extensions.FileSystemGlobbing" Version="6.0.0" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-	</ItemGroup>
-	<ItemGroup Condition=" '$(TargetFramework)' == 'net461' ">
-		<!-- // HttpClient for full .NET -->
-		<Reference Include="System.Net.Http" />
 	</ItemGroup>
 </Project>

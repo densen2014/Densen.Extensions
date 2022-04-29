@@ -4,12 +4,9 @@
 		<TargetFramework>net6.0</TargetFramework>
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
-		<Version>0.0.2</Version>
 		<IsPackable>true</IsPackable>
 		<PackageIcon>logo.png</PackageIcon>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-		<Company>Densen Informatica</Company>
-		<Authors>Alex Chow</Authors>
 		<Description>FontAwesome for Blazor</Description>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<PackageProjectUrl>https://github.com/densen2014/Densen.Extensions/tree/master/Densen.Extensions.Blazor</PackageProjectUrl>
@@ -19,13 +16,8 @@
 		<AssemblyName>Densen.FontAwesome.Blazor</AssemblyName>
 		<RootNamespace>Densen.FontAwesome.Blazor</RootNamespace>
 	</PropertyGroup>
-
-	<ItemGroup>
-	  <Content Remove="wwwroot\logo.png" />
-	</ItemGroup>
 	
 	<ItemGroup>
-		<None Include="logo.png" Pack="true" PackagePath="" />
 		<None Include="wwwroot\logo.png" />
 	</ItemGroup>
 
