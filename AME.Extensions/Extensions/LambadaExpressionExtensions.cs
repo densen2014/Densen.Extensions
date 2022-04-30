@@ -96,7 +96,7 @@ namespace System.Linq.Expressions
         }
 
         /// <summary>
-        /// 创建lambda表达式：p=>p.propertyName < propertyValue
+        /// 创建lambda表达式：p=>p.propertyName [ propertyValue]
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="column"></param>

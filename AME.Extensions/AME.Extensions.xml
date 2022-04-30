@@ -660,7 +660,15 @@
             <param name="propertyValue"></param>
             <returns></returns>
         </member>
-        <!-- Badly formed XML comment ignored for member "M:System.Linq.Expressions.LambadaExpression.CreateLessThan``1(System.String,System.String)" -->
+        <member name="M:System.Linq.Expressions.LambadaExpression.CreateLessThan``1(System.String,System.String)">
+            <summary>
+            创建lambda表达式：p=>p.propertyName [ propertyValue]
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="column"></param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
         <member name="M:System.Linq.Expressions.LambadaExpression.CreateGreaterThanOrEqual``1(System.String,System.String)">
             <summary>
             创建lambda表达式：p=>p.propertyName >= propertyValue
