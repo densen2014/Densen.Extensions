@@ -99,8 +99,8 @@ namespace System.Linq.Expressions
         /// 创建lambda表达式：p=>p.propertyName [ propertyValue]
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        /// <param name="column"></param>
-        /// <param name="value"></param>
+        /// <param name="propertyName"></param>
+        /// <param name="propertyValue"></param>
         /// <returns></returns>
         public static Expression<Func<T, bool>> CreateLessThan<T>(string propertyName, string propertyValue)
         {
@@ -126,11 +126,11 @@ namespace System.Linq.Expressions
         }
 
         /// <summary>
-        /// 创建lambda表达式：p=>p.propertyName <= propertyValue
+        /// 创建lambda表达式：p=>p.propertyName = propertyValue
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        /// <param name="column"></param>
-        /// <param name="value"></param>
+        /// <param name="propertyName"></param>
+        /// <param name="propertyValue"></param>
         /// <returns></returns>
         public static Expression<Func<T, bool>> CreateLessThanOrEqual<T>(string propertyName, string propertyValue)
         {
