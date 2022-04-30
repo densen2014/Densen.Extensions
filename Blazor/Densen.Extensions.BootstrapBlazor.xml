@@ -241,7 +241,7 @@
             <summary>
             重新加载数据
             </summary>
-            <param name="Items"></param>
+            <param name="items"></param>
             <returns></returns>
         </member>
         <member name="M:AmeBlazor.Components.TableLazyHero`1.GetExpression(System.Object,System.String,System.Type)">
@@ -553,8 +553,7 @@
             增加 BootstrapBlazor Table 服务扩展类,<para></para>
             包含BootstrapBlazor/LazyHero/WebClientInfo/BrowserService/Clipboard
             </summary>
-            <param name="services"></param>
-            <param name="configureOptions"></param>
+            <param name="services"></param> 
             <returns></returns>
         </member>
     </members>

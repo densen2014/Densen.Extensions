@@ -583,7 +583,13 @@
             <param name="UnName">汉字</param>
             <returns>首字母</returns>
         </member>
-        <!-- Badly formed XML comment ignored for member "M:AME.Tools.String2Unicode(System.String)" -->
+        <member name="M:AME.Tools.String2Unicode(System.String)">
+            <summary>
+            字符串转Unicode
+            </summary>
+            <param name="source">源字符串</param>
+            <returns>Unicode编码后的字符串</returns>
+        </member>
         <member name="M:AME.Tools.Unicode2String(System.String)">
             <summary>
             Unicode转字符串

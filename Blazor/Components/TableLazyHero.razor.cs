@@ -131,7 +131,7 @@ namespace AmeBlazor.Components
         /// <summary>
         /// 重新加载数据
         /// </summary>
-        /// <param name="Items"></param>
+        /// <param name="items"></param>
         /// <returns></returns>
         public async Task Load(List<TItem> items)
         {

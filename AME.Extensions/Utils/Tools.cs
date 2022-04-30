@@ -810,7 +810,6 @@ namespace AME
 
 
         /// <summary>
-        /// <summary>
         /// 字符串转Unicode
         /// </summary>
         /// <param name="source">源字符串</param>

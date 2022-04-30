@@ -25,8 +25,7 @@ namespace Microsoft.Extensions.DependencyInjection
         /// 增加 BootstrapBlazor Table 服务扩展类,<para></para>
         /// 包含BootstrapBlazor/LazyHero/WebClientInfo/BrowserService/Clipboard
         /// </summary>
-        /// <param name="services"></param>
-        /// <param name="configureOptions"></param>
+        /// <param name="services"></param> 
         /// <returns></returns>
         public static IServiceCollection AddDensenExtensions(this IServiceCollection services)
         {

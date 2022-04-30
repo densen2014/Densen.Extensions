@@ -31,6 +31,7 @@ namespace Extensions
         /// </summary>
         /// <param name="path"></param>
         /// <param name="content"></param>
+        /// <param name="delay"></param>
         /// <returns></returns>
         public static async Task WriteAllTextAsync(string path, string content, int delay = 0)
         {
@@ -44,7 +45,7 @@ namespace Extensions
         /// <summary>
         /// 以异步形式打开一个文本文件，读取文件中的所有文本，然后关闭此文件。
         /// </summary>
-        /// <param name="path"></param>
+        /// <param name="Path"></param>
         /// <returns></returns> 
         public static async Task<string> ReadAllTextAsync(string Path)
         {
