@@ -729,14 +729,3 @@
         </member>
     </members>
 </doc>
-nq.Expressions.LambadaExpression.GetNotContains``1(System.String,System.String)">
-            <summary>
-            创建lambda表达式：!(p=>p.propertyName.Contains(propertyValue))
-            </summary>
-            <typeparam name="T"></typeparam>
-            <param name="propertyName"></param>
-            <param name="propertyValue"></param>
-            <returns></returns>
-        </member>
-    </members>
-</doc>
