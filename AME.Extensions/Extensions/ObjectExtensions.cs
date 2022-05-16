@@ -300,6 +300,10 @@ namespace AME
         {
             if (!string.IsNullOrEmpty(_text)) _input += $"{(addNewLine ? System.Environment.NewLine : "")}{_text}";
         }
+        public static void AddNewBlankLine(ref string _input)
+        {
+           _input += System.Environment.NewLine;
+        }
     }
 
     public static partial class StringExt
