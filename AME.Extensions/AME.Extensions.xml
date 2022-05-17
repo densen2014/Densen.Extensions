@@ -277,6 +277,13 @@
             </summary>
             <typeparam name="TItem"></typeparam>
         </member>
+        <member name="M:AME.ObjectExtensions.ObjectToJsonIndented(System.Object)">
+            <summary>
+            从一个Json生成美化的String格式
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
         <member name="M:AME.ObjectExtensions.ObjectToJson(System.Object)">
             <summary>
             从一个对象信息生成Json串

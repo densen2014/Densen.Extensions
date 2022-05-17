@@ -73,6 +73,22 @@ namespace AME
             }
         }
 
+        static JsonSerializerSettings setting2 = new JsonSerializerSettings
+        {
+            NullValueHandling = NullValueHandling.Ignore,
+            Formatting = Formatting.Indented
+        };
+        
+        /// <summary>
+        /// 从一个Json生成美化的String格式
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public static string ObjectToJsonIndented(this object obj)
+        {
+            return JsonConvert.SerializeObject(obj, setting2);
+        }
+
         /// <summary>
         /// 从一个对象信息生成Json串
         /// </summary>
