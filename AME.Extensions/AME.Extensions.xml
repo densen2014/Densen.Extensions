@@ -451,6 +451,7 @@
             <param name="r"></param>
             <param name="g"></param>
             <param name="b"></param>
+            <param name="alpha"></param>
             <returns></returns>
         </member>
         <member name="M:AME.Util.ColorUtil.ColorString(System.Byte,System.Byte,System.Byte,System.Double)">

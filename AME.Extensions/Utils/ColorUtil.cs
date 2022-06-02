@@ -40,10 +40,11 @@ namespace AME.Util
         /// <param name="r"></param>
         /// <param name="g"></param>
         /// <param name="b"></param>
+        /// <param name="alpha"></param>
         /// <returns></returns>
-        public static string ColorHexString(byte r, byte g, byte b, double a)
+        public static string ColorHexString(byte r, byte g, byte b, double alpha)
         {
-            return $"#{r:X2}{g:X2}{b:X2}";
+            return $"#{r:X2}{g:X2}{b:X2}:{alpha.ToString(CultureInfo.InvariantCulture)}";
         }
         /// <summary>
         /// Produces a string of the form 'rgba(r, g, b, alpha)' with the provided rgb and alpha values

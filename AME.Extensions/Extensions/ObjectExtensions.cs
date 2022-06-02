@@ -131,6 +131,10 @@ namespace AME
                 return obj.IsNum() ? (int) Convert.ToDouble(obj) : 0;
             }
         }
+        public static string Format2Num(this object obj, int PadLeft=8, int num=2)
+        { 
+            return obj.IsNum() ? Convert.ToDecimal(obj).ToString($"n{num}").PadLeft(PadLeft, ' ') : "".PadLeft(PadLeft, ' ');
+        } 
         public static decimal ToDecimal(this object obj)
         {
             return obj.IsNum() ? Convert.ToDecimal(obj) : 0;
