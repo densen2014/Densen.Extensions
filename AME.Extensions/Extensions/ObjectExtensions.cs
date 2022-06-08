@@ -245,12 +245,16 @@ namespace AME
         /// <returns>是否包含</returns>
         public static object GetIdentityKey<TItem>(this TItem instance, string propertyName)
         {
-
-            if (instance != null && !string.IsNullOrEmpty(propertyName))
+            try
             {
-                var propertyInfo = instance.GetType().GetProperty(propertyName);
-                var value = propertyInfo.GetValue(instance, null); 
-                return value;
+                if (instance != null && !string.IsNullOrEmpty(propertyName))
+                {
+                    var propertyInfo = instance.GetType().GetProperty(propertyName);
+                    var value = propertyInfo.GetValue(instance, null);
+                    return value;
+                }
+            }
+            finally { 
             }
             return null;
         }
