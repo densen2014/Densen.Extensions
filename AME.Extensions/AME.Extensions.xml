@@ -591,6 +591,15 @@
             <param name="UnName">汉字</param>
             <returns>首字母</returns>
         </member>
+        <member name="M:AME.Tools.RePic(System.Drawing.Bitmap,System.Int32,System.Int32)">
+            <summary>
+            将图片进行反色处理
+            </summary>
+            <param name="mybm">原始图片</param>
+            <param name="width">原始图片的长度</param>
+            <param name="height">原始图片的高度</param>
+            <returns>被反色后的图片</returns>
+        </member>
         <member name="M:AME.Tools.String2Unicode(System.String)">
             <summary>
             字符串转Unicode
@@ -616,6 +625,22 @@
             System.IO 扩展方法
             </summary>
         </member>
+        <member name="M:Extensions.File.WriteAllTextAsync(System.String,System.String,System.Int32)">
+            <summary>
+            以异步形式创建一个新文件，在其中写入指定的字符串，然后关闭该文件。 如果目标文件已存在，则覆盖该文件。
+            </summary>
+            <param name="path"></param>
+            <param name="content"></param>
+            <param name="delay"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Extensions.File.ReadAllTextAsync(System.String)">
+            <summary>
+            以异步形式打开一个文本文件，读取文件中的所有文本，然后关闭此文件。
+            </summary>
+            <param name="Path"></param>
+            <returns></returns> 
+        </member>
         <member name="M:Extensions.File.GetAutoSizeString(System.Int64,System.Int32)">
             <summary>
             得到适应的大小
@@ -623,26 +648,6 @@
             <param name="sizes"></param>
             <param name="roundCount"></param> 
             <returns>string</returns>
-        </member>
-        <member name="M:System.Linq.Expressions.LambadaExpression.True``1">
-            <summary>
-            创建lambda表达式：p=>true
-            </summary>
-            <typeparam name="T"></typeparam>
-            <returns></returns>
-        </member>
-        <member name="M:System.Linq.Expressions.LambadaExpression.False``1">
-            <summary>
-            创建lambda表达式：p=>false
-            </summary>
-            <typeparam name="T"></typeparam>
-            <returns></returns>
-        </member>
-        <member name="M:System.Linq.Expressions.LambadaExpression.GetOrderExpression``2(System.String)">
-            <summary>
-            创建lambda表达式：p=>p.propertyName
-            </summary>
-            <typeparam name="T"></typeparamtring</returns>
         </member>
         <member name="M:System.Linq.Expressions.LambadaExpression.True``1">
             <summary>
@@ -731,17 +736,6 @@
             <returns></returns>
         </member>
         <member name="M:System.Linq.Expressions.LambadaExpression.GetNotContains``1(System.String,System.String)">
-            <summary>
-            创建lambda表达式：!(p=>p.propertyName.Contains(propertyValue))
-            </summary>
-            <typeparam name="T"></typeparam>
-            <param name="propertyName"></param>
-            <param name="propertyValue"></param>
-            <returns></returns>
-        </member>
-    </members>
-</doc>
-nq.Expressions.LambadaExpression.GetNotContains``1(System.String,System.String)">
             <summary>
             创建lambda表达式：!(p=>p.propertyName.Contains(propertyValue))
             </summary>
