@@ -4,7 +4,7 @@
         <name>DemoLib</name>
     </assembly>
     <members>
-        <member name="P:AmeApi.NowInfo.ProductName">
+        <member name="P:AmeApi.NowInfo0.ProductName">
             <summary>
             商品名称
             </summary>

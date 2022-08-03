@@ -25,15 +25,20 @@ namespace AmeApi
         [AutoGenerateColumn(Visible = false)]
         public Refer refer { get; set; }
     }
-
     [AutoGenerateClass(Searchable = true, Filterable = true, Sortable = true)]
-    public class NowInfo
+    public class NowInfo: NowInfo0
     {
         [DisplayName("时间")]
         [AutoGenerateColumn(FormatString = "MM-dd HH:mm:ss")]
         public string obsTime { get; set; }
         public string temp { get; set; }
         public string feelsLike { get; set; }
+        
+    }
+    
+    [AutoGenerateClass(Searchable = true, Filterable = true, Sortable = true)]
+    public class NowInfo0
+    {
         public string icon { get; set; }
         public string text { get; set; }
 
