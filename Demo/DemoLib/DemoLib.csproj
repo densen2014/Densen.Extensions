@@ -10,7 +10,11 @@
 	<ItemGroup>
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
 		<PackageReference Include="FreeSql.Provider.Sqlite" Version="3.2.665" />
-		<PackageReference Include="BootstrapBlazor" Version="6.8.17" />
+		<!--<PackageReference Include="BootstrapBlazor" Version="6.8.17" />-->
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\..\..\BootstrapBlazor\src\BootstrapBlazor\BootstrapBlazor.csproj" />
 	</ItemGroup>
 
 </Project>

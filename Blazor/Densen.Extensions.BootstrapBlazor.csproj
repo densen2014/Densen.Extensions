@@ -24,7 +24,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="BootstrapBlazor" Version="6.8.17" />
+		<!--<PackageReference Include="BootstrapBlazor" Version="6.8.17" />-->
 		<PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.2.0" />
 		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.7" />
 		<PackageReference Include="Toolbelt.Blazor.I18nText" Version="11.1.4" />
@@ -32,6 +32,7 @@
 	</ItemGroup>
 	
 	<ItemGroup>
+		<ProjectReference Include="..\..\BootstrapBlazor\src\BootstrapBlazor\BootstrapBlazor.csproj" />
 		<ProjectReference Include="..\AME.Extensions\AME.Extensions.csproj" />
 	</ItemGroup>
 	
