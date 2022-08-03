@@ -58,3 +58,7 @@ a, .btn-link {
     .blazor-error-boundary::after {
         content: "An error has occurred."
     }
+    
+.table-toolbar {
+    --bb-table-toolbar-dropdown-menu-max-height: none;
+}
