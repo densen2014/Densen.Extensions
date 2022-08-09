@@ -143,7 +143,7 @@ namespace AME
         {
             return obj.IsNum() ? Convert.ToDouble(obj) : 0;
         }
-        public static bool IsNum(this object t) => double.TryParse(t.ToString(), out _);
+        public static bool IsNum(this object t) => t==null?false: double.TryParse(t.ToString(), out _);
 
         /// <summary>
         /// 检查是否为 Number 数据类型
