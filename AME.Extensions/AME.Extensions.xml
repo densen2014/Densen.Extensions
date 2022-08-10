@@ -642,37 +642,6 @@
             <summary>
             创建lambda表达式：p=>p.propertyName
             </summary>
-            <typeparam name="T"></typeparam�本，然后关闭此文件。
-            </summary>
-            <param name="Path"></param>
-            <returns></returns> 
-        </member>
-        <member name="M:Extensions.File.GetAutoSizeString(System.Int64,System.Int32)">
-            <summary>
-            得到适应的大小
-            </summary>
-            <param name="sizes"></param>
-            <param name="roundCount"></param> 
-            <returns>string</returns>
-        </member>
-        <member name="M:System.Linq.Expressions.LambadaExpression.True``1">
-            <summary>
-            创建lambda表达式：p=>true
-            </summary>
-            <typeparam name="T"></typeparam>
-            <returns></returns>
-        </member>
-        <member name="M:System.Linq.Expressions.LambadaExpression.False``1">
-            <summary>
-            创建lambda表达式：p=>false
-            </summary>
-            <typeparam name="T"></typeparam>
-            <returns></returns>
-        </member>
-        <member name="M:System.Linq.Expressions.LambadaExpression.GetOrderExpression``2(System.String)">
-            <summary>
-            创建lambda表达式：p=>p.propertyName
-            </summary>
             <typeparam name="T"></typeparam>
             <typeparam name="TKey"></typeparam>
             <param name="propertyName"></param>

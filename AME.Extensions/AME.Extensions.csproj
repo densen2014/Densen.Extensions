@@ -1,9 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>netstandard2.0;netstandard2.1;net461;net6.0</TargetFrameworks>
-		<TargetFrameworks Condition="'$(Configuration)'=='Preview'">$(TargetFrameworks);net6.0-windows10.0.19041;net6.0-ios;net6.0-maccatalyst;net6.0-android</TargetFrameworks>
-		<Version Condition="'$(Configuration)'=='Preview'">6.8.2-preview</Version>
+		<TargetFrameworks>netstandard2.0;netstandard2.1;net461;net6.0;net6.0-windows10.0.19041;net6.0-ios;net6.0-maccatalyst;net6.0-android</TargetFrameworks>
 		<IsPackable>true</IsPackable>
 		<PackageIcon>logo.png</PackageIcon>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
