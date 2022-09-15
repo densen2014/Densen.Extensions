@@ -12,7 +12,7 @@ namespace AME
     /// <summary>
     /// Object 扩展方法
     /// </summary>
-    public static partial  class ObjectExtensions
+    public static partial class ObjectExtensions
     {
         /// <summary>
         /// 泛型 Clone 方法
@@ -78,7 +78,7 @@ namespace AME
             NullValueHandling = NullValueHandling.Ignore,
             Formatting = Formatting.Indented
         };
-        
+
         /// <summary>
         /// 从一个Json生成美化的String格式
         /// </summary>
@@ -128,22 +128,30 @@ namespace AME
             }
             catch (Exception)
             {
-                return obj.IsNum() ? (int) Convert.ToDouble(obj) : 0;
+                return obj.IsNum() ? (int)Convert.ToDouble(obj) : 0;
             }
         }
-        public static string Format2Num(this object obj, int PadLeft=8, int num=2)
-        { 
+        public static string Format2Num(this object obj, int PadLeft = 8, int num = 2)
+        {
             return obj.IsNum() ? Convert.ToDecimal(obj).ToString($"n{num}").PadLeft(PadLeft, ' ') : "".PadLeft(PadLeft, ' ');
-        } 
+        }
         public static decimal ToDecimal(this object obj)
         {
             return obj.IsNum() ? Convert.ToDecimal(obj) : 0;
-        } 
+        }
+        public static string FormatNum2(this object obj, int num = 2)
+        {
+            return obj.ToDecimal().ToString($"n{num}");
+        }
+        public static decimal ToDecimal(this object obj, int num)
+        {
+            return decimal.Round(obj.ToDecimal(), num);
+        }
         public static double ToDbl(this object obj)
         {
             return obj.IsNum() ? Convert.ToDouble(obj) : 0;
         }
-        public static bool IsNum(this object t) => t==null?false: double.TryParse(t.ToString(), out _);
+        public static bool IsNum(this object t) => t == null ? false : double.TryParse(t.ToString(), out _);
 
         /// <summary>
         /// 检查是否为 Number 数据类型
@@ -254,7 +262,8 @@ namespace AME
                     return value;
                 }
             }
-            finally { 
+            finally
+            {
             }
             return null;
         }
@@ -266,13 +275,13 @@ namespace AME
         /// <param name="propertyName">需要判断的属性</param>
         /// <param name="value"></param> 
         /// <returns>是否包含</returns>
-        public static object FieldSetValue<TItem>(this TItem instance, string propertyName,object value)
+        public static object FieldSetValue<TItem>(this TItem instance, string propertyName, object value)
         {
 
             if (instance != null && !string.IsNullOrEmpty(propertyName))
             {
                 var propertyInfo = instance.GetType().GetProperty(propertyName);
-                propertyInfo.SetValue(instance, value); 
+                propertyInfo.SetValue(instance, value);
                 return value;
             }
             return null;
@@ -308,7 +317,7 @@ namespace AME
             return _quot + _input + _quot;
         }
 
-        public static string AddNewLineText(this string _input, string _text, bool addNewLine = true, string _quot="" ,[CallerMemberName] string propertyName = "")
+        public static string AddNewLineText(this string _input, string _text, bool addNewLine = true, string _quot = "", [CallerMemberName] string propertyName = "")
         {
             _input += $"{(addNewLine ? System.Environment.NewLine : "")}{_text}{_quot}";
             return _input;
@@ -326,7 +335,7 @@ namespace AME
         }
         public static void AddNewBlankLine(ref string _input)
         {
-           _input += System.Environment.NewLine;
+            _input += System.Environment.NewLine;
         }
     }
 
