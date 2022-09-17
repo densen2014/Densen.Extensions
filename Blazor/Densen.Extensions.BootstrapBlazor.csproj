@@ -22,10 +22,10 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="BootstrapBlazor" Version="6.9.0" />
+		<PackageReference Include="BootstrapBlazor" Version="6.10.5" />
 		<PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.2.0" />
-		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.8" />
-		<PackageReference Include="Toolbelt.Blazor.I18nText" Version="11.1.4" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.9" />
+		<PackageReference Include="Toolbelt.Blazor.I18nText" Version="12.0.0" />
 		<PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />
 	</ItemGroup>
 	
