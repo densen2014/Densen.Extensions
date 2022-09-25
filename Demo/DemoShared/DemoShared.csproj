@@ -10,6 +10,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<ProjectReference Include="..\..\..\BootstrapBlazor.Printer\src\BootstrapBlazor.Printer\BootstrapBlazor.Printer.csproj" />
 		<ProjectReference Include="..\..\Blazor\Densen.Extensions.BootstrapBlazor.csproj" />
 		<ProjectReference Include="..\..\Densen.Component.Blazor\Densen.Component.Blazor.csproj" />
 		<ProjectReference Include="..\DemoLib\DemoLib.csproj" />
