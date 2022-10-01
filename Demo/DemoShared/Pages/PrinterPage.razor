@@ -3,10 +3,49 @@
 
 <h4>打印标签/条码/QR码。</h4>
 
-<p>@message</p>
-<Printer OnError="OnError" OnUpdateStatus="OnError" />
+<pre>@message</pre>
+<pre style="color:green">@statusmessage</pre>
+<pre style="color:red">@errmessage</pre>
+
+<hr />
+默认UI
+<Printer OnResult="OnResult" OnError="OnError" OnUpdateStatus="OnUpdateStatus" OnUpdateError="OnError" OnGetDevices="OnGetDevices" />
+<hr />
+自定义UI 
+        <Printer @ref="printer" ShowUI="false" OnResult="OnResult" OnError="OnError" OnUpdateStatus="OnUpdateStatus" OnUpdateError="OnError" OnGetDevices="OnGetDevices" />
+         
+            <div data-action="notSupportedSerial" class="hidden notSupported">
+                <b>Web Serial 串行口</b> 不支持此设备
+            </div>
+            <div data-action="notSupportedBluetooth" class="hidden notSupported">
+                <b>Bluetooth 蓝牙</b> 不支持此设备
+            </div>
+            <br>
+            <button data-action="btnConnect" class="btn btn-primary">连接</button>
+            <button data-action="btnComConnect" class="btn btn-primary">连接串口</button>
+            <button data-action="btnDisconnect" class="btn btn-danger">断开</button>
+            <button data-action="btnReconnect" class="btn btn-secondary">重连</button>
+            <br />
+            <div>
+                <button data-action="btnGetDevices" class="btn btn-primary">已授获取权设备</button>
+                <input type="text" data-action="devicename" />
+                <button data-action="btnConnectdevice" class="btn btn-primary">连接已授权设备</button>
+            </div>
+            <br />
+            <div data-action="tools">
+                <button data-action="btnwrite" class="btn btn-primary">自定义打印</button>
+                <button data-action="btnwrite2" class="btn btn-primary">打印条码</button>
+                <button data-action="btnwriteR" class="btn btn-primary">打印小票</button>
+                <button data-action="btnwriteQr" class="btn btn-primary">打印QR码</button>
+                <button class="btn btn-primary" onclick="@(() => printer.PrintQR)">PrintButtonText</button>
+            </div>
+            <br>
+            <textarea rows="2" cols="20" data-action="barcode" style="height:200px;width:100%;"></textarea>
+         
 
 @code{
+
+    Printer printer { get; set; } = new Printer();
 
     /// <summary>
     /// 显示扫码界面
@@ -14,10 +53,37 @@
     bool ShowScanBarcode { get; set; } = false;
 
     private string? message;
+    private string? statusmessage;
+    private string? errmessage;
+
+    private Task OnResult(string message)
+    {
+        this.message = message;
+        StateHasChanged();
+        return Task.CompletedTask;
+    }
+
+    private Task OnUpdateStatus(string message)
+    {
+        this.statusmessage = message;
+        StateHasChanged();
+        return Task.CompletedTask;
+    }
 
     private Task OnError(string message)
     {
-        this.message = message;
+        this.errmessage = message;
+        StateHasChanged();
+        return Task.CompletedTask;
+    }
+
+    private Task OnGetDevices(List<string>? devices)
+    {
+        this.message = "";
+        if (devices == null && devices.Count == 0) return Task.CompletedTask;
+        this.message += $"授权设备{devices.Count}:{Environment.NewLine}";
+        devices.ForEach(a => this.message += $"   {a}{Environment.NewLine}");
+        //this.message = this.message.Replace(Environment.NewLine, "<br/>");
         StateHasChanged();
         return Task.CompletedTask;
     }
