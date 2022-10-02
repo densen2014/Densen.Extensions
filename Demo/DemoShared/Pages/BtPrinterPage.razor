@@ -68,7 +68,7 @@ else
     private Task OnGetDevices(List<string>? devices)
     {
         this.message = "";
-        if (devices == null && devices.Count == 0) return Task.CompletedTask;
+        if (devices == null || devices.Count == 0) return Task.CompletedTask;
         this.message += $"已配对设备{devices.Count}:{Environment.NewLine}";
         devices.ForEach(a => this.message += $"   {a}{Environment.NewLine}");
         //this.message = this.message.Replace(Environment.NewLine, "<br/>");
