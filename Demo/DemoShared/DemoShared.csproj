@@ -6,7 +6,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <PackageReference Include="BootstrapBlazor.Bluetooth" Version="6.0.0" />
+	  <PackageReference Include="BootstrapBlazor.Bluetooth" Version="6.0.4" />
 	</ItemGroup>
 
 	<ItemGroup>
