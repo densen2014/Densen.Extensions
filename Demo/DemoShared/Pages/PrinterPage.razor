@@ -2,55 +2,43 @@
 @attribute [TabItemOption(Text = "蓝牙打印机 BT Printer")]
 
 <h4>打印标签/条码/QR码。</h4>
+<button class="btn btn-outline-secondary" @onclick="SwitchUI ">切换界面</button>
+
 
 <pre>@message</pre>
 <pre style="color:green">@statusmessage</pre>
 <pre style="color:red">@errmessage</pre>
+<hr />
+@if (ShowUI)
+{
+    <span>内置UI</span>
 
-<hr />
-默认UI
-<Printer OnResult="OnResult" OnError="OnError" OnUpdateStatus="OnUpdateStatus" OnUpdateError="OnError" OnGetDevices="OnGetDevices" />
-<hr />
-自定义UI 
-        <Printer @ref="printer" ShowUI="false" OnResult="OnResult" OnError="OnError" OnUpdateStatus="OnUpdateStatus" OnUpdateError="OnError" OnGetDevices="OnGetDevices" />
-         
-            <div data-action="notSupportedSerial" class="hidden notSupported">
-                <b>Web Serial 串行口</b> 不支持此设备
-            </div>
-            <div data-action="notSupportedBluetooth" class="hidden notSupported">
-                <b>Bluetooth 蓝牙</b> 不支持此设备
-            </div>
-            <br>
-            <button data-action="btnConnect" class="btn btn-primary">连接</button>
-            <button data-action="btnComConnect" class="btn btn-primary">连接串口</button>
-            <button data-action="btnDisconnect" class="btn btn-danger">断开</button>
-            <button data-action="btnReconnect" class="btn btn-secondary">重连</button>
-            <br />
-            <div>
-                <button data-action="btnGetDevices" class="btn btn-primary">已授获取权设备</button>
-                <input type="text" data-action="devicename" />
-                <button data-action="btnConnectdevice" class="btn btn-primary">连接已授权设备</button>
-            </div>
-            <br />
-            <div data-action="tools">
-                <button data-action="btnwrite" class="btn btn-primary">自定义打印</button>
-                <button data-action="btnwrite2" class="btn btn-primary">打印条码</button>
-                <button data-action="btnwriteR" class="btn btn-primary">打印小票</button>
-                <button data-action="btnwriteQr" class="btn btn-primary">打印QR码</button>
-                <button class="btn btn-primary" onclick="@(() => printer.PrintQR)">PrintButtonText</button>
-            </div>
-            <br>
-            <textarea rows="2" cols="20" data-action="barcode" style="height:200px;width:100%;"></textarea>
-         
+    <Printer OnResult="OnResult" ShowUI="true" OnError="OnError" OnUpdateStatus="OnUpdateStatus" OnUpdateError="OnError" OnGetDevices="OnGetDevices" />
+
+}
+else
+{
+    <span>
+        基本用法
+    </span>
+    <Printer @ref="printer" OnResult="OnResult" OnError="OnError" OnUpdateStatus="OnUpdateStatus" OnUpdateError="OnError" OnGetDevices="OnGetDevices" />
+    <div @ref="printer.PrinterElement">
+        <button data-action="btnConnect" class="btn btn-outline-primary">连接</button>
+        <button data-action="btnDisconnect" class="btn btn-outline-danger">断开</button>
+        @*<button data-action="btnReconnect" class="btn btn-outline-secondary">重连</button>*@
+        <button data-action="tools" class="btn btn-outline-primary" @onclick="printer.PrintQR">@printer.PrintButtonText</button>
+    </div>
+}
+
 
 @code{
 
     Printer printer { get; set; } = new Printer();
 
     /// <summary>
-    /// 显示扫码界面
+    /// 显示内置界面
     /// </summary>
-    bool ShowScanBarcode { get; set; } = false;
+    bool ShowUI { get; set; } = false;
 
     private string? message;
     private string? statusmessage;
@@ -81,12 +69,17 @@
     {
         this.message = "";
         if (devices == null && devices.Count == 0) return Task.CompletedTask;
-        this.message += $"授权设备{devices.Count}:{Environment.NewLine}";
+        this.message += $"已配对设备{devices.Count}:{Environment.NewLine}";
         devices.ForEach(a => this.message += $"   {a}{Environment.NewLine}");
         //this.message = this.message.Replace(Environment.NewLine, "<br/>");
         StateHasChanged();
         return Task.CompletedTask;
     }
 
+    public void SwitchUI()
+    {
+        ShowUI = !ShowUI;
+    }
 
-} 
+
+}

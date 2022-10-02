@@ -113,11 +113,6 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="P:DemoShared.Pages.PrinterPage.ShowScanBarcode">
-            <summary>
-            显示扫码界面
-            </summary>
-        </member>
         <member name="P:DemoShared.Pages.SignaturePadPage.Result">
             <summary>
             签名Base64
@@ -134,6 +129,11 @@
             获得属性方法
             </summary>
             <returns></returns>
+        </member>
+        <member name="P:DemoShared.Pages.PrinterPage.ShowUI">
+            <summary>
+            显示内置界面
+            </summary>
         </member>
     </members>
 </doc>
