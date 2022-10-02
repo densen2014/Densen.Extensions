@@ -130,7 +130,7 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="P:DemoShared.Pages.PrinterPage.ShowUI">
+        <member name="P:DemoShared.Pages.BtPrinterPage.ShowUI">
             <summary>
             显示内置界面
             </summary>
