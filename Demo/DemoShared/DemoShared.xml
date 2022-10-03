@@ -170,5 +170,44 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="T:DemoShared.UtilityChart">
+            <summary>
+            Chart 工具类
+            </summary>
+        </member>
+        <member name="M:DemoShared.UtilityChart.RandomData(BootstrapBlazor.Components.Chart)">
+            <summary>
+            
+            </summary>
+            <param name="chart"></param>
+        </member>
+        <member name="M:DemoShared.UtilityChart.AddDataSet(BootstrapBlazor.Components.Chart,System.Int32@)">
+            <summary>
+            
+            </summary>
+            <param name="chart"></param>
+            <param name="dsCount"></param>
+        </member>
+        <member name="M:DemoShared.UtilityChart.RemoveDataSet(BootstrapBlazor.Components.Chart,System.Int32@)">
+            <summary>
+            
+            </summary>
+            <param name="chart"></param>
+            <param name="dsCount"></param>
+        </member>
+        <member name="M:DemoShared.UtilityChart.AddData(BootstrapBlazor.Components.Chart,System.Int32@)">
+            <summary>
+            
+            </summary>
+            <param name="chart"></param>
+            <param name="daCount"></param>
+        </member>
+        <member name="M:DemoShared.UtilityChart.RemoveData(BootstrapBlazor.Components.Chart,System.Int32@)">
+            <summary>
+            
+            </summary>
+            <param name="chart"></param>
+            <param name="daCount"></param>
+        </member>
     </members>
 </doc>

@@ -6,6 +6,11 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+		<PackageReference Include="BootstrapBlazor" Version="6.10.10" />
+		<PackageReference Include="BootstrapBlazor.Chart" Version="6.0.0" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<SupportedPlatform Include="browser" />
 	</ItemGroup>
 
@@ -13,7 +18,7 @@
 		<ProjectReference Include="..\..\..\BootstrapBlazor.Bluetooth\src\BootstrapBlazor.Bluetooth\BootstrapBlazor.Bluetooth.csproj" />
 	</ItemGroup>
 	<ItemGroup Condition="'$(Configuration)' == 'Release'">
-	  <PackageReference Include="BootstrapBlazor.Bluetooth" Version="6.0.4" />
+		<PackageReference Include="BootstrapBlazor.Bluetooth" Version="6.0.4" />
 	</ItemGroup>
 
 	<ItemGroup>
