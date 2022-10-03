@@ -5,6 +5,7 @@
 // **********************************
 
 using System.Globalization;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args); //    webBuilder.UseContentRoot("D:\\T9WMS\\publish");
 
@@ -28,7 +29,15 @@ if (!builder.Services.Any(x => x.ServiceType == typeof(HttpClient)))
 {
     builder.Services.AddSingleton<HttpClient>();
 }
-
+builder.Services.ConfigureJsonLocalizationOptions(op =>
+{
+    // 附加自己的 json 多语言文化资源文件 如 zh-TW.json
+    op.AdditionalJsonAssemblies = new Assembly[]
+    {
+                typeof(DemoShared.App).Assembly, 
+                typeof(BootstrapBlazor.Components.Chart).Assembly, 
+    };
+});
 var cultureInfo = new CultureInfo("zh-CN");
 CultureInfo.DefaultThreadCurrentCulture = cultureInfo;
 CultureInfo.DefaultThreadCurrentUICulture = cultureInfo;
