@@ -141,7 +141,7 @@ namespace AME
         }
         public static string FormatNum2(this object obj, int num = 2)
         {
-            return obj.ToDecimal().ToString($"n{num}");
+            return obj.ToDecimal().ToString($"f{num}");
         }
         public static decimal ToDecimal(this object obj, int num)
         {
