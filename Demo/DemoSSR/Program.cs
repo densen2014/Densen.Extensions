@@ -25,6 +25,7 @@ builder.Services.AddServerSideBlazor(a =>
     o.StreamBufferCapacity = 20;
 }); 
 builder.Services.AddDensenExtensions();
+builder.Services.AddOcrExtensions();
 if (!builder.Services.Any(x => x.ServiceType == typeof(HttpClient)))
 {
     builder.Services.AddSingleton<HttpClient>();
