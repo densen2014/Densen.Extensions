@@ -39,6 +39,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AME.SortedDirectoryChs", "H
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BootstrapBlazor.Bluetooth", "..\BootstrapBlazor.Bluetooth\src\BootstrapBlazor.Bluetooth\BootstrapBlazor.Bluetooth.csproj", "{B1E33822-B845-44BE-80B2-CBD7428DF9CD}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Component", "Component", "{7598D3CE-5270-4A5E-9A66-E8E8CC771339}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -123,6 +125,7 @@ Global
 		{DE7716CE-0AA5-421F-829C-11A2933CAC11} = {F5606303-B842-479D-B99B-4DB88AFED211}
 		{F8ED0084-A809-4F0B-BE68-D6B2F694C52C} = {F5606303-B842-479D-B99B-4DB88AFED211}
 		{857FCBB9-C965-42EE-B671-434EBE1EEA03} = {F8ED0084-A809-4F0B-BE68-D6B2F694C52C}
+		{B1E33822-B845-44BE-80B2-CBD7428DF9CD} = {7598D3CE-5270-4A5E-9A66-E8E8CC771339}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2B9698BD-88AE-4165-9322-67F121A4B26B}
