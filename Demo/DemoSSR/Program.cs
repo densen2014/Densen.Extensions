@@ -24,7 +24,7 @@ builder.Services.AddServerSideBlazor(a =>
     //可为客户端上载流缓冲的最大项数。 如果达到此限制，则会阻止处理调用，直到服务器处理流项。
     o.StreamBufferCapacity = 20;
 }); 
-builder.Services.AddDensenExtensions();
+builder.Services.AddDensenExtensions(); 
 builder.Services.AddOcrExtensions();
 if (!builder.Services.Any(x => x.ServiceType == typeof(HttpClient)))
 {
