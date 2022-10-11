@@ -4,6 +4,7 @@
 // e-mail:zhouchuanglin@gmail.com 
 // **********************************
 
+using Microsoft.AspNetCore.DataProtection.KeyManagement;
 using System.Globalization;
 using System.Reflection;
 
@@ -23,9 +24,9 @@ builder.Services.AddServerSideBlazor(a =>
     o.MaximumReceiveMessageSize = null;
     //可为客户端上载流缓冲的最大项数。 如果达到此限制，则会阻止处理调用，直到服务器处理流项。
     o.StreamBufferCapacity = 20;
-}); 
-builder.Services.AddDensenExtensions(); 
-builder.Services.AddOcrExtensions();
+});
+builder.Services.AddDensenExtensions();
+builder.Services.AddOcrExtensions(builder.Configuration["AzureCvKey"], builder.Configuration["AzureCvUrl"]);
 if (!builder.Services.Any(x => x.ServiceType == typeof(HttpClient)))
 {
     builder.Services.AddSingleton<HttpClient>();
