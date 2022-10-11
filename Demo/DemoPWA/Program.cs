@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using System.Globalization;
+using static System.Net.WebRequestMethods;
 
 var cultureInfo = new CultureInfo("zh-CN");
 CultureInfo.DefaultThreadCurrentCulture = cultureInfo;
@@ -13,5 +14,16 @@ builder.RootComponents.Add<HeadOutlet>("head::after");
 
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 builder.Services.AddDensenExtensions();
-builder.Services.AddOcrExtensions();
+
+#region 添加config文件
+//var http = new HttpClient()
+//{
+//    BaseAddress = new Uri(builder.HostEnvironment.BaseAddress),
+//};
+//using var response = await http.GetAsync("appsettings.json");
+//using var stream = await response.Content.ReadAsStreamAsync();
+//builder.Configuration.AddJsonStream(stream);
+#endregion 
+
+builder.Services.AddOcrExtensions(builder.Configuration["AzureCvKey"], builder.Configuration["AzureCvUrl"]);
 await builder.Build().RunAsync();
