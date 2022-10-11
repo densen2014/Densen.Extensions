@@ -291,7 +291,8 @@ namespace Densen.Extensions
         /// <summary>
         /// 得到适应的大小
         /// </summary>
-        /// <param name="path"></param>
+        /// <param name="size"></param>
+        /// <param name="roundCount"></param>
         /// <returns>string</returns>
         public static string GetAutoSizeString(double size, int roundCount=2)
         {
