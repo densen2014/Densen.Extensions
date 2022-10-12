@@ -10,7 +10,7 @@
 
 @if (ShowSignaturePad)
 {
-    <SignaturePad OnResult="((e) => { Result=e; ShowSignaturePad = (Result==null); })" EnableChangeColorBtn="false" Responsive="true" BackgroundColor="rgba(0,0,0,0)" SignAboveLabel="" OnClose="() => ShowSignaturePad =false" />
+    <SignaturePad OnResult="OnResult" EnableChangeColorBtn="false" Responsive="true" BackgroundColor="rgba(0,0,0,0)" SignAboveLabel="" OnClose="OnClose" />
 }
 else if (Result != null)
 {
@@ -28,7 +28,7 @@ else if (Result != null)
             @onclick="(() => Result = null)">
         返回前页
     </button>
- 
+
     <button class="btn btn-primary"
             type="button"
             @onclick="(async () =>SaveResult= await SaveImgBaseSixFour(Result))">
@@ -38,27 +38,42 @@ else if (Result != null)
         @SaveResult
     </a>
 
-        }
-        else
-        {
-        <button class="btn btn-primary"
-                type="button"
-                @onclick="(() => ShowSignaturePad = !ShowSignaturePad)">
-            签名
-        </button>
-        }
+}
+else
+{
+    <button class="btn btn-primary"
+            type="button"
+            @onclick="(() => ShowSignaturePad = !ShowSignaturePad)">
+        签名
+    </button>
+}
 
 
-        @code{
+@code{
 
-            /// <summary>
-            /// 签名Base64
-            /// </summary>
-        public string? Result { get; set; }
+    /// <summary>
+    /// 签名Base64
+    /// </summary>
+    public string? Result { get; set; }
 
-        /// <summary>
-        /// 显示响应式签名界面
-        /// </summary>
-        bool ShowSignaturePad { get; set; } = false;
+    private Task OnResult(string value)
+    {
+        ShowSignaturePad = (Result == null);
+        Result = value;
+        StateHasChanged();
+        return Task.CompletedTask;
+    }
 
-        }
+    private Task OnClose()
+    {
+        ShowSignaturePad = false;
+        return Task.CompletedTask;
+    }
+
+
+    /// <summary>
+    /// 显示响应式签名界面
+    /// </summary>
+    bool ShowSignaturePad { get; set; } = false;
+
+}

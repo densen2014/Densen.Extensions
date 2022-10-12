@@ -26,4 +26,5 @@ builder.Services.AddDensenExtensions();
 #endregion 
 
 builder.Services.AddOcrExtensions(builder.Configuration["AzureCvKey"], builder.Configuration["AzureCvUrl"]);
+builder.Services.AddAIFormExtensions(builder.Configuration["AzureAiFormKey"], builder.Configuration["AzureAiFormUrl"]);
 await builder.Build().RunAsync();

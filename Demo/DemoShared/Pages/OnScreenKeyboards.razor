@@ -2,9 +2,9 @@
 @attribute [TabItemOption(Text = "屏幕键盘")]
 
 <input class="@ClassName"
-          data-kioskboard-type="@KeyboardType.all.ToString()"
-          data-kioskboard-specialcharacters="true"
-          placeholder="全键盘" />
+       data-kioskboard-type="@KeyboardType.all.ToString()"
+       data-kioskboard-specialcharacters="true"
+       placeholder="全键盘" />
 <input class="@ClassName"
        data-kioskboard-type="@KeyboardType.keyboard.ToString()"
        data-kioskboard-placement="@KeyboardPlacement.bottom.ToString()"
@@ -35,7 +35,7 @@
 <div class="form-control textarea-demo">双绑 @BindValue</div>
 <BootstrapInput class="@ClassName" placeholder="BootstrapInput" @bind-Value="@BindValue" />
 <BootstrapPassword class="@ClassName" placeholder="BootstrapPassword" @bind-Value="@BindValue" />
-<Textarea class="@ClassName" placeholder="Textarea" rows="4" @bind-Value="@BindValue"/>
+<Textarea class="@ClassName" placeholder="Textarea" rows="4" @bind-Value="@BindValue" />
 
 @code{
 

@@ -21,6 +21,7 @@ public partial class NavMenu
             new MenuItem() { Text = "图片浏览 Viewer", Url = "/viewer" },
             new MenuItem() { Text = "蓝牙和打印 Bluetooth & Printer", Url = "/Bluetooth" },
             new MenuItem() { Text = "光学字符识别 OCR", Url = "/ocr" },
+            new MenuItem() { Text = "AI表格识别 AI Form", Url = "/aiform" },
             new MenuItem() { Text = "屏幕键盘 OSK", Url = "/onscreenkeyboards" },
             new MenuItem() { Text = "百度地图 Baidu Map", Url = "/baidumap" },
             new MenuItem() { Text = "谷歌地图 Maps", Url = "/maps" },
