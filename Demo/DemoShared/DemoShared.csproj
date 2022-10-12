@@ -27,7 +27,7 @@
 	</ItemGroup>
 	<ItemGroup Condition="'$(Configuration)' == 'Release'">
 		<PackageReference Include="BootstrapBlazor.BaiduMap" Version="6.2.1" />
-		<PackageReference Include="BootstrapBlazor.Geolocation" Version="6.2.1" />
+		<PackageReference Include="BootstrapBlazor.Geolocation" Version="6.2.2" />
 		<PackageReference Include="BootstrapBlazor.Viewer" Version="6.2.1" />
 		<PackageReference Include="BootstrapBlazor.WebAPI" Version="6.2.1" />
 		<PackageReference Include="BootstrapBlazor.Maps" Version="6.2.1" />
