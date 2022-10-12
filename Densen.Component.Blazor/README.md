@@ -11,19 +11,24 @@ Nuget
  
 ---
  
-[Viewerjs](Viewerjs.md)
-  
 [BarcodeScanner](BarcodeScanner.md)
-   
-[Handwritten](Handwritten.md)
-
-[SignaturePad](SignaturePad.md)
-
-[Geolocation](Geolocation.md)
-
-[OnScreenKeyboard](OnScreenKeyboard.md)
 
 [BaiduMap](BaiduMap.md)
 
+[Bluetooth & Printer](Bluetooth.md)
+ 
+[Geolocation](Geolocation.md)
+
 [GoogleMap](Map.md)
 
+[OCR](OCR.md)
+
+[OnScreenKeyboard](OnScreenKeyboard.md)
+
+[SignaturePad](SignaturePad.md)
+
+[Viewerjs](Viewerjs.md)
+   
+[Handwritten](Handwritten.md)
+
+[WebAPI (Battery info/Network info)](WebAPI.md)
