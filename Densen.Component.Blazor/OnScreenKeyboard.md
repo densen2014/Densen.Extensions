@@ -34,3 +34,7 @@ https://blazor.app1.es/onscreenkeyboards
 <OnScreenKeyboard ClassName="@ClassName" />
 
 ```
+
+源码分离到独立工程:
+
+https://github.com/densen2014/BootstrapBlazor.OnScreenKeyboard

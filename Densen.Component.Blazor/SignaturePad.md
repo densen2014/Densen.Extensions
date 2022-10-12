@@ -41,3 +41,7 @@ https://blazor.app1.es/signaturepad
 
 }
 ```
+
+源码分离到独立工程:
+
+https://github.com/densen2014/BootstrapBlazor.SignaturePad

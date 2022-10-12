@@ -47,6 +47,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BootstrapBlazor.OnScreenKey
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BootstrapBlazor.SignaturePad", "..\BootstrapBlazor.SignaturePad\src\BootstrapBlazor.SignaturePad\BootstrapBlazor.SignaturePad.csproj", "{E0BFC14C-8D4F-4D0F-B9A0-56ED2DD10CB5}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BootstrapBlazor.Maps", "..\BootstrapBlazor.Maps\src\BootstrapBlazor.Maps\BootstrapBlazor.Maps.csproj", "{FDA89B85-D7FC-478D-A3F1-BB234267D19A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -138,6 +140,12 @@ Global
 		{E0BFC14C-8D4F-4D0F-B9A0-56ED2DD10CB5}.Preview|Any CPU.Build.0 = Debug|Any CPU
 		{E0BFC14C-8D4F-4D0F-B9A0-56ED2DD10CB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E0BFC14C-8D4F-4D0F-B9A0-56ED2DD10CB5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FDA89B85-D7FC-478D-A3F1-BB234267D19A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FDA89B85-D7FC-478D-A3F1-BB234267D19A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FDA89B85-D7FC-478D-A3F1-BB234267D19A}.Preview|Any CPU.ActiveCfg = Debug|Any CPU
+		{FDA89B85-D7FC-478D-A3F1-BB234267D19A}.Preview|Any CPU.Build.0 = Debug|Any CPU
+		{FDA89B85-D7FC-478D-A3F1-BB234267D19A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FDA89B85-D7FC-478D-A3F1-BB234267D19A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -153,6 +161,7 @@ Global
 		{301D7265-E9B5-43DF-A34F-8B85E0CA5532} = {7598D3CE-5270-4A5E-9A66-E8E8CC771339}
 		{B8FC0C21-64D7-47F1-AAB8-48AFE2C65D29} = {7598D3CE-5270-4A5E-9A66-E8E8CC771339}
 		{E0BFC14C-8D4F-4D0F-B9A0-56ED2DD10CB5} = {7598D3CE-5270-4A5E-9A66-E8E8CC771339}
+		{FDA89B85-D7FC-478D-A3F1-BB234267D19A} = {7598D3CE-5270-4A5E-9A66-E8E8CC771339}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2B9698BD-88AE-4165-9322-67F121A4B26B}
