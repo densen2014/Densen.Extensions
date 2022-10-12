@@ -3,12 +3,12 @@
 
 <Tab>
     <TabItem Text="多图片">
-        &lt;Viewerjs Images="imagesList" /&gt;
-        <Viewerjs Images="imagesList" />
+        &lt;Viewer Images="imagesList" /&gt;
+        <Viewer Images="imagesList" />
     </TabItem>
     <TabItem Text="多图片+简化工具条">
-        &lt;Viewerjs Images="imagesList" toolbarlite="true" /&gt;
-        <Viewerjs Images="imagesList" toolbarlite="true" />
+        &lt;Viewer Images="imagesList" toolbarlite="true" /&gt;
+        <Viewer Images="imagesList" toolbarlite="true" />
     </TabItem>
     <TabItem Text="多图片+简化工具条+自定义DIV">
         &lt;div class="docs-galley22 mb-3"&gt;
@@ -24,7 +24,7 @@
         &lt;/ul&gt;
         &lt;/div&gt;
 
-        <Viewerjs ID="immmmm" Images="imagesList" UseBuiltinImageDiv="false" toolbarlite="true" />
+        <Viewer ID="immmmm" Images="imagesList" UseBuiltinImageDiv="false" toolbarlite="true" />
         <div class="docs-galley22 mb-3">
             <ul id="immmmm" class="docs-pictures22 clearfix">
                 @{
@@ -37,15 +37,15 @@
                 }
             </ul>
         </div>
-        <Viewerjs ID="immmmm" Images="imagesList" UseBuiltinImageDiv="false" toolbarlite="true" />
+        <Viewer ID="immmmm" Images="imagesList" UseBuiltinImageDiv="false" toolbarlite="true" />
     </TabItem>
     <TabItem Text="单图片">
-        &lt;Viewerjs Src="@imagesList[2]" Width="600px" Height="300px" /&gt;
-        <Viewerjs Src="@imagesList[2]" Width="600px" Height="300px" />
+        &lt;Viewer Src="@imagesList[2]" Width="600px" Height="300px" /&gt;
+        <Viewer Src="@imagesList[2]" Width="600px" Height="300px" />
     </TabItem>
     <TabItem Text="单图片+简化工具条">
-        &lt;Viewerjs Src="@imagesList[4]" Width="600px" Height="300px" toolbarlite="true" /&gt;
-        <Viewerjs Src="@imagesList[4]" Width="600px" Height="300px" toolbarlite="true" />
+        &lt;Viewer Src="@imagesList[4]" Width="600px" Height="300px" toolbarlite="true" /&gt;
+        <Viewer Src="@imagesList[4]" Width="600px" Height="300px" toolbarlite="true" />
     </TabItem>
 </Tab> 
 
@@ -97,7 +97,7 @@
             {
                 for (int i = 1; i <= 9; i++)
                 {
-                    imagesList.Add($"https://fengyuanchen.github.io/viewerjs/images/thumbnails/tibet-{i}.jpg");
+                    imagesList.Add($"https://fengyuanchen.github.io/Viewer/images/thumbnails/tibet-{i}.jpg");
                 }
             }
         }

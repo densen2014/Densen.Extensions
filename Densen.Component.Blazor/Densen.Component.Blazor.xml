@@ -534,22 +534,6 @@
             
              </summary>
         </member>
-        <member name="P:AmeBlazor.Components.Map.OnError">
-            <summary>
-            获得/设置 错误回调方法
-            </summary>
-        </member>
-        <member name="P:AmeBlazor.Components.Map.GoogleKey">
-            <summary>
-            获得/设置 GoogleKey<para></para>
-            为空则在 IConfiguration 服务获取 "GoogleKey" , 默认在 appsettings.json 文件配置
-            </summary>
-        </member>
-        <member name="P:AmeBlazor.Components.Map.Style">
-            <summary>
-            获得/设置 style
-            </summary>
-        </member>
         <member name="P:AmeBlazor.Components.Handwritten.HandwrittenBase64">
             <summary>
             Handwritten 手写签名

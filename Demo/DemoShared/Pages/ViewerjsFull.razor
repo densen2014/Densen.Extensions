@@ -1,4 +1,4 @@
-﻿@page "/viewerjsfull"
+﻿@page "/Viewerfull"
 @using AME.Services
 @implements IAsyncDisposable
 @inject IJSRuntime JS
@@ -49,7 +49,7 @@
 
         for (int i = 1; i <= 9; i++)
         {
-            Items1.Add($"https://fengyuanchen.github.io/viewerjs/images/thumbnails/tibet-{i}.jpg");
+            Items1.Add($"https://fengyuanchen.github.io/Viewer/images/thumbnails/tibet-{i}.jpg");
         }
     }
 
@@ -57,7 +57,7 @@
     {
         if (firstRender)
         {
-            module = await JS.InvokeAsync<IJSObjectReference>("import", "./_content/Densen.Component.Blazor/lib/viewerjs/viewerjs.js");
+            module = await JS.InvokeAsync<IJSObjectReference>("import", "./_content/BootstrapBlazor.Viewer/lib/Viewer/Viewer.js");
             await module.InvokeVoidAsync("initOptions", options);
         }
     }
@@ -75,7 +75,7 @@
     }
 }
 
-<link href="/_content/Densen.Component.Blazor/lib/viewerjs/viewer.min.css" rel="stylesheet" />
+<link href="/_content/BootstrapBlazor.Viewer/lib/Viewer/viewer.min.css" rel="stylesheet" />
 
 <style>
     .docs-galley {

@@ -35,3 +35,6 @@ Demo
 
 ```<Viewerjs Images='new List<string>() { "photo-2.jpg","photo-1.jpg","photo-3.jpg"}' />```
 
+源码分离到独立工程:
+
+https://github.com/densen2014/BootstrapBlazor.Viewer

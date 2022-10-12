@@ -19,8 +19,14 @@
 		<ProjectReference Include="..\..\..\BootstrapBlazor.OCR\src\BootstrapBlazor.OCR\BootstrapBlazor.OCR.csproj" />
 		<ProjectReference Include="..\..\..\BootstrapBlazor.OnScreenKeyboard\src\BootstrapBlazor.OnScreenKeyboard\BootstrapBlazor.OnScreenKeyboard.csproj" />
 		<ProjectReference Include="..\..\..\BootstrapBlazor.SignaturePad\src\BootstrapBlazor.SignaturePad\BootstrapBlazor.SignaturePad.csproj" />
+		<ProjectReference Include="..\..\..\BootstrapBlazor.Maps\src\BootstrapBlazor.Maps\BootstrapBlazor.Maps.csproj" />
+		<ProjectReference Include="..\..\..\BootstrapBlazor.BaiduMap\src\BootstrapBlazor.BaiduMap\BootstrapBlazor.BaiduMap.csproj" />
+		<ProjectReference Include="..\..\..\BootstrapBlazor.Geolocation\src\BootstrapBlazor.Geolocation\BootstrapBlazor.Geolocation.csproj" />
+		<ProjectReference Include="..\..\..\BootstrapBlazor.Viewer\src\BootstrapBlazor.Viewer\BootstrapBlazor.Viewer.csproj" />
+		<ProjectReference Include="..\..\..\BootstrapBlazor.WebAPI\src\BootstrapBlazor.WebAPI\BootstrapBlazor.WebAPI.csproj" />
 	</ItemGroup>
 	<ItemGroup Condition="'$(Configuration)' == 'Release'">
+		<PackageReference Include="BootstrapBlazor.Maps" Version="6.1.0" />
 		<PackageReference Include="BootstrapBlazor.Bluetooth" Version="6.1.0" />
 		<PackageReference Include="BootstrapBlazor.OCR" Version="6.1.2" />
 		<PackageReference Include="BootstrapBlazor.OnScreenKeyboard" Version="6.1.0" />
