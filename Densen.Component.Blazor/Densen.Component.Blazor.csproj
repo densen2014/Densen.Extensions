@@ -7,7 +7,6 @@
 		<IsPackable>true</IsPackable>
 		<PackageIcon>logo.png</PackageIcon>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-		<Version>6.2.1</Version>
 		<Description>Densen's Blazor组件库</Description>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<PackageProjectUrl>https://github.com/densen2014/Densen.Extensions/tree/master/Densen.Component.Blazor</PackageProjectUrl>
