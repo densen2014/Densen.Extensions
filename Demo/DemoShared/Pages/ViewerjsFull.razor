@@ -49,7 +49,7 @@
 
         for (int i = 1; i <= 9; i++)
         {
-            Items1.Add($"https://fengyuanchen.github.io/Viewer/images/thumbnails/tibet-{i}.jpg");
+            Items1.Add($"https://fengyuanchen.github.io/viewerjs/images/thumbnails/tibet-{i}.jpg");
         }
     }
 
@@ -57,7 +57,7 @@
     {
         if (firstRender)
         {
-            module = await JS.InvokeAsync<IJSObjectReference>("import", "./_content/BootstrapBlazor.Viewer/lib/Viewer/Viewer.js");
+            module = await JS.InvokeAsync<IJSObjectReference>("import", "./_content/BootstrapBlazor.Viewer/lib/viewerjs/viewerjs.js");
             await module.InvokeVoidAsync("initOptions", options);
         }
     }
