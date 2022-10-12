@@ -1,17 +1,21 @@
 ﻿@inherits LayoutComponentBase
 @using System.Reflection
 
-<div class="page">
+<section class="section">
     <div class="sidebar">
+        <div class="sidebar-title">
+            <span class="sidebar-text">DEMO</span>
+        </div>
         <NavMenu />
     </div>
-    <main>
-        <article class="content px-4">
+
+    <div class="main">
+        <div class="content px-3">
             <Tab ClickTabToNavigation="true"
                  ShowExtendButtons="true"
                  ShowClose="true"
                  Body=@Body
-                 AdditionalAssemblies=' new[] { Assembly.Load("DemoShared")! }'></Tab>
-        </article>
-    </main>
-</div>
+                 AdditionalAssemblies=' new[] { Assembly.Load("DemoShared")! }'/>
+        </div>
+    </div>
+</section>
