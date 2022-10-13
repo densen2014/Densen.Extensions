@@ -14,17 +14,6 @@ builder.RootComponents.Add<HeadOutlet>("head::after");
 
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 builder.Services.AddDensenExtensions();
-
-#region 添加config文件
-//var http = new HttpClient()
-//{
-//    BaseAddress = new Uri(builder.HostEnvironment.BaseAddress),
-//};
-//using var response = await http.GetAsync("appsettings.json");
-//using var stream = await response.Content.ReadAsStreamAsync();
-//builder.Configuration.AddJsonStream(stream);
-#endregion 
-
 builder.Services.AddOcrExtensions(builder.Configuration["AzureCvKey"], builder.Configuration["AzureCvUrl"]);
 builder.Services.AddAIFormExtensions(builder.Configuration["AzureAiFormKey"], builder.Configuration["AzureAiFormUrl"]);
 await builder.Build().RunAsync();
