@@ -59,6 +59,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BootstrapBlazor.WebAPI", ".
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BootstrapBlazor.FileSystem", "..\BootstrapBlazor.FileSystem\src\BootstrapBlazor.FileSystem\BootstrapBlazor.FileSystem.csproj", "{9286B726-D3B1-4106-84E9-03EDBD0F48D1}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BootstrapBlazor.Densen.All", "..\BootstrapBlazor.Densen.All\src\BootstrapBlazor.Densen.All\BootstrapBlazor.Densen.All.csproj", "{15A5215B-AA92-4A88-A267-E7949D3E94C8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -186,6 +188,12 @@ Global
 		{9286B726-D3B1-4106-84E9-03EDBD0F48D1}.Preview|Any CPU.Build.0 = Debug|Any CPU
 		{9286B726-D3B1-4106-84E9-03EDBD0F48D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9286B726-D3B1-4106-84E9-03EDBD0F48D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15A5215B-AA92-4A88-A267-E7949D3E94C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15A5215B-AA92-4A88-A267-E7949D3E94C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15A5215B-AA92-4A88-A267-E7949D3E94C8}.Preview|Any CPU.ActiveCfg = Debug|Any CPU
+		{15A5215B-AA92-4A88-A267-E7949D3E94C8}.Preview|Any CPU.Build.0 = Debug|Any CPU
+		{15A5215B-AA92-4A88-A267-E7949D3E94C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15A5215B-AA92-4A88-A267-E7949D3E94C8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -207,6 +215,7 @@ Global
 		{A8AE90CF-3FE0-46E6-AB37-C99A7833BA35} = {7598D3CE-5270-4A5E-9A66-E8E8CC771339}
 		{C22B46D0-65B5-45C9-89B4-0CF23DE0672C} = {7598D3CE-5270-4A5E-9A66-E8E8CC771339}
 		{9286B726-D3B1-4106-84E9-03EDBD0F48D1} = {7598D3CE-5270-4A5E-9A66-E8E8CC771339}
+		{15A5215B-AA92-4A88-A267-E7949D3E94C8} = {7598D3CE-5270-4A5E-9A66-E8E8CC771339}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2B9698BD-88AE-4165-9322-67F121A4B26B}
