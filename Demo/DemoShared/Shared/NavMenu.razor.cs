@@ -28,8 +28,11 @@ public partial class NavMenu
             new MenuItem() { Text = "谷歌地图 Maps", Url = "/maps" },
             new MenuItem() { Text = "系统信息 System info", Url = "/webapis" },
             new MenuItem() { Text = "图表", Url = "/charts" },
-            new MenuItem() { Text = "TableLazy", Url = "/tablelazy" },
-            new MenuItem() { Text = "Clock", Url = "/clock" },
-            new MenuItem() { Text = "IP", Url = "/ip" },
+            new MenuItem() { Text = "其他" , Items = new List<MenuItem>{
+                    new MenuItem() { Text = "TableLazy", Url = "/tablelazy" },
+                    new MenuItem() { Text = "Clock", Url = "/clock" },
+                    new MenuItem() { Text = "IP", Url = "/ip" },
+                } 
+            },
     };
 }
