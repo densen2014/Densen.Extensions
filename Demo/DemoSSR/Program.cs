@@ -4,8 +4,6 @@
 // e-mail:zhouchuanglin@gmail.com 
 // **********************************
 
-using Microsoft.AspNetCore.DataProtection.KeyManagement;
-using Microsoft.Extensions.DependencyInjection;
 using System.Globalization;
 using System.Reflection;
 
@@ -17,16 +15,32 @@ builder.Services.AddCors();
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor(a =>
 {
-    //异步调用JavaScript函数的最大等待时间
+    a.DetailedErrors = true;
     a.JSInteropDefaultCallTimeout = TimeSpan.FromMinutes(2);
+    a.MaxBufferedUnacknowledgedRenderBatches = 20;
+    a.DisconnectedCircuitRetentionPeriod = TimeSpan.FromMinutes(10);
 }).AddHubOptions(o =>
 {
+    o.EnableDetailedErrors = true;
     //单个传入集线器消息的最大大小。默认 32 KB	
     o.MaximumReceiveMessageSize = null;
     //可为客户端上载流缓冲的最大项数。 如果达到此限制，则会阻止处理调用，直到服务器处理流项。
     o.StreamBufferCapacity = 20;
 });
 builder.Services.AddDensenExtensions();
+builder.Services.ConfigureJsonLocalizationOptions(op =>
+{
+    // 忽略文化信息丢失日志
+    op.IgnoreLocalizerMissing = true;
+
+    // 附加自己的 json 多语言文化资源文件 如 zh-TW.json
+    op.AdditionalJsonAssemblies = new Assembly[]
+    {
+                //typeof(BootstrapBlazor.Shared.App).Assembly,
+                typeof(BootstrapBlazor.Components.Chart).Assembly,
+                //typeof(BootstrapBlazor.Components.SignaturePad).Assembly
+    };
+});
 builder.Services.AddFileSystemExtensions();
 builder.Services.AddOcrExtensions(builder.Configuration["AzureCvKey"], builder.Configuration["AzureCvUrl"]);
 builder.Services.AddAIFormExtensions(builder.Configuration["AzureAiFormKey"], builder.Configuration["AzureAiFormUrl"]);
