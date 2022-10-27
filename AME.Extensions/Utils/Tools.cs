@@ -231,30 +231,20 @@ namespace AME
             }
         }
         //加密
-        public static string MD5Crypto2(string Password)
+        public static string MD5Crypto2(string key)
         {
-            var md5 = new MD5CryptoServiceProvider();
-            byte[] username = (new ASCIIEncoding()).GetBytes(Password);
-
-            //转换为哈希值Byte数组
-            byte[] mdByte = md5.ComputeHash(username);
-            string mdString = System.BitConverter.ToString(mdByte).Replace("-", "");
-            //Dim mdString As String = (New ASCIIEncoding).GetString(mdByte)
-            return mdString;
-
+            byte[] hash = (new ASCIIEncoding()).GetBytes(key);
+            using (var md5 = MD5.Create())
+                hash = md5.ComputeHash(hash);
+            return System.BitConverter.ToString(hash).Replace("-", ""); 
         }
         //加密
-        public static string MD5Crypto(string Password)
-        {
-            var md5 = new MD5CryptoServiceProvider();
-            byte[] username = (new ASCIIEncoding()).GetBytes(Password);
-
-            //转换为哈希值Byte数组
-            byte[] mdByte = md5.ComputeHash(username);
-            //Dim mdString As String = System.BitConverter.ToString(mdByte)
-            string mdString = (new ASCIIEncoding()).GetString(mdByte);
-            return mdString;
-
+        public static string MD5Crypto(string key)
+        {                
+            byte[] hash = (new ASCIIEncoding()).GetBytes(key);
+            using (var md5 = MD5.Create())   
+                hash = md5.ComputeHash(hash);
+            return (new ASCIIEncoding()).GetString(hash); 
         }
 
         public static string 解释JSON(string fjson, string Field)
