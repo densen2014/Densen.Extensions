@@ -144,29 +144,29 @@ namespace AME
 
         }
 
-        public static string GetFileHMACSHA1(string filePath)
-        {
-            //创建MD5实例
-            HMACSHA1 md5Hasher = (HMACSHA1) HMAC.Create();
+        //public static string GetFileHMACSHA1(string filePath)
+        //{ 
+        //    //创建MD5实例
+        //    var md5Hasher = HMAC.Create();
  
-            //以字节形式读取文件
-            byte[] originalDate = File.ReadAllBytes(filePath);
+        //    //以字节形式读取文件
+        //    byte[] originalDate = File.ReadAllBytes(filePath);
 
-            //计算MD5，Imports System.Security.Cryptography
-            byte[] data = md5Hasher.ComputeHash(originalDate);
+        //    //计算MD5
+        //    byte[] data = md5Hasher.ComputeHash(originalDate);
 
-            //创建可变字符串，Imports System.Text
-            StringBuilder sBuilder = new StringBuilder();
+        //    //创建可变字符串，Imports System.Text
+        //    StringBuilder sBuilder = new StringBuilder();
 
-            // 连接每一个 byte 的 hash 码，并格式化为十六进制字符串
-            int i = 0;
-            for (i = 0; i <= data.Length - 1; i++)
-            {
-                sBuilder.Append(data[i].ToString("x2"));
-            }
+        //    // 连接每一个 byte 的 hash 码，并格式化为十六进制字符串
+        //    int i = 0;
+        //    for (i = 0; i <= data.Length - 1; i++)
+        //    {
+        //        sBuilder.Append(data[i].ToString("x2"));
+        //    }
 
-            return sBuilder.ToString();
-        }
+        //    return sBuilder.ToString();
+        //}
 
         /// <summary>
         /// 获取文件的MD5值
@@ -183,10 +183,6 @@ namespace AME
                     //创建MD5实例
                     MD5 md5Hasher = MD5.Create();
 
-                    //以字节形式读取文件
-                    // Dim originalDate As Byte() = My.Computer.FileSystem.ReadAllBytes(filePath)
-
-
                     //Dim strm As System.IO.Stream
                     FileInfo fInfo = new FileInfo(filePath);
                     long numBytes = fInfo.Length;
@@ -200,7 +196,7 @@ namespace AME
 
 
 
-                    //计算MD5，Imports System.Security.Cryptography
+                    //计算MD5
                     byte[] data = md5Hasher.ComputeHash(originalDate);
 
                     //创建可变字符串，Imports System.Text
