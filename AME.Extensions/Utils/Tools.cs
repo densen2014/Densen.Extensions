@@ -6,9 +6,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
-using System.Globalization;
 using System.IO;
-using System.Net;
 using System.Net.NetworkInformation;
 using System.Reflection;
 using System.Runtime.InteropServices;
@@ -149,9 +147,7 @@ namespace AME
         public static string GetFileHMACSHA1(string filePath)
         {
             //创建MD5实例
-#pragma warning disable SYSLIB0007 // 类型或成员已过时
             HMACSHA1 md5Hasher = (HMACSHA1) HMAC.Create();
-#pragma warning restore SYSLIB0007 // 类型或成员已过时
  
             //以字节形式读取文件
             byte[] originalDate = File.ReadAllBytes(filePath);
