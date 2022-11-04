@@ -8,6 +8,7 @@
 	<ItemGroup>
 		<PackageReference Include="BootstrapBlazor" Version="6.11.31" />
 		<PackageReference Include="BootstrapBlazor.Chart" Version="6.0.0" />
+		<PackageReference Include="BootstrapBlazor.BarCode" Version="6.3.0" />
 	</ItemGroup>
 
 	<ItemGroup>

@@ -29,6 +29,11 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:DemoShared.Pages.Index.Dispose">
+            <summary>
+            Dispose 方法
+            </summary>
+        </member>
         <member name="T:DemoShared.Pages.MapsPage">
             <summary>
             谷歌地图 Maps

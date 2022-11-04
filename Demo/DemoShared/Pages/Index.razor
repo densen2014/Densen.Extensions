@@ -29,3 +29,11 @@
         </code>
     </pre>
     <p></p>*@
+
+@if(flag)
+{
+    <QRCode Content="@DateTime.Now.ToLongTimeString()"></QRCode>
+}else{
+    <QRCode Content="@DateTime.Now.ToLongTimeString()"></QRCode>
+}
+<p>Hora: @DateTime.Now.ToLongTimeString()</p>
