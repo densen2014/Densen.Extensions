@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
 
 	<PropertyGroup>
-		<TargetFrameworks>net6.0;net6.0-windows10.0.19041;net6.0-ios;net6.0-maccatalyst;net6.0-android</TargetFrameworks>
+		<TargetFrameworks>net6.0;net6.0-windows10.0.19041;net6.0-ios;net6.0-maccatalyst;net6.0-android;net7.0;net7.0-windows10.0.19041;net7.0-ios;net7.0-maccatalyst;net7.0-android</TargetFrameworks>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<IsPackable>true</IsPackable>
 		<PackageIcon>logo.png</PackageIcon>
@@ -22,14 +22,21 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="BootstrapBlazor" Version="6.11.31" />
+		<PackageReference Include="BootstrapBlazor" Version="7.0.0" />
 		<PackageReference Include="BootstrapBlazor.FontAwesome" Version="6.3.0" />
 		<PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.2.0" />
-		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.10" />
 		<PackageReference Include="Toolbelt.Blazor.I18nText" Version="12.0.0" />
 		<PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />
 	</ItemGroup>
 	
+	<ItemGroup Condition="'$(TargetFramework)' == 'net6.0'">
+		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.10" />
+	</ItemGroup>
+
+	<ItemGroup Condition="'$(TargetFramework)' == 'net7.0'">
+		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="7.0" />
+	</ItemGroup>
+
 	<ItemGroup>
 		<ProjectReference Include="..\AME.Extensions\AME.Extensions.csproj" />
 	</ItemGroup>

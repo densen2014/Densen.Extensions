@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk.Razor">
 
 	<PropertyGroup>
-		<TargetFramework>net6.0</TargetFramework>
+		<TargetFrameworks>net6.0;net7.0</TargetFrameworks>
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<IsPackable>true</IsPackable>
@@ -25,9 +25,14 @@
 		<None Include="README.nuget.md" Pack="true" PackagePath="" />
 	</ItemGroup>
 
-	<ItemGroup>
+	<ItemGroup Condition="'$(TargetFramework)' == 'net6.0'">
 	  <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="6.0.10" />
 	  <PackageReference Include="Microsoft.Extensions.Configuration" Version="6.0.1" />
 	</ItemGroup>
+
+	<ItemGroup Condition="'$(TargetFramework)' == 'net7.0'">
+		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="7.0" />
+		<PackageReference Include="Microsoft.Extensions.Configuration" Version="7.0" />
+	</ItemGroup> 
 
 </Project>
