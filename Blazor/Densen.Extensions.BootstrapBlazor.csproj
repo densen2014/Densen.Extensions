@@ -1,8 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
 
 	<PropertyGroup>
-		<TargetFrameworks>net6.0;net6.0-windows10.0.19041;net6.0-ios;net6.0-maccatalyst;net7.0;net7.0-windows10.0.19041;net7.0-ios;net7.0-maccatalyst;net7.0-android</TargetFrameworks>
-		<!--<TargetFrameworks>net6.0;net6.0-windows10.0.19041;net6.0-ios;net6.0-maccatalyst;net6.0-android;net7.0;net7.0-windows10.0.19041;net7.0-ios;net7.0-maccatalyst;net7.0-android</TargetFrameworks>-->
+		<!--<TargetFrameworks>net6.0;net6.0-windows10.0.19041;net6.0-ios;net6.0-maccatalyst;net7.0;net7.0-windows10.0.19041;net7.0-ios;net7.0-maccatalyst;net7.0-android</TargetFrameworks>-->
+		<TargetFrameworks>net6.0;net6.0-windows10.0.19041;net6.0-ios;net6.0-maccatalyst;net6.0-android;net7.0;net7.0-windows10.0.19041;net7.0-ios;net7.0-maccatalyst;net7.0-android</TargetFrameworks>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<IsPackable>true</IsPackable>
 		<PackageIcon>logo.png</PackageIcon>
