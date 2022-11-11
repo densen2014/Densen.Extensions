@@ -938,7 +938,7 @@ namespace AME
             }
             catch
             {
-#if NET6_0
+#if NET6_0_OR_GREATER
                 // hack because of this: https://github.com/dotnet/corefx/issues/10361
                 if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
                 {
