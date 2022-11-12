@@ -920,6 +920,7 @@ namespace AME
 
         // Do this when you start your application
         static public int mainThreadId = System.Threading.Thread.CurrentThread.ManagedThreadId;
+        static public int CurrentThreadID => System.Threading.Thread.CurrentThread.ManagedThreadId;
 
         /// <summary>
         /// 判断当前线程是否为主线程<para></para>
