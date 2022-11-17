@@ -725,7 +725,7 @@ namespace AME
             return null;
         }
 
-#if NET461
+#if NET48
         public static System.Drawing.Image FileToImage(string fileName)
         {
             var stream = FileToMemoryStream(fileName);
