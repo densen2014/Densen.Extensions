@@ -14,7 +14,7 @@
 		<PackageTags>Densen.Extensions</PackageTags>
 		<AssemblyName>AME.Extensions</AssemblyName>
 		<RootNamespace>AME.Extensions</RootNamespace>
-		<Configurations>Debug;Release;DebugIE;Preview</Configurations>	
+		<Configurations>Debug;Release;Preview</Configurations>	
     	<EnableWindowsTargeting>true</EnableWindowsTargeting>
 	</PropertyGroup>
 	<ItemGroup>
