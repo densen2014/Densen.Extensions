@@ -115,7 +115,7 @@ namespace AME
 
         public override string ToString()
         {
-            if(StringExtensions.NoColor || _color == 0)
+            if (StringExtensions.NoColor || _color == 0)
             {
                 return _message;
             }
@@ -173,5 +173,15 @@ namespace AME
         {
             return new ColoredText(s).LightGray();
         }
+
+        public static string TrimStart(this string target, string trimChars)
+        {
+            return target.TrimStart(trimChars.ToCharArray());
+        }
+        public static string TrimEnd(this string target, string trimChars)
+        {
+            return target.TrimEnd(trimChars.ToCharArray());
+        }
     }
+
 }
