@@ -2,7 +2,7 @@
 Densen's Blazor component library and BootstrapBlazor service extension package
 
  [English](README.md) | [中文](README.zh-CN.md) | [demo](https://blazor.app1.es/) | [github](https://github.com/densen2014/Densen.Extensions) | [gitee(mirror only)](https://gitee.com/densen2014/Densen.Extensions)
- 
+
 ---
 
 Nuget
@@ -27,3 +27,6 @@ Nuget
 
 [GoogleMap](Densen.Component.Blazor/Map.md)
 
+[ZXingBlazor](https://github.com/densen2014/ZXingBlazor)
+[![nuget](https://img.shields.io/nuget/v/ZXingBlazor.svg?style=flat-square)](https://www.nuget.org/packages/ZXingBlazor) 
+[![stats](https://img.shields.io/nuget/dt/ZXingBlazor.svg?style=flat-square)](https://www.nuget.org/stats/packages/ZXingBlazor?groupby=Version)
