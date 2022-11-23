@@ -4,10 +4,9 @@
 // e-mail:zhouchuanglin@gmail.com 
 // **********************************
 
-namespace AmeBlazor.Components
-{
-    public partial class Empty
-    { 
+namespace AmeBlazor.Components;
 
-    }
+public partial class Empty
+{ 
+
 }

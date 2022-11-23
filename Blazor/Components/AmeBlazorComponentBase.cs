@@ -109,7 +109,9 @@ namespace AmeBlazor.Components
         {
             if (item.ChildContent == null)
             {
+#pragma warning disable BL0005
                 item.ChildContent = (Pages.Where(a => a.Key == item.Text).FirstOrDefault().Value).Render();
+#pragma warning restore BL0005
             }
             return Task.CompletedTask;
         }

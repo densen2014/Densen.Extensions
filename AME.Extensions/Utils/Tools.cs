@@ -31,9 +31,9 @@ namespace AME
                 var res = string.Format("{0:0." + new string('0', intSumDec) + "}", Convert.ToDouble(dblAmt));
                 return res;
             }
-            catch 
+            catch
             {
-                return dblAmt.ToString ();
+                return dblAmt.ToString();
             }
         }
         public static object 分钟转小时(int mins)
@@ -62,7 +62,7 @@ namespace AME
             {
                 int iRandNum = Rnd.Next(PasswordParent.Length);
                 //每次生一个随机数加入数组
-                RetVal += PasswordParent.Substring (iRandNum,1);
+                RetVal += PasswordParent.Substring(iRandNum, 1);
 
             }
 
@@ -148,7 +148,7 @@ namespace AME
         //{ 
         //    //创建MD5实例
         //    var md5Hasher = HMAC.Create();
- 
+
         //    //以字节形式读取文件
         //    byte[] originalDate = File.ReadAllBytes(filePath);
 
@@ -228,15 +228,15 @@ namespace AME
             byte[] hash = (new ASCIIEncoding()).GetBytes(key);
             using (var md5 = MD5.Create())
                 hash = md5.ComputeHash(hash);
-            return System.BitConverter.ToString(hash).Replace("-", ""); 
+            return System.BitConverter.ToString(hash).Replace("-", "");
         }
         //加密
         public static string MD5Crypto(string key)
-        {                
+        {
             byte[] hash = (new ASCIIEncoding()).GetBytes(key);
-            using (var md5 = MD5.Create())   
+            using (var md5 = MD5.Create())
                 hash = md5.ComputeHash(hash);
-            return (new ASCIIEncoding()).GetString(hash); 
+            return (new ASCIIEncoding()).GetString(hash);
         }
 
         public static string 解释JSON(string fjson, string Field)
@@ -250,7 +250,7 @@ namespace AME
                     if (GetDataArray != null && GetDataArray.HasValues)
                     {
                         JToken x;
-                        GetDataArray.TryGetValue(Field,out x);
+                        GetDataArray.TryGetValue(Field, out x);
                         return x?.ToString();
                     }
 
@@ -259,7 +259,7 @@ namespace AME
                     //return typeof(CategoriesFjson).GetField(Field).GetValue(fjson);
 
                 }
-                catch 
+                catch
                 {
                 }
             }
@@ -312,6 +312,9 @@ namespace AME
         #region runCmd
         public static string runCmd(string strCMD)
         {
+#if IOS 
+    return "Unsupported";
+#else
             Process p = new Process();
             var _with1 = p.StartInfo;
             _with1.FileName = "cmd.exe";
@@ -325,6 +328,7 @@ namespace AME
             string result = p.StandardOutput.ReadToEnd();
             p.Close();
             return result;
+#endif
         }
         #endregion
 
@@ -731,8 +735,8 @@ namespace AME
             var stream = FileToMemoryStream(fileName);
             return stream == null ? null : System.Drawing.Image.FromStream(stream);
         }
-        
- 
+
+
         /// <summary>
         /// 将图片进行反色处理
         /// </summary>
@@ -884,37 +888,45 @@ namespace AME
             return Encoding.UTF8.GetString(base64EncodedBytes);
         }
 
-        
+
 
         public static void WriteLine(string text, ConsoleColor backgroundColor)
         {
-            try //#643
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows) || RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
             {
-                var bgcolor = Console.BackgroundColor;
-                var forecolor = Console.ForegroundColor;
-                Console.BackgroundColor = backgroundColor;
+                try //#643
+                {
+                    var bgcolor = Console.BackgroundColor;
+                    var forecolor = Console.ForegroundColor;
+                    Console.BackgroundColor = backgroundColor;
 
-                switch (backgroundColor)
-                {
-                    case ConsoleColor.Yellow:
-                        Console.ForegroundColor = ConsoleColor.White;
-                        break;
-                    case ConsoleColor.DarkGreen:
-                        Console.ForegroundColor = ConsoleColor.White;
-                        break;
+                    switch (backgroundColor)
+                    {
+                        case ConsoleColor.Yellow:
+                            Console.ForegroundColor = ConsoleColor.White;
+                            break;
+                        case ConsoleColor.DarkGreen:
+                            Console.ForegroundColor = ConsoleColor.White;
+                            break;
+                    }
+                    Console.Write(text);
+                    Console.BackgroundColor = bgcolor;
+                    Console.ForegroundColor = forecolor;
+                    Console.WriteLine();
                 }
-                Console.Write(text);
-                Console.BackgroundColor = bgcolor;
-                Console.ForegroundColor = forecolor;
-                Console.WriteLine();
+                catch
+                {
+                    try
+                    {
+                        System.Diagnostics.Debug.WriteLine(text);
+                    }
+                    catch { }
+                }
+
             }
-            catch
+            else
             {
-                try
-                {
-                    System.Diagnostics.Debug.WriteLine(text);
-                }
-                catch { }
+                Console.WriteLine(text);
             }
         }
 
@@ -935,7 +947,11 @@ namespace AME
         {
             try
             {
+#if IOS
+    return;
+#else
                 Process.Start(url);
+#endif
             }
             catch
             {
@@ -974,7 +990,7 @@ namespace AME
 
     }
 
- 
+
 
 }
 
