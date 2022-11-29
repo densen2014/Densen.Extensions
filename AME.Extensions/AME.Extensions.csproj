@@ -14,8 +14,8 @@
 		<PackageTags>Densen.Extensions</PackageTags>
 		<AssemblyName>AME.Extensions</AssemblyName>
 		<RootNamespace>AME.Extensions</RootNamespace>
-		<Configurations>Debug;Release;Preview</Configurations>	
-    	<EnableWindowsTargeting>true</EnableWindowsTargeting>
+		<Configurations>Debug;Release;Preview</Configurations>
+		<EnableWindowsTargeting>true</EnableWindowsTargeting>
 	</PropertyGroup>
 	<ItemGroup>
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
@@ -26,5 +26,11 @@
 
 	<ItemGroup Condition="'$(TargetFramework)' == 'net7.0'">
 		<PackageReference Include="Microsoft.Extensions.FileSystemGlobbing" Version="7.0.0" />
-	</ItemGroup> 
+	</ItemGroup>
+
+	<ItemGroup Condition=" '$(TargetFramework)' == 'net48' ">
+		<Reference Include="System.Management">
+			<HintPath>..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.8\System.Management.dll</HintPath>
+		</Reference>
+	</ItemGroup>
 </Project>

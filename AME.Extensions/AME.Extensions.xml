@@ -488,6 +488,11 @@
             </summary>
             <returns>The string representation as a hex color string</returns>
         </member>
+        <member name="T:AME.Util.HardwareUtil">
+            <summary>
+            硬件工具类
+            </summary>
+        </member>
         <member name="M:AME.Util.HttpClientUtils.JsonObjects``1(System.Uri)">
             <summary>
             api 在winform中的get 方法
