@@ -65,6 +65,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ext_src", "ext_src", "{84BC
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BootstrapBlazor", "..\BootstrapBlazor\src\BootstrapBlazor\BootstrapBlazor.csproj", "{901F2C35-D835-42CA-A70C-15A57ABD027E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HardwareTools", "Mauis\HardwareTools\HardwareTools.csproj", "{D82DEF07-D453-4822-9481-00BD9703538D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Maui", "Maui", "{192EF7CF-B8AE-4F35-ABD5-CA964E8B1B31}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -204,6 +208,15 @@ Global
 		{901F2C35-D835-42CA-A70C-15A57ABD027E}.Preview|Any CPU.Build.0 = Debug|Any CPU
 		{901F2C35-D835-42CA-A70C-15A57ABD027E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{901F2C35-D835-42CA-A70C-15A57ABD027E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D82DEF07-D453-4822-9481-00BD9703538D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D82DEF07-D453-4822-9481-00BD9703538D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D82DEF07-D453-4822-9481-00BD9703538D}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{D82DEF07-D453-4822-9481-00BD9703538D}.Preview|Any CPU.ActiveCfg = Debug|Any CPU
+		{D82DEF07-D453-4822-9481-00BD9703538D}.Preview|Any CPU.Build.0 = Debug|Any CPU
+		{D82DEF07-D453-4822-9481-00BD9703538D}.Preview|Any CPU.Deploy.0 = Debug|Any CPU
+		{D82DEF07-D453-4822-9481-00BD9703538D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D82DEF07-D453-4822-9481-00BD9703538D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D82DEF07-D453-4822-9481-00BD9703538D}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -227,6 +240,7 @@ Global
 		{9286B726-D3B1-4106-84E9-03EDBD0F48D1} = {7598D3CE-5270-4A5E-9A66-E8E8CC771339}
 		{15A5215B-AA92-4A88-A267-E7949D3E94C8} = {7598D3CE-5270-4A5E-9A66-E8E8CC771339}
 		{901F2C35-D835-42CA-A70C-15A57ABD027E} = {84BC19E7-598D-4FA2-9B3B-5049B420A0CD}
+		{D82DEF07-D453-4822-9481-00BD9703538D} = {192EF7CF-B8AE-4F35-ABD5-CA964E8B1B31}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2B9698BD-88AE-4165-9322-67F121A4B26B}
