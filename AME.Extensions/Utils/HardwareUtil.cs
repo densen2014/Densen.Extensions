@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-#if NET48
+#if NET48 || WINDOWS10_0_19041_0_OR_GREATER
 using System.Management;
 #endif
 
@@ -14,7 +14,7 @@ namespace AME.Util
     public static class HardwareUtil
     {
 
-#if NET48
+#if NET48 || WINDOWS10_0_19041_0_OR_GREATER
    public static string GetFirstPhysicalMediaID()
         {
             return GetPhysicalMediaID().FirstOrDefault();
