@@ -41,7 +41,7 @@ namespace AME.Util
             try
             {
                 var searcher = new ManagementObjectSearcher("SELECT * FROM Win32_PhysicalMedia");
-                foreach (ManagementObject share in searcher.Get())
+                foreach (var share in searcher.Get())
                 {
                     if (share["SerialNumber"] != null && !string.IsNullOrEmpty(share["SerialNumber"].ToString()))
                     {
@@ -54,6 +54,42 @@ namespace AME.Util
             }
             return ids;
         }
+
+        public static List<string> GetDiskDriveID()
+        {
+             
+            var ids = new List<string>();
+            var keys = new List<string>() { 
+                "MediaType", 
+                "Model", 
+                "SerialNumber", 
+                "InterfaceType", 
+                //"Partitions", 
+                //"Signature", 
+                //"FirmwareRevision", 
+                //"TotalCylinders" ,
+                //"TotalSectors",
+                //"TotalHeads",
+                //"TotalTracks"
+            };
+            try
+            {
+                var searcher = new ManagementObjectSearcher("SELECT * FROM Win32_DiskDrive");
+                var id = "";
+                foreach (var share in searcher.Get())
+                {
+                    keys.ForEach (a=> id += a + " : "+ share[a]?.ToString() + System.Environment.NewLine);
+                    id += "Size" + " : " + ((Convert.ToDouble(share["Size"]) / 1024 / 1024 / 1024)<1?(Math.Round(Convert.ToDouble(share["Size"]) / 1024 / 1024) + " MB"): (Math.Round(Convert.ToDouble(share["Size"]) / 1024 / 1024 / 1024) + " GB"));
+                    ids.Add (id);
+                    id = "";
+                }
+            }
+            catch
+            {
+            }
+            return ids;
+        }
+
 #endif
     }
 
