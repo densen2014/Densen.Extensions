@@ -6,8 +6,9 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="BootstrapBlazor" Version="7.0" />
-		<PackageReference Include="BootstrapBlazor.Chart" Version="6.0.0" />
+		<PackageReference Include="BootstrapBlazor" Version="7.0.9" />
+		<PackageReference Include="BootstrapBlazor.Chart" Version="7.0.0" />
+		<PackageReference Include="MiniExcel" Version="1.29.0" />
 	</ItemGroup>
 
 	<ItemGroup>

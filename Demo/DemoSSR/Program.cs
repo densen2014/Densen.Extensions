@@ -41,7 +41,6 @@ builder.Services.ConfigureJsonLocalizationOptions(op =>
                 //typeof(BootstrapBlazor.Components.SignaturePad).Assembly
     };
 });
-builder.Services.AddFileSystemExtensions();
 builder.Services.AddOcrExtensions(builder.Configuration["AzureCvKey"], builder.Configuration["AzureCvUrl"]);
 builder.Services.AddAIFormExtensions(builder.Configuration["AzureAiFormKey"], builder.Configuration["AzureAiFormUrl"]);
 if (!builder.Services.Any(x => x.ServiceType == typeof(HttpClient)))
