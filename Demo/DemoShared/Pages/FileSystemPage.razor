@@ -44,8 +44,16 @@
 
     private Task OnFileStream(Stream stream)
     {
-        var rows = stream.Query().ToList();
-        rows.ForEach(a=> contentsExcel += Environment.NewLine + string.Join(" | " , a ));
+        try
+        {
+            var rows = stream.Query().ToList();
+            rows.ForEach(a => contentsExcel += Environment.NewLine + string.Join(" | ", a));
+
+        }
+        catch (Exception e)
+        {
+            contents = e.Message;
+        }
         StateHasChanged();
         return Task.CompletedTask;
     }
