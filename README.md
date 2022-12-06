@@ -12,32 +12,32 @@ Nuget
 ---
 # Blazor complement
 
-[ZXingBlazor](https://github.com/densen2014/ZXingBlazor)
+[ZXingBlazor](https://www.nuget.org/packages/ZXingBlazor)
 [![nuget](https://img.shields.io/nuget/v/ZXingBlazor.svg?style=flat-square)](https://www.nuget.org/packages/ZXingBlazor) 
 [![stats](https://img.shields.io/nuget/dt/ZXingBlazor.svg?style=flat-square)](https://www.nuget.org/stats/packages/ZXingBlazor?groupby=Version)
 
-[Viewer](https://github.com/densen2014/BootstrapBlazor.Viewer)
+[Viewer](https://www.nuget.org/packages/BootstrapBlazor.Viewer)
   
 [BarcodeScanner](Densen.Component.Blazor/BarcodeScanner.md)
    
 [Handwritten](Densen.Component.Blazor/Handwritten.md)
 
-[SignaturePad](https://github.com/densen2014/BootstrapBlazor.SignaturePad)
+[SignaturePad](https://www.nuget.org/packages/BootstrapBlazor.SignaturePad)
 
-[Geolocation](https://github.com/densen2014/BootstrapBlazor.Geolocation)
+[Geolocation](https://www.nuget.org/packages/BootstrapBlazor.Geolocation)
 
-[OnScreenKeyboard](https://github.com/densen2014/BootstrapBlazor.OnScreenKeyboard)
+[OnScreenKeyboard](https://www.nuget.org/packages/BootstrapBlazor.OnScreenKeyboard)
 
-[BaiduMap](https://github.com/densen2014/BootstrapBlazor.BaiduMap)
+[BaiduMap](https://www.nuget.org/packages/BootstrapBlazor.BaiduMap)
 
-[GoogleMap](https://github.com/densen2014/BootstrapBlazor.Maps)
+[GoogleMap](https://www.nuget.org/packages/BootstrapBlazor.Maps)
 
-[Bluetooth](https://github.com/densen2014/BootstrapBlazor.Bluetooth)
+[Bluetooth](https://www.nuget.org/packages/BootstrapBlazor.Bluetooth)
 
-[PdfReader](https://github.com/densen2014/BootstrapBlazor.PdfReader)
+[PdfReader](https://www.nuget.org/packages/BootstrapBlazor.PdfReader)
 
-[FileSystem](https://github.com/densen2014/BootstrapBlazor.FileSystem)
+[FileSystem](https://www.nuget.org/packages/BootstrapBlazor.FileSystem)
 
-[OCR](https://github.com/densen2014/BootstrapBlazor.OCR)
+[OCR](https://www.nuget.org/packages/BootstrapBlazor.OCR)
 
-[WebAPI](https://github.com/densen2014/BootstrapBlazor.WebAPI)
+[WebAPI](https://www.nuget.org/packages/BootstrapBlazor.WebAPI)
