@@ -10,23 +10,34 @@ Nuget
  [Densen.Component.Blazor](https://www.nuget.org/packages/Densen.Component.Blazor/) | [Densen.Extensions.BootstrapBlazor](https://www.nuget.org/packages/Densen.Extensions.BootstrapBlazor/)  | [FreeSql.Extensionsr.BootstrapBlazor](https://www.nuget.org/packages/Densen.FreeSql.Extensions.BootstrapBlazor/)  | [ZXingBlazor](https://www.nuget.org/packages/ZXingBlazor/)
  
 ---
- 
-[Viewerjs](Densen.Component.Blazor/Viewerjs.md)
+# Blazor complement
+
+[ZXingBlazor](https://github.com/densen2014/ZXingBlazor)
+[![nuget](https://img.shields.io/nuget/v/ZXingBlazor.svg?style=flat-square)](https://www.nuget.org/packages/ZXingBlazor) 
+[![stats](https://img.shields.io/nuget/dt/ZXingBlazor.svg?style=flat-square)](https://www.nuget.org/stats/packages/ZXingBlazor?groupby=Version)
+
+[Viewer](https://github.com/densen2014/BootstrapBlazor.Viewer)
   
 [BarcodeScanner](Densen.Component.Blazor/BarcodeScanner.md)
    
 [Handwritten](Densen.Component.Blazor/Handwritten.md)
 
-[SignaturePad](Densen.Component.Blazor/SignaturePad.md)
+[SignaturePad](https://github.com/densen2014/BootstrapBlazor.SignaturePad)
 
-[Geolocation](Densen.Component.Blazor/Geolocation.md)
+[Geolocation](https://github.com/densen2014/BootstrapBlazor.Geolocation)
 
-[OnScreenKeyboard](Densen.Component.Blazor/OnScreenKeyboard.md)
+[OnScreenKeyboard](https://github.com/densen2014/BootstrapBlazor.OnScreenKeyboard)
 
-[BaiduMap](Densen.Component.Blazor/BaiduMap.md)
+[BaiduMap](https://github.com/densen2014/BootstrapBlazor.BaiduMap)
 
-[GoogleMap](Densen.Component.Blazor/Map.md)
+[GoogleMap](https://github.com/densen2014/BootstrapBlazor.Maps)
 
-[ZXingBlazor](https://github.com/densen2014/ZXingBlazor)
-[![nuget](https://img.shields.io/nuget/v/ZXingBlazor.svg?style=flat-square)](https://www.nuget.org/packages/ZXingBlazor) 
-[![stats](https://img.shields.io/nuget/dt/ZXingBlazor.svg?style=flat-square)](https://www.nuget.org/stats/packages/ZXingBlazor?groupby=Version)
+[Bluetooth](https://github.com/densen2014/BootstrapBlazor.Bluetooth)
+
+[PdfReader](https://github.com/densen2014/BootstrapBlazor.PdfReader)
+
+[FileSystem](https://github.com/densen2014/BootstrapBlazor.FileSystem)
+
+[OCR](https://github.com/densen2014/BootstrapBlazor.OCR)
+
+[WebAPI](https://github.com/densen2014/BootstrapBlazor.WebAPI)
