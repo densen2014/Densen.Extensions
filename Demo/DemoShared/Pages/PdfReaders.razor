@@ -2,15 +2,24 @@
 @attribute [TabItemOption(Text = "PDF阅读器")]
 @using MiniExcelLibs
 
-<h4>PDF阅读器 Pdf Readers</h4>
-<PdfReader OnInfo="OnInfo"
+<h4>PDF阅读器 Pdf Reader</h4>
+<PdfReader UrlBase=@UrlBase
+           PdfFile=@PdfFile
+           OnInfo="OnInfo"
            OnError="OnError" />
 <pre>@contents</pre>
 
 
 @code{
     private string contents;
- 
+#if DEBUG
+    private string UrlBase = "https://localhost:5011/";
+    private string PdfFile = "_content/DemoShared/sample.pdf";
+#else
+    private string UrlBase = "https://blazor.app1.es/";
+    private string PdfFile = "_content/DemoShared/sample.pdf";
+#endif
+
     private Task OnInfo(string contents)
     {
         this.contents = contents;
