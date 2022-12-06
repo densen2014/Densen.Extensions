@@ -1,0 +1,27 @@
+﻿@page "/pdfReaders"
+@attribute [TabItemOption(Text = "PDF阅读器")]
+@using MiniExcelLibs
+
+<h4>PDF阅读器 Pdf Readers</h4>
+<PdfReader OnInfo="OnInfo"
+           OnError="OnError" />
+<pre>@contents</pre>
+
+
+@code{
+    private string contents;
+ 
+    private Task OnInfo(string contents)
+    {
+        this.contents = contents;
+        StateHasChanged();
+        return Task.CompletedTask;
+    }
+    private Task OnError(string contents)
+    {
+        this.contents = contents;
+        StateHasChanged();
+        return Task.CompletedTask;
+    }
+
+}

@@ -6,7 +6,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="BootstrapBlazor" Version="7.0.9" />
+		<PackageReference Include="BootstrapBlazor" Version="7.1.1" />
 		<PackageReference Include="BootstrapBlazor.Chart" Version="7.0.0" />
 		<PackageReference Include="MiniExcel" Version="1.29.0" />
 	</ItemGroup>
@@ -42,6 +42,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<ProjectReference Include="..\..\..\BootstrapBlazor.PdfReader\src\BootstrapBlazor.PdfReader\BootstrapBlazor.PdfReader.csproj" />
 		<ProjectReference Include="..\..\Blazor\Densen.Extensions.BootstrapBlazor.csproj" />
 		<ProjectReference Include="..\..\Densen.Component.Blazor\Densen.Component.Blazor.csproj" />
 		<ProjectReference Include="..\DemoLib\DemoLib.csproj" />

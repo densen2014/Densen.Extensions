@@ -8,9 +8,9 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-		<PackageReference Include="FreeSql.Provider.Sqlite" Version="3.2.683" />
-		<PackageReference Include="BootstrapBlazor" Version="7.0.9" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
+		<PackageReference Include="FreeSql.Provider.Sqlite" Version="3.2.684" />
+		<PackageReference Include="BootstrapBlazor" Version="7.1.1" />
 	</ItemGroup>
 
 </Project>
