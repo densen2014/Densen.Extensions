@@ -30,3 +30,5 @@ Nuget
 [ZXingBlazor](https://github.com/densen2014/ZXingBlazor)
 [![nuget](https://img.shields.io/nuget/v/ZXingBlazor.svg?style=flat-square)](https://www.nuget.org/packages/ZXingBlazor) 
 [![stats](https://img.shields.io/nuget/dt/ZXingBlazor.svg?style=flat-square)](https://www.nuget.org/stats/packages/ZXingBlazor?groupby=Version)
+
+[PdfReader](https://github.com/densen2014/BootstrapBlazor.PdfReader)
