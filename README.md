@@ -12,32 +12,31 @@ Nuget
 ---
 # Blazor complement
 
-[ZXingBlazor](https://www.nuget.org/packages/ZXingBlazor)
-[![nuget](https://img.shields.io/nuget/v/ZXingBlazor.svg?style=flat-square)](https://www.nuget.org/packages/ZXingBlazor) 
+[ZXingBlazor](https://www.nuget.org/packages/ZXingBlazor#readme-body-tab)
 [![stats](https://img.shields.io/nuget/dt/ZXingBlazor.svg?style=flat-square)](https://www.nuget.org/stats/packages/ZXingBlazor?groupby=Version)
 
-[Viewer](https://www.nuget.org/packages/BootstrapBlazor.Viewer)
+[Viewer](https://www.nuget.org/packages/BootstrapBlazor.Viewer#readme-body-tab)
   
 [BarcodeScanner](Densen.Component.Blazor/BarcodeScanner.md)
    
 [Handwritten](Densen.Component.Blazor/Handwritten.md)
 
-[SignaturePad](https://www.nuget.org/packages/BootstrapBlazor.SignaturePad)
+[SignaturePad](https://www.nuget.org/packages/BootstrapBlazor.SignaturePad#readme-body-tab)
 
-[Geolocation](https://www.nuget.org/packages/BootstrapBlazor.Geolocation)
+[Geolocation](https://www.nuget.org/packages/BootstrapBlazor.Geolocation#readme-body-tab)
 
-[OnScreenKeyboard](https://www.nuget.org/packages/BootstrapBlazor.OnScreenKeyboard)
+[OnScreenKeyboard](https://www.nuget.org/packages/BootstrapBlazor.OnScreenKeyboard#readme-body-tab)
 
-[BaiduMap](https://www.nuget.org/packages/BootstrapBlazor.BaiduMap)
+[BaiduMap](https://www.nuget.org/packages/BootstrapBlazor.BaiduMap#readme-body-tab)
 
-[GoogleMap](https://www.nuget.org/packages/BootstrapBlazor.Maps)
+[GoogleMap](https://www.nuget.org/packages/BootstrapBlazor.Maps#readme-body-tab)
 
-[Bluetooth](https://www.nuget.org/packages/BootstrapBlazor.Bluetooth)
+[Bluetooth](https://www.nuget.org/packages/BootstrapBlazor.Bluetooth#readme-body-tab)
 
-[PdfReader](https://www.nuget.org/packages/BootstrapBlazor.PdfReader)
+[PdfReader](https://www.nuget.org/packages/BootstrapBlazor.PdfReader#readme-body-tab)
 
-[FileSystem](https://www.nuget.org/packages/BootstrapBlazor.FileSystem)
+[FileSystem](https://www.nuget.org/packages/BootstrapBlazor.FileSystem#readme-body-tab)
 
-[OCR](https://www.nuget.org/packages/BootstrapBlazor.OCR)
+[OCR](https://www.nuget.org/packages/BootstrapBlazor.OCR#readme-body-tab)
 
-[WebAPI](https://www.nuget.org/packages/BootstrapBlazor.WebAPI)
+[WebAPI](https://www.nuget.org/packages/BootstrapBlazor.WebAPI#readme-body-tab)
