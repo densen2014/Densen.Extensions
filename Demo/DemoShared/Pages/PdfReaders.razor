@@ -3,21 +3,19 @@
 @using MiniExcelLibs
 
 <h4>PDF阅读器 Pdf Reader</h4>
-<PdfReader UrlBase=@UrlBase
-           PdfFile=@PdfFile
+<PdfReader PdfFile=@PdfFile
            OnInfo="OnInfo"
            OnError="OnError" />
 <pre>@contents</pre>
 
+<PdfReader UrlBase="https://blazor.app1.es/" PdfFile="_content/DemoShared/sample.pdf" EnableStreamingMode="true"  />
 
 @code{
     private string contents;
 #if DEBUG
-    private string UrlBase = "https://localhost:5011/";
-    private string PdfFile = "_content/DemoShared/sample.pdf";
+    private string PdfFile = "https://localhost:5011/_content/DemoShared/sample.pdf";
 #else
-    private string UrlBase = "https://blazor.app1.es/";
-    private string PdfFile = "_content/DemoShared/sample.pdf";
+private string PdfFile = "https://blazor.app1.es/_content/DemoShared/sample.pdf";
 #endif
 
     private Task OnInfo(string contents)
