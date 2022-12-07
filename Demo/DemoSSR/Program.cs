@@ -4,6 +4,7 @@
 // e-mail:zhouchuanglin@gmail.com 
 // **********************************
 
+using Microsoft.AspNetCore.StaticFiles;
 using System.Globalization;
 using System.Reflection;
 
@@ -74,6 +75,14 @@ else
     app.UseHsts();
 }
 app.UseHttpsRedirection();
+
+var provider = new FileExtensionContentTypeProvider();
+provider.Mappings[".properties"] = "application/octet-stream";
+
+app.UseStaticFiles(new StaticFileOptions
+{
+    ContentTypeProvider = provider
+});
 
 app.UseStaticFiles();
 
