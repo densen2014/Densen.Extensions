@@ -39,7 +39,6 @@
 		<PackageReference Include="BootstrapBlazor.SignaturePad" Version="7.*" />
 		<PackageReference Include="BootstrapBlazor.FileSystem" Version="7.*" />
 		<PackageReference Include="BootstrapBlazor.PdfReader" Version="7.*" />
-		<!--<ProjectReference Include="..\..\..\BootstrapBlazor\src\BootstrapBlazor\BootstrapBlazor.csproj" />-->
 	</ItemGroup>
 
 	<ItemGroup>
