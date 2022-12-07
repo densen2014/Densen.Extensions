@@ -2,14 +2,13 @@
 @attribute [TabItemOption(Text = "文件系统")]
 @using MiniExcelLibs
 
-<h4>文件系统访问 File System Access</h4>
+<a href="https://www.nuget.org/packages/BootstrapBlazor.FileSystem#readme-body-tab"><h4>文件系统访问 File System Access</h4></a>
 <pre>@fileInfos</pre>
-<FileSystem OnFileInfo="OnFileInfo" 
-            OnInfo="OnInfo" 
-            OnFileText="OnFileText" 
-            OnFileStream="OnFileStream" 
-            OnDirectory="OnDirectory" 
-            />
+<FileSystem OnFileInfo="OnFileInfo"
+            OnInfo="OnInfo"
+            OnFileText="OnFileText"
+            OnFileStream="OnFileStream"
+            OnDirectory="OnDirectory" />
 <pre>@contentsExcel</pre>
 <hr />
 <pre>@contents</pre>

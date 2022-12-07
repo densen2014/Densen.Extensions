@@ -1,7 +1,8 @@
 ﻿@page "/Bluetooth"
 @attribute [TabItemOption(Text = "Bluetooth & Printer 蓝牙和打印")]
 
-<h4>打印标签/条码/QR码</h4>
+<a href="https://www.nuget.org/packages/BootstrapBlazor.Bluetooth#readme-body-tab"><h4>打印标签/条码/QR码</h4></a>
+
 <h6>(连接设备后再执行打印等操作,根据打印机特性写入相应ESC/POS/CPCL命令)</h6>
 
 @if (ShowUI)
@@ -27,7 +28,7 @@ else
 <pre>@message</pre>
 <pre style="color:green">@statusmessage</pre>
 <pre style="color:red">@errmessage</pre>
-<p/>
+<p />
 <button class="btn btn-link" @onclick="SwitchUI ">切换界面</button>
 <hr />
 
@@ -172,7 +173,7 @@ else
             ValueList = "-",
             DefaultValue = "-"
         },
-                        };
+                            };
 
     /// <summary>
     /// 获得属性方法
@@ -195,7 +196,7 @@ else
             ValueList = "-",
             DefaultValue = "100"
         },
-                        };
+                            };
 
     /// <summary>
     /// 获得蓝牙设备类
@@ -233,7 +234,7 @@ else
             DefaultValue = "null"
         },
 
-                        };
+                            };
 
     /// <summary>
     /// 获得属性方法
@@ -277,7 +278,7 @@ else
             ValueList = "-",
             DefaultValue = "-"
         },
-                        };
+                            };
 
 
     /// <summary>
@@ -329,5 +330,5 @@ else
             ValueList = "-",
             DefaultValue = "-"
         },
-                        };
+                            };
 }

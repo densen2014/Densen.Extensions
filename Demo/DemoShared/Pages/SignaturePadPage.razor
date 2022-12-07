@@ -1,7 +1,7 @@
 ﻿@page "/signaturepad"
 @attribute [TabItemOption(Text = "手写签名")]
 
-<h3>SignaturePad 签名</h3>
+<a href="https://www.nuget.org/packages/BootstrapBlazor.SignaturePad#readme-body-tab"><h3>SignaturePad 签名</h3></a>
 
 @if (Result != null)
 {
@@ -133,5 +133,5 @@ else
         new AttributeItem("BtnCssClass","按钮CSS式样",  "btn btn-light") ,
         new AttributeItem("Responsive","响应式css界面,为所有用户设计最佳体验",  "false","bool") ,
         new AttributeItem("BackgroundColor","组件背景",  "rgb(255, 255, 255),设置 rgba(0,0,0,0)为透明") ,
-        };
+            };
 }
