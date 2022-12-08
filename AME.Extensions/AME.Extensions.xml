@@ -306,6 +306,14 @@
             <param name="t"></param>
             <returns></returns>
         </member>
+        <member name="M:AME.ObjectExtensions.IsNumeric(System.Object,System.Boolean)">
+            <summary>
+            检测object是否数字的扩展方法,可选检测负号后缀
+            </summary>
+            <param name="anyObject"></param>
+            <param name="检测负号后缀"></param>
+            <returns></returns>
+        </member>
         <member name="M:AME.ObjectExtensions.IsDateTime(System.Type)">
             <summary>
             检查是否为 DateTime 数据类型
@@ -362,14 +370,6 @@
             <param name="propertyName">需要判断的属性</param>
             <returns>是否包含</returns>
         </member>
-        <member name="M:AME.StringExt.ToDecimal(System.String,System.Decimal)">
-            <summary>
-            String转Decimal
-            </summary>
-            <param name="t"></param>
-            <param name="defaultValue"></param>
-            <returns></returns>
-        </member>
         <member name="T:AME.PathExtensions">
             <summary>
             Path 扩展方法
@@ -400,6 +400,14 @@
              <param name="includeMatchers">多个包含项 new[] { "*.txt", "*.asciidoc", "*.md" }</param>
              <param name="excludeMatchers">多个排除项 new[] { "*.txt", "*.asciidoc", "*.md" }</param>
              <param name="matchfilename"></param>
+        </member>
+        <member name="M:AME.StringExtensions.ToDecimal(System.String,System.Decimal)">
+            <summary>
+            String转Decimal
+            </summary>
+            <param name="t"></param>
+            <param name="defaultValue"></param>
+            <returns></returns>
         </member>
         <member name="P:AME.Models.CheckNewResponse.Filename">
             <summary>
@@ -579,6 +587,14 @@
             </summary>
             <typeparam name="T">实体类</typeparam>
             <param name="table">dt</param>
+            <returns></returns>
+        </member>
+        <member name="M:AME.Tools.IsNumeric(System.Object,System.Boolean)">
+            <summary>
+            检测object是否数字,可选检测负号后缀
+            </summary>
+            <param name="anyObject"></param>
+            <param name="检测负号后缀"></param>
             <returns></returns>
         </member>
         <member name="M:AME.Tools.汉字转换成拼音II(System.String)">

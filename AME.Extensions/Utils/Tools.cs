@@ -393,6 +393,13 @@ namespace AME
             return list;
         }
         #endregion
+
+        /// <summary>
+        /// 检测object是否数字,可选检测负号后缀
+        /// </summary>
+        /// <param name="anyObject"></param>
+        /// <param name="检测负号后缀"></param>
+        /// <returns></returns>
         public static bool IsNumeric(object anyObject, bool 检测负号后缀 = false)
         {
             try
@@ -402,12 +409,11 @@ namespace AME
                 if (anyString.Length > 0)
                 {
                     if (检测负号后缀 && anyString.EndsWith("-")) return false;
-                    double dummyOut = new double();
                     System.Globalization.CultureInfo cultureInfo =
                         new System.Globalization.CultureInfo("en-US", true);
 
                     return double.TryParse(anyString, System.Globalization.NumberStyles.Any,
-                        cultureInfo.NumberFormat, out dummyOut);
+                        cultureInfo.NumberFormat, out _);
                 }
                 else
                 {

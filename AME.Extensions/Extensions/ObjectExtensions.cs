@@ -124,20 +124,20 @@ namespace AME
         {
             try
             {
-                return obj.IsNum() ? Convert.ToInt32(obj) : 0;
+                return obj.IsNumeric() ? Convert.ToInt32(obj) : 0;
             }
             catch (Exception)
             {
-                return obj.IsNum() ? (int)Convert.ToDouble(obj) : 0;
+                return obj.IsNumeric() ? (int)Convert.ToDouble(obj) : 0;
             }
         }
         public static string Format2Num(this object obj, int PadLeft = 8, int num = 2)
         {
-            return obj.IsNum() ? Convert.ToDecimal(obj).ToString($"n{num}").PadLeft(PadLeft, ' ') : "".PadLeft(PadLeft, ' ');
+            return obj.IsNumeric() ? Convert.ToDecimal(obj).ToString($"n{num}").PadLeft(PadLeft, ' ') : "".PadLeft(PadLeft, ' ');
         }
         public static decimal ToDecimal(this object obj)
         {
-            return obj.IsNum() ? Convert.ToDecimal(obj) : 0;
+            return obj.IsNumeric() ? Convert.ToDecimal(obj) : 0;
         }
         public static string FormatNum2(this object obj, int num = 2)
         {
@@ -149,10 +149,9 @@ namespace AME
         }
         public static double ToDbl(this object obj)
         {
-            return obj.IsNum() ? Convert.ToDouble(obj) : 0;
+            return obj.IsNumeric() ? Convert.ToDouble(obj) : 0;
         }
-        public static bool IsNum(this object t) => t == null ? false : double.TryParse(t.ToString(), out _);
-
+ 
         /// <summary>
         /// 检查是否为 Number 数据类型
         /// </summary>
@@ -171,6 +170,14 @@ namespace AME
                 targetType == typeof(decimal);
             return check;
         }
+
+        /// <summary>
+        /// 检测object是否数字的扩展方法,可选检测负号后缀
+        /// </summary>
+        /// <param name="anyObject"></param>
+        /// <param name="检测负号后缀"></param>
+        /// <returns></returns>
+        public static bool IsNumeric(this object anyObject, bool 检测负号后缀 = false) => Tools.IsNumeric(anyObject, 检测负号后缀);
 
         /// <summary>
         /// 检查是否为 DateTime 数据类型
@@ -339,41 +346,6 @@ namespace AME
         }
     }
 
-    public static partial class StringExt
-    {
-        public static bool IsNumeric(this string text) => double.TryParse(text, out _);
-
-        /// <summary>
-        /// String转Decimal
-        /// </summary>
-        /// <param name="t"></param>
-        /// <param name="defaultValue"></param>
-        /// <returns></returns>
-        public static decimal ToDecimal(this string t, decimal defaultValue = 0m)
-        {
-            try
-            {
-                var x = t.IsNumeric() ? Convert.ToDecimal(t) : defaultValue;
-                return x;
-            }
-            catch
-            {
-            }
-            return defaultValue;
-        }
-        public static double ToDouble(this string t, double defaultValue = 0d)
-        {
-            try
-            {
-                var x = t.IsNumeric() ? Convert.ToDouble(t) : defaultValue;
-                return x;
-            }
-            catch
-            {
-            }
-            return defaultValue;
-        }
-    }
 
 
 }

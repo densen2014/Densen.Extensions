@@ -130,7 +130,7 @@ namespace AME
         }
     }
 
-    public static class StringExtensions
+    public  static partial class StringExtensions
     {
         public static bool NoColor { get; set; }
 
@@ -172,7 +172,7 @@ namespace AME
         public static ColoredText LightGray(this string s)
         {
             return new ColoredText(s).LightGray();
-        } 
+        }
 
         public static string TrimStart(this string target, string trimChars)
         {
@@ -182,8 +182,9 @@ namespace AME
         {
             return target.TrimEnd(trimChars.ToCharArray());
         }
+
     }
- 
+
     public static class ConsoleExt
     {
         public static void WriteLineColor(this string s, ConsoleColor foregroundColor)
