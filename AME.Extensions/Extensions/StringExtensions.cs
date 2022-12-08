@@ -172,7 +172,7 @@ namespace AME
         public static ColoredText LightGray(this string s)
         {
             return new ColoredText(s).LightGray();
-        }
+        } 
 
         public static string TrimStart(this string target, string trimChars)
         {
@@ -183,5 +183,20 @@ namespace AME
             return target.TrimEnd(trimChars.ToCharArray());
         }
     }
+ 
+    public static class ConsoleExt
+    {
+        public static void WriteLineColor(this string s, ConsoleColor foregroundColor)
+        {
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.ForegroundColor = foregroundColor;
+            Console.WriteLine(s);
+            Console.ResetColor();
+        }
+        public static void WriteLine(this string s) => s.WriteLineColor(ConsoleColor.White);
+        public static void WriteLineCyan(string s) => s.WriteLineColor(ConsoleColor.Cyan);
+        public static void WriteLineGreen(string s) => s.WriteLineColor(ConsoleColor.Green);
+        public static void WriteLineDarkYellow(string s) => s.WriteLineColor(ConsoleColor.DarkYellow);
 
+    }
 }
