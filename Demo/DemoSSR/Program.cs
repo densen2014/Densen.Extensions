@@ -4,7 +4,9 @@
 // e-mail:zhouchuanglin@gmail.com 
 // **********************************
 
+using BootstrapBlazor.Ocr.Services;
 using Microsoft.AspNetCore.StaticFiles;
+using Microsoft.Extensions.DependencyInjection;
 using System.Globalization;
 using System.Reflection;
 
@@ -42,8 +44,8 @@ builder.Services.ConfigureJsonLocalizationOptions(op =>
                 //typeof(BootstrapBlazor.Components.SignaturePad).Assembly
     };
 });
-builder.Services.AddOcrExtensions(builder.Configuration["AzureCvKey"], builder.Configuration["AzureCvUrl"]);
-builder.Services.AddAIFormExtensions(builder.Configuration["AzureAiFormKey"], builder.Configuration["AzureAiFormUrl"]);
+builder.Services.AddTransient<OcrService>();
+builder.Services.AddTransient<AiFormService>(); 
 if (!builder.Services.Any(x => x.ServiceType == typeof(HttpClient)))
 {
     builder.Services.AddSingleton<HttpClient>();
