@@ -24,6 +24,7 @@ public partial class NavMenu
             new MenuItem() { Text = "AI表格识别 AI Form", Url = "/aiform" },
             new MenuItem() { Text = "文件系统 FileSystem", Url = "/filesystems" },
             new MenuItem() { Text = "PDF阅读器 PDF Reader", Url = "/pdfReaders" },
+            new MenuItem() { Text = "视频播放器 Video Player", Url = "/videoPlayers" },
             new MenuItem() { Text = "屏幕键盘 OSK", Url = "/onscreenkeyboards" },
             new MenuItem() { Text = "百度地图 Baidu Map", Url = "/baidumap" },
             new MenuItem() { Text = "谷歌地图 Maps", Url = "/maps" },

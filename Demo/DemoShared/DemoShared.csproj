@@ -39,10 +39,12 @@
 		<PackageReference Include="BootstrapBlazor.SignaturePad" Version="7.*" />
 		<PackageReference Include="BootstrapBlazor.FileSystem" Version="7.*" />
 		<PackageReference Include="BootstrapBlazor.PdfReader" Version="7.*" />
+		<PackageReference Include="BootstrapBlazor.VideoPlayer" Version="0.0.1" />
 	</ItemGroup>
 
 	<ItemGroup>
 		<ProjectReference Include="..\..\..\BootstrapBlazor.PdfReader\src\BootstrapBlazor.PdfReader\BootstrapBlazor.PdfReader.csproj" />
+		<ProjectReference Include="..\..\..\BootstrapBlazor.VideoPlayer\src\BootstrapBlazor.VideoPlayer\BootstrapBlazor.VideoPlayer.csproj" />
 		<ProjectReference Include="..\..\Blazor\Densen.Extensions.BootstrapBlazor.csproj" />
 		<ProjectReference Include="..\..\Densen.Component.Blazor\Densen.Component.Blazor.csproj" />
 		<ProjectReference Include="..\DemoLib\DemoLib.csproj" />

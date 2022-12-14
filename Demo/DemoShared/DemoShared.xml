@@ -129,6 +129,11 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:DemoShared.Pages.VideoPlayers.OnInitialized">
+            <summary>
+            OnInitialized 方法
+            </summary>
+        </member>
         <member name="M:DemoShared.Pages.ViewerPage.GetAttributes">
             <summary>
             获得属性方法
