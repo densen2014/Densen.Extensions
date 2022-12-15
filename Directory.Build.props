@@ -10,7 +10,7 @@
     </PropertyGroup>
 
     <PropertyGroup>
-		<Version>7.0.2</Version>
+		<Version>7.1</Version>
 		<PackageIcon>logo.png</PackageIcon>
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <NoWarn>1701;1702;1705;1591</NoWarn>
