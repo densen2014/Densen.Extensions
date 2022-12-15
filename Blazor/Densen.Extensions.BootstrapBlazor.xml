@@ -227,6 +227,21 @@
             图片列参数集合,优先读取
             </summary>
         </member>
+        <member name="P:AmeBlazor.Components.TableLazyHero`1.ShowExportButton">
+            <summary>
+            获得/设置 是否显示导出按钮 默认为 false 显示
+            </summary>
+        </member>
+        <member name="P:AmeBlazor.Components.TableLazyHero`1.ExportButtonIcon">
+            <summary>
+            获得/设置 导出按钮图标 默认为 fa-solid fa-download
+            </summary>
+        </member>
+        <member name="P:AmeBlazor.Components.TableLazyHero`1.OnExportAsync">
+            <summary>
+            获得/设置 导出按钮异步回调方法
+            </summary>
+        </member>
         <member name="P:AmeBlazor.Components.TableLazyHero`1.EnableDateTimeRange">
             <summary>
             使用日期范围

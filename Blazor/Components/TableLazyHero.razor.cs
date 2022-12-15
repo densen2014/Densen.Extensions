@@ -94,6 +94,25 @@ namespace AmeBlazor.Components
         /// 图片列参数集合,优先读取
         /// </summary>
         [Parameter] public List<TableImgField>? TableImgFields { get; set; }
+ 
+        /// <summary>
+        /// 获得/设置 是否显示导出按钮 默认为 false 显示
+        /// </summary>
+        [Parameter]
+        public bool ShowExportButton { get; set; }
+
+        /// <summary>
+        /// 获得/设置 导出按钮图标 默认为 fa-solid fa-download
+        /// </summary>
+        [Parameter]
+        public string? ExportButtonIcon { get; set; }
+
+        /// <summary>
+        /// 获得/设置 导出按钮异步回调方法
+        /// </summary>
+        [Parameter]
+        public Func<IEnumerable<TItem>, QueryPageOptions, Task<bool>>? OnExportAsync { get; set; } 
+ 
 #nullable disable
 
         /// <summary>
