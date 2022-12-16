@@ -22,8 +22,8 @@
 	</ItemGroup>
 
 	<ItemGroup Condition="'$(TargetFramework)' == 'net7.0'">
-		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="7.0" />
-		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="7.0" PrivateAssets="all" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="7.*" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="7.*" PrivateAssets="all" />
 	</ItemGroup>
 	
 	<ItemGroup>

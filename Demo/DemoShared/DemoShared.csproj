@@ -6,8 +6,8 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="BootstrapBlazor" Version="7.1.4" />
-		<PackageReference Include="BootstrapBlazor.Chart" Version="7.0.0" />
+		<PackageReference Include="BootstrapBlazor" Version="7.*" />
+		<PackageReference Include="BootstrapBlazor.Chart" Version="7.*" />
 		<PackageReference Include="MiniExcel" Version="1.29.0" />
 	</ItemGroup>
 
@@ -26,6 +26,8 @@
 		<ProjectReference Include="..\..\..\BootstrapBlazor.Viewer\src\BootstrapBlazor.Viewer\BootstrapBlazor.Viewer.csproj" />
 		<ProjectReference Include="..\..\..\BootstrapBlazor.WebAPI\src\BootstrapBlazor.WebAPI\BootstrapBlazor.WebAPI.csproj" />
 		<ProjectReference Include="..\..\..\BootstrapBlazor.FileSystem\src\BootstrapBlazor.FileSystem\BootstrapBlazor.FileSystem.csproj" />
+		<ProjectReference Include="..\..\..\BootstrapBlazor.PdfReader\src\BootstrapBlazor.PdfReader\BootstrapBlazor.PdfReader.csproj" />
+		<ProjectReference Include="..\..\..\BootstrapBlazor.VideoPlayer\src\BootstrapBlazor.VideoPlayer\BootstrapBlazor.VideoPlayer.csproj" />
 	</ItemGroup>
 	<ItemGroup Condition="'$(Configuration)' == 'Release'">
 		<PackageReference Include="BootstrapBlazor.BaiduMap" Version="7.*" />
@@ -39,12 +41,10 @@
 		<PackageReference Include="BootstrapBlazor.SignaturePad" Version="7.*" />
 		<PackageReference Include="BootstrapBlazor.FileSystem" Version="7.*" />
 		<PackageReference Include="BootstrapBlazor.PdfReader" Version="7.*" />
-		<PackageReference Include="BootstrapBlazor.VideoPlayer" Version="0.0.1" />
+		<PackageReference Include="BootstrapBlazor.VideoPlayer" Version="7.*" />
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\..\..\BootstrapBlazor.PdfReader\src\BootstrapBlazor.PdfReader\BootstrapBlazor.PdfReader.csproj" />
-		<ProjectReference Include="..\..\..\BootstrapBlazor.VideoPlayer\src\BootstrapBlazor.VideoPlayer\BootstrapBlazor.VideoPlayer.csproj" />
 		<ProjectReference Include="..\..\Blazor\Densen.Extensions.BootstrapBlazor.csproj" />
 		<ProjectReference Include="..\..\Densen.Component.Blazor\Densen.Component.Blazor.csproj" />
 		<ProjectReference Include="..\DemoLib\DemoLib.csproj" />

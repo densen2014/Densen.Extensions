@@ -28,7 +28,6 @@ builder.Services.ConfigureJsonLocalizationOptions(op =>
                 //typeof(BootstrapBlazor.Components.SignaturePad).Assembly
     };
 });
-builder.Services.AddFileSystemExtensions();
 builder.Services.AddOcrExtensions(builder.Configuration["AzureCvKey"], builder.Configuration["AzureCvUrl"]);
 builder.Services.AddAIFormExtensions(builder.Configuration["AzureAiFormKey"], builder.Configuration["AzureAiFormUrl"]);
 await builder.Build().RunAsync();
