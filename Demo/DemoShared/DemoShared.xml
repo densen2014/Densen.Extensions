@@ -102,6 +102,11 @@
             条码
             </summary>
         </member>
+        <member name="M:DemoShared.Pages.FileViewers.OnInitialized">
+            <summary>
+            OnInitialized 方法
+            </summary>
+        </member>
         <member name="P:DemoShared.Pages.HandwrittenPage.ShowHandwritten">
             <summary>
             显示签名界面
