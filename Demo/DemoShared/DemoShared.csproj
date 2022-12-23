@@ -59,10 +59,10 @@
 	</ProjectExtensions>
 	
 	<ItemGroup>
-		<Content Update="wwwroot\sample.docx">
+		<Content Update="wwwroot\samples\sample.docx">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</Content>
-		<Content Update="wwwroot\sample.xlsx">
+		<Content Update="wwwroot\samples\sample.xlsx">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</Content> 
 	</ItemGroup>
