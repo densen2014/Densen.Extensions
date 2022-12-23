@@ -5,24 +5,18 @@
 
 
 <Tab IsOnlyRenderActiveTab>
-    <TabItem Text="Word">
-        <FileViewer Filename=@Filedocx />
-    </TabItem>
     <TabItem Text="Excel">
         <FileViewer Filename=@Filexlsx />
     </TabItem>
-    <TabItem Text="Word url">
-        <FileViewer Filename=@Filedocx2 />
-    </TabItem>
-    <TabItem Text="Excel url">
-        <FileViewer Filename=@Filexlsx2 />
+    <TabItem Text="Word">
+        <FileViewer Filename=@Filedocx />
     </TabItem>
     <TabItem Text="Load">
         <div class="row g-3">
             <div class="col-6 col-sm-4 col-md-3 col-xl-1">
                 <Dropdown TValue="string" Items="Items" OnSelectedItemChanged="@ChangeURL" />
             </div>
-            <div class="col-6 col-sm-4 col-md-3 col-xl-6">
+            <div class="col-6 col-sm-4 col-md-3 col-xl-8">
                 <BootstrapInput @bind-Value="@Url" />
             </div>
             <div class="col-6 col-sm-4 col-md-3 col-xl-auto">
@@ -41,10 +35,6 @@
     private string Filedocx { get; set; } = CombineFilename("sample.docx");
 
     private string Filexlsx { get; set; } = CombineFilename("sample.xlsx");
-
-    private string Filexlsx2 { get; set; } = "https://localhost:5011/_content/DemoShared/sample.xlsx";
-
-    private string Filedocx2 { get; set; } = "https://localhost:5011/_content/DemoShared/sample.docx";
 
     private string Url { get; set; } = CombineFilename("sample.docx");
 
@@ -65,11 +55,14 @@
         CombineFilename("sample.xlsx"),
         CombineFilename("sample2.docx"),
         CombineFilename("sample.docx"),
-        "https://localhost:5011/_content/DemoShared/samples/sample.xlsx",
-        "https://localhost:5011/_content/DemoShared/samples/sample.docx",
+        "https://blazor.app1.es/_content/DemoShared/samples/sample3.xlsx",
+        "https://blazor.app1.es/_content/DemoShared/samples/sample2.xlsx",
         "https://blazor.app1.es/_content/DemoShared/samples/sample.xlsx",
+        "https://blazor.app1.es/_content/DemoShared/samples/sample2.docx",
         "https://blazor.app1.es/_content/DemoShared/samples/sample.docx",
         "https://densen.es/sample/sample.docx",
+        "https://localhost:5011/_content/DemoShared/samples/sample.xlsx",
+        "https://localhost:5011/_content/DemoShared/samples/sample.docx",
     };
 
     List<SelectedItem> Items = new List<SelectedItem>();
@@ -84,11 +77,13 @@
         {
             Items.Add(new SelectedItem { Text = $"File{i}", Value = FileList[i] });
         }
+        Url = FileList[0];
     }
 
     private async Task ChangeURL(SelectedItem e)
     {
         Url = e.Value;
+        StateHasChanged();
         await fileViewer.Reload(e.Value);
     }
 
