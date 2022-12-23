@@ -50,14 +50,21 @@
 
     private static string CombineFilename(string filename)
     {
-        filename = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "wwwroot", filename);
+#if DEBUG
+        filename = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "wwwroot", "samples", filename);
+#else
+        filename = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "wwwroot", "_content","DemoShared","samples", filename);
+#endif
         return filename;
     }
 
     List<string> FileList = new List<string>
     {
-        CombineFilename("sample.docx"),
+        CombineFilename("sample3.xlsx"),
+        CombineFilename("sample2.xlsx"),
         CombineFilename("sample.xlsx"),
+        CombineFilename("sample2.docx"),
+        CombineFilename("sample.docx"),
         "https://localhost:5011/_content/DemoShared/sample.xlsx",
         "https://localhost:5011/_content/DemoShared/sample.docx",
         "https://blazor.app1.es/_content/DemoShared/sample.xlsx",
