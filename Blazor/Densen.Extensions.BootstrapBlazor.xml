@@ -54,6 +54,9 @@
             <summary>
             AME组件基类
             </summary>
+            <summary>
+            AME组件基类
+            </summary>
         </member>
         <member name="P:AmeBlazor.Components.AmeBlazorComponentBase.AdditionalAttributes">
             <summary>
@@ -82,13 +85,6 @@
             使用方法: <para></para>
             &lt;Tab @ref="TabSetMenu" OnClickTab="@OnClickTabItem" /&gt; 
             </summary>
-        </member>
-        <member name="M:AmeBlazor.Components.AmeBlazorComponentBase.OnClickTabItem(BootstrapBlazor.Components.TabItem)">
-            <summary>
-            Tab控件点击懒加载TabItem
-            </summary>
-            <param name="item"></param>
-            <returns></returns>
         </member>
         <member name="F:AmeBlazor.Components.AmeBlazorComponentBase.Pages">
             <summary>
