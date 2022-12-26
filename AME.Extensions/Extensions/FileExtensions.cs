@@ -80,23 +80,23 @@ namespace Extensions
             var size = (double)sizes;
             if (KBCount > size)
             {
-                return Math.Round(size, roundCount) + "B";
+                return $"{Math.Round(size, roundCount):N2}B";
             }
             else if (MBCount > size)
             {
-                return Math.Round(size / KBCount, roundCount) + "KB";
+                return $"{Math.Round(size / KBCount, roundCount):N2}KB";
             }
             else if (GBCount > size)
             {
-                return Math.Round(size / MBCount, roundCount) + "MB";
+                return $"{Math.Round(size / MBCount, roundCount):N2}MB";
             }
             else if (TBCount > size)
             {
-                return Math.Round(size / GBCount, roundCount) + "GB";
+                return $"{Math.Round(size / GBCount, roundCount):N2}GB";
             }
             else
             {
-                return Math.Round(size / TBCount, roundCount) + "TB";
+                return $"{Math.Round(size / TBCount, roundCount):N2}TB";
             }
         }
     }
