@@ -1,16 +1,17 @@
 ﻿using BootstrapBlazor.Components;
+using Microsoft.AspNetCore.Components;
 using System.ComponentModel;
 
 namespace DemoShared.Pages;
 
 public sealed partial class PdfReaders
 {
-    private EnumZoomMode Zoom { get; set; } = EnumZoomMode.Auto;
+    private EnumZoomMode Zoom { get; set; } = EnumZoomMode.PageHeight;
 
-    private EnumPageMode Pagemode { get; set; } = EnumPageMode.Thumbs;
+    private EnumPageMode Pagemode { get; set; } = EnumPageMode.None;
 
     [DisplayName("搜索")]
-    private string Search { get; set; } = "Performance";
+    private string Search { get; set; } = "Demos";
 
     private int Page { get; set; } = 3;
 
@@ -19,12 +20,19 @@ public sealed partial class PdfReaders
     PdfReader pdfReader2 { get; set; }
 
     [DisplayName("文件相对路径或者URL")]
-    private string Filename { get; set; } = "/_content/DemoShared/samples/sample.pdf";
+    private string FileName { get; set; } = "/_content/DemoShared/samples/sample.pdf";
 
-    private string FilenameStream { get; set; } = "https://blazor.app1.es/_content/DemoShared/samples/sample.pdf";
+    private string FileNameStream { get; set; } = "https://blazor.app1.es/_content/DemoShared/samples/sample.pdf";
 
     [DisplayName("流模式")]
     private bool StreamMode { get; set; }
+
+    [DisplayName("禁用复制/打印/下载")]
+    public bool ReadOnly { get; set; }
+
+    [DisplayName("水印内容")]
+    public string Watermark { get; set; } = "www.blazor.zone";
+
 
     private bool Debug { get; set; }
 
@@ -37,16 +45,20 @@ public sealed partial class PdfReaders
     {
         Zoom = Zoom switch
         {
-            EnumZoomMode.Auto => EnumZoomMode.PageFit,
+            EnumZoomMode.Auto => EnumZoomMode.PageActual,
+            EnumZoomMode.PageActual => EnumZoomMode.PageFit,
             EnumZoomMode.PageFit => EnumZoomMode.PageWidth,
             EnumZoomMode.PageWidth => EnumZoomMode.PageHeight,
             EnumZoomMode.PageHeight => EnumZoomMode.Zoom75,
             EnumZoomMode.Zoom75 => EnumZoomMode.Zoom50,
             EnumZoomMode.Zoom50 => EnumZoomMode.Zoom25,
+            EnumZoomMode.Zoom25 => EnumZoomMode.Zoom200,
             _ => EnumZoomMode.Auto
         };
-        await pdfReader2?.Refresh();
+        await Refresh();
     }
+
+    async Task Refresh()=> await pdfReader2?.Refresh(Search, Page, Pagemode, Zoom, ReadOnly, Watermark);
 
     private async Task ApplyPagemode()
     {
@@ -58,27 +70,28 @@ public sealed partial class PdfReaders
             EnumPageMode.Layers => EnumPageMode.None,
             _ => EnumPageMode.Thumbs
         };
-        await pdfReader2?.Refresh(Search, Page, Pagemode, Zoom);
+        await Refresh();
     }
+
     private async Task ApplyPage()
     {
         Search = null;
-        await pdfReader2?.Refresh(Search, Page, Pagemode, Zoom);
+        await Refresh();
     }
+
     private async Task ApplyPagePrevious()
     {
         Page--;
         Search = null;
-        await pdfReader2?.Refresh(Search, Page, Pagemode, Zoom);
+        await Refresh();
     }
+
     private async Task ApplyPageNext()
     {
         Page++;
         Search = null;
-        await pdfReader2?.Refresh(Search, Page, Pagemode, Zoom);
+        await Refresh();
     }
-    private async Task ApplySearch()
-    {
-        await pdfReader2?.Refresh(Search, Page, Pagemode, Zoom);
-    }
+
+    private async Task ApplySearch()=> await Refresh();
 }
