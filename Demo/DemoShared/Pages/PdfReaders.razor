@@ -5,21 +5,6 @@
 <a href="https://www.nuget.org/packages/BootstrapBlazor.PdfReader#readme-body-tab"><h4>PDF阅读器 Pdf Reader</h4></a>
 
 <Tab IsOnlyRenderActiveTab>
-    <TabItem Text="常规">
-        <PdfReader Filename=@Filename />
-    </TabItem>
-    <TabItem Text="流化">
-        <h6>使用流化模式,可跨域读取文件</h6>
-        <div class="row g-3">
-            <div class="col-12">
-                <BootstrapInputGroup>
-                    <BootstrapInput @bind-Value="@FilenameStream" />
-                    <Button Color="Color.Primary" OnClick="Apply">加载</Button>
-                </BootstrapInputGroup>
-            </div>
-        </div>
-        <PdfReader @ref="pdfReader" Filename="@FilenameStream" StreamMode="true" />
-    </TabItem>
     <TabItem Text="高级">
         <div class="row mb-3">
             <div class="col-12">
@@ -45,7 +30,7 @@
         <div class="row mb-3">
             <div class="col-12">
                 <BootstrapInputGroup>
-                    <BootstrapInputGroupLabel  @bind-Value="@Filename" />
+                    <BootstrapInputGroupLabel @bind-Value="@Filename" />
                     <BootstrapInput @bind-Value="@Filename" />
                     <Button Color="Color.Primary" OnClick="ApplySearch">刷新</Button>
                 </BootstrapInputGroup>
@@ -54,6 +39,9 @@
         <div class="row mb-3 form-inline">
             <div class="col-6 col-sm-4 col-md-3 col-lg-auto">
                 <Switch @bind-Value="@StreamMode" ShowLabel="true" />
+            </div>
+            <div class="col-6 col-sm-4 col-md-3 col-lg-auto">
+                <Switch @bind-Value="@ReadOnly" ShowLabel="true" />
             </div>
             <div class="col-6 col-sm-4 col-md-3 col-lg-auto">
                 <Switch @bind-Value="@Debug" ShowLabel="true" />
@@ -70,5 +58,20 @@
                    Width="80%"
                    Height="500px"
                    Debug="Debug" />
+    </TabItem>
+    <TabItem Text="常规">
+        <PdfReader Filename=@Filename1 />
+    </TabItem>
+    <TabItem Text="流化">
+        <h6>使用流化模式,可跨域读取文件</h6>
+        <div class="row g-3">
+            <div class="col-12">
+                <BootstrapInputGroup>
+                    <BootstrapInput @bind-Value="@FilenameStream" />
+                    <Button Color="Color.Primary" OnClick="Apply">加载</Button>
+                </BootstrapInputGroup>
+            </div>
+        </div>
+        <PdfReader @ref="pdfReader" Filename="@FilenameStream" StreamMode="true" />
     </TabItem>
 </Tab> 
