@@ -401,6 +401,12 @@
              <param name="excludeMatchers">多个排除项 new[] { "*.txt", "*.asciidoc", "*.md" }</param>
              <param name="matchfilename"></param>
         </member>
+        <member name="M:AME.StringExtensions.ToCamelCase(System.String)">
+            <summary>将大驼峰命名转为小驼峰命名</summary>
+        </member>
+        <member name="M:AME.StringExtensions.ToSnakeCase(System.String)">
+            <summary>将大驼峰命名转为蛇形命名</summary>
+        </member>
         <member name="P:AME.Models.CheckNewResponse.Filename">
             <summary>
             文件名,带相对路径
