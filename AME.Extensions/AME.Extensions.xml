@@ -83,7 +83,14 @@
         </member>
         <member name="M:AME.EnumExtensions.GetEnumName(System.Enum)">
             <summary>
-            重写Enum ToString（）
+            获取枚举的值和描述
+            </summary>
+            <param name="en"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AME.EnumExtensions.GetDescription(System.Enum)">
+            <summary>
+            获取枚举的值和描述
             </summary>
             <param name="en"></param>
             <returns></returns>
@@ -94,6 +101,17 @@
             </summary>
             <param name="type">Typeof(你的Enum)</param>
             <returns>name, Description , value</returns>
+        </member>
+        <member name="M:AME.EnumExtensions.GetValueFromDescription``1(System.String)">
+            <summary>
+            从描述属性中获取枚举 
+            <para>Get Enum from Description attribute</para>
+            <para>var panda = EnumEx.GetValueFromDescription&lt;Animal&gt;("Giant Panda");</para>
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="description"></param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentException"></exception>
         </member>
         <member name="T:AME.IEnumerableExtensions">
             <summary>

@@ -5,13 +5,14 @@ using System.Reflection;
 
 namespace AME
 {
+    
     /// <summary>
     /// Enum 扩展方法
     /// </summary>
-
-
     public static class EnumExtensions
     {
+       
+        
         /// <summary>
         /// 通过文本名获取Enum枚举Type
         /// </summary>
@@ -60,11 +61,19 @@ namespace AME
         }
 
         /// <summary>
-        /// 重写Enum ToString（）
+        /// 获取枚举的值和描述
         /// </summary>
         /// <param name="en"></param>
         /// <returns></returns>
-        public static string GetEnumName(this Enum en)
+        public static string GetEnumName(this Enum en) => en.GetDescription();
+
+        /// <summary>
+        /// 获取枚举的值和描述
+        /// </summary>
+        /// <param name="en"></param>
+        /// <returns></returns>
+
+        public static string GetDescription(this Enum en)
         {
             Type temType = en.GetType();
             MemberInfo[] memberInfos = temType.GetMember(en.ToString());
@@ -78,6 +87,7 @@ namespace AME
             }
             return en.ToString();
         }
+
 
         /// <summary>
         /// Eunm转IEnumerable,备注,value, 无备注回落为name
@@ -107,6 +117,36 @@ namespace AME
                 }
             }
             return descs;
+        }
+
+        /// <summary>
+        /// 从描述属性中获取枚举 
+        /// <para>Get Enum from Description attribute</para>
+        /// <para>var panda = EnumEx.GetValueFromDescription&lt;Animal&gt;("Giant Panda");</para>
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="description"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentException"></exception>
+        public static T GetValueFromDescription<T>(string description) where T : Enum
+        {
+            foreach (var field in typeof(T).GetFields())
+            {
+                if (Attribute.GetCustomAttribute(field,
+                typeof(DescriptionAttribute)) is DescriptionAttribute attribute)
+                {
+                    if (attribute.Description == description)
+                        return (T)field.GetValue(null);
+                }
+                else
+                {
+                    if (field.Name == description)
+                        return (T)field.GetValue(null);
+                }
+            }
+
+            throw new ArgumentException("Not found.", nameof(description));
+            // Or return default(T);
         }
     }
 

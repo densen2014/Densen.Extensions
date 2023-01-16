@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DemoBlazorWpfApp</name>
+    </assembly>
+    <members>
+        <member name="T:DemoBlazorWpfApp.App">
+            <summary>
+            Interaction logic for App.xaml
+            </summary>
+            <summary>
+            App
+            </summary>
+        </member>
+        <member name="M:DemoBlazorWpfApp.App.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="M:DemoBlazorWpfApp.App.Main">
+            <summary>
+            Application Entry Point.
+            </summary>
+        </member>
+        <member name="T:DemoBlazorWpfApp.MainWindow">
+            <summary>
+            Interaction logic for MainWindow.xaml
+            </summary>
+            <summary>
+            MainWindow
+            </summary>
+        </member>
+        <member name="M:DemoBlazorWpfApp.MainWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Microsoft.Extensions.DependencyInjection.MyErrorBoundaryLogger">
+            <summary>
+            IErrorBoundaryLogger扩展类
+            </summary>
+        </member>
+        <member name="T:Microsoft.Extensions.DependencyInjection.SharedServiceCollectionExtensions">
+            <summary>
+            服务扩展类
+            </summary>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.SharedServiceCollectionExtensions.AddSharedExtensions(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            服务扩展类,<para></para>
+            包含各平台差异实现
+            </summary>
+            <param name="services"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
