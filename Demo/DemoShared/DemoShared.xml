@@ -40,6 +40,17 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="T:DemoShared.Pages.ScreenCapturePage">
+            <summary>
+            Screen Capture 截屏/录像
+            </summary>
+        </member>
+        <member name="M:DemoShared.Pages.ScreenCapturePage.GetAttributes">
+            <summary>
+            获得属性方法
+            </summary>
+            <returns></returns>
+        </member>
         <member name="P:DemoShared.Pages.SignaturePadPageResponsive.Result">
             <summary>
             签名Base64

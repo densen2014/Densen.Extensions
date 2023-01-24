@@ -28,6 +28,7 @@ public partial class NavMenu
                     new MenuItem() { Text = "系统信息 System info", Url = "/webapis" },
                     new MenuItem() { Text = "扫码 Barcode", Url = "/barcodescanner" },
                     new MenuItem() { Text = "签名 Handwritten", Url = "/handwritten" },
+                    new MenuItem() { Text = "截屏/录像 Screen Capture", Url = "/screencapture" },
                 }
             },
             new MenuItem() { Text = "地图" ,Items= new List<MenuItem>

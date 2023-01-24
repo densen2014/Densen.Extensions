@@ -11,13 +11,13 @@ public sealed partial class PdfReaders
     private EnumPageMode Pagemode { get; set; } = EnumPageMode.None;
 
     [DisplayName("搜索")]
-    private string Search { get; set; } = "Demos";
+    private string? Search { get; set; } = "Demos";
 
     private int Page { get; set; } = 3;
 
-    PdfReader pdfReader { get; set; }
+    PdfReader? pdfReader { get; set; }
 
-    PdfReader pdfReader2 { get; set; }
+    PdfReader? pdfReader2 { get; set; }
 
     [DisplayName("文件相对路径或者URL")]
     private string FileName { get; set; } = "/_content/DemoShared/samples/sample.pdf";
@@ -38,7 +38,7 @@ public sealed partial class PdfReaders
 
     private async Task Apply()
     {
-        await pdfReader.Refresh();
+        if (pdfReader!=null) await pdfReader.Refresh();
     }
 
     private async Task ApplyZoom()
@@ -58,7 +58,11 @@ public sealed partial class PdfReaders
         await Refresh();
     }
 
-    async Task Refresh()=> await pdfReader2?.Refresh(Search, Page, Pagemode, Zoom, ReadOnly, Watermark);
+    async Task Refresh()
+    {
+        if (pdfReader2 != null)
+            await pdfReader2.Refresh(Search, Page, Pagemode, Zoom, ReadOnly, Watermark);
+    }
 
     private async Task ApplyPagemode()
     {

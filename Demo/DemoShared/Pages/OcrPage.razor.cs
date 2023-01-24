@@ -12,7 +12,7 @@ namespace DemoShared.Pages
 {
     public partial class OcrPage
     {
-        List<string> res { get; set; }
+        List<string>? res { get; set; }
         private Task OnResult(List<string> res)
         {
             this.res = res;

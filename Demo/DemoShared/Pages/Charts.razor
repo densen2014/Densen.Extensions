@@ -7,14 +7,14 @@
 
 <Chart @ref="LineChart" OnInitAsync="() => OnInit(0.4f, false)" Width="50%" />
 
-<button class="btn btn-primary" @onclick="e => UtilityChart.RandomData(LineChart)"><i class="fa fa-line-chart"></i><span>随机数据</span></button>
+<button class="btn btn-primary" @onclick="e => UtilityChart.RandomData(LineChart!)"><i class="fa fa-line-chart"></i><span>随机数据</span></button>
 
 @code{
     private Random Randomer { get; } = new Random();
     private int LineDatasetCount = 2;
     private int LineDataCount = 7;
 
-    private Chart? LineChart { get; set; }
+    private Chart LineChart { get; set; } = new Chart();
 
     private Task<ChartDataSource> OnInit(float tension, bool hasNull)
     {

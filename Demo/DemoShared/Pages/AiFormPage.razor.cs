@@ -12,7 +12,7 @@ namespace DemoShared.Pages
 {
     public partial class AiFormPage
     {
-        List<AnalyzedDocument> models { get; set; }
+        List<AnalyzedDocument>? models { get; set; }
         private Task OnResult(List<AnalyzedDocument> models)
         {
             this.models = models;

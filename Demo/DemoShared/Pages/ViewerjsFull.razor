@@ -66,7 +66,7 @@
 
     ViewerOptions options = new ViewerOptions();
 
-    private async Task OnItemChanged(CheckboxState state, bool value) => await module.InvokeVoidAsync("initOptions", options);
+    private async Task OnItemChanged(CheckboxState state, bool value) => await module!.InvokeVoidAsync("initOptions", options);
 
     async ValueTask IAsyncDisposable.DisposeAsync()
     {

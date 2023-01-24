@@ -14,7 +14,6 @@
 		<PackageIcon>logo.png</PackageIcon>
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <NoWarn>1701;1702;1705;1591</NoWarn>
-        <DocumentationFile>$(MSBuildProjectName).xml</DocumentationFile>
     </PropertyGroup>
     
     <ItemGroup>

@@ -30,7 +30,7 @@
 
 @code
 {
-    FileViewer fileViewer;
+    FileViewer? fileViewer;
 
     private string Filedocx { get; set; } = CombineFilename("sample.docx");
 
@@ -84,12 +84,12 @@
     {
         Url = e.Value;
         StateHasChanged();
-        await fileViewer.Reload(e.Value);
+        await fileViewer!.Reload(e.Value);
     }
 
     private async Task Apply()
     {
-        await fileViewer.Reload(Url);
+        await fileViewer!.Reload(Url);
     }
 
 

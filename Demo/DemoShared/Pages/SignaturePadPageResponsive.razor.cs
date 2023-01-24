@@ -3,14 +3,15 @@ using Microsoft.AspNetCore.Hosting;
 using System;
 using System.Collections;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 
 namespace DemoShared.Pages;
 
 public sealed partial class SignaturePadPageResponsive
 {
-    string SaveResult;
-    [Inject] IHostingEnvironment Environment { get; set; }
-    public async Task<string> SaveImgBaseSixFour(string img)
+    string? SaveResult;
+    [Inject][NotNull] IHostingEnvironment? Environment { get; set; }
+    public async Task<string?> SaveImgBaseSixFour(string img)
     {
         try
         {

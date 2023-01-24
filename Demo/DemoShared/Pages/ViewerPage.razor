@@ -89,18 +89,14 @@
 
 
 @code{
-    List<string> imagesList;
+    List<string> imagesList { get; set; } = new List<string>();
 
     protected override void OnInitialized()
     {
 
-        imagesList = new List<string>();
-        if (!imagesList.Any())
+        for (int i = 1; i <= 9; i++)
         {
-            for (int i = 1; i <= 9; i++)
-            {
-                imagesList.Add($"https://fengyuanchen.github.io/viewerjs/images/thumbnails/tibet-{i}.jpg");
-            }
+            imagesList.Add($"https://fengyuanchen.github.io/viewerjs/images/thumbnails/tibet-{i}.jpg");
         }
     }
 
@@ -121,5 +117,5 @@
             new AttributeItem("Height","高", "400px","string?"),
             new AttributeItem("ID","组件ID", "null","string?"),
             new AttributeItem("Width","宽", "400px","string?"),
-            };
+                };
 }
