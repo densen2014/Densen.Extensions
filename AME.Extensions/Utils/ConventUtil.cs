@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.Serialization.Json;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -156,6 +157,36 @@ namespace AME
             IList<T> list = JsonConvert.DeserializeObject<IList<T>>(json);
             return list;
         }
+
+
+        /// <summary>
+        /// 从 DataUrl 转换为 Stream
+        /// <para>Convert from a DataUrl to an Stream</para>
+        /// </summary>
+        /// <param name="base64encodedstring"></param>
+        /// <returns></returns>
+        public static Stream DataUrl2Stream(string base64encodedstring)
+        {
+            var base64Data = Regex.Match(base64encodedstring, @"data:image/(?<type>.+?),(?<data>.+)").Groups["data"].Value;
+            var bytes = Convert.FromBase64String(base64Data);
+            var stream = new MemoryStream(bytes);
+            return stream;
+        }
+
+
+        /// <summary>
+        /// 从 base64 转换为 Stream
+        /// <para>Convert from a base64 to an Stream</para>
+        /// </summary>
+        /// <param name="base64encodedstring"></param>
+        /// <returns></returns>
+        public static Stream Base642Stream(string base64encodedstring)
+        {
+            var bytes = Convert.FromBase64String(base64encodedstring);
+            var stream = new MemoryStream(bytes);
+            return stream;
+        }
+
 
     }
 }
