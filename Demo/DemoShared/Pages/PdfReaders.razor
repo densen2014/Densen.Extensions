@@ -5,6 +5,21 @@
 <a href="https://www.nuget.org/packages/BootstrapBlazor.PdfReader#readme-body-tab"><h4>PDF阅读器 Pdf Reader</h4></a>
 
 <Tab IsOnlyRenderActiveTab>
+    <TabItem Text="常规">
+        <PdfReader FileName=@FileName />
+    </TabItem>
+    <TabItem Text="流化">
+        <h6>使用流化模式,可跨域读取文件</h6>
+        <div class="row g-3">
+            <div class="col-12">
+                <BootstrapInputGroup>
+                    <BootstrapInput @bind-Value="@FileNameStream" />
+                    <Button Color="Color.Primary" OnClick="Apply">加载</Button>
+                </BootstrapInputGroup>
+            </div>
+        </div>
+        <PdfReader @ref="pdfReader" FileName="@FileNameStream" StreamMode="true" />
+    </TabItem>
     <TabItem Text="高级">
         <div class="row mb-3">
             <div class="col-12">
@@ -61,20 +76,5 @@
                    Debug="Debug"
                    ReadOnly="ReadOnly"
                    Watermark="@Watermark" />
-    </TabItem>
-    <TabItem Text="常规">
-        <PdfReader FileName=@FileName />
-    </TabItem>
-    <TabItem Text="流化">
-        <h6>使用流化模式,可跨域读取文件</h6>
-        <div class="row g-3">
-            <div class="col-12">
-                <BootstrapInputGroup>
-                    <BootstrapInput @bind-Value="@FileNameStream" />
-                    <Button Color="Color.Primary" OnClick="Apply">加载</Button>
-                </BootstrapInputGroup>
-            </div>
-        </div>
-        <PdfReader @ref="pdfReader" FileName="@FileNameStream" StreamMode="true" />
     </TabItem>
 </Tab> 
