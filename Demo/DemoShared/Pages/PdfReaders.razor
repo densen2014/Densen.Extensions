@@ -18,7 +18,11 @@
                 </BootstrapInputGroup>
             </div>
         </div>
-        <PdfReader @ref="pdfReader" FileName="@FileNameStream" StreamMode="true" />
+        <PdfReader @ref="pdfReader" FileName="@FileNameStream" StreamMode />
+    </TabItem>
+    <TabItem Text="兼容模式">
+        <h6>兼容旧版浏览器</h6>
+        <PdfReader FileName=@FileName CompatibilityMode />
     </TabItem>
     <TabItem Text="高级">
         <div class="row mb-3">
