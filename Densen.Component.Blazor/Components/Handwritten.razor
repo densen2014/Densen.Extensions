@@ -45,7 +45,7 @@
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (!firstRender) return;
-        module = await JS.InvokeAsync<IJSObjectReference>("import", "./_content/Densen.Component.Blazor/lib/handwritten/handwritten.js");
+        module = await JS.InvokeAsync<IJSObjectReference>("import", "./_content/Densen.Component.Blazor/lib/handwritten/handwritten.js" + "?v=" + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version);
         await module.InvokeVoidAsync("init", DotNetObjectReference.Create(this), null);
     }
 
