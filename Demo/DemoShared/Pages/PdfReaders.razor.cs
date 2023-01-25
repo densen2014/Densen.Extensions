@@ -1,5 +1,4 @@
 ﻿using BootstrapBlazor.Components;
-using Microsoft.AspNetCore.Components;
 using System.ComponentModel;
 
 namespace DemoShared.Pages;
