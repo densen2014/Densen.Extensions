@@ -18,6 +18,29 @@
     <TabItem Text="窗口连续截图">
         <Capture OnCaptureResult="@OnCaptureResult" OnError="@OnError"  Camera="false" Continuous="true" />
     </TabItem>
+    <TabItem Text="自定义UI">
+        <Capture @ref="Capture" ShowUI="false" OnCaptureResult="@OnCaptureResult" OnError="@OnError" />
+        <div @ref="Capture.Element">
+
+            <div data-action="camera" class="camera2">
+                <video data-action="video" class="video2">Video stream not available.</video>
+                <button data-action="startbutton" class="startbutton2">截图</button>
+            </div>
+
+            <div data-action="sourceSelectPanel" style="display:none">
+                <label for="sourceSelect">选择设备:</label>
+                <select data-action="sourceSelect" style="max-width:100%" class="form-control">
+                </select>
+            </div>
+
+            <canvas data-action="canvas" class="canvas2"> </canvas>
+
+            <div class="output">
+                <img data-action="photo" class="photo2" alt="屏幕截图结果." />
+            </div>
+
+        </div>
+    </TabItem>
 </Tab>
 
 <p></p><p></p>
@@ -27,3 +50,50 @@
 
 <AttributeTable Items="@GetAttributes()" />
 
+<style>
+    .video2 {
+        border: 1px solid black;
+        width: 320px;
+        height: 240px;
+        border-radius: 25px;
+    }
+
+    .photo2 {
+        border: 1px solid black;
+        width: 320px;
+        height: 240px;
+        border-radius: 25px;
+    }
+
+    .canvas2 {
+        display: none;
+    }
+
+    .camera2 {
+        width: 340px;
+        display: inline-block;
+        border-radius: 25px;
+    }
+
+    .startbutton2 {
+        display: block;
+        position: relative;
+        margin-left: auto;
+        margin-right: auto;
+        bottom: 32px;
+        border-radius: 10px;
+        background-color: rgb(255, 106, 0, 0.5);
+        border: 1px solid rgba(255, 255, 255, 0.7);
+        font-size: 14px;
+        font-family: "Lucida Grande", "Arial", sans-serif;
+        color: rgba(255, 255, 255, 1);
+    }
+
+    .contentarea2 {
+        font-size: 16px;
+        font-family: "Lucida Grande", "Arial", sans-serif;
+        width: 760px;
+        border-radius: 25px;
+    }
+
+</style>

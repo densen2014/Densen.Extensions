@@ -1,4 +1,6 @@
 ﻿using BootstrapBlazor.Components;
+using Microsoft.AspNetCore.Components;
+using System.Diagnostics.CodeAnalysis;
 
 namespace DemoShared.Pages;
 
@@ -7,7 +9,9 @@ namespace DemoShared.Pages;
 /// </summary>
 public sealed partial class ScreenCapturePage
 {
-
+    [NotNull]
+    public Capture? Capture { get; set; }
+    
     private CaptureOptions Options { get; set; } = new CaptureOptions();
     
     private string? message;
