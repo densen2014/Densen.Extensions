@@ -21,8 +21,15 @@
         <PdfReader @ref="pdfReader" FileName="@FileNameStream" StreamMode />
     </TabItem>
     <TabItem Text="兼容模式">
-        <h6>兼容旧版浏览器</h6>
-        <PdfReader FileName=@FileName CompatibilityMode />
+        <pre>
+        - Chrome &lt; 97 自动使用 2.4.456 版本
+        - Chrome &lt; 109 自动使用 2.6.347 版本
+        - 注:ReadOnly 和 Watermark 在这两种兼容模式下不能使用
+        </pre>
+        <h6>兼容旧版浏览器 CompatibilityMode</h6>
+        <PdfReader FileName=@FileName CompatibilityMode Height="300px" />
+        <h6>兼容旧版不支持es5的浏览器 CompatibilityNoneES5</h6>
+        <PdfReader FileName=@FileName CompatibilityNoneES5 Height="300px" />
     </TabItem>
     <TabItem Text="高级">
         <div class="row mb-3">
