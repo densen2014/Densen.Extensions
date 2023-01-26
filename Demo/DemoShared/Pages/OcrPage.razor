@@ -3,4 +3,11 @@
 
 <a href="https://www.nuget.org/packages/BootstrapBlazor.OCR#readme-body-tab"><h4>光学字符识别 OCR</h4></a>
 
-<OCR ShowUI="true" ShowUI_Capture="true" ShowUI_Url="true" Debug="true" OnResult="OnResult" />
+<Tab IsOnlyRenderActiveTab="true">
+    <TabItem Text="OCR">
+        <OCR ShowUI="true" ShowUI_Capture="true" ShowUI_Url="true" Debug="true" OnResult="OnResult" />
+    </TabItem>
+    <TabItem Text="其他">
+        <OCR ShowUI="true" ShowUI_Capture="true" ShowUI_Url="true" Debug="true" OnResult="OnResult" AnalyzeImage DetectObjects DetectDomainSpecific />
+    </TabItem>
+</Tab>
