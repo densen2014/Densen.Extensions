@@ -106,7 +106,7 @@ namespace AME.Util
                             }
                         }
                     }
-                    ids.Add(id);
+                    if (id.SerialNumber !=null) ids.Add(id);
                 }
             }
             catch
