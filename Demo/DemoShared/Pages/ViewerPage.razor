@@ -3,10 +3,14 @@
 
 <a href="https://www.nuget.org/packages/BootstrapBlazor.Viewer#readme-body-tab"><h3>图像浏览器</h3></a>
 
-<Tab>
+<Tab IsLazyLoadTabItem>
     <TabItem Text="多图片">
         &lt;Viewer Images="imagesList" /&gt;
         <Viewer Images="imagesList" />
+    </TabItem>
+    <TabItem Text="单图片">
+        &lt;Viewer Src="@imagesList[2]" Width="600px" Height="300px" /&gt;
+        <Viewer Src="@imagesList[2]" Width="600px" Height="300px" />
     </TabItem>
     <TabItem Text="多图片+简化工具条">
         &lt;Viewer Images="imagesList" toolbarlite="true" /&gt;
@@ -41,14 +45,23 @@
         </div>
         <Viewer ID="immmmm" Images="imagesList" UseBuiltinImageDiv="false" toolbarlite="true" />
     </TabItem>
-    <TabItem Text="单图片">
-        &lt;Viewer Src="@imagesList[2]" Width="600px" Height="300px" /&gt;
-        <Viewer Src="@imagesList[2]" Width="600px" Height="300px" />
-    </TabItem>
     <TabItem Text="单图片+简化工具条">
         &lt;Viewer Src="@imagesList[4]" Width="600px" Height="300px" toolbarlite="true" /&gt;
         <Viewer Src="@imagesList[4]" Width="600px" Height="300px" toolbarlite="true" />
     </TabItem>
+    <TabItem Text="单图片流">
+        &lt;Viewer ImagesStream="imagesStream" /&gt;
+        <Viewer SrcStream="imagesStreamList[1]" />
+    </TabItem>
+    <TabItem Text="多图片流">
+        &lt;Viewer ImagesStream="imagesStreamList" /&gt;
+        <Viewer ImagesStream="imagesStreamList" />
+    </TabItem>
+    <TabItem Text="本地单图片,组件流读取">
+        &lt;Viewer Src='@(@"F:\images\objects.jpg")' LocalFileToStream /&gt;
+        <Viewer Src='@(@"F:\Repos\Densen.Extensions\Demo\DemoSSR\bin\Debug\net7.0\wwwroot\images\objects.jpg")' LocalFileToStream />
+    </TabItem>
+
 </Tab>
 
 
@@ -90,6 +103,7 @@
 
 @code{
     List<string> imagesList { get; set; } = new List<string>();
+    List<Stream> imagesStreamList { get; set; } = new List<Stream>();
 
     protected override void OnInitialized()
     {
@@ -97,6 +111,18 @@
         for (int i = 1; i <= 9; i++)
         {
             imagesList.Add($"https://fengyuanchen.github.io/viewerjs/images/thumbnails/tibet-{i}.jpg");
+        }
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        var client = new HttpClient();
+
+        for (int i = 1; i <= 3; i++)
+        {
+            var stream = await client.GetStreamAsync($"https://fengyuanchen.github.io/viewerjs/images/thumbnails/tibet-{i}.jpg");
+            if (stream != null)
+                imagesStreamList.Add(stream);
         }
     }
 
