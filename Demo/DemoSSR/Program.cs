@@ -7,8 +7,10 @@
 using BootstrapBlazor.Ocr.Services;
 using Microsoft.AspNetCore.StaticFiles;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.FileProviders;
 using System.Globalization;
 using System.Reflection;
+using System.Text.Encodings.Web;
 
 var builder = WebApplication.CreateBuilder(args); //    webBuilder.UseContentRoot("D:\\T9WMS\\publish");
 
@@ -87,6 +89,17 @@ app.UseStaticFiles(new StaticFileOptions
 });
 
 app.UseStaticFiles();
+
+var dir = Path.Combine(app.Environment.WebRootPath, "Upload");
+if (!Directory.Exists(dir)) Directory.CreateDirectory(dir);
+
+var opt = new DirectoryBrowserOptions
+{
+    FileProvider = new PhysicalFileProvider(dir),
+    Formatter = new AME.HtmlDirectoryFormatterChsSorted(HtmlEncoder.Default),
+    RequestPath = new PathString("/Upload")
+};
+app.UseDirectoryBrowser(opt);
 
 app.UseRouting();
 
