@@ -75,9 +75,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PropertiesTools", "Properti
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZXingBlazor", "..\ZXingBlazor\src\ZXingBlazor\ZXingBlazor.csproj", "{90B905AE-81E5-4FC6-971F-BFD0D14C807C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestOCR", "..\BootstrapBlazor.OCR\TestOCR\TestOCR.csproj", "{3AB06A0E-FCE1-4782-812C-E12A492E4772}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestOCR", "..\BootstrapBlazor.OCR\TestOCR\TestOCR.csproj", "{3AB06A0E-FCE1-4782-812C-E12A492E4772}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{E6D4F13B-9013-4707-9E6B-5190B9E32A1F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Densen.Extensions.Freesql.BootstrapBlazor", "..\Densen.Freesql\src\BootstrapBlazor.DataAcces.FreeSql\Densen.Extensions.Freesql.BootstrapBlazor.csproj", "{EBDF6570-62F0-483B-A35E-7213897C223D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BootstrapBlazor.Table.Freesql", "..\Densen.Freesql\src\BootstrapBlazor.Table.Freesql\BootstrapBlazor.Table.Freesql.csproj", "{19006071-8F01-472E-B2FC-87C73B7CC565}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -254,6 +258,18 @@ Global
 		{3AB06A0E-FCE1-4782-812C-E12A492E4772}.Preview|Any CPU.Build.0 = Debug|Any CPU
 		{3AB06A0E-FCE1-4782-812C-E12A492E4772}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3AB06A0E-FCE1-4782-812C-E12A492E4772}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EBDF6570-62F0-483B-A35E-7213897C223D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EBDF6570-62F0-483B-A35E-7213897C223D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EBDF6570-62F0-483B-A35E-7213897C223D}.Preview|Any CPU.ActiveCfg = Debug|Any CPU
+		{EBDF6570-62F0-483B-A35E-7213897C223D}.Preview|Any CPU.Build.0 = Debug|Any CPU
+		{EBDF6570-62F0-483B-A35E-7213897C223D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EBDF6570-62F0-483B-A35E-7213897C223D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{19006071-8F01-472E-B2FC-87C73B7CC565}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19006071-8F01-472E-B2FC-87C73B7CC565}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19006071-8F01-472E-B2FC-87C73B7CC565}.Preview|Any CPU.ActiveCfg = Debug|Any CPU
+		{19006071-8F01-472E-B2FC-87C73B7CC565}.Preview|Any CPU.Build.0 = Debug|Any CPU
+		{19006071-8F01-472E-B2FC-87C73B7CC565}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19006071-8F01-472E-B2FC-87C73B7CC565}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -285,6 +301,8 @@ Global
 		{90B905AE-81E5-4FC6-971F-BFD0D14C807C} = {7598D3CE-5270-4A5E-9A66-E8E8CC771339}
 		{3AB06A0E-FCE1-4782-812C-E12A492E4772} = {E6D4F13B-9013-4707-9E6B-5190B9E32A1F}
 		{E6D4F13B-9013-4707-9E6B-5190B9E32A1F} = {7598D3CE-5270-4A5E-9A66-E8E8CC771339}
+		{EBDF6570-62F0-483B-A35E-7213897C223D} = {7598D3CE-5270-4A5E-9A66-E8E8CC771339}
+		{19006071-8F01-472E-B2FC-87C73B7CC565} = {7598D3CE-5270-4A5E-9A66-E8E8CC771339}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2B9698BD-88AE-4165-9322-67F121A4B26B}
