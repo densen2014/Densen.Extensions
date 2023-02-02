@@ -90,16 +90,16 @@ app.UseStaticFiles(new StaticFileOptions
 
 app.UseStaticFiles();
 
-var dir = Path.Combine(app.Environment.WebRootPath, "Upload");
-if (!Directory.Exists(dir)) Directory.CreateDirectory(dir);
+//var dir = Path.Combine(app.Environment.WebRootPath, "Upload");
+//if (!Directory.Exists(dir)) Directory.CreateDirectory(dir);
 
-var opt = new DirectoryBrowserOptions
-{
-    FileProvider = new PhysicalFileProvider(dir),
-    Formatter = new AME.HtmlDirectoryFormatterChsSorted(HtmlEncoder.Default),
-    RequestPath = new PathString("/Upload")
-};
-app.UseDirectoryBrowser(opt);
+//var opt = new DirectoryBrowserOptions
+//{
+//    FileProvider = new PhysicalFileProvider(dir),
+//    Formatter = new AME.HtmlDirectoryFormatterChsSorted(HtmlEncoder.Default),
+//    RequestPath = new PathString("/Upload")
+//};
+//app.UseDirectoryBrowser(opt);
 
 app.UseRouting();
 
