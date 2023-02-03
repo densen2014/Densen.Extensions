@@ -6,11 +6,11 @@
 
 using BootstrapBlazor.Ocr.Services;
 using Microsoft.AspNetCore.StaticFiles;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
 using System.Globalization;
 using System.Reflection;
 using System.Text.Encodings.Web;
+using Microsoft.AspNetCore.Http.Features;
 
 var builder = WebApplication.CreateBuilder(args); //    webBuilder.UseContentRoot("D:\\T9WMS\\publish");
 
@@ -47,7 +47,7 @@ builder.Services.ConfigureJsonLocalizationOptions(op =>
     };
 });
 builder.Services.AddTransient<OcrService>();
-builder.Services.AddTransient<AiFormService>(); 
+builder.Services.AddTransient<AiFormService>();
 if (!builder.Services.Any(x => x.ServiceType == typeof(HttpClient)))
 {
     builder.Services.AddSingleton<HttpClient>();
@@ -57,13 +57,15 @@ builder.Services.ConfigureJsonLocalizationOptions(op =>
     // 附加自己的 json 多语言文化资源文件 如 zh-TW.json
     op.AdditionalJsonAssemblies = new Assembly[]
     {
-                typeof(DemoShared.App).Assembly, 
-                typeof(BootstrapBlazor.Components.Chart).Assembly, 
+                typeof(DemoShared.App).Assembly,
+                typeof(BootstrapBlazor.Components.Chart).Assembly,
     };
 });
 var cultureInfo = new CultureInfo("zh-CN");
 CultureInfo.DefaultThreadCurrentCulture = cultureInfo;
 CultureInfo.DefaultThreadCurrentUICulture = cultureInfo;
+//设置文件上传的大小限制 , 默认值128MB 
+builder.Services.Configure<FormOptions>(o => o.MultipartBodyLengthLimit = long.MaxValue);
 
 var app = builder.Build();
 
@@ -80,26 +82,62 @@ else
 }
 app.UseHttpsRedirection();
 
+app.UseStaticFiles();
+
+var dir = Path.Combine(app.Environment.WebRootPath, "Upload");
+if (!Directory.Exists(dir)) Directory.CreateDirectory(dir);
+
 var provider = new FileExtensionContentTypeProvider();
 provider.Mappings[".properties"] = "application/octet-stream";
+
+provider.Mappings.Remove(".ts");
+provider.Mappings.Add(".key", "text/plain");
+provider.Mappings.Add(".m3u8", "application/x-mpegURL");
+provider.Mappings.Add(".ts", "video/MP2T");
 
 app.UseStaticFiles(new StaticFileOptions
 {
     ContentTypeProvider = provider
 });
 
-app.UseStaticFiles();
+app.UseStaticFiles(new StaticFileOptions
+{
+    FileProvider = new PhysicalFileProvider(dir),
+    RequestPath = new PathString("/Upload"),
+    ContentTypeProvider = provider
+});
 
-//var dir = Path.Combine(app.Environment.WebRootPath, "Upload");
-//if (!Directory.Exists(dir)) Directory.CreateDirectory(dir);
+var opt = new DirectoryBrowserOptions
+{
+    FileProvider = new PhysicalFileProvider(dir),
+    Formatter = new AME.HtmlDirectoryFormatterChsSorted(HtmlEncoder.Default),
+    RequestPath = new PathString("/Upload")
+};
 
-//var opt = new DirectoryBrowserOptions
-//{
-//    FileProvider = new PhysicalFileProvider(dir),
-//    Formatter = new AME.HtmlDirectoryFormatterChsSorted(HtmlEncoder.Default),
-//    RequestPath = new PathString("/Upload")
-//};
-//app.UseDirectoryBrowser(opt);
+app.UseDirectoryBrowser(opt);
+
+if (Directory.Exists("C:\\Repos\\A_win7SP\\bin"))
+{
+    dir = "C:\\Repos\\A_win7SP\\bin";
+}
+else
+{
+    dir = Path.Combine(app.Environment.WebRootPath, "stream");
+    if (!Directory.Exists(dir)) Directory.CreateDirectory(dir);
+}
+app.UseStaticFiles(new StaticFileOptions
+{
+    FileProvider = new PhysicalFileProvider(dir),
+    RequestPath = new PathString("/stream"),
+    ContentTypeProvider = provider
+});
+
+app.UseDirectoryBrowser(new DirectoryBrowserOptions
+{
+    FileProvider = new PhysicalFileProvider(dir),
+    Formatter = new AME.HtmlDirectoryFormatterChsSorted(HtmlEncoder.Default),
+    RequestPath = new PathString("/stream")
+});
 
 app.UseRouting();
 
@@ -110,6 +148,8 @@ app.UseCors(options =>
           .AllowAnyHeader();
 });
 
+app.MapControllers();
 app.MapBlazorHub();
 app.MapFallbackToPage("/_Host");
+app.MapDefaultControllerRoute();
 app.Run();

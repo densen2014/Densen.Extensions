@@ -95,6 +95,13 @@
             Items.Add(new SelectedItem { Text = $"TestVideo{i}", Value = VideoList[i] });
         }
         Items.Add(new SelectedItem { Text = "Mp4", Value = "//vjs.zencdn.net/v/oceans.mp4" });
+#if DEBUG
+        Items.Add(new SelectedItem { Text = "playlist.m3u8", Value = "https://localhost:5011/stream/cache/playlist.m3u8" });
+        Items.Add(new SelectedItem { Text = "live.m3u8", Value = "https://localhost:5011/stream/cache/live.m3u8" });
+#else
+        Items.Add(new SelectedItem { Text = "playlist.m3u8", Value = "https://blazor.app1.es/stream/cache/playlist.m3u8" });
+        Items.Add(new SelectedItem { Text = "live.m3u8", Value = "https://blazor.app1.es/stream/cache/live.m3u8" });
+#endif
         //Items.Add(new SelectedItem { Text = "rtsp", Value = "rtsp://wowzaec2demo.streamlock.net/vod/mp4:BigBuckBunny_115k.mp4" });
         //Items.Add(new SelectedItem { Text = "rtmp", Value = "rtmp://ns8.indexforce.com/home/mystream" });
     }
