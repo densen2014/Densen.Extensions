@@ -84,6 +84,10 @@ app.UseHttpsRedirection();
 
 app.UseStaticFiles();
 
+if (string.IsNullOrWhiteSpace(app.Environment.WebRootPath))
+{
+    app.Environment.WebRootPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot");
+}
 var dir = Path.Combine(app.Environment.WebRootPath, "Upload");
 if (!Directory.Exists(dir)) Directory.CreateDirectory(dir);
 
