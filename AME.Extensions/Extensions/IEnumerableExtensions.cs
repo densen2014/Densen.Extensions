@@ -42,7 +42,9 @@ namespace AME
     {
         public static object[] Append(this object[] first, params object[] second)=> second == null ? first : first.ToList().OfType<object>().Concat(second.ToList()).ToArray();
 
-        public static T[] Append<T>(this T[] first, params T[] second) => second == null? first:first.ToList().Concat(second.ToList()).ToArray(); 
+        public static T[] Append<T>(this T[] first, params T[] second) => second == null? first:first.ToList().Concat(second.ToList()).ToArray();
+
+       
     }
 
 }
