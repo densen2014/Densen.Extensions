@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net7-windows</TargetFramework> 
+    <TargetFrameworks>net7.0-windows;net48</TargetFrameworks> 
     <UseWindowsForms>true</UseWindowsForms> 
   </PropertyGroup>
 
