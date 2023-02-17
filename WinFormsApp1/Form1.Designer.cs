@@ -39,12 +39,15 @@
             u4 = new UserControl1();
             tabPage5 = new System.Windows.Forms.TabPage();
             u5 = new UserControl1();
+            tabPage6 = new System.Windows.Forms.TabPage();
+            u6 = new UserControl1();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             tabPage2.SuspendLayout();
             tabPage3.SuspendLayout();
             tabPage4.SuspendLayout();
             tabPage5.SuspendLayout();
+            tabPage6.SuspendLayout();
             SuspendLayout();
             // 
             // tabControl1
@@ -54,6 +57,7 @@
             tabControl1.Controls.Add(tabPage3);
             tabControl1.Controls.Add(tabPage4);
             tabControl1.Controls.Add(tabPage5);
+            tabControl1.Controls.Add(tabPage6);
             tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             tabControl1.Location = new System.Drawing.Point(0, 0);
             tabControl1.Name = "tabControl1";
@@ -156,6 +160,25 @@
             u5.Size = new System.Drawing.Size(1106, 1020);
             u5.TabIndex = 2;
             // 
+            // tabPage6
+            // 
+            tabPage6.Controls.Add(u6);
+            tabPage6.Location = new System.Drawing.Point(4, 37);
+            tabPage6.Name = "tabPage6";
+            tabPage6.Padding = new System.Windows.Forms.Padding(3);
+            tabPage6.Size = new System.Drawing.Size(1112, 1026);
+            tabPage6.TabIndex = 5;
+            tabPage6.Text = "tabPage6";
+            tabPage6.UseVisualStyleBackColor = true;
+            // 
+            // u6
+            // 
+            u6.Dock = System.Windows.Forms.DockStyle.Fill;
+            u6.Location = new System.Drawing.Point(3, 3);
+            u6.Name = "u6";
+            u6.Size = new System.Drawing.Size(1106, 1020);
+            u6.TabIndex = 3;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(13F, 28F);
@@ -171,6 +194,7 @@
             tabPage3.ResumeLayout(false);
             tabPage4.ResumeLayout(false);
             tabPage5.ResumeLayout(false);
+            tabPage6.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -186,5 +210,7 @@
         private UserControl1 u4;
         private System.Windows.Forms.TabPage tabPage5;
         private UserControl1 u5;
+        private System.Windows.Forms.TabPage tabPage6;
+        private UserControl1 u6;
     }
 }
