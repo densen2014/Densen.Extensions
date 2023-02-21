@@ -17,5 +17,14 @@ namespace AME
             刷新,
             打印,
         }
+        public enum ShowDetailRowType
+        {
+            表内明细,
+            弹窗,
+            图片列,
+            选项卡,
+            表内明细II,
+
+        } 
     }
 }

@@ -233,10 +233,14 @@ namespace AME
     {
         public static void WriteLineColor(this string s, ConsoleColor foregroundColor)
         {
+#if WINDOWS || Linux
             Console.BackgroundColor = ConsoleColor.Black;
             Console.ForegroundColor = foregroundColor;
+#endif
             Console.WriteLine(s);
-            Console.ResetColor();
+#if WINDOWS || Linux
+           Console.ResetColor();
+#endif
         }
         public static void WriteLine(this string s) => s.WriteLineColor(ConsoleColor.White);
         public static void WriteLineCyan(string s) => s.WriteLineColor(ConsoleColor.Cyan);

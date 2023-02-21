@@ -246,19 +246,21 @@ namespace AME
             return false;
         }
 
+#nullable enable 
         /// <summary>
         /// 获取属性的主键,反射获取属性值
         /// </summary>
         /// <param name="instance">object</param>
         /// <param name="propertyName">需要判断的属性</param> 
         /// <returns>是否包含</returns>
-        public static object GetIdentityKey<TItem>(this TItem instance, string propertyName)
+        public static object? GetIdentityKey<TItem>(this TItem instance, string? propertyName)
         {
             try
             {
                 if (instance != null && !string.IsNullOrEmpty(propertyName))
                 {
                     var propertyInfo = instance.GetType().GetProperty(propertyName);
+                    if (propertyInfo == null) return null;
                     var value = propertyInfo.GetValue(instance, null);
                     return value;
                 }
@@ -268,6 +270,7 @@ namespace AME
             }
             return null;
         }
+#nullable restore 
 
         /// <summary>
         /// 创建属性
