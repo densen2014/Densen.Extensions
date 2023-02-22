@@ -18,5 +18,9 @@
 	<ItemGroup>
 		<PackageReference Include="AME.SortedDirectoryChs" Version="6.5.0" />
 	</ItemGroup>
-
+	
+	<ItemGroup>
+		<RuntimeHostConfigurationOption Include="System.Drawing.EnableUnixSupport" Value="true" />
+	</ItemGroup>
+	
 </Project>
