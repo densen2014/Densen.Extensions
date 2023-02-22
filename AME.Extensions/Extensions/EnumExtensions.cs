@@ -57,7 +57,7 @@ namespace AME
 
         public static IEnumerable<List<string>> GetEnumValueAndDescriptionsFromEnumsName(string name, string pre = "AME.Enums+", string assemblyString = null)
         {
-            return GetEnumValueAndDescriptions(GetTypeFromEnumsName(name, pre, assemblyString));
+            return GetTypeFromEnumsName(name, pre, assemblyString).GetEnumValueAndDescriptions();
         }
 
         /// <summary>
