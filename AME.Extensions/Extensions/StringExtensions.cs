@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Text;
+using System.Threading;
 
 namespace AME
 {
@@ -227,8 +228,14 @@ namespace AME
             }
             return builder.ToString();
         }
+
+        public static string ToI18n(this string chn, string es, string en=null)
+        {
+            return Thread.CurrentThread.CurrentUICulture.Name == "es-ES"? es : Thread.CurrentThread.CurrentUICulture.Name == "en-EN" ? (en?? chn) : chn;
+        }
+
     }
- 
+
     public static class ConsoleExt
     {
         public static void WriteLineColor(this string s, ConsoleColor foregroundColor)
