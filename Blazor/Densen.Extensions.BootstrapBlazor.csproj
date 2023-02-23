@@ -40,10 +40,13 @@
 		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="7.*" />
 	</ItemGroup>
 
-	<ItemGroup>
+	<ItemGroup Condition="'$(Configuration)' == 'Debug'">
 		<ProjectReference Include="..\AME.Extensions\AME.Extensions.csproj" />
 	</ItemGroup>
-	
+	<ItemGroup Condition="'$(Configuration)' == 'Release'">
+		<PackageReference Include="AME.Extensions" Version="7.*" />
+	</ItemGroup>
+
 	<ItemGroup>
 		<Content Update="wwwroot\README.md">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
