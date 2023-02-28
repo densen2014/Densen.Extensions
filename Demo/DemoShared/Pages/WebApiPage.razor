@@ -5,12 +5,15 @@
 
 <p>@message</p>
 
-<WebApi OnBatteryResult="@OnBatteryResult" OnNetworkInfoResult="@OnNetworkInfoResult" OnError="@OnError" />
+<WebApi OnBatteryResult="@OnBatteryResult" OnNetworkInfoResult="@OnNetworkInfoResult" OnUserAgentResult="OnUserAgentResult" OnError="@OnError" ShowInfo />
 
 <h5>电池</h5>
 <Table TItem="BatteryStatus" Items="batteryStatus" AutoGenerateColumns="true" />
 
 <h5>网络</h5>
 <Table TItem="NetworkInfoStatus" Items="networkInfoStatus" AutoGenerateColumns="true" />
+
+<h5>浏览器信息</h5>
+<Table TItem="UAInfo" Items="UAInfos" AutoGenerateColumns="true" />
 
 <AttributeTable Items="@GetAttributes()" />

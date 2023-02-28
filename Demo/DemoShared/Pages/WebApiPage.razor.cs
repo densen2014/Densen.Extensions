@@ -1,4 +1,5 @@
 ﻿using BootstrapBlazor.Components;
+using static BootstrapBlazor.Components.WebApi;
 
 namespace DemoShared.Pages;
 
@@ -10,6 +11,7 @@ public sealed partial class WebApiPage
 
     private List<BatteryStatus> batteryStatus { get; set; } = new List<BatteryStatus>() { new BatteryStatus() };
     private List<NetworkInfoStatus> networkInfoStatus { get; set; } = new List<NetworkInfoStatus>() { new NetworkInfoStatus() };
+    private List<UAInfo> UAInfos { get; set; } = new List<UAInfo>() { new UAInfo() };
     private string? message;
 
     private Task OnBatteryResult(BatteryStatus item)
@@ -22,6 +24,13 @@ public sealed partial class WebApiPage
     private Task OnNetworkInfoResult(NetworkInfoStatus item)
     {
         networkInfoStatus[0] = item;
+        StateHasChanged();
+        return Task.CompletedTask;
+    }
+
+    private Task OnUserAgentResult(UAInfo item)
+    {
+        UAInfos[0] = item;
         StateHasChanged();
         return Task.CompletedTask;
     }
@@ -45,6 +54,7 @@ public sealed partial class WebApiPage
             new AttributeItem("GetNetworkInfo","获取网络信息",  "-","void"),
             new AttributeItem("OnBatteryResult","获取电量回调",  "-","Func<BatteryStatus, Task>"),
             new AttributeItem("OnNetworkInfoResult","获取网络信息回调",  "-","Func<NetworkInfoStatus, Task>"),
+            new AttributeItem("OnUserAgentResult","获取浏览器信息回调",  "-","Func<UAInfo, Task>"),
             new AttributeItem("OnError","错误信息回调",  "-","Func<string, Task>"),
     };
 }
