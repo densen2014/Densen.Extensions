@@ -12,6 +12,9 @@ using System.Reflection;
 using System.Text.Encodings.Web;
 using Microsoft.AspNetCore.Http.Features;
 
+string UploadPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "uploads");
+if (!Directory.Exists(UploadPath)) Directory.CreateDirectory(UploadPath);
+
 var builder = WebApplication.CreateBuilder(args); //    webBuilder.UseContentRoot("D:\\T9WMS\\publish");
 
 
