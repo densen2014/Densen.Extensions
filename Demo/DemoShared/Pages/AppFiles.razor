@@ -10,7 +10,7 @@
         <pre>
             @{
                 var files1 = Directory.GetFiles(UploadPath);
-                var files = Directory.GetFiles(AppDomain.CurrentDomain.BaseDirectory.Replace("/files", ""), "*.*", SearchOption.AllDirectories);
+                var files = Directory.GetFiles(Path.Combine ( AppDomain.CurrentDomain.BaseDirectory.Replace("/files", ""), "wwwroot"), "*.*", SearchOption.AllDirectories);
                 int i = 0;
                 foreach (var item in files)
                 {
@@ -52,7 +52,6 @@
     }
 </style>
 
-@AppDomain.CurrentDomain.BaseDirectory
 
 
 @code{
