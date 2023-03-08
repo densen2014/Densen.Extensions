@@ -44,7 +44,14 @@ public partial class NavMenu
                 }
             },        
             new MenuItem() { Text = "图表", Url = "/charts" },
-            new MenuItem() { Text = "其他" , Items = new List<MenuItem>{
+             new MenuItem() { Text = "文件管理" ,Items= new List<MenuItem>
+                {
+                    new MenuItem() { Text = "文件", Url = "/Files" },
+                    new MenuItem() { Text = "上传文件", Url = "/FileUpload" },
+                    new MenuItem() { Text = "文件夹", Url = "/AppFiles" },
+                }
+           },
+           new MenuItem() { Text = "其他" , Items = new List<MenuItem>{
                     new MenuItem() { Text = "TableLazy", Url = "/tablelazy" },
                     new MenuItem() { Text = "Clock", Url = "/clock" },
                     new MenuItem() { Text = "IP", Url = "/ip" },
