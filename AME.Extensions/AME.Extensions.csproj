@@ -19,14 +19,15 @@
 	</PropertyGroup>
 	<ItemGroup>
 		<PackageReference Include="Newtonsoft.Json" Version="13.*" />
-		<PackageReference Include="System.Management" Version="7.*" />
 	</ItemGroup>
 	<ItemGroup Condition="'$(TargetFramework)' != 'net7.0'">
 		<PackageReference Include="Microsoft.Extensions.FileSystemGlobbing" Version="6.0.0" />
+		<PackageReference Include="System.Management" Version="6.*" />
 	</ItemGroup>
 
 	<ItemGroup Condition="'$(TargetFramework)' == 'net7.0'">
 		<PackageReference Include="Microsoft.Extensions.FileSystemGlobbing" Version="7.*" />
+		<PackageReference Include="System.Management" Version="7.*" />
 	</ItemGroup>
 
 </Project>
