@@ -57,5 +57,11 @@ public partial class NavMenu
                     new MenuItem() { Text = "IP", Url = "/ip" },
                 } 
             },
+            new MenuItem() { Text = "测试" ,Items= new List<MenuItem>
+                {
+                    new MenuItem() { Text = "视频墙", Url = "/VideoWall" },
+                    new MenuItem() { Text = "Iframe下载文件", Url = "/TestIframe2" },
+                }
+            },
     };
 }
