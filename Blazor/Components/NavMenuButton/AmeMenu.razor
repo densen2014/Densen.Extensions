@@ -2,17 +2,20 @@
 
 @foreach (var menu in Items)
 {
-    <AmeMenuBase Text="@menu.Text" Link="@menu.Link" />
-    @if (menu.SubItems != null && menu.SubItems.Any())
-    {
-        <div class="@NavMenuCssClass ml-4">
-            <button class="navbar-toggler" @onclick="ToggleNavMenu">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <AmeMenu Items="@menu.SubItems" />
+    <li class="nav-item px-3">
+        <div class="nav-menu">
+            <AmeMenuBase Text="@menu.Text" Link="@menu.Link" />
         </div>
-    }
+        @if (menu.SubItems != null && menu.SubItems.Any())
+        {
+            <button class="nav-toggler" @onclick="ToggleNavMenu">
+                <span class="navbar-toggler-icon">开</span>
+            </button>
+            <div class="@NavMenuCssClass">
+                <AmeMenu Items="@menu.SubItems" />
+            </div>
+        }
+    </li>
 }
 
 
@@ -22,5 +25,6 @@
     private bool collapseNavMenu = true;
     private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
 
-    private void ToggleNavMenu()=>  collapseNavMenu = !collapseNavMenu;
+    private void ToggleNavMenu() => collapseNavMenu = !collapseNavMenu;
 }
+
