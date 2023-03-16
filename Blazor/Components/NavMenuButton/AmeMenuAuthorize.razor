@@ -1,0 +1,29 @@
+﻿@namespace AmeBlazor.Components
+
+@if (string.IsNullOrEmpty(Roles))
+{
+    <AmeMenu Items="Items" />
+}
+else if (Roles == "")
+{
+    <AuthorizeView>
+        <Authorized>
+            <AmeMenu Items="Items" />
+        </Authorized>
+    </AuthorizeView>
+}
+else
+{
+    <AuthorizeView Roles="@Roles">
+        <Authorized>
+            <AmeMenu Items="Items" />
+        </Authorized>
+    </AuthorizeView>
+}
+
+@code {
+
+    [Parameter] public List<AmeMenuItem> Items { get; set; }
+    [Parameter] public string Roles { get; set; }
+
+}
