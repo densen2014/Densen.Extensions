@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
 #if NET48 || WINDOWS10_0_19041_0_OR_GREATER
 using System.Management;
@@ -14,24 +13,33 @@ namespace AME.Util
     public static class HardwareUtil
     {
 
-#if NET48 || WINDOWS10_0_19041_0_OR_GREATER
-        public static string GetFirstPhysicalMediaID()
+#if NET48 || WINDOWS10_0_19041_0_OR_GREATER 
+        public static string GetFirstPhysicalMediaID()=> GetPhysicalMediaID().FirstOrDefault(); 
+        public static string GetFirstMacAddress()=> GetMacAddress().FirstOrDefault()?.MACAddress;
+
+        public class NetworkAdapter
         {
-            return GetPhysicalMediaID().FirstOrDefault();
+            public string MACAddress { get; set; }
+            public string Manufacturer { get; set; } 
+            public bool PhysicalAdapter { get; set; } 
         }
-        public static string GetFirstMacAddress()
+
+        public static List<NetworkAdapter> GetMacAddress(string filter= "Microsoft", string filter2= "PhysicalAdapter=true", string filter3 = "Manufacturer <> 'TeamViewer Germany GmbH'")
         {
-            string ids = "";
-            var searcher = new ManagementObjectSearcher("SELECT MACAddress FROM Win32_NetworkAdapter WHERE ((MACAddress Is Not NULL) AND (Manufacturer <> 'Microsoft'))");
-            foreach (ManagementObject share in searcher.Get())
-            {
-                if (share["MACAddress"] != null && !string.IsNullOrEmpty(share["MACAddress"].ToString()))
-                {
-                    return share["MACAddress"].ToString();
-                }
-            }
-            return ids;
+            var filters = $"(MACAddress Is Not NULL) {(filter.Length > 0 ? $"AND (Manufacturer <> '{filter}')" : "")} {(filter2.Length > 0 ? $"AND ({filter2})" : "")} {(filter3.Length > 0 ? $"AND ({filter3})" : "")}";
+            var searcher = new ManagementObjectSearcher($"SELECT MACAddress,Manufacturer,PhysicalAdapter FROM Win32_NetworkAdapter WHERE ({filters})");
+            var items = searcher.Get().Cast<ManagementObject>().
+                Select(x=> new NetworkAdapter()
+                    {
+                        MACAddress = x["MACAddress"]?.ToString(),
+                        Manufacturer = x["Manufacturer"]?.ToString(),
+                        PhysicalAdapter = x["PhysicalAdapter"]?.ToString()=="true",
+                    }
+                ).ToList();
+            items= items.Where (x=>!string.IsNullOrWhiteSpace(x.MACAddress)).ToList(); 
+            return items;
         }
+
         public static List<string> GetPhysicalMediaID()
         {
             //ManagementScope
@@ -41,19 +49,16 @@ namespace AME.Util
             try
             {
                 var searcher = new ManagementObjectSearcher("SELECT * FROM Win32_PhysicalMedia");
-                foreach (var share in searcher.Get())
-                {
-                    if (share["SerialNumber"] != null && !string.IsNullOrEmpty(share["SerialNumber"].ToString()))
-                    {
-                        ids.Add(share["SerialNumber"].ToString().Trim());
-                    }
-                }
+                var items = searcher.Get().Cast<ManagementObject>().Select(x => x["SerialNumber"]?.ToString()).ToList();
+                items = items.Where(x => !string.IsNullOrWhiteSpace(x)).ToList();
+                return items;
             }
             catch
             {
             }
             return ids;
         }
+
         public class DiskDriveID
         {
             public string MediaType { get; set; }
@@ -62,9 +67,9 @@ namespace AME.Util
             public string InterfaceType { get; set; }
             public string Size { get; set; }
         }
-        public static List<DiskDriveID> GetDiskDriveIDS(bool orderByInterfaceType=true)
-        {
 
+        public static List<DiskDriveID> GetDiskDriveIDS(bool orderByInterfaceType=true, string filter = "Microsoft")
+        {
             var ids = new List<DiskDriveID>();
             var keys = new List<string>() {
                 "MediaType",
@@ -133,7 +138,7 @@ namespace AME.Util
             };
             try
             {
-                var searcher = new ManagementObjectSearcher("SELECT * FROM Win32_DiskDrive");
+                var searcher = new ManagementObjectSearcher($"SELECT * FROM Win32_DiskDrive");
                 var id = "";
                 foreach (var share in searcher.Get())
                 {
