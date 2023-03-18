@@ -18,6 +18,8 @@ public sealed partial class PdfReaders
 
     PdfReader? pdfReader2 { get; set; }
 
+    PdfReader? pdfReader3 { get; set; }
+
     [DisplayName("文件相对路径或者URL")]
     private string FileName { get; set; } = "/_content/DemoShared/samples/sample.pdf";
 
@@ -37,7 +39,7 @@ public sealed partial class PdfReaders
 
     private async Task Apply()
     {
-        if (pdfReader!=null) await pdfReader.Refresh();
+        if (pdfReader != null) await pdfReader.Refresh();
     }
 
     private async Task ApplyZoom()
@@ -96,5 +98,36 @@ public sealed partial class PdfReaders
         await Refresh();
     }
 
-    private async Task ApplySearch()=> await Refresh();
+    private async Task ApplySearch() => await Refresh();
+
+    #region  代码方式加载文件流 / pr5
+
+    public string? PdfFile { get; set; }
+    protected override Task OnInitializedAsync()
+    {
+        //测试直接初始化
+        PdfFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "wwwroot", "samples", "sample.pdf");
+        return base.OnInitializedAsync();
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        await base.OnAfterRenderAsync(firstRender);
+        if (firstRender)
+        {
+            await initpdfReader3();
+        }
+    }
+
+    async Task initpdfReader3()
+    {
+        if (pdfReader3 != null)
+        {
+            byte[] datas = File.ReadAllBytes(PdfFile!);
+            await pdfReader3!.ShowPdf(new MemoryStream(datas));
+        }
+
+    }
+    #endregion
+
 }
