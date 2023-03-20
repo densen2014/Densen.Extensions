@@ -68,7 +68,7 @@ namespace AME.Util
             public string Size { get; set; }
         }
 
-        public static List<DiskDriveID> GetDiskDriveIDS(bool orderByInterfaceType=true, string filter = "Microsoft")
+        public static List<DiskDriveID> GetDiskDriveIDS(bool orderByInterfaceType=true, bool filter = true)
         {
             var ids = new List<DiskDriveID>();
             var keys = new List<string>() {
@@ -86,38 +86,50 @@ namespace AME.Util
                     id = new DiskDriveID();
                     foreach (var key in keys)
                     {
-                        if (share[key] != null && !string.IsNullOrEmpty(share[key].ToString()))
+                        if (filter)
                         {
-                            var value = share[key].ToString().Trim();
-                            switch (key)
+                            if (share[key] != null && !string.IsNullOrEmpty(share[key].ToString()))
                             {
-                                case "MediaType":
-                                    id.MediaType = value;
-                                    break;
-                                case "Model":
-                                    id.Model = value;
-                                    break;
-                                case "SerialNumber":
-                                    id.SerialNumber = value;
-                                    break;
-                                case "InterfaceType":
-                                    id.InterfaceType = value;
-                                    break;
-                                case "Size":
-                                    id.Size = ((Convert.ToDouble(share["Size"]) / 1024 / 1024 / 1024) < 1 ? (Math.Round(Convert.ToDouble(share["Size"]) / 1024 / 1024) + " MB") : (Math.Round(Convert.ToDouble(share["Size"]) / 1024 / 1024 / 1024) + " GB"));
-                                    break;
-                                default:
-                                    break;
+                                GetSerialNumber(id, share, key);
                             }
                         }
+                        else
+                        {
+                            GetSerialNumber(id, share, key);
+                        }
                     }
-                    if (id.SerialNumber !=null) ids.Add(id);
+                    if (!filter || id.SerialNumber !=null) ids.Add(id);
                 }
             }
             catch
             {
             }
             return orderByInterfaceType?ids.OrderBy(a => a.InterfaceType).ToList(): ids;
+        }
+
+        private static void GetSerialNumber(DiskDriveID id, ManagementBaseObject share, string key)
+        {
+            var value = share[key]?.ToString()?.Trim();
+            switch (key)
+            {
+                case "MediaType":
+                    id.MediaType = value;
+                    break;
+                case "Model":
+                    id.Model = value;
+                    break;
+                case "SerialNumber":
+                    id.SerialNumber = value;
+                    break;
+                case "InterfaceType":
+                    id.InterfaceType = value;
+                    break;
+                case "Size":
+                    id.Size = ((Convert.ToDouble(share["Size"]) / 1024 / 1024 / 1024) < 1 ? (Math.Round(Convert.ToDouble(share["Size"]) / 1024 / 1024) + " MB") : (Math.Round(Convert.ToDouble(share["Size"]) / 1024 / 1024 / 1024) + " GB"));
+                    break;
+                default:
+                    break;
+            }
         }
 
         public static List<string> GetDiskDriveID()
