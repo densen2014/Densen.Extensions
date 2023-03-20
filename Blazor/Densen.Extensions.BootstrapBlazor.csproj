@@ -18,7 +18,7 @@
 
 		<I18nTextFallBackLanguage>zh-CN</I18nTextFallBackLanguage>
 
-		<Configurations>Debug;Release;Preview</Configurations>
+		<Configurations>Debug;Release</Configurations>
 
 		<AssemblyOriginatorKeyFile>..\keys\Longbow.Utility.snk</AssemblyOriginatorKeyFile>
 		<SignAssembly>True</SignAssembly>	
@@ -33,21 +33,21 @@
 	</ItemGroup>
 	
 	<ItemGroup Condition="'$(TargetFramework)' == 'net6.0'">
-		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.10" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.*" />
 	</ItemGroup>
 
 	<ItemGroup Condition="'$(TargetFramework)' == 'net7.0'">
 		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="7.*" />
 	</ItemGroup>
 
-	<ItemGroup>
+	<!--<ItemGroup>
 		<ProjectReference Include="..\AME.Extensions\AME.Extensions.csproj" />
-	</ItemGroup>
-	<!--<ItemGroup Condition="'$(Configuration)' == 'Debug'">
-		<ProjectReference Include="..\AME.Extensions\AME.Extensions.csproj" />
-	</ItemGroup>
-	<ItemGroup Condition="'$(Configuration)' == 'Release'">
-		<PackageReference Include="AME.Extensions" Version="7.*" />
 	</ItemGroup>-->
+	<ItemGroup Condition="'$(Configuration)' == 'Debug'">
+		<ProjectReference Include="..\AME.Extensions\AME.Extensions.csproj" />
+	</ItemGroup>
+	<ItemGroup Condition="'$(Configuration)' != 'Debug'">
+		<PackageReference Include="AME.Extensions" Version="7.*" />
+	</ItemGroup>
 
 </Project>
