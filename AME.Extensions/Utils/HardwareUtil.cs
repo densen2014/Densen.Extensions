@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-#if NET48 || WINDOWS10_0_19041_0_OR_GREATER
+#if NET48 || WINDOWS
 using System.Management;
 #endif
 
@@ -13,7 +13,7 @@ namespace AME.Util
     public static class HardwareUtil
     {
 
-#if NET48 || WINDOWS10_0_19041_0_OR_GREATER 
+#if NET48 || WINDOWS 
         public static string GetFirstPhysicalMediaID()=> GetPhysicalMediaID().FirstOrDefault(); 
         public static string GetFirstMacAddress()=> GetMacAddress().FirstOrDefault()?.MACAddress;
 
