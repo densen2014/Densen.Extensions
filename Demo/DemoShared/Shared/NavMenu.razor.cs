@@ -41,6 +41,8 @@ public partial class NavMenu
                 {
                     new MenuItem() { Text = "光学字符识别 OCR", Url = "/ocr" },
                     new MenuItem() { Text = "AI表格识别 AI Form", Url = "/aiform" },
+                    new MenuItem() { Text = "翻译 Translate", Url = "/Translate" },
+                    new MenuItem() { Text = "OpenAI GPT3", Url = "/OpenAI" },
                 }
             },        
             new MenuItem() { Text = "图表", Url = "/charts" },
@@ -62,7 +64,6 @@ public partial class NavMenu
                 {
                     new MenuItem() { Text = "视频墙", Url = "/VideoWall" },
                     new MenuItem() { Text = "Iframe下载文件", Url = "/TestIframe2" },
-                    new MenuItem() { Text = "OpenAI.GPT3", Url = "/OpenAI" },
                 }
             },
     };
