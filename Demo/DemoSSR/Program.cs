@@ -53,8 +53,8 @@ builder.Services.ConfigureJsonLocalizationOptions(op =>
 });
 builder.Services.AddTransient<OcrService>();
 builder.Services.AddTransient<AiFormService>();
-builder.Services.AddTransient<OpenAiBBService>();
 builder.Services.AddTransient<TranslateService>();
+builder.Services.AddTransient<OpenAiBBService>();
 if (!builder.Services.Any(x => x.ServiceType == typeof(HttpClient)))
 {
     builder.Services.AddSingleton<HttpClient>();
