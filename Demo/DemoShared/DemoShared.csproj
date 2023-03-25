@@ -21,6 +21,7 @@
 		<ProjectReference Include="..\..\..\BootstrapBlazor.Bluetooth\src\BootstrapBlazor.Bluetooth\BootstrapBlazor.Bluetooth.csproj" />
 		<ProjectReference Include="..\..\..\BootstrapBlazor.OCR\src\BootstrapBlazor.OCR\BootstrapBlazor.OCR.csproj" />
 		<ProjectReference Include="..\..\..\BootstrapBlazor.OnScreenKeyboard\src\BootstrapBlazor.OnScreenKeyboard\BootstrapBlazor.OnScreenKeyboard.csproj" />
+		<ProjectReference Include="..\..\..\BootstrapBlazor.OpenAI.GPT3\src\BootstrapBlazor.OpenAI.GPT3\BootstrapBlazor.OpenAI.GPT3.csproj" />
 		<ProjectReference Include="..\..\..\BootstrapBlazor.SignaturePad\src\BootstrapBlazor.SignaturePad\BootstrapBlazor.SignaturePad.csproj" />
 		<ProjectReference Include="..\..\..\BootstrapBlazor.Maps\src\BootstrapBlazor.Maps\BootstrapBlazor.Maps.csproj" />
 		<ProjectReference Include="..\..\..\BootstrapBlazor.BaiduMap\src\BootstrapBlazor.BaiduMap\BootstrapBlazor.BaiduMap.csproj" />
