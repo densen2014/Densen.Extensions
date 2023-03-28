@@ -1,6 +1,49 @@
 ﻿@page "/PlayAudio"
-@attribute [TabItemOption(Text = "PlayAudio")]
+@attribute [TabItemOption(Text = "播放语音/文本转语音")]
 
 <a href="https://www.nuget.org/packages/BootstrapBlazor.OCR#readme-body-tab"><h4>PlayAudio</h4></a>
 
-<PlayAudio />
+<PlayAudio @ref="PlayAudio" />
+
+<Tab IsLazyLoadTabItem="true">
+    <TabItem Text="常规">
+        <PlayAudio TextOrSSML="你好,Blazor!" />
+    </TabItem>
+    <TabItem Text="选项">
+        <div class="row g-3">
+            <div class="col-12">
+                <BootstrapInputGroup>
+                    <BootstrapInput IsAutoFocus ShowLabel="true" TValue="string" PlaceHolder="@PlaceHolderText" OnEnterAsync="OnEnterAsync" OnEscAsync="OnEscAsync" @bind-Value="InputText" />
+                    <Button Text="转换" OnClick="OnPlay" Icon="fa-fw fa-solid fa-play" />
+                </BootstrapInputGroup>
+            </div>
+            <div class="col-6">
+                <Select Color="Color.Primary" Items="ItemsVoiceName" @bind-Value="@SelectedVoiceName" ShowLabel="true" />
+            </div>
+            <div class="col-6">
+                <Select Color="Color.Primary" Items="ItemsVoiceStyle" @bind-Value="@SelectedVoiceStyle" ShowLabel="true" />
+            </div>
+
+        </div>
+    </TabItem>
+    <TabItem Text="示例">
+        <div class="row g-3">
+            <div class="col-12">
+                <BootstrapInputGroup>
+                    <Button Text="测试" OnClick="OnPlaySSML" Icon="fa-fw fa-solid fa-play" />
+                    <Select Color="Color.Primary" Items="ItemsSSML" @bind-Value="@ItemSSML" ShowLabel="true" />
+                </BootstrapInputGroup>
+            </div>
+            <div class="col-12">
+                <Textarea @bind-Value="ItemSSML" rows="20" />
+            </div>
+        </div>
+    </TabItem>
+</Tab>
+
+
+@if (!string.IsNullOrEmpty(ErrorMessage))
+{
+    <p>@ErrorMessage</p>
+}
+

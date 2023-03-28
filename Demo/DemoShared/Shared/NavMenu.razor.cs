@@ -1,10 +1,5 @@
 ﻿using BootstrapBlazor.Components;
 using Microsoft.AspNetCore.Components.Routing;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DemoShared.Shared;
 
@@ -42,7 +37,7 @@ public partial class NavMenu
                     new MenuItem() { Text = "光学字符识别 OCR", Url = "/ocr" },
                     new MenuItem() { Text = "AI表格识别 AI Form", Url = "/aiform" },
                     new MenuItem() { Text = "翻译 Translate", Url = "/Translate" },
-                    //new MenuItem() { Text = "文字转语音", Url = "/PlayAudio" },
+                    new MenuItem() { Text = "播放语音/文本转语音 PlayAudio", Url = "/PlayAudio" },
                     new MenuItem() { Text = "OpenAI GPT3", Url = "/OpenAI" },
                     //new MenuItem() { Text = "AzureOpenAI", Url = "/AzureOpenAI" },
                 }
