@@ -7,6 +7,7 @@
 
 <Tab IsLazyLoadTabItem="true">
     <TabItem Text="常规">
+        <code>&lt;PlayAudio TextOrSSML="你好,Blazor!" /&gt;</code>
         <PlayAudio TextOrSSML="你好,Blazor!" />
     </TabItem>
     <TabItem Text="选项">
@@ -23,7 +24,13 @@
             <div class="col-6">
                 <Select Color="Color.Primary" Items="ItemsVoiceStyle" @bind-Value="@SelectedVoiceStyle" ShowLabel="true" />
             </div>
-
+            <div class="col-12">
+                <code>
+                    &lt;PlayAudio @@ref="PlayAudio" /&gt;<br />
+                    PlayAudio PlayAudio;<br />
+                    await PlayAudio.Play(InputText, SelectedVoice, SelectedStyle)<br />
+                </code>
+            </div>
         </div>
     </TabItem>
     <TabItem Text="示例">
@@ -37,8 +44,15 @@
             <div class="col-12">
                 <Textarea @bind-Value="ItemSSML" rows="20" />
             </div>
-        </div>
-    </TabItem>
+            <div class="col-12">
+                <code>
+                    &lt;PlayAudio @@ref="PlayAudio" /&gt;<br />
+                    PlayAudio PlayAudio;<br />
+                    await PlayAudio.Play(ItemSSML)<br />
+                </code>
+            </div>
+            </div>
+</TabItem>
 </Tab>
 
 
