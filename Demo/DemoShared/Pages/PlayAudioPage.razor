@@ -7,10 +7,6 @@
 
 <Tab IsLazyLoadTabItem="true">
     <TabItem Text="常规">
-        <code>&lt;PlayAudio TextOrSSML="你好,Blazor!" /&gt;</code>
-        <PlayAudio TextOrSSML="你好,Blazor!" />
-    </TabItem>
-    <TabItem Text="选项">
         <div class="row g-3">
             <div class="col-12">
                 <BootstrapInputGroup>
@@ -33,6 +29,10 @@
             </div>
         </div>
     </TabItem>
+    <TabItem Text="简易">
+        <code>&lt;PlayAudio TextOrSSML="你好,Blazor!" /&gt;</code>
+        <PlayAudio TextOrSSML="你好,Blazor!" />
+    </TabItem>
     <TabItem Text="示例">
         <div class="row g-3">
             <div class="col-12">
@@ -51,8 +51,8 @@
                     await PlayAudio.Play(ItemSSML)<br />
                 </code>
             </div>
-            </div>
-</TabItem>
+        </div>
+    </TabItem>
 </Tab>
 
 
