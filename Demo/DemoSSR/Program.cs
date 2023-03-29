@@ -79,6 +79,9 @@ builder.Services.ConfigureJsonLocalizationOptions(op =>
                 typeof(BootstrapBlazor.Components.Chart).Assembly,
     };
 });
+builder.Services.AddControllers();
+
+
 var cultureInfo = new CultureInfo("zh-CN");
 CultureInfo.DefaultThreadCurrentCulture = cultureInfo;
 CultureInfo.DefaultThreadCurrentUICulture = cultureInfo;
