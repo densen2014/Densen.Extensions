@@ -63,7 +63,7 @@ builder.Services.AddScoped<AzureOpenAIService>();
 builder.Services.AddTransient<OcrService>();
 builder.Services.AddTransient<AiFormService>();
 builder.Services.AddTransient<TranslateService>();
-builder.Services.AddTransient<OpenAiClientService>();
+builder.Services.AddSingleton<OpenAiClientService>();
 builder.Services.AddTransient<StsService>();
 
 if (!builder.Services.Any(x => x.ServiceType == typeof(HttpClient)))
