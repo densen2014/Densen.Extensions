@@ -47,7 +47,7 @@ public class SampleController : ControllerBase
     [HttpGet]
     public IActionResult SampleJson(string prompt)
     {
-        if (!string.IsNullOrWhiteSpace(prompt))
+        if (string.IsNullOrWhiteSpace(prompt))
         {
             return BadRequest("关于这个问题，早有先哲以炯炯的目光洞察先机，那敢问佛教之出路在何方呢？如果拿这一问题去问古代的禅师，禅师定会说：“看脚下！”诚然，路就在脚下，那又应如何去走呢 ...");
         }
