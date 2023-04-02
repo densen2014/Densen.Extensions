@@ -45,7 +45,7 @@ public class SampleController : ControllerBase
     /// <returns></returns>
     [HttpPost]
     [HttpGet]
-    public IActionResult SampleJson(string prompt)
+    public IActionResult SampleJson([FromForm] string prompt= "张国立",[FromQuery] string prompt2= "2")
     {
         if (string.IsNullOrWhiteSpace(prompt))
         {
@@ -55,7 +55,7 @@ public class SampleController : ControllerBase
         {
             string? res = @$"{{
     ""code"": ""200"",
-    ""data"": ""姓名：张国立{prompt}"",
+    ""data"": ""姓名：{prompt}{prompt2}"",
     ""msg"": ""解析成功！""
 }}
 ";
