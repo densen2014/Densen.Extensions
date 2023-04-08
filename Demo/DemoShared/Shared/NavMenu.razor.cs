@@ -38,7 +38,7 @@ public partial class NavMenu
                     new MenuItem() { Text = "AI表格识别 AI Form", Url = "/aiform" },
                     new MenuItem() { Text = "翻译 Translate", Url = "/Translate" },
                     new MenuItem() { Text = "播放语音/文本转语音 PlayAudio", Url = "/PlayAudio" },
-                    new MenuItem() { Text = "OpenAI GPT3", Url = "/OpenAI" },
+                    new MenuItem() { Text = "OpenAI", Url = "/OpenAI" },
                     //new MenuItem() { Text = "AzureOpenAI", Url = "/AzureOpenAI" },
                 }
             },        

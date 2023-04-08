@@ -276,13 +276,13 @@ public class AzureController : ControllerBase
                 case EnumOpenAiModel.Completions:
                     res = await openaiService.Completions(prompt, maxTokens, temperature);
                     break;
-                case EnumOpenAiModel.DALLE:
-                    res = await openaiService.DALLE_CreateImage(prompt);
-                    if (res != null)
-                    {
-                        res = $"data:image/jpg;base64,{res}";
-                    }
-                    break;
+                //case EnumOpenAiModel.DALLE:
+                //    res = await openaiService.DALLE_CreateImage(prompt);
+                //    if (res != null)
+                //    {
+                //        res = $"data:image/jpg;base64,{res}";
+                //    }
+                //    break;
             }
 
             if (res != null)
