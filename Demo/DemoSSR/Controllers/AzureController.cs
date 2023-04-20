@@ -1,6 +1,6 @@
 ﻿using BootstrapBlazor.AzureServices;
 using BootstrapBlazor.Ocr.Services;
-using BootstrapBlazor.OpenAI.GPT3.Services;
+using BootstrapBlazor.OpenAI.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Text.RegularExpressions;
 using static OpenAI.GPT3.ObjectModels.SharedModels.IOpenAiModels;
@@ -246,7 +246,7 @@ public class AzureController : ControllerBase
 
 
     /// <summary>
-    /// OpenAI.GPT3
+    /// OpenAI.GPT
     /// </summary>
     /// <param name="prompt"></param>
     /// <param name="model">OpenAiModel枚举: ChatGpt|Completions|DALLE, 默认 ChatGpt </param>

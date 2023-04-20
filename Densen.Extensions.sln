@@ -83,7 +83,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Densen.Extensions.Freesql.B
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BootstrapBlazor.Table.Freesql", "..\Densen.Freesql\src\BootstrapBlazor.Table.Freesql\BootstrapBlazor.Table.Freesql.csproj", "{19006071-8F01-472E-B2FC-87C73B7CC565}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BootstrapBlazor.OpenAI.GPT3", "..\BootstrapBlazor.OpenAI.GPT3\src\BootstrapBlazor.OpenAI.GPT3\BootstrapBlazor.OpenAI.GPT3.csproj", "{35831AD7-A2C3-489D-812E-487DC7ED1D4B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BootstrapBlazor.OpenAI", "..\BootstrapBlazor.OpenAI.GPT3\src\BootstrapBlazor.OpenAI.GPT3\BootstrapBlazor.OpenAI.csproj", "{35831AD7-A2C3-489D-812E-487DC7ED1D4B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

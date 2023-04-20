@@ -1,6 +1,6 @@
 ﻿using BootstrapBlazor.AzureServices;
 using BootstrapBlazor.Ocr.Services;
-using BootstrapBlazor.OpenAI.GPT3.Services;
+using BootstrapBlazor.OpenAI.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Text.RegularExpressions;
 using static OpenAI.GPT3.ObjectModels.SharedModels.IOpenAiModels;

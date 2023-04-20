@@ -11,7 +11,7 @@ using System.Globalization;
 using System.Reflection;
 using System.Text.Encodings.Web;
 using Microsoft.AspNetCore.Http.Features;
-using BootstrapBlazor.OpenAI.GPT3.Services;
+using BootstrapBlazor.OpenAI.Services;
 using BootstrapBlazor.AzureServices;
 #if NET7_0_OR_GREATER
 using AzureOpenAIClient.Http;
