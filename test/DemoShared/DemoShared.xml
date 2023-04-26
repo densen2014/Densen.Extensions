@@ -1,0 +1,234 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DemoShared</name>
+    </assembly>
+    <members>
+        <member name="T:DemoShared.Pages.BaiduMapPage">
+            <summary>
+            百度地图 BaiduMap
+            </summary>
+        </member>
+        <member name="M:DemoShared.Pages.BaiduMapPage.GetAttributes">
+            <summary>
+            获得属性方法
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:DemoShared.Pages.GeolocationPage">
+            <summary>
+            Geolocation 地理定位/移动距离追踪
+            <para></para>
+            扩展阅读:Chrome中模拟定位信息，清除定位信息<para></para>
+            https://blog.csdn.net/u010844189/article/details/81163438
+            </summary>
+        </member>
+        <member name="M:DemoShared.Pages.GeolocationPage.GetAttributes">
+            <summary>
+            获得属性方法
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:DemoShared.Pages.MapsPage">
+            <summary>
+            谷歌地图 Maps
+            </summary>
+        </member>
+        <member name="M:DemoShared.Pages.MapsPage.GetAttributes">
+            <summary>
+            获得属性方法
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:DemoShared.Pages.ScreenCapturePage">
+            <summary>
+            Screen Capture 截屏/录像
+            </summary>
+        </member>
+        <member name="M:DemoShared.Pages.ScreenCapturePage.GetAttributes">
+            <summary>
+            获得属性方法
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:DemoShared.Pages.SignaturePadPageResponsive.Result">
+            <summary>
+            签名Base64
+            </summary>
+        </member>
+        <member name="P:DemoShared.Pages.SignaturePadPageResponsive.ShowSignaturePad">
+            <summary>
+            显示响应式签名界面
+            </summary>
+        </member>
+        <member name="M:DemoShared.Pages.TableLazyHeroPage.Dispose">
+            <summary>
+            Dispose 方法
+            </summary>
+        </member>
+        <member name="T:DemoShared.Pages.WebApiPage">
+            <summary>
+            WebApi 浏览器api
+            </summary>
+        </member>
+        <member name="M:DemoShared.Pages.WebApiPage.GetAttributes">
+            <summary>
+            获得属性方法
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:DemoShared.Pages.AttributeTable.Items">
+            <summary>
+            获得/设置 项目
+            </summary>
+        </member>
+        <member name="P:DemoShared.Pages.AttributeTable.Title">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:DemoShared.Pages.BarcodeScannerPage.ShowScanBarcode">
+            <summary>
+            显示扫码界面
+            </summary>
+        </member>
+        <member name="P:DemoShared.Pages.BarcodeScannerPage.BarCode">
+            <summary>
+            条码
+            </summary>
+        </member>
+        <member name="M:DemoShared.Pages.BarcodeScannerPage.GetAttributes">
+            <summary>
+            获得属性方法
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:DemoShared.Pages.BarcodeScannerPageEN.ShowScanBarcode">
+            <summary>
+            显示扫码界面
+            </summary>
+        </member>
+        <member name="P:DemoShared.Pages.BarcodeScannerPageEN.BarCode">
+            <summary>
+            条码
+            </summary>
+        </member>
+        <member name="M:DemoShared.Pages.FileViewers.OnInitialized">
+            <summary>
+            OnInitialized 方法
+            </summary>
+        </member>
+        <member name="P:DemoShared.Pages.HandwrittenPage.ShowHandwritten">
+            <summary>
+            显示签名界面
+            </summary>
+        </member>
+        <member name="P:DemoShared.Pages.HandwrittenPage.DrawBase64">
+            <summary>
+            签名Base64
+            </summary>
+        </member>
+        <member name="M:DemoShared.Pages.HandwrittenPage.GetAttributes">
+            <summary>
+            获得属性方法
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:DemoShared.Pages.SignaturePadPage.Result">
+            <summary>
+            签名Base64
+            </summary>
+        </member>
+        <member name="M:DemoShared.Pages.SignaturePadPage.GetAttributes">
+            <summary>
+            获得属性方法
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DemoShared.Pages.VideoPlayers.OnInitialized">
+            <summary>
+            OnInitialized 方法
+            </summary>
+        </member>
+        <member name="M:DemoShared.Pages.ViewerPage.GetAttributes">
+            <summary>
+            获得属性方法
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:DemoShared.Pages.BtPrinterPage.ShowUI">
+            <summary>
+            显示内置界面
+            </summary>
+        </member>
+        <member name="M:DemoShared.Pages.BtPrinterPage.GetAttributes">
+            <summary>
+            获得属性方法
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DemoShared.Pages.BtPrinterPage.GetPrinterOptionAttributes">
+            <summary>
+            获得属性方法
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DemoShared.Pages.BtPrinterPage.GetBluetoothDeviceAttributes">
+            <summary>
+            获得蓝牙设备类
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DemoShared.Pages.BtPrinterPage.GetAttributesBatteryLevel">
+            <summary>
+            获得属性方法
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DemoShared.Pages.BtPrinterPage.GetAttributesHeartrate">
+            <summary>
+            获得属性方法
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:DemoShared.UtilityChart">
+            <summary>
+            Chart 工具类
+            </summary>
+        </member>
+        <member name="M:DemoShared.UtilityChart.RandomData(BootstrapBlazor.Components.Chart)">
+            <summary>
+            
+            </summary>
+            <param name="chart"></param>
+        </member>
+        <member name="M:DemoShared.UtilityChart.AddDataSet(BootstrapBlazor.Components.Chart,System.Int32@)">
+            <summary>
+            
+            </summary>
+            <param name="chart"></param>
+            <param name="dsCount"></param>
+        </member>
+        <member name="M:DemoShared.UtilityChart.RemoveDataSet(BootstrapBlazor.Components.Chart,System.Int32@)">
+            <summary>
+            
+            </summary>
+            <param name="chart"></param>
+            <param name="dsCount"></param>
+        </member>
+        <member name="M:DemoShared.UtilityChart.AddData(BootstrapBlazor.Components.Chart,System.Int32@)">
+            <summary>
+            
+            </summary>
+            <param name="chart"></param>
+            <param name="daCount"></param>
+        </member>
+        <member name="M:DemoShared.UtilityChart.RemoveData(BootstrapBlazor.Components.Chart,System.Int32@)">
+            <summary>
+            
+            </summary>
+            <param name="chart"></param>
+            <param name="daCount"></param>
+        </member>
+    </members>
+</doc>
