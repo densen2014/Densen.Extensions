@@ -58,15 +58,18 @@ else
 
     private Task OnResult(string value)
     {
-        ShowSignaturePad = (Result == null);
-        Result = value;
-        StateHasChanged();
+        if (value != null) {
+            ShowSignaturePad = false;
+            Result = value;
+            StateHasChanged();
+        }
         return Task.CompletedTask;
     }
 
     private Task OnClose()
     {
         ShowSignaturePad = false;
+        StateHasChanged();
         return Task.CompletedTask;
     }
 
