@@ -171,6 +171,15 @@ namespace System.Linq.Expressions
             ConstantExpression constant = Expression.Constant(propertyValue, typeof(string));
             return Expression.Lambda<Func<T, bool>>(Expression.Not(Expression.Call(member, method, constant)), parameter);
         }
+
+
+
+#if NETSTANDARD2_0
+        public static IEnumerable<T> SkipLast<T>(this IEnumerable<T> source, int count)
+        {
+            return source.TakeWhile((item, index) => index < source.Count() - count);
+        }
+#endif
     }
 }
 
