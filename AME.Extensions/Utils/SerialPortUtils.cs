@@ -5,6 +5,7 @@
 // **********************************
 
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO.Ports;
@@ -12,6 +13,7 @@ using System.Linq;
 using System.Text;
 
 namespace AME.Util;
+#nullable enable
 
 public class SerialPortUtils
 {
@@ -22,7 +24,10 @@ public class SerialPortUtils
     }
 
 
-    public static SerialPort SerialPort = null;
+    public static SerialPort? SerialPort = null;
+    public static byte[]? RecvData = null;
+    public static string? Recv = null;
+    public static string[]? RecvAry = null;
     public static SerialPort OpenClosePort(string comName, int baud)
     {
         //串口未打开
@@ -59,20 +64,26 @@ public class SerialPortUtils
         var _SerialPort = (SerialPort)sender;
 
         var _bytesToRead = _SerialPort.BytesToRead;
-        var recvData = new byte[_bytesToRead];
+        RecvData = new byte[_bytesToRead];
 
-        _SerialPort.Read(recvData, 0, _bytesToRead);
+        _SerialPort.Read(RecvData, 0, _bytesToRead);
 
         //向控制台打印数据
-        Debug.WriteLine("收到数据：" + recvData);
+        //Console.WriteLine($"{Environment.NewLine}收到数据：{RecvData.ByteArrayToHexString()}");
+        Recv = BitConverter.ToString(RecvData);   // 82-C8-EA-17
+        Console.WriteLine($"{Environment.NewLine}收到数据：{Recv}");
+        RecvAry = Recv.Split('-');
     }
 
     public static bool SendData(byte[] data)
     {
         if (SerialPort != null && SerialPort.IsOpen)
         {
+            Recv = null;
+            RecvAry = null;
             SerialPort.Write(data, 0, data.Length);
-            Debug.WriteLine("发送数据：" + data);
+            //Console.WriteLine($"发送数据：{data.ByteArrayToHexString()}");
+            Console.WriteLine($"发送数据：{BitConverter.ToString(data)}{Environment.NewLine}");
             return true;
         }
         else
