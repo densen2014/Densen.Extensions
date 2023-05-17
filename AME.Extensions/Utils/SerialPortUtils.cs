@@ -22,8 +22,8 @@ public class SerialPortUtils
 
 
     public static SerialPort? SerialPort = null;
-    public static List<byte> RecvData =new List<byte>();
-    public static string[]? RecvAry => BitConverter.ToString(RecvData.ToArray()).Split('-');
+    public static List<byte> Buffer = new List<byte>();
+    public static string[]? RecvAry => BitConverter.ToString(Buffer.ToArray()).Split('-');
     public static SerialPort OpenClosePort(string comName, int baud)
     {
         //串口未打开
@@ -58,24 +58,27 @@ public class SerialPortUtils
     public static void ReceiveData(object sender, SerialDataReceivedEventArgs e)
     {
         var _SerialPort = (SerialPort)sender;
+        do
+        {
+            var _bytesToRead = _SerialPort.BytesToRead;
+            var recvData = new byte[_bytesToRead];
 
-        var _bytesToRead = _SerialPort.BytesToRead;
-        var recvData = new byte[_bytesToRead];
+            _SerialPort.Read(recvData, 0, _bytesToRead);
 
-        _SerialPort.Read(recvData, 0, _bytesToRead);
-
-        RecvData.AddRange(recvData);
+            //1.缓存数据
+            Buffer.AddRange(recvData);
+        } while (_SerialPort.BytesToRead > 0);
 
         //向控制台打印数据
         //Console.WriteLine($"{Environment.NewLine}收到数据：{RecvData.ByteArrayToHexString()}");
-       var  Recv = BitConverter.ToString(RecvData.ToArray ());   // 82-C8-EA-17
-        Console.WriteLine($"{Environment.NewLine}收到数据：{Recv}"); 
+        var Recv = BitConverter.ToString(Buffer.ToArray());   // 82-C8-EA-17
+        Console.WriteLine($"{Environment.NewLine}收到数据：{Recv}");
     }
 
     public static void ClearRecvData()
     {
-        RecvData = new List<byte>(); 
-    } 
+        Buffer = new List<byte>();
+    }
 
 
     public static bool SendData(byte[] data)
