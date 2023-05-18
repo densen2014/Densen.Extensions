@@ -21,11 +21,14 @@ public class SerialPortUtils
     }
 
 
+    public static bool Debug = false;
     public static SerialPort? SerialPort = null;
     public static List<byte> Buffer = new List<byte>();
-    public static string[]? RecvAry => BitConverter.ToString(Buffer.ToArray()).Split('-');
-    public static SerialPort OpenClosePort(string comName, int baud)
+    //public static string[]? RecvAry => BitConverter.ToString(Buffer.ToArray()).Split('-');
+    public static SerialPort OpenClosePort(string comName, int baud, bool debug = false)
     {
+        Debug=debug;
+
         //串口未打开
         if (SerialPort == null || !SerialPort.IsOpen)
         {
@@ -72,7 +75,7 @@ public class SerialPortUtils
         //向控制台打印数据
         //Console.WriteLine($"{Environment.NewLine}收到数据：{RecvData.ByteArrayToHexString()}");
         var Recv = BitConverter.ToString(Buffer.ToArray());   // 82-C8-EA-17
-        Console.WriteLine($"{Environment.NewLine}收到数据：{Recv}");
+        if (Debug) Console.WriteLine($"{Environment.NewLine}收到数据：{Recv}");
     }
 
     public static void ClearRecvData()
@@ -87,7 +90,7 @@ public class SerialPortUtils
         {
             SerialPort.Write(data, 0, data.Length);
             //Console.WriteLine($"发送数据：{data.ByteArrayToHexString()}");
-            Console.WriteLine($"发送数据：{BitConverter.ToString(data)}{Environment.NewLine}");
+            if (Debug) Console.WriteLine($"发送数据：{BitConverter.ToString(data)}{Environment.NewLine}");
             return true;
         }
         else
