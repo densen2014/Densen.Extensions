@@ -446,7 +446,7 @@ namespace AME
         #region   日期转换
         public static string ConvDate(DateTime data_v)
         {
-            return data_v.ToString("d");
+            return data_v.ToString("yyyy/M/d");
         }
         public static string ConvDateES(DateTime data_v)
         {
