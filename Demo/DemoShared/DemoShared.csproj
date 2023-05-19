@@ -17,7 +17,8 @@
 	</ItemGroup>
 
 	<!--<ItemGroup Condition="'$(Configuration)' == 'Debug'">-->
-	<ItemGroup>
+    <!--带源码调试环境-->
+    <ItemGroup>
 		<ProjectReference Include="..\..\..\BootstrapBlazor.Bluetooth\src\BootstrapBlazor.Bluetooth\BootstrapBlazor.Bluetooth.csproj" />
 		<ProjectReference Include="..\..\..\BootstrapBlazor.OCR\src\BootstrapBlazor.OCR\BootstrapBlazor.OCR.csproj" />
 		<ProjectReference Include="..\..\..\BootstrapBlazor.OnScreenKeyboard\src\BootstrapBlazor.OnScreenKeyboard\BootstrapBlazor.OnScreenKeyboard.csproj" />
@@ -34,16 +35,18 @@
 		<ProjectReference Include="..\..\..\BootstrapBlazor.FileViewer\src\BootstrapBlazor.FileViewer\BootstrapBlazor.FileViewer.csproj" />
 	</ItemGroup>
 	
-	<!--<ItemGroup Condition="'$(Configuration)' == 'Release'">
+    <!--不带源码调试请手动取消注销-->
+	<!--<ItemGroup>
+		<PackageReference Include="BootstrapBlazor.Bluetooth" Version="7.*" />
+		<PackageReference Include="BootstrapBlazor.OCR" Version="7.*" />
+		<PackageReference Include="BootstrapBlazor.OnScreenKeyboard" Version="7.*" />
+		<PackageReference Include="BootstrapBlazor.OpenAI" Version="0.1.0" />
+		<PackageReference Include="BootstrapBlazor.SignaturePad" Version="7.*" />
+		<PackageReference Include="BootstrapBlazor.Maps" Version="7.*" />
 		<PackageReference Include="BootstrapBlazor.BaiduMap" Version="7.*" />
 		<PackageReference Include="BootstrapBlazor.Geolocation" Version="7.*" />
 		<PackageReference Include="BootstrapBlazor.Viewer" Version="7.*" />
 		<PackageReference Include="BootstrapBlazor.WebAPI" Version="7.*" />
-		<PackageReference Include="BootstrapBlazor.Maps" Version="7.*" />
-		<PackageReference Include="BootstrapBlazor.Bluetooth" Version="7.*" />
-		<PackageReference Include="BootstrapBlazor.OCR" Version="7.*" />
-		<PackageReference Include="BootstrapBlazor.OnScreenKeyboard" Version="7.*" />
-		<PackageReference Include="BootstrapBlazor.SignaturePad" Version="7.*" />
 		<PackageReference Include="BootstrapBlazor.FileSystem" Version="7.*" />
 		<PackageReference Include="BootstrapBlazor.PdfReader" Version="7.*" />
 		<PackageReference Include="BootstrapBlazor.VideoPlayer" Version="7.*" />
