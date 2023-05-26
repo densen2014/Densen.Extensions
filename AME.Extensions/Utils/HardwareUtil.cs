@@ -25,7 +25,7 @@ public static class HardwareUtil
         public bool PhysicalAdapter { get; set; } 
     }
 
-    public static List<NetworkAdapter> GetMacAddress(string filter= "Microsoft", string filter2= "PhysicalAdapter=true", string filter3 = "Manufacturer <> 'TeamViewer Germany GmbH'")
+    public static List<NetworkAdapter> GetMacAddress(string filter= "Microsoft", string filter2= "PhysicalAdapter=true", string filter3 = "Manufacturer <> 'TeamViewer Germany GmbH'",bool skiploop= false)
     {
         var filters = $"(MACAddress Is Not NULL) {(filter.Length > 0 ? $"AND (Manufacturer <> '{filter}')" : "")} {(filter2.Length > 0 ? $"AND ({filter2})" : "")} {(filter3.Length > 0 ? $"AND ({filter3})" : "")}";
         var searcher = new ManagementObjectSearcher($"SELECT MACAddress,Manufacturer,PhysicalAdapter FROM Win32_NetworkAdapter WHERE ({filters})");
@@ -34,13 +34,13 @@ public static class HardwareUtil
                 {
                     MACAddress = x["MACAddress"]?.ToString(),
                     Manufacturer = x["Manufacturer"]?.ToString(),
-                    PhysicalAdapter = x["PhysicalAdapter"]?.ToString()=="true",
+                    PhysicalAdapter = x["PhysicalAdapter"]?.ToString()=="True",
                 }
             ).ToList();
         items= items.Where (x=>!string.IsNullOrWhiteSpace(x.MACAddress)).ToList();
-        if (!items.Any())
+        if (!items.Any() && !skiploop)
         {
-            items = GetMacAddress("","");
+            items = GetMacAddress("","", skiploop: true);
         }
         return items;
     }
