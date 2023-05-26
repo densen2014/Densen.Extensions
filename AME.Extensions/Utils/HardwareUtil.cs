@@ -37,7 +37,11 @@ public static class HardwareUtil
                     PhysicalAdapter = x["PhysicalAdapter"]?.ToString()=="true",
                 }
             ).ToList();
-        items= items.Where (x=>!string.IsNullOrWhiteSpace(x.MACAddress)).ToList(); 
+        items= items.Where (x=>!string.IsNullOrWhiteSpace(x.MACAddress)).ToList();
+        if (!items.Any())
+        {
+            items = GetMacAddress("","");
+        }
         return items;
     }
 
