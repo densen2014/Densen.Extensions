@@ -1,2 +1,7 @@
 ﻿@namespace AmeBlazor.Components
-<p>Hora: @DateTime.Now.ToLongTimeString()</p>
+<p>@Label @DateTime.Now.ToLongTimeString()</p>
+
+@code{
+    [Parameter]
+    public string Label { get; set; } = "时间:";
+}
