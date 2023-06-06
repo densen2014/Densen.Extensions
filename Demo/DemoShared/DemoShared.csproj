@@ -7,6 +7,13 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <Compile Remove="Components\**" />
+	  <Content Remove="Components\**" />
+	  <EmbeddedResource Remove="Components\**" />
+	  <None Remove="Components\**" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="BootstrapBlazor" Version="7.*" />
 		<PackageReference Include="BootstrapBlazor.Chart" Version="7.*" />
 		<PackageReference Include="MiniExcel" Version="1.*" />
@@ -87,10 +94,6 @@
 		<Content Update="wwwroot\samples\sample3.xlsx">
 		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</Content> 
-	</ItemGroup>
-	
-	<ItemGroup>
-	  <Folder Include="Components\" />
 	</ItemGroup>
 
 </Project>
