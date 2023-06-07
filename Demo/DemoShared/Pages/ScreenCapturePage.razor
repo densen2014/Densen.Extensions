@@ -16,7 +16,7 @@
         <Capture OnCaptureResult="@OnCaptureResult" OnError="@OnError" Continuous="true" />
     </TabItem>
     <TabItem Text="窗口连续截图">
-        <Capture OnCaptureResult="@OnCaptureResult" OnError="@OnError"  Camera="false" Continuous="true" />
+        <Capture OnCaptureResult="@OnCaptureResult" OnError="@OnError" Camera="false" Continuous="true" />
     </TabItem>
     <TabItem Text="自定义UI">
         <Capture @ref="Capture" ShowUI="false" OnCaptureResult="@OnCaptureResult" OnError="@OnError" />
@@ -40,6 +40,9 @@
             </div>
 
         </div>
+    </TabItem>
+    <TabItem Text="debug">
+        <Capture OnCaptureResult="@OnCaptureResult" OnError="@OnError" Debug />
     </TabItem>
 </Tab>
 
