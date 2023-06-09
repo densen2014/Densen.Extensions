@@ -1,5 +1,4 @@
-﻿using BootstrapBlazor.Components;
-using static BootstrapBlazor.Components.UploadToBase64;
+﻿using static BootstrapBlazor.Components.UploadToBase64;
 
 namespace DemoShared.Pages;
 
