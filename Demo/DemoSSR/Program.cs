@@ -65,6 +65,7 @@ builder.Services.AddTransient<AiFormService>();
 builder.Services.AddTransient<TranslateService>();
 builder.Services.AddSingleton<OpenAiClientService>();
 builder.Services.AddTransient<StsService>();
+builder.Services.AddStorages();
 
 if (!builder.Services.Any(x => x.ServiceType == typeof(HttpClient)))
 {
