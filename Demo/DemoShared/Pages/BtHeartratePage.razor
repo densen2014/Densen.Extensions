@@ -1,11 +1,12 @@
 ﻿@page "/BtHeartrate"
 @attribute [TabItemOption(Text = "蓝牙心率带")]
 
-<h4>蓝牙心率带</h4>
+<a href="https://www.nuget.org/packages/BootstrapBlazor.Bluetooth#readme-body-tab"><h4>蓝牙心率带</h4></a>
+
 <button class="btn btn-outline-secondary" @onclick="GetHeartrate ">查询心率</button>
 <button class="btn btn-outline-secondary" @onclick="StopHeartrate ">停止读取</button>
 <Heartrate @ref="heartrate" OnUpdateValue="OnUpdateValue" OnUpdateStatus="OnUpdateStatus" OnUpdateError="OnError" />
-<h2 style="color:red" data-action="heartrate"/>
+<h2 style="color:red" data-action="heartrate" />
 <pre>@message</pre>
 <pre style="color:green">@statusmessage</pre>
 <pre style="color:red">@errmessage</pre>

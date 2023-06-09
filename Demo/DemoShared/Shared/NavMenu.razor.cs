@@ -24,7 +24,7 @@ public partial class NavMenu
                     new MenuItem() { Text = "签名 Handwritten", Url = "/handwritten" },
                     new MenuItem() { Text = "截屏/录像 Screen Capture", Url = "/screencapture" },
                     new MenuItem() { Text = "存取设置 Storage", Url = "/Storages" },
-                    new MenuItem() { Text = "上传为Base64 UploadToBase64", Url = "/UploadToBase64s" },
+                    new MenuItem() { Text = "上传图片 (Base64)", Url = "/UploadToBase64s" },
                 }
             },
             new MenuItem() { Text = "地图" ,Items= new List<MenuItem>

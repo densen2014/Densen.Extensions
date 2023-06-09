@@ -1,6 +1,8 @@
 ﻿@page "/signaturepadResponsive"
 @attribute [TabItemOption(Text = "响应式手写签名")]
 
+<a href="https://www.nuget.org/packages/BootstrapBlazor.SignaturePad#readme-body-tab"><h3>SignaturePad 签名</h3></a>
+
 <h3>Responsive 响应式手写签名</h3>
 <pre>设备宽度小于640px(例如手机)自动置顶无边框,宽度小于500px按钮自动旋转. 可选透明背景.
 <code style="color:gray">
@@ -58,7 +60,8 @@ else
 
     private Task OnResult(string value)
     {
-        if (value != null) {
+        if (value != null)
+        {
             ShowSignaturePad = false;
             Result = value;
             StateHasChanged();

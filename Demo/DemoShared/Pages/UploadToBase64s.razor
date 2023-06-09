@@ -1,10 +1,12 @@
 ﻿@page "/UploadToBase64s"
 @attribute [TabItemOption(Text = "上传图片")]
 
+<a href="https://www.nuget.org/packages/BootstrapBlazor.WebAPI#readme-body-tab"><h3>上传图片</h3></a>
+
 <b>在移动设备上可使用相机拍照</b>
 <UploadToBase64 OnError="OnError" OnChanged="OnChanged" UploadButtonText="可使用相机拍照" Capture />
 <b>在移动设备上使用前置相机拍照</b>
-<UploadToBase64 OnError="OnError" OnChanged="OnChanged" CaptureUser UploadButtonText="可使用前置相机拍照" Capture  />
+<UploadToBase64 OnError="OnError" OnChanged="OnChanged" CaptureUser UploadButtonText="可使用前置相机拍照" Capture />
 <b>只上传图片,多选</b>
 <UploadToBase64 OnError="OnError" OnChanged="OnChanged" />
 <b>只上传图片,单选</b>
@@ -15,10 +17,13 @@
 <UploadToBase64 OnError="OnError" OnChanged="OnChanged" ImageOnly="false" Multiple="false" Accept=".txt" UploadButtonText="仅 txt" />
 <b>自定义样式</b>
 <UploadToBase64 OnError="OnError" OnChanged="OnChanged" Style=" width: 60px; height: 60px; padding: 10px; background-color: #f55442; color: white; border-radius: 25px; cursor: pointer; " />
-<br/>
+<br />
 <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/accept">accept help</a>
 
 <pre>@message</pre>
 
-<AttributeTable Items="@GetAttributes()" />
+<AttributeTable Items="@GetAttributes().OrderBy(a=>a.Name)" />
+
+<br />
+<AttributeTable Title="ImageFile" Items="@GetAttributes2().OrderBy(a=>a.Name)" />
 

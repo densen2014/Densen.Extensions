@@ -1,10 +1,11 @@
 ﻿@page "/BtBatteryLevel"
 @attribute [TabItemOption(Text = "蓝牙设备电量")]
 
-<h4>蓝牙设备电量</h4>
+<a href="https://www.nuget.org/packages/BootstrapBlazor.Bluetooth#readme-body-tab"><h4>蓝牙设备电量</h4></a>
+
 <button class="btn btn-outline-secondary" @onclick="GetBatteryLevel ">查询电量</button>
 <BatteryLevel @ref="batteryLevel" OnUpdateValue="OnUpdateValue" OnUpdateStatus="OnUpdateStatus" OnUpdateError="OnError" />
-<br/>
+<br />
 <progress max="100" value="@value"> @value % </progress>
 <pre>@message</pre>
 <pre style="color:green">@statusmessage</pre>
@@ -14,7 +15,7 @@
 
     BatteryLevel batteryLevel { get; set; } = new BatteryLevel();
 
-    private decimal? value=0;
+    private decimal? value = 0;
     private string? message;
     private string? statusmessage;
     private string? errmessage;
