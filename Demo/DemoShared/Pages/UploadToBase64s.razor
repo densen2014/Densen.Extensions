@@ -2,11 +2,11 @@
 @attribute [TabItemOption(Text = "上传图片")]
 
 <b>在移动设备上可使用相机拍照</b>
-<UploadToBase64 OnError="OnError" OnChanged="OnChanged" UploadButtonText="可使用相机拍照" />
+<UploadToBase64 OnError="OnError" OnChanged="OnChanged" UploadButtonText="可使用相机拍照" Capture />
 <b>在移动设备上使用前置相机拍照</b>
-<UploadToBase64 OnError="OnError" OnChanged="OnChanged" CaptureUser UploadButtonText="可使用前置相机拍照"  />
+<UploadToBase64 OnError="OnError" OnChanged="OnChanged" CaptureUser UploadButtonText="可使用前置相机拍照" Capture  />
 <b>只上传图片,多选</b>
-<UploadToBase64 OnError="OnError" OnChanged="OnChanged" Capture="false" />
+<UploadToBase64 OnError="OnError" OnChanged="OnChanged" />
 <b>只上传图片,单选</b>
 <UploadToBase64 OnError="OnError" OnChanged="OnChanged" Multiple="false" />
 <b>上传所有文件,多选</b>

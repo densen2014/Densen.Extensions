@@ -14,7 +14,7 @@ public partial class UploadToBase64s
     private Task OnChanged(List<ImageFile> items)
     {
         message = string.Empty;
-        items.ForEach(item => message+=$"名称 {item.Name}{Environment.NewLine}类型 {item.ContentType}{Environment.NewLine}DataUrl预览 {item.DataUrl?.Substring(0,50)}{Environment.NewLine}{Environment.NewLine}");
+        items.ForEach(item => message+=$"名称 {item.Name}{Environment.NewLine}类型 {item.ContentType}{Environment.NewLine}大小 {item.Size}{Environment.NewLine}DataUrl预览 {item.DataUrl?.Substring(0,50)}{Environment.NewLine}{Environment.NewLine}");
         StateHasChanged();
         return Task.CompletedTask;
     }
