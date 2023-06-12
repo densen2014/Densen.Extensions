@@ -15,7 +15,8 @@
 		<RootNamespace>AME.Extensions</RootNamespace>
 		<Configurations>Debug;Release;Preview</Configurations>
 		<EnableWindowsTargeting>true</EnableWindowsTargeting>
-	</PropertyGroup>
+        <OutputPath>..\Bin</OutputPath>
+    </PropertyGroup>
 	<ItemGroup>
 		<PackageReference Include="Newtonsoft.Json" Version="13.*" />
 	</ItemGroup>
