@@ -5,7 +5,7 @@
 
 <p>@message</p>
 
-<Tab IsOnlyRenderActiveTab="true">
+<Tab IsOnlyRenderActiveTab IsLazyLoadTabItem>
     <TabItem Text="摄像头">
         <Capture OnCaptureResult="@OnCaptureResult" OnError="@OnError" />
     </TabItem>
@@ -19,7 +19,7 @@
         <Capture OnCaptureResult="@OnCaptureResult" OnError="@OnError" Camera="false" Continuous="true" />
     </TabItem>
     <TabItem Text="自定义UI">
-        <Capture @ref="Capture" ShowUI="false" OnCaptureResult="@OnCaptureResult" OnError="@OnError" />
+        <Capture @ref="Capture" ShowUI="false" OnCaptureResult="@OnCaptureResult" OnError="@OnError" Width=1280 Height=720 />
         <div @ref="Capture.Element">
 
             <div data-action="camera" class="camera2">
@@ -44,6 +44,13 @@
     <TabItem Text="debug">
         <Capture OnCaptureResult="@OnCaptureResult" OnError="@OnError" Debug />
     </TabItem>
+    <TabItem Text="摄像头720p">
+        <Capture OnCaptureResult="@OnCaptureResult" OnError="@OnError" Width=1280 Height=720 />
+    </TabItem>
+    <TabItem Text="摄像头1080p">
+        <p>如果不支持这个分辨率,会回退到下一级分辨率</p>
+        <Capture OnCaptureResult="@OnCaptureResult" OnError="@OnError" Width=1920 Height=1080 />
+    </TabItem>
 </Tab>
 
 <p></p><p></p>
@@ -56,15 +63,15 @@
 <style>
     .video2 {
         border: 1px solid black;
-        width: 320px;
-        height: 240px;
+        width: 640px;
+        height: 480px;
         border-radius: 25px;
     }
 
     .photo2 {
         border: 1px solid black;
-        width: 320px;
-        height: 240px;
+        width: 640px;
+        height: 480px;
         border-radius: 25px;
     }
 
@@ -73,7 +80,7 @@
     }
 
     .camera2 {
-        width: 340px;
+        width: 660px;
         display: inline-block;
         border-radius: 25px;
     }
