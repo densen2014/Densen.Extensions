@@ -51,5 +51,9 @@ public sealed partial class ScreenCapturePage
         new AttributeItem("OnError","错误信息回调",  "-","Func<string, Task>"),
         new AttributeItem("ShowUI","显示内置UI",  "true","bool","true|false"),
         new AttributeItem("Debug","显示log",  "false","bool","true|false"),
+        new AttributeItem("Auto","自动启动摄像头预览",  "true","bool"),
+        new AttributeItem("Quality","图像质量,默认为 0.8",  "0.8","double"),
+        new AttributeItem("Width","图像宽度",  "640","int"),
+        new AttributeItem("Height","图像高度",  "480","int"),
     };
 }

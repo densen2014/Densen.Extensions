@@ -5,18 +5,27 @@
 
 <p>@message</p>
 
-<Tab IsOnlyRenderActiveTab IsLazyLoadTabItem>
+<Tab IsOnlyRenderActiveTab IsLazyLoadTabItem ShowClose ShowExtendButtons>
+    <TabItem Text="说明">
+        <p>如果不支持指定分辨率,会回退到下一级分辨率,一般来说移动设备支持分辨率比较多,桌面摄像头只支持VGA和HD</p>
+    </TabItem>
     <TabItem Text="摄像头">
         <Capture OnCaptureResult="@OnCaptureResult" OnError="@OnError" />
     </TabItem>
+    <TabItem Text="摄像头720p">
+        <p>如果不支持这个分辨率,会回退到下一级分辨率,一般来说移动设备支持分辨率比较多,桌面摄像头只支持VGA和HD</p>
+        <Capture OnCaptureResult="@OnCaptureResult" OnError="@OnError" Width=1280 Height=720 />
+    </TabItem>
+    <TabItem Text="摄像头1080p">
+        <p>如果不支持这个分辨率,会回退到下一级分辨率,一般来说移动设备支持分辨率比较多,桌面摄像头只支持VGA和HD</p>
+        <Capture OnCaptureResult="@OnCaptureResult" OnError="@OnError" Width=1920 Height=1080 />
+    </TabItem>
+    <TabItem Text="摄像头1080x1080">
+        <p>如果不支持这个分辨率,会回退到下一级分辨率,一般来说移动设备支持分辨率比较多,桌面摄像头只支持VGA和HD</p>
+        <Capture OnCaptureResult="@OnCaptureResult" OnError="@OnError" Width=1080 Height=1080 />
+    </TabItem>
     <TabItem Text="窗口">
         <Capture OnCaptureResult="@OnCaptureResult" OnError="@OnError" Camera="false" />
-    </TabItem>
-    <TabItem Text="摄像头连续截图">
-        <Capture OnCaptureResult="@OnCaptureResult" OnError="@OnError" Continuous="true" />
-    </TabItem>
-    <TabItem Text="窗口连续截图">
-        <Capture OnCaptureResult="@OnCaptureResult" OnError="@OnError" Camera="false" Continuous="true" />
     </TabItem>
     <TabItem Text="自定义UI">
         <Capture @ref="Capture" ShowUI="false" OnCaptureResult="@OnCaptureResult" OnError="@OnError" Width=1280 Height=720 />
@@ -41,15 +50,14 @@
 
         </div>
     </TabItem>
+    <TabItem Text="摄像头连续截图">
+        <Capture OnCaptureResult="@OnCaptureResult" OnError="@OnError" Continuous="true" />
+    </TabItem>
+    <TabItem Text="窗口连续截图">
+        <Capture OnCaptureResult="@OnCaptureResult" OnError="@OnError" Camera="false" Continuous="true" />
+    </TabItem>
     <TabItem Text="debug">
         <Capture OnCaptureResult="@OnCaptureResult" OnError="@OnError" Debug />
-    </TabItem>
-    <TabItem Text="摄像头720p">
-        <Capture OnCaptureResult="@OnCaptureResult" OnError="@OnError" Width=1280 Height=720 />
-    </TabItem>
-    <TabItem Text="摄像头1080p">
-        <p>如果不支持这个分辨率,会回退到下一级分辨率</p>
-        <Capture OnCaptureResult="@OnCaptureResult" OnError="@OnError" Width=1920 Height=1080 />
     </TabItem>
 </Tab>
 
