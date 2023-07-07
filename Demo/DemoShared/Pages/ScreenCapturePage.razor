@@ -6,23 +6,50 @@
 <p>@message</p>
 
 <Tab IsOnlyRenderActiveTab IsLazyLoadTabItem ShowClose ShowExtendButtons>
-    <TabItem Text="说明">
-        <p>如果不支持指定分辨率,会回退到下一级分辨率,一般来说移动设备支持分辨率比较多,桌面摄像头只支持VGA和HD</p>
-    </TabItem>
     <TabItem Text="摄像头">
-        <Capture OnCaptureResult="@OnCaptureResult" OnError="@OnError" />
-    </TabItem>
-    <TabItem Text="摄像头720p">
-        <p>如果不支持这个分辨率,会回退到下一级分辨率,一般来说移动设备支持分辨率比较多,桌面摄像头只支持VGA和HD</p>
-        <Capture OnCaptureResult="@OnCaptureResult" OnError="@OnError" Width=1280 Height=720 />
-    </TabItem>
-    <TabItem Text="摄像头1080p">
-        <p>如果不支持这个分辨率,会回退到下一级分辨率,一般来说移动设备支持分辨率比较多,桌面摄像头只支持VGA和HD</p>
-        <Capture OnCaptureResult="@OnCaptureResult" OnError="@OnError" Width=1920 Height=1080 />
-    </TabItem>
-    <TabItem Text="摄像头1080x1080">
-        <p>如果不支持这个分辨率,会回退到下一级分辨率,一般来说移动设备支持分辨率比较多,桌面摄像头只支持VGA和HD</p>
-        <Capture OnCaptureResult="@OnCaptureResult" OnError="@OnError" Width=1080 Height=1080 />
+        @if (IsInit)
+        {
+            <div class="row g-10 mt-3">
+                <div class="col-12 col-sm-4">
+
+                    @switch (SelectedEnumItem)
+                    {
+
+                        case Cams.VGA:
+                            <Capture OnCaptureResult="@OnCaptureResult" OnError="@OnError"  />
+                            break;
+
+                        case Cams.HD:
+
+                            <Capture OnCaptureResult="@OnCaptureResult" OnError="@OnError" Width=1280 Height=720 />
+                            break;
+
+                        case Cams.FHD:
+
+                            <Capture OnCaptureResult="@OnCaptureResult" OnError="@OnError" Width=1920 Height=1080 />
+                            break;
+
+                        case Cams.QHD:
+
+                            <Capture OnCaptureResult="@OnCaptureResult" OnError="@OnError" Width=2560  Height=1440  />
+                            break;
+
+                        case Cams.UHD:
+
+                            <Capture OnCaptureResult="@OnCaptureResult" OnError="@OnError" Width=3840   Height=2160  />
+                            break;
+                    }
+
+                    @*<Switch @bind-Value="@Cam1080" OnValueChanged="OnValueChanged" OnText="高清" OffText="标清" />*@
+                    <br/>
+                    <RadioList IsButton="true" Color="Color.Success" @bind-Value="@SelectedEnumItem" OnSelectedChanged="@OnSelectedChanged" />
+                </div>
+            </div>
+        }
+        else
+        {
+            <Spinner Color="Color.Primary" />
+        }
     </TabItem>
     <TabItem Text="窗口">
         <Capture OnCaptureResult="@OnCaptureResult" OnError="@OnError" Camera="false" />
