@@ -1,8 +1,6 @@
 ﻿using BootstrapBlazor.Components;
 using BootstrapBlazor.WebAPI.Services;
-using DocumentFormat.OpenXml.Wordprocessing;
 using Microsoft.AspNetCore.Components;
-using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 
 namespace DemoShared.Pages;
@@ -40,19 +38,22 @@ public sealed partial class ScreenCapturePage
         if (firstRender)
         {
             //Cam1080 = await Storage.GetValue("Cam1080", "true") == "true";
-            Enum.TryParse(await Storage.GetValue("Cams", "VGA"), out SelectedEnumItem);
+            try
+            {
+                SelectedEnumItem = await Storage.GetValue("Cams", Cams.VGA);
+            }
+            catch (Exception e)
+            {
+                 
+            }
             IsInit = true;
             StateHasChanged();
         }
     }
-
-    private async Task OnValueChanged(bool val)
-    {
-        await Storage.SetValue("Cam1080", val ? "true" : "false");
-    }
+     
     private async Task OnSelectedChanged(IEnumerable<SelectedItem> values, Cams val)
     {
-        await Storage.SetValue("Cams", val.ToString());
+        await Storage.SetValue("Cams", val);
         //StateHasChanged();
     }
 
