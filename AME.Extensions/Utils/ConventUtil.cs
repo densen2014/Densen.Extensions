@@ -5,8 +5,6 @@ using System.ComponentModel;
 using System.Data;
 using System.IO;
 using System.Linq;
-using System.Reflection;
-using System.Runtime.Serialization;
 using System.Runtime.Serialization.Json;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -15,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace AME
 {
-    public class ConventUtil
+    public partial class ConventUtil
     {
         /// <summary>
         /// 对象转换成JSON
