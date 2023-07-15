@@ -12,7 +12,8 @@
         <RepositoryUrl>https://github.com/densen2014/Densen.Extensions</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
         <PackageTags>DirectoryBrowserFormatter扩展: 中文界面并按修改时间逆序排序</PackageTags>
-	</PropertyGroup>
+        <OutputPath>..\Bin</OutputPath>
+    </PropertyGroup>
 	<ItemGroup>
 	  <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.2.0" />
 	</ItemGroup>

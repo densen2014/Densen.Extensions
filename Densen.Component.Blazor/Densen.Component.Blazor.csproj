@@ -15,7 +15,8 @@
 		<PackageTags>Densen Component for Blazor</PackageTags>
 		<AssemblyName>Densen.Component.Blazor</AssemblyName>
 		<RootNamespace>Densen.Component.Blazor</RootNamespace>
-	</PropertyGroup>
+        <OutputPath>..\Bin</OutputPath>
+    </PropertyGroup>
 	
 	<PropertyGroup>
 		<PackageReadmeFile>README.nuget.md</PackageReadmeFile>
