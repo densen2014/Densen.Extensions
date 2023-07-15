@@ -1,0 +1,30 @@
+﻿@page "/ScreenOrientations"
+@attribute [TabItemOption(Text = "屏幕方向")]
+
+<a href="https://www.nuget.org/packages/BootstrapBlazor.WebAPI#readme-body-tab"><h3>屏幕方向</h3></a>
+
+<p>测试PC和ios不支持</p>
+
+<WebApi @ref="webApi" />
+
+<Button Text="锁定屏幕方向为竖屏" OnClick="(async()=>await webApi.ScreenOrientation(Screen.LockPortrait))" />
+<Button Text="锁定屏幕方向为横屏" OnClick="(async()=>await webApi.ScreenOrientation(Screen.LockLandscape))" />
+<Button Text="解除屏幕方向锁定" OnClick="(async()=>await webApi.ScreenOrientation(Screen.Unlock))" />
+<Button Text="返回屏幕当前的方向" OnClick="GetScreenOrientation" />
+
+<p>
+    @Message
+</p>
+
+@code{
+
+    [NotNull]
+    WebApi? webApi;
+
+    string? Message { get; set; }
+
+    async Task GetScreenOrientation()
+    {
+        Message= await webApi.ScreenOrientation(Screen.GetOrientation);
+    }
+}

@@ -1,0 +1,50 @@
+﻿@page "/ScreenRecords"
+@attribute [TabItemOption(Text = "录屏")]
+
+<a href="https://www.nuget.org/packages/BootstrapBlazor.WebAPI#readme-body-tab"><h3>录屏</h3></a> 
+
+
+<WebApi @ref="webApi" />
+
+<Button Text="获取录屏支持格式" OnClick="GetTypeSupported" />
+<Button Text="开始录屏" OnClick="Start" />
+<Button Text="结束录屏" OnClick="Stop" /> 
+<Button Text="结束录屏并上传" OnClick="StopAndUpload" /> 
+ 
+<p>
+    @Message 
+</p>
+
+@code{
+
+    [NotNull]
+    WebApi? webApi;
+
+    string? Message { get; set; } = "";
+
+    async Task GetTypeSupported()
+    {
+        var res =await webApi.ScreenRecordTypeSupported();
+        if (res != null) {
+            foreach (var item in res)
+            {
+                Message += $"{item},";
+            }
+        }
+    }
+
+    async Task Start()
+    {
+        await  webApi.ScreenRecordStart();
+    }
+
+    async Task Stop()
+    {
+        Message= await webApi.ScreenRecordStop();
+    }
+
+    async Task StopAndUpload()
+    {
+        Message= await webApi.ScreenRecordStop(true);
+    }
+}

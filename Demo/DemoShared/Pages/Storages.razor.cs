@@ -23,7 +23,7 @@ public partial class Storages
     UsersLogin Model { get; set; } = new UsersLogin();
 
 
-    private string? message;
+    private string? message { get; set; } = "";
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {

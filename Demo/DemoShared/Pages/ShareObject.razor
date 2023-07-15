@@ -1,0 +1,20 @@
+﻿@page "/ShareObject"
+@attribute [TabItemOption(Text = "分享按钮")]
+
+<a href="https://www.nuget.org/packages/BootstrapBlazor.WebAPI#readme-body-tab"><h3>分享按钮</h3></a> 
+
+
+<WebApi @ref="webApi" />
+
+<Button Text="分享" OnClick="DoIt" />
+ 
+@code{
+
+    [NotNull]
+    WebApi? webApi;
+
+   async Task DoIt()
+    {
+      await  webApi.Share("Blazor", "分享一个好看的 Blazor UI 库", "https://www.blazor.zone");
+    }
+}

@@ -25,6 +25,10 @@ public partial class NavMenu
                     new MenuItem() { Text = "截屏/录像 Screen Capture", Url = "/screencapture" },
                     new MenuItem() { Text = "存取设置 Storage", Url = "/Storages" },
                     new MenuItem() { Text = "上传图片 (Base64)", Url = "/UploadToBase64s" },
+                    new MenuItem() { Text = "分享按钮", Url = "/ShareObject" },
+                    new MenuItem() { Text = "屏幕方向", Url = "/ScreenOrientations" },
+                    new MenuItem() { Text = "语音识别/合成", Url = "/Speechs" },
+                    new MenuItem() { Text = "录屏", Url = "/ScreenRecords" },
                 }
             },
             new MenuItem() { Text = "地图" ,Items= new List<MenuItem>
