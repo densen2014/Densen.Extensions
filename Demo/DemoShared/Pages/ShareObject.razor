@@ -6,15 +6,21 @@
 
 <WebApi @ref="webApi" />
 
-<Button Text="分享" OnClick="DoIt" />
+<Button Text="分享" OnClick="Share" />
+<Button Text="分享文件" OnClick="ShareFile" />
  
 @code{
 
     [NotNull]
     WebApi? webApi;
 
-   async Task DoIt()
+    async Task Share()
     {
-      await  webApi.Share("Blazor", "分享一个好看的 Blazor UI 库", "https://www.blazor.zone");
+        await  webApi.Share("Blazor", "分享一个好看的 Blazor UI 库", "https://www.blazor.zone");
+    }
+
+    async Task ShareFile()
+    {
+        await  webApi.Share("Blazor", "分享Excel文件", "https://www.blazor.zone", "https://blazor.app1.es/_content/DemoShared/samples/sample3.xlsx");
     }
 }
