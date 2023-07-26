@@ -66,6 +66,7 @@ public partial class NavMenu
                 {
                     new MenuItem() { Text = "视频墙", Url = "/VideoWall" },
                     new MenuItem() { Text = "Iframe下载文件", Url = "/TestIframe2" },
+                    new MenuItem() { Text = "JsBridge", Url = "/JsBridge" },
                 }
             },
     };

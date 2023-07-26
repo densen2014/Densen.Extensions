@@ -1,0 +1,13 @@
+﻿@page "/JsBridge"
+@attribute [TabItemOption(Text = "JsBridge")]
+
+@using BootstrapBlazor.Components
+
+<Button Text="GetMacAdress" OnClick="GetMacAdress" IsDisabled="!BridgeEnabled" />
+
+<pre> 
+@message
+</pre>
+
+
+

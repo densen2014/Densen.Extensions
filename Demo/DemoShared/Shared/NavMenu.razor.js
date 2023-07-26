@@ -29,4 +29,4 @@ export function dispose(id) {
         EventHandler.off(nav.navbar, 'click');
         EventHandler.off(nav.menu, 'click', '.nav-link');
     }
-}
+} 
