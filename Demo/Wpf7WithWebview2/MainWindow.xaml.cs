@@ -64,6 +64,11 @@ public partial class MainWindow : Window
         //指定下载保存位置
         webView.CoreWebView2.Profile.DefaultDownloadFolderPath = @"C:\mytargetdowloadpath";
 
+#if DEBUG
+        addressBar.Text = "https://localhost:5011";
+#else
+        addressBar.Text = "https://blazor.app1.es/JsBridge";
+#endif
         webView.CoreWebView2.Navigate(addressBar.Text);
     }
 
