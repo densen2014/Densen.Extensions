@@ -18,7 +18,7 @@ public partial class NavMenu
                     new MenuItem() { Text = "图片浏览 Viewer", Url = "/viewer" },
                     new MenuItem() { Text = "蓝牙和打印 Bluetooth & Printer", Url = "/Bluetooth" },
                     new MenuItem() { Text = "文件系统 FileSystem", Url = "/filesystems" },
-                    new MenuItem() { Text = "WebSerials", Url = "/WebSerials" },
+                    new MenuItem() { Text = "串行设备 WebSerials", Url = "/WebSerials" },
                     new MenuItem() { Text = "屏幕键盘 OSK", Url = "/onscreenkeyboards" },
                     new MenuItem() { Text = "系统信息 System info", Url = "/webapis" },
                     new MenuItem() { Text = "扫码 Barcode", Url = "/barcodescanner" },

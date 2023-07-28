@@ -1,5 +1,5 @@
 ﻿@page "/WebSerials"
-@attribute [TabItemOption(Text = "WebSerial")]
+@attribute [TabItemOption(Text = "串行设备 WebSerial")]
 
 <a href="https://www.nuget.org/packages/BootstrapBlazor.WebApi#readme-body-tab"><h4>WebSerial</h4></a>
 
@@ -9,7 +9,10 @@
     基本用法
 </span>
 
-<WebSerial OnReceive="@OnReceive" OnLog="@OnLog" OnError="@OnError" />
+<WebSerial OnReceive="@OnReceive" OnLog="@OnLog" OnError="@OnError" /> 
+<p/><p/>
+<p>波特率 51200 , 使用参数 Options</p>
+<WebSerial OnReceive="@OnReceive" OnLog="@OnLog" OnError="@OnError" Options="@options" /> 
 
 <pre>@message</pre>
 <pre style="color:green">@statusmessage</pre>
@@ -18,11 +21,14 @@
 
 <AttributeTable Items="@GetAttributes()" />
 
+<AttributeTable Title="串口选项 Options" Items="@GetWebSerialOptionsAttributes()" />
+
 @code{
 
     private string? message;
     private string? statusmessage;
     private string? errmessage;
+    private WebSerialOptions options = new WebSerialOptions() { BaudRate = 51200 };
 
     private Task OnReceive(string message)
     {
@@ -115,7 +121,20 @@
             ValueList = "True|False",
             DefaultValue = "False"
         },
-        };
+    };
 
 
+    /// <summary>s
+    /// 获得WebSerialOptions属性方法
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerable<AttributeItem> GetWebSerialOptionsAttributes() => new AttributeItem[]
+    {
+            new AttributeItem(nameof(WebSerialOptions.BaudRate),"波特率",  "9600","int"),
+            new AttributeItem(nameof(WebSerialOptions.DataBits),"数据位",  "8","int","7|8"),
+            new AttributeItem(nameof(WebSerialOptions.ParityType),"校验位",  "none",nameof(WebSerialFlowControlType),"none|even|odd"),
+            new AttributeItem(nameof(WebSerialOptions.StopBits),"停止位",  "1","int","1|2"),
+            new AttributeItem(nameof(WebSerialOptions.BufferSize),"读写缓冲区",  "255","int"),
+            new AttributeItem(nameof(WebSerialOptions.FlowControlType),"流控制",  "none",nameof(WebSerialParityType),"none|hardware"),
+    };
 }
