@@ -11,7 +11,8 @@
 	  <Content Remove="Components\**" />
 	  <EmbeddedResource Remove="Components\**" />
 	  <None Remove="Components\**" />
-	</ItemGroup> 
+	</ItemGroup>
+ 
 
 	<ItemGroup>
 		<PackageReference Include="BootstrapBlazor" Version="7.*" />
@@ -72,7 +73,7 @@
 		</VisualStudio>
 	</ProjectExtensions>
 	
-	<ItemGroup>
+	<ItemGroup> 
 		<Content Update="wwwroot\samples\sample.docx">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</Content>

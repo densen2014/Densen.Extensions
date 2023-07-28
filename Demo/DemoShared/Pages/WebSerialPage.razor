@@ -1,0 +1,121 @@
+﻿@page "/WebSerials"
+@attribute [TabItemOption(Text = "WebSerial")]
+
+<a href="https://www.nuget.org/packages/BootstrapBlazor.WebApi#readme-body-tab"><h4>WebSerial</h4></a>
+
+<h6>(连接设备后再执行操作)</h6>
+
+<span>
+    基本用法
+</span>
+
+<WebSerial OnReceive="@OnReceive" OnLog="@OnLog" OnError="@OnError" />
+
+<pre>@message</pre>
+<pre style="color:green">@statusmessage</pre>
+<pre style="color:red">@errmessage</pre>
+<hr />
+
+<AttributeTable Items="@GetAttributes()" />
+
+@code{
+
+    private string? message;
+    private string? statusmessage;
+    private string? errmessage;
+
+    private Task OnReceive(string message)
+    {
+        this.message = $"{DateTime.Now:hh:mm:ss} 收到数据: {message}";
+        StateHasChanged();
+        return Task.CompletedTask;
+    }
+
+    private Task OnLog(string message)
+    {
+        this.statusmessage = message;
+        StateHasChanged();
+        return Task.CompletedTask;
+    }
+
+    private Task OnError(string message)
+    {
+        this.errmessage = message;
+        StateHasChanged();
+        return Task.CompletedTask;
+    }
+
+
+
+}
+
+
+
+@code{
+
+    /// <summary>
+    /// 获得属性方法
+    /// </summary>
+    /// <returns></returns>
+    protected IEnumerable<AttributeItem> GetAttributes() => new AttributeItem[]
+    {
+        new AttributeItem() {
+            Name = "OnReceive",
+            Description = "收到数据回调方法",
+            Type = "Func<string, Task>?",
+            ValueList = "-",
+            DefaultValue = "-"
+        },
+        new AttributeItem() {
+            Name = "OnLog",
+            Description = "Log回调方法",
+            Type = "Func<string, Task>?",
+            ValueList = "-",
+            DefaultValue = "-"
+        },
+        new AttributeItem() {
+            Name = "OnError",
+            Description = "错误回调方法",
+            Type = "Func<string, Task>?",
+            ValueList = "-",
+            DefaultValue = "-"
+        },
+        new AttributeItem() {
+            Name = "Element",
+            Description = "UI界面元素的引用对象,为空则使用整个页面",
+            Type = "ElementReference",
+            ValueList = "-",
+            DefaultValue = "-"
+        },
+        new AttributeItem() {
+            Name = "ConnectBtnTitle",
+            Description = "获得/设置 连接按钮文本",
+            Type = "string",
+            ValueList = "",
+            DefaultValue = "连接"
+        },
+        new AttributeItem() {
+            Name = "WriteBtnTitle",
+            Description = "获得/设置 写入按钮文本",
+            Type = "string",
+            ValueList = "",
+            DefaultValue = "写入"
+        },
+        new AttributeItem() {
+            Name = "ShowUI",
+            Description = "获得/设置 显示内置UI",
+            Type = "bool",
+            ValueList = "True|False",
+            DefaultValue = "False"
+        },
+        new AttributeItem() {
+            Name = "Debug",
+            Description = "获得/设置 显示log",
+            Type = "bool",
+            ValueList = "True|False",
+            DefaultValue = "False"
+        },
+        };
+
+
+}
