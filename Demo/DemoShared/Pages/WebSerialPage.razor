@@ -11,10 +11,51 @@
     基本用法
 </span>
 
-<WebSerial OnReceive="@OnReceive" OnLog="@OnLog" OnError="@OnError" /> 
-<p/><p/>
-<p>波特率 51200 , 使用参数 Options</p>
-<WebSerial OnReceive="@OnReceive" OnLog="@OnLog" OnError="@OnError" Options="@options" /> 
+<div class="row g-3">
+    <WebSerial OnReceive="@OnReceive" OnLog="@OnLog" OnError="@OnError" />
+</div>
+<p />
+<p />
+<p />
+<p />
+<GroupBox Title="自定义参数">
+    <div class="col-4">
+        <Select Color="Color.Primary" Items="BaudRateList" @bind-Value="@SelectedBaudRate" ShowLabel="true" />
+    </div>
+    <div class="col-4">
+        <BootstrapInputNumber Color="Color.Primary" @bind-Value="@options.BufferSize" ShowLabel="true" />
+    </div>
+    <div class="col-4">
+        <Select Color="Color.Primary" @bind-Value="@options.ParityType" ShowLabel="true" />
+    </div>
+    <div class="col-4">
+        <Select Color="Color.Primary" @bind-Value="@options.FlowControlType" ShowLabel="true" />
+    </div>
+    @if (Flag)
+    {
+        <div class="col-6">
+            <WebSerial @ref="WebSerial" OnReceive="@OnReceive" OnLog="@OnLog" OnError="@OnError" Options="@options" Debug ShowUI="false" />
+        </div>
+
+        <div @ref="WebSerial.Element">
+            <Button data-action="butConnect">连接</Button>
+            <input type="text" data-action="fname" />
+            <Button data-action='butwrite'>写入</Button>
+
+        </div>
+        <pre data-action="log"></pre>
+
+        <div class="col-6">
+            <Button Text="断开" OnClick="OnApply" Icon="fa-fw fa-solid fa-stop" />
+        </div>
+    }
+    else
+    {
+        <div class="col-6">
+            <Button Text="应用" OnClick="OnApply" Icon="fa-fw fa-solid fa-play" />
+        </div>
+    }
+</GroupBox>
 
 <pre>@message</pre>
 <pre style="color:green">@statusmessage</pre>
@@ -25,118 +66,3 @@
 
 <AttributeTable Title="串口选项 Options" Items="@GetWebSerialOptionsAttributes()" />
 
-@code{
-
-    private string? message;
-    private string? statusmessage;
-    private string? errmessage;
-    private WebSerialOptions options = new WebSerialOptions() { BaudRate = 51200 };
-
-    private Task OnReceive(string message)
-    {
-        this.message = $"{DateTime.Now:hh:mm:ss} 收到数据: {message}";
-        StateHasChanged();
-        return Task.CompletedTask;
-    }
-
-    private Task OnLog(string message)
-    {
-        this.statusmessage = message;
-        StateHasChanged();
-        return Task.CompletedTask;
-    }
-
-    private Task OnError(string message)
-    {
-        this.errmessage = message;
-        StateHasChanged();
-        return Task.CompletedTask;
-    }
-
-
-
-}
-
-
-
-@code{
-
-    /// <summary>
-    /// 获得属性方法
-    /// </summary>
-    /// <returns></returns>
-    protected IEnumerable<AttributeItem> GetAttributes() => new AttributeItem[]
-    {
-        new AttributeItem() {
-            Name = "OnReceive",
-            Description = "收到数据回调方法",
-            Type = "Func<string, Task>?",
-            ValueList = "-",
-            DefaultValue = "-"
-        },
-        new AttributeItem() {
-            Name = "OnLog",
-            Description = "Log回调方法",
-            Type = "Func<string, Task>?",
-            ValueList = "-",
-            DefaultValue = "-"
-        },
-        new AttributeItem() {
-            Name = "OnError",
-            Description = "错误回调方法",
-            Type = "Func<string, Task>?",
-            ValueList = "-",
-            DefaultValue = "-"
-        },
-        new AttributeItem() {
-            Name = "Element",
-            Description = "UI界面元素的引用对象,为空则使用整个页面",
-            Type = "ElementReference",
-            ValueList = "-",
-            DefaultValue = "-"
-        },
-        new AttributeItem() {
-            Name = "ConnectBtnTitle",
-            Description = "获得/设置 连接按钮文本",
-            Type = "string",
-            ValueList = "",
-            DefaultValue = "连接"
-        },
-        new AttributeItem() {
-            Name = "WriteBtnTitle",
-            Description = "获得/设置 写入按钮文本",
-            Type = "string",
-            ValueList = "",
-            DefaultValue = "写入"
-        },
-        new AttributeItem() {
-            Name = "ShowUI",
-            Description = "获得/设置 显示内置UI",
-            Type = "bool",
-            ValueList = "True|False",
-            DefaultValue = "False"
-        },
-        new AttributeItem() {
-            Name = "Debug",
-            Description = "获得/设置 显示log",
-            Type = "bool",
-            ValueList = "True|False",
-            DefaultValue = "False"
-        },
-    };
-
-
-    /// <summary>s
-    /// 获得WebSerialOptions属性方法
-    /// </summary>
-    /// <returns></returns>
-    private IEnumerable<AttributeItem> GetWebSerialOptionsAttributes() => new AttributeItem[]
-    {
-            new AttributeItem(nameof(WebSerialOptions.BaudRate),"波特率",  "9600","int"),
-            new AttributeItem(nameof(WebSerialOptions.DataBits),"数据位",  "8","int","7|8"),
-            new AttributeItem(nameof(WebSerialOptions.ParityType),"校验位",  "none",nameof(WebSerialFlowControlType),"none|even|odd"),
-            new AttributeItem(nameof(WebSerialOptions.StopBits),"停止位",  "1","int","1|2"),
-            new AttributeItem(nameof(WebSerialOptions.BufferSize),"读写缓冲区",  "255","int"),
-            new AttributeItem(nameof(WebSerialOptions.FlowControlType),"流控制",  "none",nameof(WebSerialParityType),"none|hardware"),
-    };
-}
