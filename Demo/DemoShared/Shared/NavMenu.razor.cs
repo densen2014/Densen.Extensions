@@ -70,7 +70,7 @@ public partial class NavMenu
                     new MenuItem() { Text = "JsBridge", Url = "/JsBridge" },
                 }
             },
-        new MenuItem() { Text = "本站源码", Url = "https://github.com/densen2014/Densen.Extensions/blob/master/Demo/DemoShared/Pages/" },
+        new MenuItem() { Text = "本站源码", Url = "https://github.com/densen2014/Densen.Extensions/blob/master/Demo/DemoShared/Pages?WT.mc_id=DT-MVP-5005078" },
 
     };
 }
