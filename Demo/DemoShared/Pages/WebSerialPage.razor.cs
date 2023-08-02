@@ -17,7 +17,7 @@ public partial class WebSerialPage
     private string? message;
     private string? statusmessage;
     private string? errmessage;
-    private WebSerialOptions options = new WebSerialOptions() { BaudRate = 115200,BufferSize=102400 };
+    private WebSerialOptions options = new WebSerialOptions() { BaudRate = 115200 };
 
     [NotNull]
     private IEnumerable<SelectedItem> BaudRateList { get; set; } = ListToSelectedItem();
