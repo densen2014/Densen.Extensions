@@ -18,6 +18,7 @@
 		<PackageReference Include="BootstrapBlazor" Version="7.*" />
 		<PackageReference Include="BootstrapBlazor.Chart" Version="7.*" />
 		<PackageReference Include="MiniExcel" Version="1.*" />
+		<PackageReference Include="ZXingBlazor" Version="1.0.0" />
 	</ItemGroup>
 
 	<ItemGroup>

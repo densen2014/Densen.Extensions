@@ -1,5 +1,6 @@
 ﻿@page "/barcodescanner"
 @attribute [TabItemOption(Text = "条码扫描", Icon = "fa fa-barcode")]
+@using ZXingBlazor.Components
 
 <h3>条码扫描 BarcodeReader</h3>
 
@@ -16,7 +17,7 @@
 @if (ShowScanBarcode)
 {
 
-    <BarcodeScanner ScanResult="((e) => { BarCode=e; ShowScanBarcode = !ShowScanBarcode; })"
+    <BarcodeReader ScanResult="((e) => { BarCode=e; ShowScanBarcode = !ShowScanBarcode; })"
                     Close="(()=>ShowScanBarcode=!ShowScanBarcode)"
                     OnError="OnError" />
 
