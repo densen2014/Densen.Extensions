@@ -18,7 +18,6 @@
 		<PackageReference Include="BootstrapBlazor" Version="7.*" />
 		<PackageReference Include="BootstrapBlazor.Chart" Version="7.*" />
 		<PackageReference Include="MiniExcel" Version="1.*" />
-		<PackageReference Include="ZXingBlazor" Version="1.0.0" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -42,6 +41,7 @@
 		<ProjectReference Include="..\..\..\BootstrapBlazor.PdfReader\src\BootstrapBlazor.PdfReader\BootstrapBlazor.PdfReader.csproj" />
 		<ProjectReference Include="..\..\..\BootstrapBlazor.VideoPlayer\src\BootstrapBlazor.VideoPlayer\BootstrapBlazor.VideoPlayer.csproj" />
 		<ProjectReference Include="..\..\..\BootstrapBlazor.FileViewer\src\BootstrapBlazor.FileViewer\BootstrapBlazor.FileViewer.csproj" />
+		<ProjectReference Include="..\..\..\ZXingBlazor\src\ZXingBlazor\ZXingBlazor.csproj" />
 	</ItemGroup>
 	
     <!--不带源码调试请手动取消注销-->
@@ -60,6 +60,7 @@
 		<PackageReference Include="BootstrapBlazor.PdfReader" Version="7.*" />
 		<PackageReference Include="BootstrapBlazor.VideoPlayer" Version="7.*" />
 		<PackageReference Include="BootstrapBlazor.FileViewer" Version="7.*" />
+		<PackageReference Include="ZXingBlazor" Version="1.0.0" />
 	</ItemGroup>-->
 
 	<ItemGroup>
@@ -94,6 +95,9 @@
 		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</Content>
 		<Content Update="wwwroot\samples\sample3.xlsx">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+		<Content Update="wwwroot\test.jpg">
 		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</Content> 
 	</ItemGroup>

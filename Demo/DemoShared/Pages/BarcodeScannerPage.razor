@@ -18,14 +18,13 @@
 {
 
     <BarcodeReader ScanResult="((e) => { BarCode=e; ShowScanBarcode = !ShowScanBarcode; })"
-                    Close="(()=>ShowScanBarcode=!ShowScanBarcode)"
-                    OnError="OnError" />
+                   Close="(()=>ShowScanBarcode=!ShowScanBarcode)"
+                   OnError="OnError" />
 
 }
 
 <p>@message</p>
 
-<AttributeTable Items="@GetAttributes()" />
 
 @code{
 
@@ -48,6 +47,7 @@
         return Task.CompletedTask;
     }
 
+
     /// <summary>
     /// 获得属性方法
     /// </summary>
@@ -62,6 +62,51 @@
             new AttributeItem("SelectDeviceBtnTitle","选择设备按钮文本/Select device button title","选择设备"),
             new AttributeItem("OnError","错误信息回调/Error callback method",  "-","Func<string, Task>"),
             new AttributeItem("UseBuiltinDiv","使用内置DIV/Use builtin Div",  "true","Func<string, Task>"),
-        };
+                                    };
 
-} 
+}
+
+<Textarea @bind-Value="MessageString" />
+<Button Text="生成二维码" OnClick="GenQrcode" />
+<Button Text="返回二维码Svg流" OnClick="GenQrcodeSvg" />
+<BarCodes @ref="barCodes" OnQRCodeGen="OnQRCodeGen" OnDecodeFromImage="OnDecodeFromImage" />
+<Button Text="解码" OnClick="DecodeFromImage" />
+
+@code{
+
+    BarCodes? barCodes;
+
+    string? MessageString { get; set; }
+
+    private async Task GenQrcode()
+    {
+        await barCodes!.QRCodeGen(MessageString ?? "11111111111");
+    }
+
+    private async Task GenQrcodeSvg()
+    {
+        await barCodes!.QRCodeGenSvg(MessageString ?? "11111111111");
+    }
+
+    private Task OnQRCodeGen(string message)
+    {
+        this.MessageString = message;
+        StateHasChanged();
+        return Task.CompletedTask;
+    }
+
+    private async Task DecodeFromImage()
+    {
+        await barCodes!.DecodeFromImage();
+    }
+
+    private Task OnDecodeFromImage(string message)
+    {
+        this.MessageString = message;
+        StateHasChanged();
+        return Task.CompletedTask;
+    }
+
+}
+
+<AttributeTable Items="@GetAttributes()" />
