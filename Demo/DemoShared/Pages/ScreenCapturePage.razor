@@ -2,6 +2,8 @@
 @attribute [TabItemOption(Text = "截屏/录像")]
 
 <a href="https://www.nuget.org/packages/BootstrapBlazor.WebAPI#readme-body-tab"><h3>截屏/录像</h3></a>
+<hr />
+<a href="https://github.com/densen2014/Densen.Extensions/blob/master/Demo/DemoShared/Pages/ScreenCapturePage.razor"><h4>页面源码</h4></a>
 
 <p>@message</p>
 
@@ -16,7 +18,7 @@
                     {
 
                         case Cams.VGA:
-                            <Capture OnCaptureResult="@OnCaptureResult" OnError="@OnError"  />
+                            <Capture OnCaptureResult="@OnCaptureResult" OnError="@OnError" />
                             break;
 
                         case Cams.HD:
@@ -31,17 +33,17 @@
 
                         case Cams.QHD:
 
-                            <Capture OnCaptureResult="@OnCaptureResult" OnError="@OnError" Width=2560  Height=1440  />
+                            <Capture OnCaptureResult="@OnCaptureResult" OnError="@OnError" Width=2560 Height=1440 />
                             break;
 
                         case Cams.UHD:
 
-                            <Capture OnCaptureResult="@OnCaptureResult" OnError="@OnError" Width=3840   Height=2160  />
+                            <Capture OnCaptureResult="@OnCaptureResult" OnError="@OnError" Width=3840 Height=2160 />
                             break;
                     }
 
                     @*<Switch @bind-Value="@Cam1080" OnValueChanged="OnValueChanged" OnText="高清" OffText="标清" />*@
-                    <br/>
+                    <br />
                     <RadioList IsButton="true" Color="Color.Success" @bind-Value="@SelectedEnumItem" OnSelectedChanged="@OnSelectedChanged" />
                 </div>
             </div>
@@ -140,5 +142,4 @@
         width: 760px;
         border-radius: 25px;
     }
-
 </style>

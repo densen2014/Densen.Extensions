@@ -2,6 +2,8 @@
 @attribute [TabItemOption(Text = "语音识别/合成")]
 
 <a href="https://www.nuget.org/packages/BootstrapBlazor.WebAPI#readme-body-tab"><h3>语音识别/合成</h3></a>
+<hr />
+<a href="https://github.com/densen2014/Densen.Extensions/blob/master/Demo/DemoShared/Pages/Speechs.razor"><h4>页面源码</h4></a>
 
 <p>语音识别pc和ios测试无效,语音合成ios无效</p>
 
@@ -24,7 +26,7 @@
 
     async Task SpeechRecognition()
     {
-        Message= await webApi.SpeechRecognition();
+        Message = await webApi.SpeechRecognition();
     }
 
     async Task SpeechSynthesis()

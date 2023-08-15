@@ -1,14 +1,16 @@
 ﻿@page "/ShareObject"
 @attribute [TabItemOption(Text = "分享按钮")]
 
-<a href="https://www.nuget.org/packages/BootstrapBlazor.WebAPI#readme-body-tab"><h3>分享按钮</h3></a> 
+<a href="https://www.nuget.org/packages/BootstrapBlazor.WebAPI#readme-body-tab"><h3>分享按钮</h3></a>
+<hr />
+<a href="https://github.com/densen2014/Densen.Extensions/blob/master/Demo/DemoShared/Pages/ShareObject.razor"><h4>页面源码</h4></a>
 
 
 <WebApi @ref="webApi" />
 
 <Button Text="分享" OnClick="Share" />
 <Button Text="分享文件" OnClick="ShareFile" />
- 
+
 @code{
 
     [NotNull]
@@ -16,11 +18,11 @@
 
     async Task Share()
     {
-        await  webApi.Share("Blazor", "分享一个好看的 Blazor UI 库", "https://www.blazor.zone");
+        await webApi.Share("Blazor", "分享一个好看的 Blazor UI 库", "https://www.blazor.zone");
     }
 
     async Task ShareFile()
     {
-        await  webApi.Share("Blazor", "分享Excel文件", "https://www.blazor.zone", "https://blazor.app1.es/_content/DemoShared/samples/sample3.xlsx");
+        await webApi.Share("Blazor", "分享Excel文件", "https://www.blazor.zone", "https://blazor.app1.es/_content/DemoShared/samples/sample3.xlsx");
     }
 }

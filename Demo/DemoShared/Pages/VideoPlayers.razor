@@ -2,6 +2,8 @@
 @attribute [TabItemOption(Text = "视频播放器")]
 
 <a href="https://www.nuget.org/packages/BootstrapBlazor.VideoPlayer#readme-body-tab"><h4>视频播放器 VideoPlayer</h4></a>
+<hr />
+<a href="https://github.com/densen2014/Densen.Extensions/blob/master/Demo/DemoShared/Pages/VideoPlayers.razor"><h4>页面源码</h4></a>
 
 <div class="row g-3">
     <div class="col-6 col-sm-4 col-md-3 col-xl-auto">
@@ -27,7 +29,7 @@
     VideoPlayer? video1;
 
     List<string> VideoList = new List<string>
-    {
+{
         "https://rtvelivestream.akamaized.net/rtvesec/la1/la1_main.m3u8",
         "https://d2zihajmogu5jn.cloudfront.net/bipbop-advanced/bipbop_16x9_variant.m3u8",
         "https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8",
@@ -57,8 +59,8 @@
         Items.Add(new SelectedItem { Text = "playlist.m3u8", Value = "https://localhost:5011/stream/cache/playlist.m3u8" });
         Items.Add(new SelectedItem { Text = "live.m3u8", Value = "https://localhost:5011/stream/cache/live.m3u8" });
 #else
-        Items.Add(new SelectedItem { Text = "playlist.m3u8", Value = "https://blazor.app1.es/stream/cache/playlist.m3u8" });
-        Items.Add(new SelectedItem { Text = "live.m3u8", Value = "https://blazor.app1.es/stream/cache/live.m3u8" });
+    Items.Add(new SelectedItem { Text = "playlist.m3u8", Value = "https://blazor.app1.es/stream/cache/playlist.m3u8" });
+    Items.Add(new SelectedItem { Text = "live.m3u8", Value = "https://blazor.app1.es/stream/cache/live.m3u8" });
 #endif
         //Items.Add(new SelectedItem { Text = "rtsp", Value = "rtsp://wowzaec2demo.streamlock.net/vod/mp4:BigBuckBunny_115k.mp4" });
         //Items.Add(new SelectedItem { Text = "rtmp", Value = "rtmp://ns8.indexforce.com/home/mystream" });

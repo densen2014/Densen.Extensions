@@ -2,6 +2,9 @@
 @attribute [TabItemOption(Text = "手写签名")]
 
 <h3>Handwritten 手写签名</h3>
+<p>建议转为使用 SignaturePadPage组件</p>
+<hr />
+<a href="https://github.com/densen2014/Densen.Extensions/blob/master/Demo/DemoShared/Pages/HandwrittenPage.razor"><h4>页面源码</h4></a>
 
 <button class="btn btn-primary"
         type="button"
@@ -41,5 +44,5 @@
     {
             new AttributeItem("HandwrittenBase64","签名结果回调方法",  "","EventCallback<string>") ,
             new AttributeItem("Close","关闭签名框回调方法",  "","EventCallback")
-        };
+            };
 }

@@ -2,9 +2,11 @@
 @attribute [TabItemOption(Text = "条码扫描", Icon = "fa fa-barcode")]
 @using ZXingBlazor.Components
 
-<h3>条码扫描 BarcodeReader</h3>
+<a href="https://www.nuget.org/packages/ZXingBlazor#readme-body-tab"><h3>条码扫描 BarcodeReader</h3></a>
 
 <h4>扫描条码/QR码。</h4>
+<hr />
+<a href="https://github.com/densen2014/Densen.Extensions/blob/master/Demo/DemoShared/Pages/BarcodeScannerPage.razor"><h4>页面源码</h4></a>
 
 <button class="btn btn-primary"
         type="button"
@@ -25,6 +27,7 @@
 
 <p>@message</p>
 
+<AttributeTable Items="@GetAttributes()" />
 
 @code{
 
@@ -53,28 +56,38 @@
     /// </summary>
     /// <returns></returns>
     private IEnumerable<AttributeItem> GetAttributes() => new AttributeItem[]
-{
-            new AttributeItem("ScanResult","扫码结果回调方法/Scan result callback method",  "","EventCallback<string>"),
-            new AttributeItem("Close","关闭扫码框回调方法/Close scan code callback method","","EventCallback"),
-            new AttributeItem("ScanBtnTitle","扫码按钮文本/Scan button title","扫码"),
-            new AttributeItem("ResetBtnTitle","复位按钮文本/Reset button title","复位"),
-            new AttributeItem("CloseBtnTitle","关闭按钮文本/Close button title","关闭"),
-            new AttributeItem("SelectDeviceBtnTitle","选择设备按钮文本/Select device button title","选择设备"),
-            new AttributeItem("OnError","错误信息回调/Error callback method",  "-","Func<string, Task>"),
-            new AttributeItem("UseBuiltinDiv","使用内置DIV/Use builtin Div",  "true","Func<string, Task>"),
-                                                    };
+    {
+                new AttributeItem("ScanResult","扫码结果回调方法/Scan result callback method",  "","EventCallback<string>"),
+                new AttributeItem("Close","关闭扫码框回调方法/Close scan code callback method","","EventCallback"),
+                new AttributeItem("ScanBtnTitle","扫码按钮文本/Scan button title","扫码"),
+                new AttributeItem("ResetBtnTitle","复位按钮文本/Reset button title","复位"),
+                new AttributeItem("CloseBtnTitle","关闭按钮文本/Close button title","关闭"),
+                new AttributeItem("SelectDeviceBtnTitle","选择设备按钮文本/Select device button title","选择设备"),
+                new AttributeItem("OnError","错误信息回调/Error callback method",  "-","Func<string, Task>"),
+                new AttributeItem("UseBuiltinDiv","使用内置DIV/Use builtin Div",  "true","Func<string, Task>"),
+                new AttributeItem("Pdf417Only","只解码 Pdf417 格式 / decode only Pdf417 format",  "false","bool"),
+                new AttributeItem("Decodeonce","单次|连续解码,默认单次 / Decode Once or Decode Continuously, default is Once",  "true","bool"),
+                new AttributeItem("DecodeAllFormats","解码所有编码形式,性能较差, 开启后可用 options.formats 指定编码形式.默认为 false | Decodde All Formats, performance is poor, you can set options.formats to customize specify the encoding formats. The default is false","true","bool"),
+                new AttributeItem("Options","选项/ZXingOptions",""),
+                        };
 
 }
+
+<br />
+<br />
+<a href="https://www.nuget.org/packages/ZXingBlazor#readme-body-tab"><h3>BarCodes 组件</h3></a>
+<h4>解码图片/QR码生成</h4>
 
 <Textarea @bind-Value="MessageString" />
 <br />
 <Button Text="生成二维码" OnClick="GenQrcode" />
 <Button Text="返回二维码Svg流" OnClick="GenQrcodeSvg" />
 <Button Text="解码" OnClick="DecodeFromImage" />
-<BarCodes @ref="barCodes" OnQRCodeGen="OnQRCodeGen" OnDecodeFromImage="OnDecodeFromImage" OnError="OnError" />
+<BarCodes @ref="barCodes" OnQRCodeGen="OnResult" OnDecodeFromImage="OnResult" OnError="OnError" QRCodeWidth="200" />
 <br />
-<Textarea Value="@SvgString" />
+<Textarea Value="@Result" />
 <br />
+<AttributeTable Items="@GetAttributes2()" />
 
 @code{
 
@@ -82,11 +95,11 @@
 
     string? MessageString { get; set; } = "测试二维码 https://www.blazor.zone";
 
-    string? SvgString { get; set; }
+    string? Result { get; set; }
 
     private async Task GenQrcode()
     {
-        await barCodes!.QRCodeGen(string.IsNullOrWhiteSpace(MessageString)?"111111": MessageString);
+        await barCodes!.QRCodeGen(string.IsNullOrWhiteSpace(MessageString) ? "111111" : MessageString);
     }
 
     private async Task GenQrcodeSvg()
@@ -94,9 +107,9 @@
         await barCodes!.QRCodeGenSvg(string.IsNullOrWhiteSpace(MessageString) ? "111111" : MessageString);
     }
 
-    private Task OnQRCodeGen(string message)
+    private Task OnResult(string message)
     {
-        this.SvgString = message;
+        this.Result = message;
         StateHasChanged();
         return Task.CompletedTask;
     }
@@ -106,13 +119,22 @@
         await barCodes!.DecodeFromImage();
     }
 
-    private Task OnDecodeFromImage(string message)
+    /// <summary>
+    /// 获得属性方法
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerable<AttributeItem> GetAttributes2() => new AttributeItem[]
     {
-        this.message = message;
-        StateHasChanged();
-        return Task.CompletedTask;
-    }
+                new AttributeItem("OnQRCodeGen","二维码数据流回调方法/Generate QRcode callback method",  "","Func<string, Task>?"),
+                new AttributeItem("OnDecodeFromImage","解码回调方法/ Decode from image callback method","","Func<string, Task>?"),
+                new AttributeItem("OnError","错误信息回调/Error callback method",  "-","Func<string, Task>"),
+                new AttributeItem("Options","选项/ZXingOptions",""),
+                new AttributeItem("QRCodeWidth","二维码宽度/ QR Code width","300","int"),
+                new AttributeItem("DecodeAllFormats","解码所有编码形式,性能较差, 开启后可用 options.formats 指定编码形式.默认为 false | Decodde All Formats, performance is poor, you can set options.formats to customize specify the encoding formats. The default is false","true","bool"),
+                new AttributeItem("QRCodeGen","生成SVG二维码 / Generate SVG QR code","","Task"),
+                new AttributeItem("QRCodeGenSvg","生成SVG二维码数据流文本 / Generate SVG QR code data flow text","","Task"),
+                new AttributeItem("DecodeFromImage","选择图片解码 / Select picture decoding","","Task"),
+                                    };
 
 }
 
-<AttributeTable Items="@GetAttributes()" />
