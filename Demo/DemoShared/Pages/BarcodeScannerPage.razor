@@ -62,35 +62,41 @@
             new AttributeItem("SelectDeviceBtnTitle","选择设备按钮文本/Select device button title","选择设备"),
             new AttributeItem("OnError","错误信息回调/Error callback method",  "-","Func<string, Task>"),
             new AttributeItem("UseBuiltinDiv","使用内置DIV/Use builtin Div",  "true","Func<string, Task>"),
-                                    };
+                                                    };
 
 }
 
 <Textarea @bind-Value="MessageString" />
+<br />
 <Button Text="生成二维码" OnClick="GenQrcode" />
 <Button Text="返回二维码Svg流" OnClick="GenQrcodeSvg" />
-<BarCodes @ref="barCodes" OnQRCodeGen="OnQRCodeGen" OnDecodeFromImage="OnDecodeFromImage" />
 <Button Text="解码" OnClick="DecodeFromImage" />
+<BarCodes @ref="barCodes" OnQRCodeGen="OnQRCodeGen" OnDecodeFromImage="OnDecodeFromImage" OnError="OnError" />
+<br />
+<Textarea Value="@SvgString" />
+<br />
 
 @code{
 
     BarCodes? barCodes;
 
-    string? MessageString { get; set; }
+    string? MessageString { get; set; } = "测试二维码 https://www.blazor.zone";
+
+    string? SvgString { get; set; }
 
     private async Task GenQrcode()
     {
-        await barCodes!.QRCodeGen(MessageString ?? "11111111111");
+        await barCodes!.QRCodeGen(string.IsNullOrWhiteSpace(MessageString)?"111111": MessageString);
     }
 
     private async Task GenQrcodeSvg()
     {
-        await barCodes!.QRCodeGenSvg(MessageString ?? "11111111111");
+        await barCodes!.QRCodeGenSvg(string.IsNullOrWhiteSpace(MessageString) ? "111111" : MessageString);
     }
 
     private Task OnQRCodeGen(string message)
     {
-        this.MessageString = message;
+        this.SvgString = message;
         StateHasChanged();
         return Task.CompletedTask;
     }
@@ -102,7 +108,7 @@
 
     private Task OnDecodeFromImage(string message)
     {
-        this.MessageString = message;
+        this.message = message;
         StateHasChanged();
         return Task.CompletedTask;
     }
