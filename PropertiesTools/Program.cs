@@ -22,7 +22,7 @@ foreach (var basepath in basepaths)
         var fileinfo = Directory.GetFiles(basepath, $"*{ext.Key}", SearchOption.AllDirectories);
         foreach (var item2 in fileinfo)
         {
-            File.Move(item2, item2.Replace(".properties", ".txt"));
+            File.Move(item2, item2.Replace(ext.Key, ".txt"));
         }
 
         var items = ext.Value.Split(',');
