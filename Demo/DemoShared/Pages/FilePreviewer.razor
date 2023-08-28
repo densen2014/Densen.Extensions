@@ -1,20 +1,19 @@
 ﻿@using BootstrapBlazor.Components
-
-
+@inherits AppComponentBase
 
 @Status
 
 @if (stream != null)
 {
-    <PdfReader Stream="stream"  />
+    <PdfReader Stream="stream" />
 }
 else if (FilePreview != null)
 {
-    <FileViewer Filename="@FilePreview"  />
+    <FileViewer Filename="@FilePreview" />
 }
 else if (ImagePreview != null)
 {
-    <Viewer Src="@ImagePreview" Width="600px" Height="300px" LocalFileToStream  />
+    <Viewer Src="@ImagePreview" Width="600px" Height="300px" LocalFileToStream />
 
     @*<img src="@ImagePreview">*@
 }
@@ -38,13 +37,13 @@ else
 
     string? ImagePreview { get; set; }
 
-    string? Message { get; set; }
+    new string? Message { get; set; }
 
     string? Status { get; set; }
 
     string AceptedImageTypes { get; set; } = ".png,.jpg,.jpeg,.gif,.bmp,.ico";
 
-    string AceptedFileTypes { get; set; } = ".txt,.csv,.xml,.log,.htm,.html,.css,.js,.json,.md,.bcmap";
+    string AceptedFileTypes { get; set; } = ".txt,.csv,.xml,.log,.htm,.html,.css,.js,.json,.md,.bcmap,.pdb";
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
@@ -89,6 +88,7 @@ else
             {
                 var fileinfo = new System.IO.FileInfo(filename);
                 Message = $"目前还无法预览{extension}类型文件, {fileinfo.Length / 1024}k,{fileinfo.LastWriteTime}";
+                await ShowBottomMessage(Message);
             }
         }
         else
