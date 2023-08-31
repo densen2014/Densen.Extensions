@@ -116,6 +116,7 @@ if (!Directory.Exists(dir)) Directory.CreateDirectory(dir);
 
 var provider = new FileExtensionContentTypeProvider();
 provider.Mappings[".properties"] = "application/octet-stream";
+provider.Mappings[".apk"] = "application/octet-stream";
 
 provider.Mappings.Remove(".ts");
 provider.Mappings.Add(".key", "text/plain");
@@ -164,6 +165,22 @@ app.UseDirectoryBrowser(new DirectoryBrowserOptions
     FileProvider = new PhysicalFileProvider(dir),
     Formatter = new AME.HtmlDirectoryFormatterChsSorted(HtmlEncoder.Default),
     RequestPath = new PathString("/stream")
+});
+
+dir = Path.Combine(app.Environment.WebRootPath, "BlazorHybrid");
+if (!Directory.Exists(dir)) Directory.CreateDirectory(dir);
+app.UseStaticFiles(new StaticFileOptions
+{
+    FileProvider = new PhysicalFileProvider(dir),
+    RequestPath = new PathString("/BlazorHybrid"),
+    ContentTypeProvider = provider
+});
+
+app.UseDirectoryBrowser(new DirectoryBrowserOptions
+{
+    FileProvider = new PhysicalFileProvider(dir),
+    Formatter = new AME.HtmlDirectoryFormatterChsSorted(HtmlEncoder.Default),
+    RequestPath = new PathString("/BlazorHybrid")
 });
 
 app.UseRouting();

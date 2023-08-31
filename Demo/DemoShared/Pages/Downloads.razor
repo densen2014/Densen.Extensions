@@ -8,9 +8,18 @@ Files:
 
 <pre>
 @{
-    if (Type== "BlazorHybrid" && string.IsNullOrEmpty(Config["BlazorHybridPath"]) && Directory.Exists (Config["BlazorHybridPath"]))
+    if (Type== "BlazorHybrid" )
     {
-        UploadPath = Config["BlazorHybridPath"];
+        var BlazorHybrid = Config["BlazorHybridPath"];
+        if (!string.IsNullOrEmpty(Config["BlazorHybridPath"]) && Directory.Exists(Config["BlazorHybridPath"]))
+        {
+            UploadPath = Config["BlazorHybridPath"];
+        }
+        else
+        {
+            UploadPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "BlazorHybrid");
+        }
+
     }
     var files = Directory.GetFiles(UploadPath);
     int i = 0;
