@@ -17,6 +17,7 @@ using BootstrapBlazor.AzureServices;
 using AzureOpenAIClient.Http;
 #endif
 
+//默认路径, Linux会在/root/uploads, win在 C:\Users\[username]\Documents\uploads
 string UploadPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "uploads");
 if (!Directory.Exists(UploadPath)) Directory.CreateDirectory(UploadPath);
 

@@ -1,17 +1,23 @@
 ﻿@page "/Downloads"
+@page "/Downloads/{Type}"
 
 @using BootstrapBlazor.Components
+@using Microsoft.Extensions.Configuration
 
 Files:
 
 <pre>
 @{
+    if (Type== "BlazorHybrid" && string.IsNullOrEmpty(Config["BlazorHybridPath"]) && Directory.Exists (Config["BlazorHybridPath"]))
+    {
+        UploadPath = Config["BlazorHybridPath"];
+    }
     var files = Directory.GetFiles(UploadPath);
     int i = 0;
     foreach (var item in files)
     {
         i++;
-        <button class="btn btn-link" @onclick="(()=>DownloadBlob.DownloadFileFromStream(item))">@($"{i}.{Path.GetFileName(item)}")</button><br />
+<button class="btn btn-link" @onclick="(()=>DownloadBlob.DownloadFileFromStream(item))">@($"{i}.{Path.GetFileName(item)}")</button><br />
         }
     }
 </pre>
@@ -26,7 +32,18 @@ Files:
 
 @code{
 
-    protected string UploadPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "uploads");
+    [NotNull]
+    [Inject]
+    private IConfiguration? Config { get; set; }
+
+    [Parameter]
+    public string? Type { get; set; }
+
+    /// <summary>
+    /// 默认路径, Linux会在/root/uploads, win在 C:\Users\[username]\Documents\uploads
+    /// </summary>
+    [Parameter]
+    public string UploadPath { get; set; } = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "uploads");
 
     string? Message { get; set; }
 
@@ -45,7 +62,7 @@ Files:
     {
         //生成随机文本内存流
         var stream = new MemoryStream(System.Text.Encoding.Default.GetBytes($"Log from blazor {DateTime.Now:F}"));
-        var filename= "test.txt";
+        var filename = "test.txt";
         await DownloadBlob.DownloadFileFromStream(filename, stream);
     }
 }

@@ -55,6 +55,7 @@ public partial class NavMenu
                     new MenuItem() { Text = "上传文件", Url = "/FileUpload" },
                     new MenuItem() { Text = "文件夹", Url = "/AppFiles" },
                     new MenuItem() { Text = "下载", Url = "/Downloads" },
+                    new MenuItem() { Text = "BlazorHybrid项目下载", Url = "/Downloads/BlazorHybrid" },
                 }
            },
            new MenuItem() { Text = "其他" , Items = new List<MenuItem>{
