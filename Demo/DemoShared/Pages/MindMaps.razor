@@ -1,0 +1,82 @@
+﻿@page "/MindMaps"
+@attribute [TabItemOption(Text = "思维导图")]
+@inherits AppComponentBase
+
+<a href="https://www.nuget.org/packages/BootstrapBlazor.MindMap#readme-body-tab"><h3>思维导图</h3></a>
+<hr />
+<a href="https://github.com/densen2014/Densen.Extensions/blob/master/Demo/DemoShared/Pages/MindMaps.razor"><h5>页面源码</h5></a>
+
+<p>Tab:添加新节点</p>
+<p>鼠标可拖动节点排列</p>
+
+<MindMap @ref="MindMap" OnReceive="@OnReceive" OnError="@OnError" />
+
+<Textarea @bind-Value="Message" />
+
+<Button Text="下载为PNG" OnClick="Export" />
+<Button Text="下载为json" OnClick="ExportJson" />
+<Button Text="导出PNG" OnClick="ExportPng" />
+<Button Text="导出对象" OnClick="GetFullData" />
+<Button Text="导出json对象" OnClick="GetData" />
+<Button Text="导入数据(json)" OnClick="SetData" />
+<Button Text="复位" OnClick="Reset" />
+
+
+
+@code{
+
+    [NotNull]
+    MindMap? MindMap;
+
+    new string? Message { get; set; } = "";
+
+    private Task OnReceive(string? message)
+    {
+        Message = message;
+        return Task.CompletedTask;
+    }
+
+    private Task OnError(string message)
+    {
+        Message = message;
+        return Task.CompletedTask;
+    }
+
+    async Task Export()
+    {
+        await MindMap.Export();
+        await ShowBottomMessage("下载Png");
+    }
+
+    async Task ExportJson()
+    {
+        await MindMap.Export("json", WithConfig: false);
+        await ShowBottomMessage("下载Json");
+    }
+
+    async Task ExportPng()
+    {
+        await MindMap.Export(IsDownload:false, WithConfig: false);
+        await ShowBottomMessage("已导出Png");
+    }
+
+    async Task GetFullData()
+    {
+        await MindMap.GetData();
+    }
+
+    async Task GetData()
+    {
+        await MindMap.GetData(false);
+    }
+
+    async Task SetData()
+    {
+        if (Message != null) await MindMap.SetData(Message);
+    }
+
+    async Task Reset()
+    {
+        await MindMap.Reset();
+    }
+}

@@ -30,6 +30,7 @@ public partial class NavMenu
                     new MenuItem() { Text = "屏幕方向", Url = "/ScreenOrientations" },
                     new MenuItem() { Text = "语音识别/合成", Url = "/Speechs" },
                     new MenuItem() { Text = "录屏", Url = "/ScreenRecords" },
+                    new MenuItem() { Text = "思维导图", Url = "/MindMaps" },
                 }
             },
             new MenuItem() { Text = "地图" ,Items= new List<MenuItem>

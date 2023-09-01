@@ -28,6 +28,7 @@
     <!--带源码调试环境-->
     <ItemGroup>
 		<ProjectReference Include="..\..\..\BootstrapBlazor.Bluetooth\src\BootstrapBlazor.Bluetooth\BootstrapBlazor.Bluetooth.csproj" />
+		<ProjectReference Include="..\..\..\BootstrapBlazor.MindMap\src\BootstrapBlazor.MindMap\BootstrapBlazor.MindMap.csproj" />
 		<ProjectReference Include="..\..\..\BootstrapBlazor.OCR\src\BootstrapBlazor.OCR\BootstrapBlazor.OCR.csproj" />
 		<ProjectReference Include="..\..\..\BootstrapBlazor.OnScreenKeyboard\src\BootstrapBlazor.OnScreenKeyboard\BootstrapBlazor.OnScreenKeyboard.csproj" />
 		<ProjectReference Include="..\..\..\BootstrapBlazor.OpenAI.GPT3\src\BootstrapBlazor.OpenAI.GPT3\BootstrapBlazor.OpenAI.csproj" />
