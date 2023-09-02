@@ -31,5 +31,9 @@
 		<PackageReference Include="System.Management" Version="7.*" />
         <PackageReference Include="System.IO.Ports" Version="7.*" />
     </ItemGroup>
+    
+    <PropertyGroup>
+        <Version>7.10.0</Version>
+    </PropertyGroup>
 
 </Project>
