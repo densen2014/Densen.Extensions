@@ -48,6 +48,7 @@
     <!--不带源码调试请手动取消注销-->
 	<!--<ItemGroup>
 		<PackageReference Include="BootstrapBlazor.Bluetooth" Version="7.*" />
+		<PackageReference Include="BootstrapBlazor.MindMap" Version="*" />
 		<PackageReference Include="BootstrapBlazor.OCR" Version="7.*" />
 		<PackageReference Include="BootstrapBlazor.OnScreenKeyboard" Version="7.*" />
 		<PackageReference Include="BootstrapBlazor.OpenAI" Version="0.1.0" />
