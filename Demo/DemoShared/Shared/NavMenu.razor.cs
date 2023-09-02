@@ -17,8 +17,8 @@ public partial class NavMenu
                     new MenuItem() { Text = "签名 Handwritten", Url = "/handwritten" },
                     new MenuItem() { Text = "存取设置 Storage", Url = "/Storages" },
                     new MenuItem() { Text = "上传图片 (Base64)", Url = "/UploadToBase64s" },
-                    new MenuItem() { Text = "分享按钮", Url = "/ShareObject" },
-                    new MenuItem() { Text = "思维导图", Url = "/MindMaps" },
+                    new MenuItem() { Text = "分享按钮 Share", Url = "/ShareObject" },
+                    new MenuItem() { Text = "思维导图 MindMap", Url = "/MindMaps" },
                 }
             },
             new MenuItem() { Text = "文件" ,Items= new List<MenuItem>
@@ -30,13 +30,14 @@ public partial class NavMenu
                     new MenuItem() { Text = "文件夹", Url = "/AppFiles" },
                     new MenuItem() { Text = "下载", Url = "/Downloads" },
                     new MenuItem() { Text = "BlazorHybrid项目下载", Url = "/BlazorHybrid" },
+                    new MenuItem() { Text = "文件系统 FileSystem", Url = "/filesystems" },
                 }
            },
             new MenuItem() { Text = "媒体" ,Items= new List<MenuItem>
                 {
                     new MenuItem() { Text = "视频播放器 Video Player", Url = "/videoPlayers" },
                     new MenuItem() { Text = "图片浏览 Viewer", Url = "/viewer" },
-                    new MenuItem() { Text = "录屏", Url = "/ScreenRecords" },
+                    new MenuItem() { Text = "录屏 ScreenRecord", Url = "/ScreenRecords" },
                     new MenuItem() { Text = "截屏/录像 Screen Capture", Url = "/screencapture" },
                 }
             },
@@ -59,7 +60,6 @@ public partial class NavMenu
             },        
             new MenuItem() { Text = "实验" ,Items= new List<MenuItem>
                 {
-                    new MenuItem() { Text = "文件系统 FileSystem", Url = "/filesystems" },
                     new MenuItem() { Text = "语音识别/合成", Url = "/Speechs" },
                     new MenuItem() { Text = "屏幕方向", Url = "/ScreenOrientations" },
                     new MenuItem() { Text = "视频墙", Url = "/VideoWall" },
