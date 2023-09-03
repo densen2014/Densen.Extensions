@@ -23,7 +23,7 @@
 		<AssemblyOriginatorKeyFile>..\keys\Longbow.Utility.snk</AssemblyOriginatorKeyFile>
 		<SignAssembly>True</SignAssembly>
         <OutputPath>..\Bin</OutputPath>
-        <Version>7.10.1</Version>
+        <Version>7.10.4</Version>
     </PropertyGroup>
 
 	<ItemGroup>
