@@ -50,7 +50,7 @@
 <div class="row g-3 mb-3">
     <h4>语音合成自定义</h4>
     <div class="col-12">
-        @if (WebVoiceList != null)
+        @if (WebVoiceList != null && WebVoiceList.Any())
         {
             <select id="voiceSelect" class="form-select" @onchange="((e)=>OnChange(e))" style="width:70vw; max-width: 400px;">
                 @foreach (var voice in WebVoiceList)
@@ -139,7 +139,7 @@
 
         if (firstRender)
         {
-            while (WebVoiceList == null)
+            while (WebVoiceList == null || !WebVoiceList.Any())
             {
                 await Task.Delay(100);
                 await GetVoiceList();
