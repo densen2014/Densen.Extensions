@@ -9,7 +9,7 @@
 
 <div class="row g-3 mb-3">
     <h4>语音识别</h4>
-    <div class="col-10">
+    <div class="col-12">
         <BootstrapInputGroup>
             <Button Text="普通话" OnClick="SpeechRecognition" IsAsync />
             <Button Text="粤语" OnClick="SpeechRecognitionHK" IsAsync />
@@ -30,7 +30,7 @@
 
 <div class="row g-3 mb-3">
     <h4>语音合成</h4>
-    <div class="col-10">
+    <div class="col-12">
         <BootstrapInputGroup>
             <Button Text="普通话" OnClick="SpeechSynthesis" IsAsync />
             <Button Text="粤语" OnClick="SpeechSynthesisHK" IsAsync />
@@ -42,21 +42,24 @@
     <div class="col-12">
         <WebSpeech @ref="WebSpeech" OnResult="@OnError" OnStatus="@OnError" OnError="@OnError" />
     </div>
+    <p>
+        @Message
+    </p>
 </div>
 
 <div class="row g-3 mb-3">
     <h4>语音合成自定义</h4>
-    <div class="col-10">
-            @if (WebVoiceList != null)
-            {
-                <select id="voiceSelect" class="form-select" @onchange="((e)=>OnChange(e))" style="width:70vw; max-width: 400px;">
-                    @foreach (var voice in WebVoiceList)
-                    {
-                        <option value="@voice.VoiceURI">@($"{(voice.LocalService ? "" : "*")}{voice.Name} ({voice.Lang})")</option>
-                    }
-                </select>
+    <div class="col-12">
+        @if (WebVoiceList != null)
+        {
+            <select id="voiceSelect" class="form-select" @onchange="((e)=>OnChange(e))" style="width:70vw; max-width: 400px;">
+                @foreach (var voice in WebVoiceList)
+                {
+                    <option value="@voice.VoiceURI">@($"{(voice.LocalService ? "" : "*")}{voice.Name} ({voice.Lang})")</option>
+                }
+            </select>
 
-            }
+        }
     </div>
     <div class="col-10">
         速率
@@ -73,7 +76,7 @@
     <div class="col-12">
         <Textarea @bind-Value="Item" />
     </div>
-    <div class="col-10">
+    <div class="col-12">
         <BootstrapInputGroup>
             <Button Text="测试" OnClick="SpeechSynthesisDIY" Icon="fa-fw fa-solid fa-play" IsAsync />
             <Button Text="停止" OnClick="SpeechStop" Icon="fa-fw fa-solid fa-stop" IsAsync />
@@ -83,9 +86,6 @@
 </div>
 
 
-<p>
-    @Message
-</p>
 
 @code{
 
@@ -111,7 +111,7 @@
     async Task SpeechSynthesisHK() => await WebSpeech.SpeechSynthesis("早晨 blazor,依家系 " + NowString(), "zh-HK");
     async Task SpeechSynthesisEN() => await WebSpeech.SpeechSynthesis("Hello blazor,now is " + NowString(), "en-US");
     async Task SpeechSynthesisES() => await WebSpeech.SpeechSynthesis("Hola blazor,ahora es " + NowString(), "es-ES");
-    async Task SpeechSynthesisDIY() => await WebSpeech.SpeechSynthesis(Item,"", Rate, Picth, Volume, SelectLang ?? WebVoiceList?.FirstOrDefault()?.VoiceURI);
+    async Task SpeechSynthesisDIY() => await WebSpeech.SpeechSynthesis(Item, "", Rate, Picth, Volume, SelectLang ?? WebVoiceList?.FirstOrDefault()?.VoiceURI);
     async Task SpeechStop() => await WebSpeech.SpeechStop();
 
     string NowString() => DateTime.Now.ToShortTimeString();
