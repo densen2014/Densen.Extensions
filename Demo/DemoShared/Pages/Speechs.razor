@@ -139,8 +139,11 @@
 
         if (firstRender)
         {
-            await Task.Delay(100);
-            await GetVoiceList();
+            while (WebVoiceList == null)
+            {
+                await Task.Delay(100);
+                await GetVoiceList();
+            }
         }
     }
 }
