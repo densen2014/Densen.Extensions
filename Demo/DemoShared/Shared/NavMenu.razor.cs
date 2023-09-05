@@ -39,6 +39,7 @@ public partial class NavMenu
                     new MenuItem() { Text = "图片浏览 Viewer", Url = "/viewer" },
                     new MenuItem() { Text = "录屏 ScreenRecord", Url = "/ScreenRecords" },
                     new MenuItem() { Text = "截屏/录像 Screen Capture", Url = "/screencapture" },
+                    new MenuItem() { Text = "语音识别/合成", Url = "/Speechs" },
                 }
             },
             new MenuItem() { Text = "硬件" ,Items= new List<MenuItem>
@@ -60,7 +61,6 @@ public partial class NavMenu
             },        
             new MenuItem() { Text = "实验" ,Items= new List<MenuItem>
                 {
-                    new MenuItem() { Text = "语音识别/合成", Url = "/Speechs" },
                     new MenuItem() { Text = "屏幕方向", Url = "/ScreenOrientations" },
                     new MenuItem() { Text = "视频墙", Url = "/VideoWall" },
                     new MenuItem() { Text = "Iframe下载文件", Url = "/TestIframe2" },
