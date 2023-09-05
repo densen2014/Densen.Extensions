@@ -10,7 +10,7 @@
 <p>Tab:添加新节点</p>
 <p>鼠标可拖动节点排列</p>
 
-<MindMap @ref="MindMap" OnReceive="@OnReceive" OnError="@OnError" StyleCss="height: 55vh;" />
+<MindMap @ref="MindMap" Data="@Data" OnReceive="@OnReceive" OnError="@OnError" StyleCss="height: 55vh;" />
 
 
 <Button Text="例子1" OnClick="Sample" />
@@ -27,12 +27,31 @@
 
 <a href="https://github.com/wanglin2/mind-map/blob/main/simple-mind-map/example/exampleData.js?WT.mc_id=DT-MVP-5005078"><h6>数据示例</h6></a>
 
+<AttributeTable Items="@GetAttributes()" />
+
+<AttributeTable Title="NodeData" Items="@GetAttributes()" />
+
 @code{
 
     [NotNull]
     MindMap? MindMap { get; set; }
 
     new string? Message { get; set; } = "";
+
+    /// <summary>
+    /// 初始化数据
+    /// </summary>
+    public MindMapNode Data { get; set; } = new MindMapNode
+    {
+        Data = new NodeData
+        {
+            Text = "根节点",
+            Generalization = new Generalization
+            {
+                Text = "概要的内容"
+            },
+        }
+    };
 
     private Task OnReceive(string? message)
     {

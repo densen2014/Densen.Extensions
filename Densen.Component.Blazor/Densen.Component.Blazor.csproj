@@ -15,7 +15,8 @@
 		<PackageTags>Densen Component for Blazor</PackageTags>
 		<AssemblyName>Densen.Component.Blazor</AssemblyName>
 		<RootNamespace>Densen.Component.Blazor</RootNamespace>
-        <OutputPath>..\Bin</OutputPath>
+        <OutputPath>..\..\Bin</OutputPath>
+        <Version>7.8.1</Version>
     </PropertyGroup>
 	
 	<PropertyGroup>

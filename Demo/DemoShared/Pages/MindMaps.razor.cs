@@ -7,7 +7,191 @@ namespace DemoShared.Pages;
 /// </summary>
 public sealed partial class MindMaps
 {
- 
+
+    /// <summary>
+    /// 获得属性方法
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerable<AttributeItem> GetAttributes() => new AttributeItem[]
+    {
+        new()
+        {
+            Name = "Data",
+            Description = "初始数据",
+            Type = "MindMapNode",
+            ValueList = " — ",
+            DefaultValue = " — "
+        },
+        new()
+        {
+            Name = "ShowUI",
+            Description = "显示内置UI",
+            Type = "bool",
+            ValueList = " — ",
+            DefaultValue = "true"
+        },
+        new()
+        {
+            Name = "StyleCss",
+            Description = "自定义CSS",
+            Type = "string",
+            ValueList = " — ",
+            DefaultValue = "empty"
+        },
+        new()
+        {
+            Name = "OnReceive",
+            Description = "收到数据回调方法",
+            Type = "Func<string?, Task>",
+            ValueList = " — ",
+            DefaultValue = " — "
+        },
+        new()
+        {
+            Name = "OnError",
+            Description = "错误回调方法",
+            Type = "Func<string, Task>",
+            ValueList = " — ",
+            DefaultValue = " — "
+        },
+        new()
+        {
+            Name = "Export",
+            Description = "下载为文件",
+            Type = "Task",
+            ValueList = " — ",
+            DefaultValue = " — "
+        },
+        new()
+        {
+            Name = "GetData",
+            Description = "获取数据",
+            Type = "Task",
+            ValueList = " — ",
+            DefaultValue = " — "
+        },
+        new()
+        {
+            Name = "SetData",
+            Description = "导入数据",
+            Type = "Task",
+            ValueList = " — ",
+            DefaultValue = " — "
+        },
+        new()
+        {
+            Name = "Reset",
+            Description = "复位",
+            Type = "Task",
+            ValueList = " — ",
+            DefaultValue = " — "
+        }
+    };
+
+    /// <summary>
+    /// NodeData
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerable<AttributeItem> GetNodeDataAttributes() => new AttributeItem[]
+    {
+        new()
+        {
+            Name = "Text",
+            Description = "节点文本",
+            Type = "string",
+            ValueList = " — ",
+            DefaultValue = "empty"
+        },
+        new()
+        {
+            Name = "Image",
+            Description = "图片",
+            Type = "string",
+            ValueList = " — ",
+            DefaultValue = "empty"
+        },
+        new()
+        {
+            Name = "ImageTitle",
+            Description = "图片文本",
+            Type = "string",
+            ValueList = " — ",
+            DefaultValue = "empty"
+        },
+        new()
+        {
+            Name = "ImageSize",
+            Description = "图片尺寸",
+            Type = "ImageSize",
+            ValueList = " — ",
+            DefaultValue = "empty"
+        },
+        new()
+        {
+            Name = "ImageSize",
+            Description = "图片尺寸",
+            Type = "ImageSize",
+            ValueList = " — ",
+            DefaultValue = "empty"
+        },
+        new()
+        {
+            Name = "Icon",
+            Description = "图标",
+            Type = "List<string>",
+            ValueList = " — ",
+            DefaultValue = "empty"
+        },
+        new()
+        {
+            Name = "Tag",
+            Description = "标签",
+            Type = "List<string>",
+            ValueList = " — ",
+            DefaultValue = "empty"
+        },
+        new()
+        {
+            Name = "Hyperlink",
+            Description = "链接",
+            Type = "string",
+            ValueList = " — ",
+            DefaultValue = "empty"
+        },
+        new()
+        {
+            Name = "HyperlinkTitle",
+            Description = "链接文本",
+            Type = "string",
+            ValueList = " — ",
+            DefaultValue = "empty"
+        },
+        new()
+        {
+            Name = "Note",
+            Description = "备注内容",
+            Type = "string",
+            ValueList = " — ",
+            DefaultValue = "empty"
+        },
+        new()
+        {
+            Name = "Generalization",
+            Description = "概要",
+            Type = "Generalization",
+            ValueList = " — ",
+            DefaultValue = "empty"
+        },
+        new()
+        {
+            Name = "Expand",
+            Description = "节点是否展开",
+            Type = "bool",
+            ValueList = " — ",
+            DefaultValue = "false"
+        },
+    };
+
     string SampleData = """
        {"root":{"data":{"text":"根节点"},"children":[{"data":{"text":"二级节点1","expand":true},"children":[{"data":{"text":"分支主题"},"children":[{"data":{"text":"分支主题"}},{"data":{"text":"分支主题"},"children":[{"data":{"text":"分支主题"}},{"data":{"text":"分支主题"}},{"data":{"text":"分支主题"},"children":[{"data":{"text":"分支主题"}},{"data":{"text":"分支主题"},"children":[{"data":{"text":"分支主题"}},{"data":{"text":"分支主题"},"children":[{"data":{"text":"分支主题"}},{"data":{"text":"分支主题"},"children":[{"data":{"text":"分支主题"}},{"data":{"text":"分支主题"}},{"data":{"text":"分支主题"}},{"data":{"text":"分支主题"}}]},{"data":{"text":"分支主题"}},{"data":{"text":"分支主题"}}]},{"data":{"text":"分支主题"}},{"data":{"text":"分支主题"}}]},{"data":{"text":"分支主题"}},{"data":{"text":"分支主题"}}]},{"data":{"text":"分支主题"}}]},{"data":{"text":"分支主题"}},{"data":{"text":"分支主题"}}]}]},{"data":{"text":"二级节点2","expand":false},"children":[{"data":{"text":"分支主题"}},{"data":{"text":"分支主题"},"children":[{"data":{"text":"分支主题"}},{"data":{"text":"分支主题"}},{"data":{"text":"分支主题"}},{"data":{"text":"分支主题"}}]},{"data":{"text":"分支主题"}},{"data":{"text":"分支主题"}}]},{"data":{"text":"二级节点3","expand":true},"children":[{"data":{"text":"分支主题"},"children":[{"data":{"text":"分支主题"}},{"data":{"text":"分支主题"},"children":[{"data":{"text":"分支主题"}},{"data":{"text":"分支主题"}},{"data":{"text":"分支主题"}},{"data":{"text":"分支主题"}}]},{"data":{"text":"分支主题"}},{"data":{"text":"分支主题"}}]}]},{"data":{"text":"二级节点4","expand":false},"children":[{"data":{"text":"分支主题"},"children":[{"data":{"text":"分支主题"},"children":[{"data":{"text":"分支主题"},"children":[{"data":{"text":"分支主题"}},{"data":{"text":"分支主题"}},{"data":{"text":"分支主题"}},{"data":{"text":"分支主题"}}]},{"data":{"text":"分支主题"}},{"data":{"text":"分支主题"}},{"data":{"text":"分支主题"}}]},{"data":{"text":"分支主题"}},{"data":{"text":"分支主题"},"children":[{"data":{"text":"分支主题"}},{"data":{"text":"分支主题"}},{"data":{"text":"分支主题"}},{"data":{"text":"分支主题"},"children":[{"data":{"text":"分支主题"},"children":[{"data":{"text":"分支主题"}},{"data":{"text":"分支主题"}},{"data":{"text":"分支主题"}},{"data":{"text":"分支主题"}}]},{"data":{"text":"分支主题"},"children":[{"data":{"text":"分支主题"}},{"data":{"text":"分支主题"},"children":[{"data":{"text":"分支主题"}},{"data":{"text":"分支主题"}},{"data":{"text":"分支主题"}},{"data":{"text":"分支主题"}}]},{"data":{"text":"分支主题"}},{"data":{"text":"分支主题"}}]},{"data":{"text":"分支主题"}},{"data":{"text":"分支主题"}}]}]},{"data":{"text":"分支主题"},"children":[{"data":{"text":"分支主题"}},{"data":{"text":"分支主题"},"children":[{"data":{"text":"分支主题"}},{"data":{"text":"分支主题"},"children":[{"data":{"text":"分支主题"}},{"data":{"text":"分支主题"}},{"data":{"text":"分支主题"}},{"data":{"text":"分支主题"}}]},{"data":{"text":"分支主题"}},{"data":{"text":"分支主题"}}]},{"data":{"text":"分支主题"},"children":[{"data":{"text":"分支主题"}},{"data":{"text":"分支主题"}},{"data":{"text":"分支主题"}},{"data":{"text":"分支主题"}}]},{"data":{"text":"分支主题"},"children":[{"data":{"text":"分支主题"}},{"data":{"text":"分支主题"}},{"data":{"text":"分支主题"}},{"data":{"text":"分支主题"}}]}]}]}]}]}}
        """;
