@@ -128,14 +128,6 @@ public sealed partial class MindMaps
         },
         new()
         {
-            Name = "ImageSize",
-            Description = "图片尺寸",
-            Type = "ImageSize",
-            ValueList = " — ",
-            DefaultValue = "empty"
-        },
-        new()
-        {
             Name = "Icon",
             Description = "图标",
             Type = "List<string>",
