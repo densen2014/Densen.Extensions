@@ -13,7 +13,7 @@
             <div class="col-12">
                 <BootstrapInputGroup>
                     <BootstrapInput IsAutoFocus ShowLabel="true" TValue="string" PlaceHolder="@PlaceHolderText" OnEnterAsync="OnEnterAsync" OnEscAsync="OnEscAsync" @bind-Value="InputText" />
-                    <Button Text="转换" OnClick="OnPlay" Icon="fa-fw fa-solid fa-play" />
+                    <Button Text="转换" OnClick="OnPlay" Icon="fa-fw fa-solid fa-play" IsAsync/>
                 </BootstrapInputGroup>
             </div>
             <div class="col-6">
@@ -39,7 +39,7 @@
         <div class="row g-3">
             <div class="col-12">
                 <BootstrapInputGroup>
-                    <Button Text="测试" OnClick="OnPlaySSML" Icon="fa-fw fa-solid fa-play" />
+                    <Button Text="测试" OnClick="OnPlaySSML" Icon="fa-fw fa-solid fa-play" IsAsync />
                     <Select Color="Color.Primary" Items="ItemsSSML" @bind-Value="@ItemSSML" ShowLabel="true" />
                 </BootstrapInputGroup>
             </div>
