@@ -140,10 +140,15 @@
         if (firstRender)
         {
             await Task.Delay(500);
+            await Task.Delay(1500);
             while (WebVoiceList == null || !WebVoiceList.Any())
             {
                 await Task.Delay(100);
                 await GetVoiceList();
+                if (WebSpeech.SpeechUndefined)
+                {
+                    return;
+                }
             }
         }
     }
