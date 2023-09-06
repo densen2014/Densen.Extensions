@@ -25,12 +25,29 @@ public partial class WebSerialPage
     [DisplayName("波特率")]
     private int SelectedBaudRate { get; set; } = 115200;
     private bool Flag { get; set; } 
+    private bool IsConnected { get; set; } 
     private WebSerial? WebSerial { get; set; } 
 
  
     private Task OnReceive(string? message)
     {
-        this.message += $"{DateTime.Now:hh:mm:ss} 收到数据: {message}{Environment.NewLine}";
+        this.message = $"{DateTime.Now:hh:mm:ss} 收到数据: {message}{Environment.NewLine}"+ this.message;
+        StateHasChanged();
+        return Task.CompletedTask;
+    }
+
+    private Task OnConnect(bool flag)
+    {
+        this.IsConnected = flag;
+        if (flag) {
+            message = null;
+            statusmessage = null;
+            errmessage = null;
+        }
+        else
+        {
+            Flag=false;
+        }
         StateHasChanged();
         return Task.CompletedTask;
     }
@@ -142,5 +159,9 @@ public partial class WebSerialPage
             new AttributeItem(nameof(WebSerialOptions.StopBits),"停止位",  "1","int","1|2"),
             new AttributeItem(nameof(WebSerialOptions.BufferSize),"读写缓冲区",  "255","int"),
             new AttributeItem(nameof(WebSerialOptions.FlowControlType),"校验",  "none",nameof(WebSerialParityType),"none|hardware"),
+            new AttributeItem(nameof(WebSerialOptions.InputWithHex),"HEX发送",  "false","bool"),
+            new AttributeItem(nameof(WebSerialOptions.OutputInHex),"HEX接收",  "false","bool"),
+            new AttributeItem(nameof(WebSerialOptions.AutoFrameBreak),"自动断帧",  "true","bool"),
+            new AttributeItem(nameof(WebSerialOptions.FrameBreakChar),"断帧字符",  "\\r\\n","string"),
         };
 }
