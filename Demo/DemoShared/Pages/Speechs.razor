@@ -120,7 +120,7 @@
     async Task GetVoiceList()
     {
         WebVoiceList = await WebSpeech.GetVoiceList();
-        StateHasChanged();
+        if (WebVoiceList != null && WebVoiceList.Any()) StateHasChanged();
     }
 
     private void OnChange(ChangeEventArgs val)
@@ -131,7 +131,7 @@
     private async Task OnError(string message)
     {
         Message = message;
-        await ShowBottomMessage(message);
+        await ShowBottomMessage(message,true);
     }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
@@ -139,6 +139,7 @@
 
         if (firstRender)
         {
+            await Task.Delay(500);
             while (WebVoiceList == null || !WebVoiceList.Any())
             {
                 await Task.Delay(100);
