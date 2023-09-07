@@ -128,7 +128,7 @@ public partial class WebSerialPage
             Description = "获得/设置 断开连接按钮文本",
             Type = "string",
             ValueList = "",
-            DefaultValue = "连接"
+            DefaultValue = "断开连接"
         },
         new AttributeItem() {
             Name = "WriteBtnTitle",
@@ -170,7 +170,7 @@ public partial class WebSerialPage
             new AttributeItem(nameof(WebSerialOptions.OutputInHex),"HEX接收",  "false","bool"),
             new AttributeItem(nameof(WebSerialOptions.AutoConnect),"自动连接设备",  "true","bool"),
             new AttributeItem(nameof(WebSerialOptions.AutoFrameBreakType),"自动断帧方式",  "Character","AutoFrameBreakType"),
-            new AttributeItem(nameof(WebSerialOptions.FrameBreakChar),"断帧字符",  "\\r\\n","string"),
+            new AttributeItem(nameof(WebSerialOptions.FrameBreakChar),"断帧字符",  "\\n","string"),
             new AttributeItem(nameof(WebSerialOptions.Break),"Break",  "false","bool"),
             new AttributeItem(nameof(WebSerialOptions.DTR),"DTR",  "false","bool"),
             new AttributeItem(nameof(WebSerialOptions.RTS),"RTS",  "false","bool"),
@@ -186,7 +186,7 @@ public partial class WebSerialPage
                 Description = "获得/设置 断开连接按钮文本",
                 Type = "string",
                 ValueList = "",
-                DefaultValue = "连接"
+                DefaultValue = "断开连接"
             },
             new AttributeItem() {
                 Name = nameof(WebSerialOptions.WriteBtnTitle),
