@@ -46,7 +46,7 @@ public partial class WebSerialPage
         }
         else
         {
-            Flag=false;
+            //Flag=false;
         }
         StateHasChanged();
         return Task.CompletedTask;
@@ -124,6 +124,13 @@ public partial class WebSerialPage
             DefaultValue = "连接"
         },
         new AttributeItem() {
+            Name = "DisconnectBtnTitle",
+            Description = "获得/设置 断开连接按钮文本",
+            Type = "string",
+            ValueList = "",
+            DefaultValue = "连接"
+        },
+        new AttributeItem() {
             Name = "WriteBtnTitle",
             Description = "获得/设置 写入按钮文本",
             Type = "string",
@@ -161,7 +168,32 @@ public partial class WebSerialPage
             new AttributeItem(nameof(WebSerialOptions.FlowControlType),"校验",  "none",nameof(WebSerialParityType),"none|hardware"),
             new AttributeItem(nameof(WebSerialOptions.InputWithHex),"HEX发送",  "false","bool"),
             new AttributeItem(nameof(WebSerialOptions.OutputInHex),"HEX接收",  "false","bool"),
-            new AttributeItem(nameof(WebSerialOptions.AutoFrameBreak),"自动断帧",  "true","bool"),
+            new AttributeItem(nameof(WebSerialOptions.AutoConnect),"自动连接设备",  "true","bool"),
+            new AttributeItem(nameof(WebSerialOptions.AutoFrameBreakType),"自动断帧方式",  "Character","AutoFrameBreakType"),
             new AttributeItem(nameof(WebSerialOptions.FrameBreakChar),"断帧字符",  "\\r\\n","string"),
-        };
+            new AttributeItem(nameof(WebSerialOptions.Break),"Break",  "false","bool"),
+            new AttributeItem(nameof(WebSerialOptions.DTR),"DTR",  "false","bool"),
+            new AttributeItem(nameof(WebSerialOptions.RTS),"RTS",  "false","bool"),
+             new AttributeItem() {
+                Name = nameof(WebSerialOptions.ConnectBtnTitle),
+                Description = "获得/设置 连接按钮文本",
+                Type = "string",
+                ValueList = "",
+                DefaultValue = "连接"
+            },
+            new AttributeItem() {
+                Name = nameof(WebSerialOptions.DisconnectBtnTitle),
+                Description = "获得/设置 断开连接按钮文本",
+                Type = "string",
+                ValueList = "",
+                DefaultValue = "连接"
+            },
+            new AttributeItem() {
+                Name = nameof(WebSerialOptions.WriteBtnTitle),
+                Description = "获得/设置 写入按钮文本",
+                Type = "string",
+                ValueList = "",
+                DefaultValue = "写入"
+            },
+       };
 }

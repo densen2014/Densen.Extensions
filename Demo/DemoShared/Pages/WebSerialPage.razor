@@ -9,48 +9,64 @@
 <a href="https://github.com/densen2014/Densen.Extensions/blob/master/Demo/Receive_DSP.ino"><h4>Arduino源码</h4></a>
 
 
-<GroupBox Title="基本用法">
+@*<GroupBox Title="基本用法">
     <div class="row m-3">
         <WebSerial OnReceive="@OnReceive" OnLog="@OnLog" OnError="@OnError" />
     </div>
 </GroupBox>
 <p />
-<p />
-<GroupBox Title="自定义参数">
-    <div class="row m-3">
-        <div class="col-3">
-            <Select Color="Color.Primary" Items="BaudRateList" @bind-Value="@SelectedBaudRate" ShowLabel="true" />
+<p />*@
+<GroupBox Title="基本用法">
+    <div>
+        <div class="row m-3">
+            <div class="col-3">
+                <Select Color="Color.Primary" Items="BaudRateList" @bind-Value="@SelectedBaudRate" ShowLabel="true" />
+            </div>
+            <div class="col-3">
+                <BootstrapInputNumber Color="Color.Primary" @bind-Value="@options.BufferSize" ShowLabel="true" />
+            </div>
+            <div class="col-3">
+                <Select Color="Color.Primary" @bind-Value="@options.ParityType" ShowLabel="true" />
+            </div>
+            <div class="col-3">
+                <Select Color="Color.Primary" @bind-Value="@options.FlowControlType" ShowLabel="true" />
+            </div>
         </div>
-        <div class="col-3">
-            <BootstrapInputNumber Color="Color.Primary" @bind-Value="@options.BufferSize" ShowLabel="true" />
+        <div class="row m-3">
+            <div class="col-3">
+                <BootstrapInputNumber Color="Color.Primary" @bind-Value="@options.DataBits" ShowLabel="true" />
+            </div>
+            <div class="col-3">
+                <BootstrapInputNumber Color="Color.Primary" @bind-Value="@options.StopBits" ShowLabel="true" />
+            </div>
+            <div class="col-3">
+                <Select Color="Color.Primary" @bind-Value="@options.AutoFrameBreakType" ShowLabel="true" />
+            </div>
+            <div class="col-3">
+                <BootstrapInput Color="Color.Primary" @bind-Value="@options.FrameBreakChar" ShowLabel="true" />
+            </div>
         </div>
-        <div class="col-3">
-            <Select Color="Color.Primary" @bind-Value="@options.ParityType" ShowLabel="true" />
+        <div class="row m-3">
+            <div class="col-3">
+                <Checkbox TValue="bool" ShowLabel="true" @bind-Value="@options.AutoConnect" />
+            </div>
+            <div class="col-3">
+                <Checkbox TValue="bool" ShowLabel="true" @bind-Value="@options.OutputInHex" />
+            </div>
+            <div class="col-3">
+                <Checkbox TValue="bool" ShowLabel="true" @bind-Value="@options.InputWithHex" />
+            </div>
+            <div class="col-3">
+                <Checkbox TValue="bool" ShowLabel="true" @bind-Value="@options.Break" />
+            </div>
         </div>
-        <div class="col-3">
-            <Select Color="Color.Primary" @bind-Value="@options.FlowControlType" ShowLabel="true" />
-        </div>
-    </div>
-    <div class="row m-3">
-        <div class="col-3">
-            <BootstrapInputNumber Color="Color.Primary" @bind-Value="@options.DataBits" ShowLabel="true" />
-        </div>
-        <div class="col-3">
-            <BootstrapInputNumber Color="Color.Primary" @bind-Value="@options.StopBits" ShowLabel="true" />
-        </div>
-    </div>
-    <div class="row m-3">
-        <div class="col-3">
-            <BootstrapInput Color="Color.Primary" @bind-Value="@options.FrameBreakChar" ShowLabel="true" />
-        </div>
-        <div class="col-3">
-            <Checkbox TValue="bool" ShowLabel="true" @bind-Value="@options.AutoFrameBreak" />
-        </div>
-        <div class="col-3">
-            <Checkbox TValue="bool" ShowLabel="true" @bind-Value="@options.OutputInHex" />
-        </div>
-        <div class="col-3">
-            <Checkbox TValue="bool" ShowLabel="true" @bind-Value="@options.InputWithHex" />
+        <div class="row m-3">
+            <div class="col-3">
+                <Checkbox TValue="bool" ShowLabel="true" @bind-Value="@options.DTR" />
+            </div>
+            <div class="col-3">
+                <Checkbox TValue="bool" ShowLabel="true" @bind-Value="@options.RTS" />
+            </div>
         </div>
     </div>
     <div class="row m-3">
@@ -63,12 +79,12 @@
             <div @ref="WebSerial.Element">
                 <div class="col-12">
                     <BootstrapInputGroup>
-                        <Button data-action="butConnect">连接</Button>
-                        <input class="form-control" type="text" data-action="fname" style="visibility:hidden" />
-                        <Button data-action='butwrite' style="visibility:hidden">写入</Button>
+                        <Button data-action="butConnect">@options.ConnectBtnTitle</Button>
+                        <input class="form-control" type="text" data-action="fname" style="visibility:hidden;width:300px;" />
+                        <Button data-action='butwrite' style="visibility:hidden;">@options.WriteBtnTitle</Button>
                         @if (!IsConnected)
                         {
-                            <Button Text="关闭" OnClick="OnApply" Icon="fa-fw fa-solid fa-stop" />
+                            <Button Text="关闭" OnClick="OnApply" Icon="fa-fw fa-solid fa-close" />
                         }
                     </BootstrapInputGroup>
                 </div>
@@ -84,6 +100,7 @@
             </div>
         }
     </div>
+    <p>注意:本例子改变设置要点关闭再重新应用</p>
 </GroupBox>
 
 <pre>@message</pre>
