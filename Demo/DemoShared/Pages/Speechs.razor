@@ -111,6 +111,7 @@
     </div>
 </div>
 
+<AttributeTable Items="@GetAttributes()" />
 
 
 @code{
@@ -207,4 +208,75 @@
             }
         }
     }
+    /// <summary>
+    /// 获得属性方法
+    /// </summary>
+    /// <returns></returns>
+    protected IEnumerable<AttributeItem> GetAttributes() => new AttributeItem[]
+    {
+        new AttributeItem() {
+            Name = "SpeechRecognition",
+            Description = "语音识别",
+            Type = "Task<string>",
+            ValueList = "",
+            DefaultValue = "-"
+        },
+        new AttributeItem() {
+            Name = "SpeechRecognitionStop",
+            Description = "停止语音识别",
+            Type = "Task",
+            ValueList = "",
+            DefaultValue = "-"
+        },
+        new AttributeItem() {
+            Name = "SpeechSynthesis",
+            Description = "语音合成",
+            Type = "Task",
+            ValueList = "",
+            DefaultValue = "-"
+        },
+        new AttributeItem() {
+            Name = "SpeechStop",
+            Description = "停止语音合成",
+            Type = "Task",
+            ValueList = "",
+            DefaultValue = "-"
+        },
+        new AttributeItem() {
+            Name = "OnResult",
+            Description = "识别完成回调方法",
+            Type = "Func<string, Task>?",
+            ValueList = "-",
+            DefaultValue = "-"
+        },
+        new AttributeItem() {
+            Name = "OnIsBusy",
+            Description = "工作状态回调方法",
+            Type = "Func<bool, Task>?",
+            ValueList = "-",
+            DefaultValue = "-"
+        },
+        new AttributeItem() {
+            Name = "OnStatus",
+            Description = "状态信息回调方法",
+            Type = "Func<string, Task>?",
+            ValueList = "-",
+            DefaultValue = "-"
+        },
+        new AttributeItem() {
+            Name = "OnError",
+            Description = "错误回调方法",
+            Type = "Func<string, Task>?",
+            ValueList = "-",
+            DefaultValue = "-"
+        },
+        new AttributeItem() {
+            Name = "Element",
+            Description = "UI界面元素的引用对象,为空则使用整个页面",
+            Type = "ElementReference",
+            ValueList = "-",
+            DefaultValue = "-"
+        },
+        };
+
 }
