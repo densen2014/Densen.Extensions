@@ -20,15 +20,15 @@ public partial class WebSerialPage
     private string? message;
     private string? statusmessage;
     private string? errmessage;
-    private WebSerialOptions options = new WebSerialOptions() { BaudRate = 115200,AfterReceiveDataGetSignals=true };
+    private WebSerialOptions options = new WebSerialOptions() { BaudRate = 115200, AutoGetSignals = true };
 
     [NotNull]
     private IEnumerable<SelectedItem> BaudRateList { get; set; } = ListToSelectedItem();
 
     [DisplayName("波特率")]
     private int SelectedBaudRate { get; set; } = 115200;
-    private bool Flag { get; set; } 
-    private bool IsConnected { get; set; } 
+    private bool Flag { get; set; }
+    private bool IsConnected { get; set; }
     private WebSerial? WebSerial { get; set; }
 
     /// <summary>
@@ -39,7 +39,7 @@ public partial class WebSerialPage
 
     private Task OnReceive(string? message)
     {
-        this.message = $"{DateTime.Now:hh:mm:ss} 收到数据: {message}{Environment.NewLine}"+ this.message;
+        this.message = $"{DateTime.Now:hh:mm:ss} 收到数据: {message}{Environment.NewLine}" + this.message;
         StateHasChanged();
         return Task.CompletedTask;
     }
@@ -49,12 +49,17 @@ public partial class WebSerialPage
         if (signals is null) return Task.CompletedTask;
 
         this.Signals = signals;
-        this.message = $"{DateTime.Now:hh:mm:ss} 收到信号数据: {Environment.NewLine}" +
-                        $"RING:  {signals.RING}{Environment.NewLine}" +
-                        $"DSR:   {signals.DSR}{Environment.NewLine}" +
-                        $"CTS:   {signals.CTS}{Environment.NewLine}" +
-                        $"DCD:   {signals.DCD}{Environment.NewLine}" +
-                        $"{message}{Environment.NewLine}";
+
+        if (!options.AutoGetSignals)
+        {
+            // 仅在不自动获取信号时才显示
+            this.message = $"{DateTime.Now:hh:mm:ss} 收到信号数据: {Environment.NewLine}" +
+                            $"RING:  {signals.RING}{Environment.NewLine}" +
+                            $"DSR:   {signals.DSR}{Environment.NewLine}" +
+                            $"CTS:   {signals.CTS}{Environment.NewLine}" +
+                            $"DCD:   {signals.DCD}{Environment.NewLine}" +
+                            $"{message}{Environment.NewLine}";
+        }
 
         StateHasChanged();
         return Task.CompletedTask;
@@ -63,7 +68,8 @@ public partial class WebSerialPage
     private Task OnConnect(bool flag)
     {
         this.IsConnected = flag;
-        if (flag) {
+        if (flag)
+        {
             message = null;
             statusmessage = null;
             errmessage = null;
