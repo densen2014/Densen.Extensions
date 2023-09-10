@@ -6,8 +6,11 @@
 
 
 using BootstrapBlazor.Components;
+using System;
 using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
+using System.Net.NetworkInformation;
+using System.Threading;
 
 namespace DemoShared.Pages;
 
@@ -17,7 +20,7 @@ public partial class WebSerialPage
     private string? message;
     private string? statusmessage;
     private string? errmessage;
-    private WebSerialOptions options = new WebSerialOptions() { BaudRate = 115200 };
+    private WebSerialOptions options = new WebSerialOptions() { BaudRate = 115200,AfterReceiveDataGetSignals=true };
 
     [NotNull]
     private IEnumerable<SelectedItem> BaudRateList { get; set; } = ListToSelectedItem();
@@ -26,12 +29,33 @@ public partial class WebSerialPage
     private int SelectedBaudRate { get; set; } = 115200;
     private bool Flag { get; set; } 
     private bool IsConnected { get; set; } 
-    private WebSerial? WebSerial { get; set; } 
+    private WebSerial? WebSerial { get; set; }
 
- 
+    /// <summary>
+    /// 收到的信号数据
+    /// </summary>
+    public WebSerialSignals Signals { get; set; } = new WebSerialSignals();
+
+
     private Task OnReceive(string? message)
     {
         this.message = $"{DateTime.Now:hh:mm:ss} 收到数据: {message}{Environment.NewLine}"+ this.message;
+        StateHasChanged();
+        return Task.CompletedTask;
+    }
+
+    private Task OnSignals(WebSerialSignals? signals)
+    {
+        if (signals is null) return Task.CompletedTask;
+
+        this.Signals = signals;
+        this.message = $"{DateTime.Now:hh:mm:ss} 收到信号数据: {Environment.NewLine}" +
+                        $"RING:  {signals.RING}{Environment.NewLine}" +
+                        $"DSR:   {signals.DSR}{Environment.NewLine}" +
+                        $"CTS:   {signals.CTS}{Environment.NewLine}" +
+                        $"DCD:   {signals.DCD}{Environment.NewLine}" +
+                        $"{message}{Environment.NewLine}";
+
         StateHasChanged();
         return Task.CompletedTask;
     }
@@ -43,10 +67,14 @@ public partial class WebSerialPage
             message = null;
             statusmessage = null;
             errmessage = null;
-        }
-        else
-        {
-            //Flag=false;
+            Task.Run(async () =>
+            {
+                while (WebSerial == null)
+                {
+                    await Task.Delay(300);
+                }
+                await InvokeAsync(StateHasChanged);
+            });
         }
         StateHasChanged();
         return Task.CompletedTask;
@@ -73,6 +101,7 @@ public partial class WebSerialPage
             yield return new SelectedItem(item.ToString(), item.ToString());
         }
     }
+
     private Task OnApply()
     {
         options.BaudRate = SelectedBaudRate;
@@ -171,10 +200,7 @@ public partial class WebSerialPage
             new AttributeItem(nameof(WebSerialOptions.AutoConnect),"自动连接设备",  "true","bool"),
             new AttributeItem(nameof(WebSerialOptions.AutoFrameBreakType),"自动断帧方式",  "Character","AutoFrameBreakType"),
             new AttributeItem(nameof(WebSerialOptions.FrameBreakChar),"断帧字符",  "\\n","string"),
-            new AttributeItem(nameof(WebSerialOptions.Break),"Break",  "false","bool"),
-            new AttributeItem(nameof(WebSerialOptions.DTR),"DTR",  "false","bool"),
-            new AttributeItem(nameof(WebSerialOptions.RTS),"RTS",  "false","bool"),
-             new AttributeItem() {
+            new AttributeItem() {
                 Name = nameof(WebSerialOptions.ConnectBtnTitle),
                 Description = "获得/设置 连接按钮文本",
                 Type = "string",
