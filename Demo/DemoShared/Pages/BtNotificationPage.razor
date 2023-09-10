@@ -1,0 +1,95 @@
+﻿@page "/BtNotification"
+@attribute [TabItemOption(Text = "蓝牙特征通知")]
+@using System.ComponentModel
+
+<a href="https://www.nuget.org/packages/BootstrapBlazor.Bluetooth#readme-body-tab"><h4>蓝牙特征通知</h4></a>
+<hr />
+<a href="https://github.com/densen2014/Densen.Extensions/blob/master/Demo/DemoShared/Pages/BtNotificationPage.razor"><h5>页面源码</h5></a>
+
+<BootstrapInput @bind-Value="ServiceUuid" ShowLabel="true" />
+<BootstrapInput @bind-Value="CharacteristicUuid" ShowLabel="true" />
+<Switch @bind-Value="AutoConnect" ShowLabel="true" />
+<button class="btn btn-outline-secondary" @onclick="GetNotification ">读取通知</button>
+<button class="btn btn-outline-secondary" @onclick="StopNotification ">停止读取</button>
+
+<BleNotification @ref="Notification" OnUpdateValue="OnUpdateValue" OnUpdateStatus="OnUpdateStatus" OnUpdateError="OnError" />
+<h2 style="color:red" data-action="notificationValue" />
+<pre>@message</pre>
+<pre style="color:green">@statusmessage</pre>
+<pre style="color:red">@errmessage</pre>
+
+@code{
+    //string? heartrateIcon;// { get => (heartrateIcon == "&#10084;" ? "&hearts;" : "&#10084;"); }
+
+    BleNotification Notification { get; set; } = new BleNotification();
+
+    /// <summary>
+    /// 服务UUID / Service UUID
+    /// </summary>
+    [Parameter]
+    [DisplayName("服务UUID")]
+    public string ServiceUuid { get; set; } = "4fafc201-1fb5-459e-8fcc-c5c9c331914b";
+
+    /// <summary>
+    /// 特征UUID / Characteristic UUID
+    /// </summary>
+    /// <returns></returns>
+    [DisplayName("特征UUID")]
+    public string CharacteristicUuid { get; set; } = "beb5483e-36e1-4688-b7f5-ea07361b26a8";
+
+    /// <summary>
+    /// 自动连接设备
+    /// </summary>
+    [DisplayName("自动连接设备")]
+    public bool AutoConnect { get; set; } = true;
+
+    private string? message;
+    private string? value;
+    private string? statusmessage;
+    private string? errmessage;
+
+    private Task OnResult(string message)
+    {
+        this.message = message;
+        StateHasChanged();
+        return Task.CompletedTask;
+    }
+
+    private Task OnUpdateValue(string value)
+    {
+        this.value = value;
+        this.statusmessage = $"{value}";
+        StateHasChanged();
+        return Task.CompletedTask;
+    }
+
+
+    private Task OnUpdateStatus(BluetoothDevice device)
+    {
+        this.statusmessage = device.Status;
+        StateHasChanged();
+        return Task.CompletedTask;
+    }
+
+    private Task OnError(string message)
+    {
+        this.errmessage = message;
+        StateHasChanged();
+        return Task.CompletedTask;
+    }
+
+    public async void GetNotification()
+    {
+        this.message = null;
+        this.value = null;
+        this.statusmessage = null;
+        this.errmessage = null;
+        await Notification.GetNotification(ServiceUuid, CharacteristicUuid, AutoConnect);
+    }
+
+    public async void StopNotification()
+    {
+        await Notification.StopNotification();
+    }
+
+}
