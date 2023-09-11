@@ -8,9 +8,12 @@
 
 <BootstrapInput @bind-Value="ServiceUuid" ShowLabel="true" />
 <BootstrapInput @bind-Value="CharacteristicUuid" ShowLabel="true" />
+<Switch @bind-Value="AutomaticComplement" ShowLabel="true" />
 <Switch @bind-Value="AutoConnect" ShowLabel="true" />
+<Switch @bind-Value="AdvertisementReceived" ShowLabel="true" />
 <button class="btn btn-outline-secondary" @onclick="GetNotification ">读取通知</button>
 <button class="btn btn-outline-secondary" @onclick="StopNotification ">停止读取</button>
+<button class="btn btn-outline-secondary" @onclick="Scan ">扫描设备</button>
 
 <BleNotification @ref="Notification" OnUpdateValue="OnUpdateValue" OnUpdateStatus="OnUpdateStatus" OnUpdateError="OnError" />
 <h2 style="color:red" data-action="notificationValue" />
@@ -26,22 +29,33 @@
     /// <summary>
     /// 服务UUID / Service UUID
     /// </summary>
-    [Parameter]
     [DisplayName("服务UUID")]
-    public string ServiceUuid { get; set; } = "4fafc201-1fb5-459e-8fcc-c5c9c331914b";
+    public string ServiceUuid { get; set; } = "heart_rate";
 
     /// <summary>
     /// 特征UUID / Characteristic UUID
     /// </summary>
     /// <returns></returns>
     [DisplayName("特征UUID")]
-    public string CharacteristicUuid { get; set; } = "beb5483e-36e1-4688-b7f5-ea07361b26a8";
+    public string CharacteristicUuid { get; set; } = "heart_rate_measurement";
 
     /// <summary>
     /// 自动连接设备
     /// </summary>
     [DisplayName("自动连接设备")]
     public bool AutoConnect { get; set; } = true;
+
+    /// <summary>
+    /// 自动补全, 否则为转数字格式
+    /// </summary>
+    [DisplayName("自动补全, 否则为转数字格式")]
+    public bool AutomaticComplement { get; set; }
+
+    /// <summary>
+    /// 显示扫描结果
+    /// </summary>
+    [DisplayName("显示扫描结果")]
+    public bool AdvertisementReceived { get; set; }
 
     private string? message;
     private string? value;
@@ -84,12 +98,17 @@
         this.value = null;
         this.statusmessage = null;
         this.errmessage = null;
-        await Notification.GetNotification(ServiceUuid, CharacteristicUuid, AutoConnect);
+        await Notification.GetNotification(ServiceUuid, CharacteristicUuid, AutoConnect, AutomaticComplement, AdvertisementReceived);
     }
 
     public async void StopNotification()
     {
         await Notification.StopNotification();
+    }
+
+    public async void Scan()
+    {
+        await Notification.Scan();
     }
 
 }
