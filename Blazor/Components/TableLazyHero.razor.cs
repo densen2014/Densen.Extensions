@@ -458,8 +458,8 @@ public partial class TableLazyHero<TItem> : BootstrapComponentBase
     /// <returns></returns>
     private async Task OnConfirm(DateTimeRangeValue value)
     {
-        DateTimeRange.Start = (value.Start ?? DateTime.Today).FirstSecond();
-        DateTimeRange.End = (value.End ?? DateTime.Today).Year == 1 ? (value.Start ?? DateTime.Today).LastSecond() : (value.End ?? DateTime.Today).LastSecond();
+        DateTimeRange.Start = value.Start.FirstSecond();
+        DateTimeRange.End = value.End .Year == 1 ? value.Start.LastSecond() : value.End .LastSecond();
         await Reset();
     }
 
