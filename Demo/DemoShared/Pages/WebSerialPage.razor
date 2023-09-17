@@ -16,52 +16,53 @@
     </GroupBox>
     <p />
     <p />*@
-<GroupBox Title="基本用法">
-    <div>
-        <div class="row m-3">
-            <div class="col-3">
-                <Select Color="Color.Primary" Items="BaudRateList" @bind-Value="@SelectedBaudRate" ShowLabel="true" />
-            </div>
-            <div class="col-3">
-                <BootstrapInputNumber Color="Color.Primary" @bind-Value="@options.BufferSize" ShowLabel="true" />
-            </div>
-            <div class="col-3">
-                <Select Color="Color.Primary" @bind-Value="@options.ParityType" ShowLabel="true" />
-            </div>
-            <div class="col-3">
-                <Select Color="Color.Primary" @bind-Value="@options.FlowControlType" ShowLabel="true" />
-            </div>
+<GroupBox Title="串口设置">
+    <div class="row g-3">
+        <div class="col-12 col-sm-6 col-md-4">
+            <Select Color="Color.Primary" Items="BaudRateList" @bind-Value="@SelectedBaudRate" ShowLabel="true" />
         </div>
-        <div class="row m-3">
-            <div class="col-3">
-                <BootstrapInputNumber Color="Color.Primary" @bind-Value="@options.DataBits" ShowLabel="true" />
-            </div>
-            <div class="col-3">
-                <BootstrapInputNumber Color="Color.Primary" @bind-Value="@options.StopBits" ShowLabel="true" />
-            </div>
-            <div class="col-3">
-                <Select Color="Color.Primary" @bind-Value="@options.AutoFrameBreakType" ShowLabel="true" />
-            </div>
-            <div class="col-3">
-                <BootstrapInput Color="Color.Primary" @bind-Value="@options.FrameBreakChar" ShowLabel="true" />
-            </div>
+        <div class="col-12 col-sm-6 col-md-4">
+            <BootstrapInputNumber Color="Color.Primary" @bind-Value="@options.DataBits" ShowLabel="true" />
         </div>
-        <div class="row m-3">
-            <div class="col-3">
-                <Checkbox TValue="bool" ShowLabel="true" @bind-Value="@options.AutoConnect" />
-            </div>
-            <div class="col-3">
-                <Checkbox TValue="bool" ShowLabel="true" @bind-Value="@options.AutoGetSignals" />
-            </div>
-            <div class="col-3">
-                <Checkbox TValue="bool" ShowLabel="true" @bind-Value="@options.OutputInHex" />
-            </div>
-            <div class="col-3">
-                <Checkbox TValue="bool" ShowLabel="true" @bind-Value="@options.InputWithHex" />
-            </div>
+        <div class="col-12 col-sm-6 col-md-4">
+            <BootstrapInputNumber Color="Color.Primary" @bind-Value="@options.StopBits" ShowLabel="true" />
+        </div>
+        <div class="col-12 col-sm-6 col-md-4">
+            <Select Color="Color.Primary" @bind-Value="@options.FlowControlType" ShowLabel="true" />
+        </div>
+        <div class="col-12 col-sm-6 col-md-4">
+            <Select Color="Color.Primary" @bind-Value="@options.ParityType" ShowLabel="true" />
         </div>
     </div>
-    <div>
+</GroupBox>
+<GroupBox Title="其他功能" class="mt-3">
+    <div class="row g-3">
+        <div class="col-12 col-sm-6 col-md-4">
+            <BootstrapInputNumber Color="Color.Primary" @bind-Value="@options.BufferSize" ShowLabel="true" />
+        </div>
+        <div class="col-12 col-sm-6 col-md-4">
+            <Select Color="Color.Primary" @bind-Value="@options.AutoFrameBreakType" ShowLabel="true" />
+        </div>
+        <div class="col-12 col-sm-6 col-md-4">
+            <BootstrapInput Color="Color.Primary" @bind-Value="@options.FrameBreakChar" ShowLabel="true" />
+        </div>
+        <div class="col-12 col-sm-6 col-md-4">
+            <Switch ShowLabel="true" @bind-Value="@options.AutoConnect" />
+        </div>
+        <div class="col-12 col-sm-6 col-md-4">
+            <Switch ShowLabel="true" @bind-Value="@options.OutputInHex" />
+        </div>
+        <div class="col-12 col-sm-6 col-md-4">
+            <Switch ShowLabel="true" @bind-Value="@options.InputWithHex" />
+        </div>
+        <div class="col-12 col-sm-6 col-md-4">
+            <Checkbox TValue="bool" ShowLabel="true" @bind-Value="@options.AutoGetSignals" />
+        </div>
+    </div>
+</GroupBox>
+
+<GroupBox Title="操作" class="mt-3">
+    <div class="mt-3">
         @if (Flag)
         {
             <div class="col-6">
@@ -142,13 +143,16 @@
             </div>
         }
     </div>
-    <p>注意:本例子改变设置要点关闭再重新应用</p>
 </GroupBox>
 
-<pre style="overflow-y:scroll;max-height:500px;">@message</pre>
-<pre style="color:green">@statusmessage</pre>
-<pre style="color:red">@errmessage</pre>
-<hr />
+<section ignore>
+    <p>注意:本例子改变设置要点关闭再重新应用</p>
+    <pre style="overflow-y:scroll;max-height:500px;">@_message</pre>
+    <pre style="color:green">@_statusMessage</pre>
+    <pre style="color:red">@_errorMessage</pre>
+    <hr />
+    <a href="https://github.com/densen2014/Densen.Extensions/blob/master/Demo/Receive_DSP.ino">附件: Arduino源码示例</a>
+</section>
 
 <AttributeTable Items="@GetAttributes()" />
 
