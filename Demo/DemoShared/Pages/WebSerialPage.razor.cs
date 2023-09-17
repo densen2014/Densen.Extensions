@@ -20,7 +20,7 @@ public partial class WebSerialPage
     private string? _message;
     private string? _statusMessage;
     private string? _errorMessage;
-    private WebSerialOptions options = new WebSerialOptions() { BaudRate = 115200, AutoGetSignals = true };
+    private readonly WebSerialOptions options = new() { BaudRate = 115200, AutoGetSignals = true };
 
     [NotNull]
     private IEnumerable<SelectedItem> BaudRateList { get; set; } = ListToSelectedItem();
