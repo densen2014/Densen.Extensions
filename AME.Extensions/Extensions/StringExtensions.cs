@@ -130,6 +130,7 @@ public class ColoredText
 
         return $"\x1B[{colorString}m{_message}\x1B[0m\x1B[39m\x1B[49m";
     }
+
 }
 
 public static class StringExtensions
@@ -235,6 +236,11 @@ public static class StringExtensions
     }
 
     public static string Latin1ToGB2312(this string latin1String) => string.IsNullOrWhiteSpace(latin1String) ? "" : Encoding.GetEncoding("gb2312").GetString(Encoding.GetEncoding("iso-8859-1").GetBytes(latin1String));
+
+    //public static string PadLeft(this string str, int x)
+    //{
+    //    return str + "".PadLeft(x, ' ');
+    //}
 
 }
 
