@@ -8,16 +8,15 @@ using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 
 
-namespace DemoShared.Pages
+namespace DemoShared.Pages;
+
+public partial class AiFormPage
 {
-    public partial class AiFormPage
+    List<AnalyzedDocument>? models { get; set; }
+    private Task OnResult(List<AnalyzedDocument> models)
     {
-        List<AnalyzedDocument>? models { get; set; }
-        private Task OnResult(List<AnalyzedDocument> models)
-        {
-            this.models = models;
-            StateHasChanged();
-            return Task.CompletedTask;
-        }
+        this.models = models;
+        StateHasChanged();
+        return Task.CompletedTask;
     }
 }

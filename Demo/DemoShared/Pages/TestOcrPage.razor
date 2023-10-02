@@ -1,0 +1,27 @@
+﻿@page "/testocr"
+@attribute [TabItemOption(Text = "OCR test")]
+
+
+<Tab>
+    <TabItem Text="OCR">
+        <OCR ShowUI="true" ShowUI_Capture="true" OnResult="OnResult" OnStatus="OnStatus" />
+        <p>@status</p>
+        <Textarea @bind-Value="@resfull" rows="8" />
+        <Button Text="处理" OnClick="处理" />
+        <Button Text="翻译" OnClick="翻译" />
+        <TableLazyHero @ref="list1"
+                       TItem="交通银行"
+                       ShowColumnList="true"
+                       TableSize="TableSize.Normal"
+                       DoubleClickToEdit="true"
+                       HeaderStyle=TableHeaderStyle.None
+                       IsPagination="false"
+                       ShowRefresh="false"
+                       RenderMode="TableRenderMode.Auto"
+                       ShowDefaultButtons=true
+                       IsFixedHeader="true" Height="700"
+                       IsMultipleSelect=true />
+    </TabItem>
+    <TabItem Text="Text">
+    </TabItem>
+</Tab>

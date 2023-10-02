@@ -15,7 +15,7 @@
  
 
 	<ItemGroup>
-		<PackageReference Include="BootstrapBlazor" Version="7.*" />
+		<PackageReference Include="BootstrapBlazor" Version="7.11.0" />
 		<PackageReference Include="BootstrapBlazor.Chart" Version="7.*" />
 		<PackageReference Include="MiniExcel" Version="1.*" />
 	</ItemGroup>
@@ -78,6 +78,9 @@
 	</ProjectExtensions>
 	
 	<ItemGroup> 
+		<Content Update="Pages\TestOcrPage.razor">
+		  <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+		</Content> 
 		<Content Update="wwwroot\samples\sample.docx">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</Content>
