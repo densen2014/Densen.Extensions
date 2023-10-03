@@ -175,15 +175,24 @@ public static class StringExtensions
     public static ColoredText LightGray(this string s)
     {
         return new ColoredText(s).LightGray();
-    } 
-
-    public static string TrimStart(this string target, string trimChars)
-    {
-        return target.TrimStart(trimChars.ToCharArray());
     }
-    public static string TrimEnd(this string target, string trimChars)
+
+    public static string TrimStart(this string target, string prefix)
     {
-        return target.TrimEnd(trimChars.ToCharArray());
+        if (target.StartsWith(prefix))
+        {
+            return target.Substring(prefix.Length);
+        }
+        return target;
+    }
+
+    public static string TrimEnd(this string target, string prefix)
+    {
+        if (target.EndsWith(prefix))
+        {
+            return target.Substring(0, target.Length - prefix.Length);
+        }
+        return target;
     }
 
     /// <summary>将大驼峰命名转为小驼峰命名</summary>
@@ -230,9 +239,9 @@ public static class StringExtensions
         return builder.ToString();
     }
 
-    public static string ToI18n(this string chn, string es, string en=null)
+    public static string ToI18n(this string chn, string es, string en = null)
     {
-        return Thread.CurrentThread.CurrentUICulture.Name == "es-ES"? es : Thread.CurrentThread.CurrentUICulture.Name == "en-EN" ? (en?? chn) : chn;
+        return Thread.CurrentThread.CurrentUICulture.Name == "es-ES" ? es : Thread.CurrentThread.CurrentUICulture.Name == "en-EN" ? (en ?? chn) : chn;
     }
 
     public static string Latin1ToGB2312(this string latin1String) => string.IsNullOrWhiteSpace(latin1String) ? "" : Encoding.GetEncoding("gb2312").GetString(Encoding.GetEncoding("iso-8859-1").GetBytes(latin1String));
