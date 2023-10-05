@@ -257,14 +257,31 @@ public static class ConsoleExt
 {
     public static void WriteLineColor(this string s, ConsoleColor foregroundColor)
     {
-#if WINDOWS || Linux
-        Console.BackgroundColor = ConsoleColor.Black;
-        Console.ForegroundColor = foregroundColor;
-#endif
+#if NET6_0_OR_GREATER
+        if (OperatingSystem.IsWindows() || OperatingSystem.IsLinux())
+        {
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.ForegroundColor = foregroundColor;
+        }
+        else
+        {
+            Console.Write("\x1B[0m\x1B[39m\x1B[49m");
+            Console.Write($"\x1B[{(int)foregroundColor}m");
+        }
         Console.WriteLine(s);
-#if WINDOWS || Linux
-       Console.ResetColor();
+        if (OperatingSystem.IsWindows() || OperatingSystem.IsLinux())
+        {
+            Console.ResetColor();
+        }
+        else
+        {
+            Console.Write("\x1B[0m\x1B[39m\x1B[49m");
+        }
+#else
+        Console.WriteLine(s);
 #endif
+
+
     }
     public static void WriteLine(this string s) => s.WriteLineColor(ConsoleColor.White);
     public static void WriteLineCyan(string s) => s.WriteLineColor(ConsoleColor.Cyan);
