@@ -118,7 +118,9 @@ public class LazyHeroDataService<TModel> : DataServiceBase<TModel>
 
         // 内存分页
         if (options.IsPage)
-            items = items.Skip((options.PageIndex - 1) * options.PageItems).Take(options.PageItems).ToList();
+            items = items.Skip((options.PageIndex - 1) * options.PageItems).Take(options.PageItems);
+        else if (options.IsVirtualScroll)
+            items = items.Skip(options.StartIndex).Take(options.PageItems);
 
         return Task.FromResult(new QueryData<TModel>()
         {
