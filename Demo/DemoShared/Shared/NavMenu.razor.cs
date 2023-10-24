@@ -66,6 +66,7 @@ public partial class NavMenu
                     new MenuItem() { Text = "Iframe下载文件", Url = "/TestIframe2" },
                     new MenuItem() { Text = "JsBridge", Url = "/JsBridge" },
                     new MenuItem() { Text = "testocr", Url = "/testocr" },
+                    new MenuItem() { Text = "菜哥AI", Url = "/testopenai" },
                 }
             },
             new MenuItem() { Text = "地图" ,Items= new List<MenuItem>

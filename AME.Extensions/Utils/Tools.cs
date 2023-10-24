@@ -16,7 +16,7 @@ using System.Text.RegularExpressions;
 
 namespace AME
 {
-    public class Tools
+    public static class Tools
     {
         /// <summary>
         /// 格式化小数
@@ -333,6 +333,7 @@ namespace AME
         #endregion
 
         #region 反射得到实体类的字段名称和值
+
         /// <summary>
         /// 反射得到实体类的字段名称和值
         /// var dict = GetProperties(model);
@@ -340,17 +341,42 @@ namespace AME
         /// <typeparam name="T">实体类</typeparam>
         /// <param name="t">实例化</param>
         /// <returns></returns>
-        public static Dictionary<object, object> GetProperties<T>(T t)
+        public static Dictionary<string, object> GetPropertiesToDict<T>(this T t)
         {
-            var ret = new Dictionary<object, object>();
+            var ret = new Dictionary<string, object>();
             if (t == null) { return null; }
-            PropertyInfo[] properties = t.GetType().GetProperties(BindingFlags.Instance | BindingFlags.Public);
+            var properties = t.GetType().GetProperties(BindingFlags.Instance | BindingFlags.Public);
             if (properties.Length <= 0) { return null; }
             foreach (PropertyInfo item in properties)
             {
-                string name = item.Name;
+                var name = item.Name;
                 object value = item.GetValue(t, null);
                 if (item.PropertyType.IsValueType || item.PropertyType.Name.StartsWith("String", StringComparison.CurrentCulture))
+                {
+                    ret.Add(name, value);
+                }
+            }
+            return ret;
+        }
+
+        /// <summary>
+        /// 反射得到实体类的字段名称
+        /// var dict = GetProperties(model);
+        /// </summary>
+        /// <typeparam name="T">实体类</typeparam>
+        /// <param name="t">实例化</param>
+        /// <returns></returns>
+        public static Dictionary<string, object> GetProperties2<T>(this T t)
+        {
+            var ret = new Dictionary<string, object>();
+            if (t == null) { return null; }
+            var properties = t.GetType().GetProperties(BindingFlags.Instance | BindingFlags.Public);
+            if (properties.Length <= 0) { return null; }
+            foreach (PropertyInfo item in properties)
+            {
+                var name = item.Name;
+                object value = item.GetValue(t, null);
+                if (item.PropertyType.IsValueType)
                 {
                     ret.Add(name, value);
                 }

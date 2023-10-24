@@ -206,16 +206,22 @@ public static class GlobalExtensions {
     /// </summary>
     /// <param name="s"></param>
     /// <returns></returns>
-    public static bool ToBool(this object s)
+    public static bool? ToBool(this object s,bool 宽松策略=false)
     {
-        if (s == null) return false;
-        s = s.ToString().ToLower();
-        if (s.Equals(1) || s.Equals("1") || s.Equals("true") || s.Equals("是") || s.Equals("yes"))
-            return true;
-        if (s.Equals(0) || s.Equals("0") || s.Equals("false") || s.Equals("否") || s.Equals("no"))
-            return false;
+        if (s == null) return null;
+        if (宽松策略)
+        {
+            s = s.ToString().ToLower();
+            if (s.Equals(1) || s.Equals("1") || s.Equals("true") || s.Equals("是") || s.Equals("yes"))
+                return true;
+            if (s.Equals(0) || s.Equals("0") || s.Equals("false") || s.Equals("否") || s.Equals("no"))
+                return false;
+        }
 
-        Boolean.TryParse(s.ToString(), out bool result);
+        if (!bool.TryParse(s.ToString(), out bool result))
+        {
+            return null;
+        }
         return result;
     }
 
@@ -231,7 +237,11 @@ public static class GlobalExtensions {
     {
         return (T)Convert.ChangeType(s, typeof(T));
     }
-
+    public static bool IsBool<T>(this T defaultValue)
+    {
+        var x= typeof(T) == typeof(bool);
+        return x;
+     }
     #endregion
 
     #region ==布尔转换==
