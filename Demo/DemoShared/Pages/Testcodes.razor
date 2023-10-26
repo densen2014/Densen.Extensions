@@ -1,0 +1,135 @@
+﻿@page "/testcodes"
+@attribute [TabItemOption(Text = "条码扫描", Icon = "fa fa-barcode")]
+@using ZXingBlazor.Components
+@using System.Text.Json
+
+<BootstrapInputGroup>
+    <BootstrapInput @bind-Value="BarCode" ShowLabel="true" PlaceHolder="条码" OnEnterAsync="_=>OnAPI()" OnEscAsync="_=> OnEsc()" />
+    <Button Text="查找" OnClick="OnAPI" />
+    <Button OnClick="(() => ShowScanBarcode = !ShowScanBarcode)" Text="扫码" />
+</BootstrapInputGroup>
+@if (ShowScanBarcode)
+{
+
+    <BarcodeReader ScanResult="OnResult"
+                   Close="(()=>ShowScanBarcode=!ShowScanBarcode)"
+                   OnError="OnError" />
+
+}
+
+<p>@message</p>
+
+@if (prods != null)
+{
+    <ListView TItem="Prod" Items="@prods">
+        <HeaderTemplate>
+            <div>产品列表</div>
+        </HeaderTemplate>
+        <BodyTemplate>
+            <Card>
+                <BodyTemplate>
+                    <img src="@context.Image" style="width:130px;height:120px;" />
+                    <div style="width: 130px; height: 40px;overflow:hidden;">@context.ProductName</div>
+                    <h5>@($"{context.UnitPrice:n2}")</h5>
+                </BodyTemplate>
+            </Card>
+        </BodyTemplate>
+        <FooterTemplate>
+            <div class="text-end">
+                Copyright Densen informatica
+            </div>
+        </FooterTemplate>
+    </ListView>
+     
+}
+
+@code{
+
+    /// <summary>
+    /// 显示扫码界面
+    /// </summary>
+    bool ShowScanBarcode { get; set; } = false;
+
+    /// <summary>
+    /// 条码
+    /// </summary>
+    public string? BarCode { get; set; }
+
+    private string? message;
+
+    private Task OnError(string message)
+    {
+        this.message = message;
+        StateHasChanged();
+        return Task.CompletedTask;
+    }
+
+    [Inject] HttpClient? httpClient { get; set; }
+
+    List<Prod>? prods { get; set; }
+
+    private Task OnEsc()
+    {
+        BarCode = string.Empty;
+        StateHasChanged();
+        return Task.CompletedTask;
+    }
+
+    private async Task OnResult(string e)
+    {
+        BarCode = e;
+        ShowScanBarcode = !ShowScanBarcode;
+        await OnAPI();
+    }
+
+    private Task OnAPI()
+    {
+
+        try
+        {
+            var json = httpClient!.GetStringAsync($"https://api6012.app1.es/ibProduct/GetProductsV2?pagesize=5&keyword={BarCode}");
+            var result = JsonSerializer.Deserialize<Rootobject>(json.Result);
+            if (result != null)
+            {
+                prods = result?.data?.prods?.ToList();
+                StateHasChanged();
+            }
+        }
+        catch
+        {
+        }
+        return Task.CompletedTask;
+    }
+
+
+
+    public class Rootobject
+    {
+        public Data? data { get; set; }
+        public int code { get; set; }
+        public string? message { get; set; }
+    }
+
+    public class Data
+    {
+        public int pagesize { get; set; }
+        public int pagenumber { get; set; }
+        public int pagecount { get; set; }
+        public int count { get; set; }
+        public Prod[]? prods { get; set; }
+    }
+
+    public class Prod
+    {
+        public string? BarCode { get; set; }
+        public string? UserCode { get; set; }
+        public string? ProductName { get; set; }
+        public decimal? UnitPrice { get; set; }
+        public decimal? UnitPrice2 { get; set; }
+        public decimal? Discount { get; set; }
+        public string? Image { get; set; }
+        public string? Remark { get; set; }
+    }
+
+
+}

@@ -67,6 +67,7 @@ public partial class NavMenu
                     new MenuItem() { Text = "JsBridge", Url = "/JsBridge" },
                     new MenuItem() { Text = "testocr", Url = "/testocr" },
                     new MenuItem() { Text = "菜哥AI", Url = "/testopenai" },
+                    new MenuItem() { Text = "扫码API", Url = "/testcodes" },
                 }
             },
             new MenuItem() { Text = "地图" ,Items= new List<MenuItem>
