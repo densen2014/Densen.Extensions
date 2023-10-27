@@ -5,46 +5,72 @@
 <a href="https://www.nuget.org/packages/BootstrapBlazor.FileSystem#readme-body-tab"><h4>文件系统访问 File System Access</h4></a>
 <hr />
 <a href="https://github.com/densen2014/Densen.Extensions/blob/master/Demo/DemoShared/Pages/FileSystemPage.razor"><h5>页面源码</h5></a>
-<pre>@fileInfos</pre>
-<FileSystem OnFileInfo="OnFileInfo"
-            OnInfo="OnInfo"
-            OnFileText="OnFileText"
-            OnFileStream="OnFileStream"
-            OnDirectory="OnDirectory" />
-<pre>@contentsExcel</pre>
-<hr />
-<pre>@contents</pre>
-<hr />
+
+<div class="row">
+    <div class="col-7" style="height: 85vh; overflow: scroll ">
+        <FileSystem OnFileInfo="OnFileInfo"
+                    OnFileText="OnFileText"
+                    OnFileStream="OnFileStream"
+                    OnDirectory="OnDirectory"
+                    Debug />
+
+    </div>
+    <div class="col-5" style="height: 85vh; overflow: scroll ">
+        <b>文件信息</b>
+        <pre>@fileInfos</pre>
+        <b>读取Excel内容(如果能解释)</b>
+        <pre>@contentsExcel</pre>
+        <hr />
+        <b>读取文本内容</b>
+        <pre>@contents</pre>
+        <hr />
+        <b>错误</b>
+        <code>@errormessage</code>
+        <hr />
+        @*@if (filestream != null)
+        {
+            <FileViewer Stream="@filestream" IsExcel="@isExcel" />
+        }*@
+    </div>
+</div>
+
 
 
 @code{
     private string? fileInfos;
     private string? contents;
     private string? contentsExcel;
+    private string? errormessage;
+    private Stream? filestream;
+    private bool isExcel;
 
     private Task OnFileInfo(FileInfo fileInfo)
     {
-        this.fileInfos = "name:" + fileInfo.name + Environment.NewLine + "size:" + fileInfo.size + Environment.NewLine + "type:" + fileInfo.type + "kind:" + fileInfo.kind;
-        StateHasChanged();
-        return Task.CompletedTask;
-    }
-
-    private Task OnInfo(string contents)
-    {
-        this.contents = contents;
+        errormessage = "";
+        contents = "";
+        contentsExcel = "";
+        this.fileInfos = "name:" + fileInfo.name + Environment.NewLine + "size:" + fileInfo.size + Environment.NewLine + "type:" + fileInfo.type + fileInfo.name + Environment.NewLine + "kind:" + fileInfo.kind;
+        isExcel = fileInfo.name != null && fileInfo.name.EndsWith(".xlsx", StringComparison.OrdinalIgnoreCase);
         StateHasChanged();
         return Task.CompletedTask;
     }
 
     private Task OnFileText(string contents)
     {
+        errormessage = "";
+        contents = "";
+        contentsExcel = "";
         this.contents = contents;
         StateHasChanged();
         return Task.CompletedTask;
     }
 
-    private Task OnFileStream(Stream stream)
+    private async Task OnFileStream(Stream stream)
     {
+        errormessage = "";
+        contents = "";
+        contentsExcel = "";
+        filestream = await CopyStream(stream);
         try
         {
             var rows = stream.Query().ToList();
@@ -53,14 +79,16 @@
         }
         catch (Exception e)
         {
-            contents = e.Message;
+            errormessage = e.Message;
         }
         StateHasChanged();
-        return Task.CompletedTask;
     }
 
     private Task OnDirectory(List<string> dirs)
     {
+        errormessage = "";
+        contents = "";
+        contentsExcel = "";
         if (dirs == null || !dirs.Any()) return Task.CompletedTask;
         contents += "Dir:" + Environment.NewLine;
         contents += dirs.First() + Environment.NewLine;
@@ -72,4 +100,34 @@
         return Task.CompletedTask;
     }
 
+    /// <summary>
+    /// 转换 BrowserFileStream 到 MemoryStream
+    /// </summary>
+    /// <param name="input"></param>
+    /// <returns></returns>
+    public static async Task<Stream> CopyStream(Stream input)
+    {
+        try
+        {
+            if (input.GetType().Name == "BrowserFileStream")
+            {
+                var output = new MemoryStream();
+                byte[] buffer = new byte[16 * 1024];
+                int read;
+                while ((read = await input.ReadAsync(buffer, 0, buffer.Length)) > 0)
+                {
+                    output.Write(buffer, 0, read);
+                }
+                return output;
+            }
+            else
+            {
+                return input;
+            }
+        }
+        catch (Exception e)
+        {
+            throw;
+        }
+    }
 }
