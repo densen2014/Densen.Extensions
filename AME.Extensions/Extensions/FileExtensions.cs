@@ -12,7 +12,7 @@ namespace Extensions;
 /// <summary>
 /// System.IO 扩展方法
 /// </summary>
-public static class File
+public static class FileExtensions
 {
     public static async void test()
     {
@@ -99,4 +99,19 @@ public static class File
             return $"{Math.Round(size / TBCount, roundCount):N2}TB";
         }
     }
+
+
+    /// <summary>
+    /// 格式化文件名，以避免出现“Illegal characters in path”错误：
+    /// </summary>
+    /// <param name="fileName"></param>
+    /// <returns></returns>
+    public static string FormattedFileName(this string fileName)
+    {
+        var invalidChars = Path.GetInvalidFileNameChars();
+        var formattedFileName = string.Join("_", fileName.Split(invalidChars, StringSplitOptions.RemoveEmptyEntries));
+        return formattedFileName;
+    }
+
+
 }

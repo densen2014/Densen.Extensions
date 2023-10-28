@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading;
 
 namespace AME;
@@ -250,6 +251,155 @@ public static class StringExtensions
     //{
     //    return str + "".PadLeft(x, ' ');
     //}
+
+    /// <summary>
+    /// R从字符串中删除所有非数字值
+    /// </summary>
+    /// <param name="str"></param>
+    /// <returns></returns>
+    public static string RemoveAllNonNumericValuesFromString(this string str)
+    {
+        var nums = Regex.Replace(str, @"[^\d]", string.Empty);
+        if (nums == "")
+        {
+            nums = "0";
+        }
+
+        return nums;
+    }
+
+    /// <summary>
+    /// 替换特殊字符
+    /// </summary>
+    /// <param name="name"></param>
+    /// <returns></returns>
+    public static string ReplaceSpecialCharacters(this string name)
+    {
+
+        var schemaName = Regex.Replace(name, @"[^0-9a-zA-Z]+", "_");
+        return schemaName;
+
+    }
+
+    public static string GetImageUrl(this string url, string imageSize)
+    {
+        if (!url.StartsWith("https:", StringComparison.OrdinalIgnoreCase))
+        {
+            url = "https:" + url;
+        }
+
+        url = Regex.Replace(url, @"\/t_[^\/]+", "/t_" + imageSize);
+        return url;
+    }
+
+    public static string HTMLMinify(string Input)
+    {
+        if (string.IsNullOrEmpty(Input))
+            return "";
+        Input = Regex.Replace(Input, "/// <.+>", "");
+        if (string.IsNullOrEmpty(Input))
+            return "";
+        Input = Regex.Replace(Input, @">[\s\S]*?<", "");
+        return Input;
+    }
+
+    /// <summary>
+    /// 截取字符串
+    /// </summary>
+    /// <param name="inputString">输入字符串</param>
+    /// <param name="maxLength">最大长度(按半角计算, 全角按半角的2倍计算)</param>
+    /// <param name="appendEllipsis">是否需要添加省略号</param>
+    /// <returns>截取后的字符串</returns>
+    public static string BxSubstring(this string inputString, int maxLength, bool appendEllipsis)
+    {
+        //bool flag = false; //执行状态
+        string strResult = string.Empty;
+        StringBuilder builder = new StringBuilder();
+        int count = 0;
+        int byteCount = 0;
+        string tmpString = inputString;
+        if (!string.IsNullOrWhiteSpace(inputString))
+        {
+            inputString = inputString.Trim();
+            if (inputString.Length > maxLength)
+            {
+                tmpString = inputString.Substring(0, maxLength);
+            }
+
+            char[] charArray = tmpString.ToCharArray();
+
+            foreach (char chr in charArray)
+            {
+                byteCount = Encoding.Default.GetByteCount(chr.ToString());
+                switch (byteCount)
+                {
+                    case 1:
+                        {
+                            builder.Append(chr.ToString());
+                            count += byteCount;
+                        }
+                        break;
+                    case 2:
+                        {
+                            if (count + byteCount <= maxLength)
+                            {
+                                builder.Append(chr.ToString());
+                            }
+                            count += byteCount;
+                        }
+                        break;
+                }
+
+                if (count > maxLength)
+                    break;
+            }
+        }
+
+        if (appendEllipsis && inputString.Length != builder.Length)
+        {
+            strResult = builder.ToString() + "...";
+        }
+        else
+        {
+            strResult = builder.ToString();
+        }
+
+        return strResult;
+    }
+
+    /// <summary>
+    /// 遮罩中间部分字符串
+    /// </summary>
+    /// <param name="x"></param>
+    /// <param name="maskRate">遮罩比例,0.6表示60%</param>
+    /// <returns></returns>
+    static public string MaskString(this string x, decimal maskRate = 0.6M)
+    {
+        string res = "";
+        if (!string.IsNullOrWhiteSpace(x))
+        {
+            int hideLen = (int)Math.Round(x.Length * maskRate, 0);
+            if (hideLen == x.Length)
+            {
+                for (int i = 0; i < x.Length; i++)
+                {
+                    res += "*";
+                }
+            }
+            else
+            {
+                res += x.Substring(0, 1);
+                for (int i = 0; i < hideLen; i++)
+                {
+                    res += "*";
+                }
+                res += x.Substring(hideLen);
+            }
+        }
+        return res;
+
+
+    }
 
 }
 

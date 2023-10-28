@@ -1,5 +1,7 @@
 ﻿using Microsoft.Extensions.FileSystemGlobbing;
+using System;
 using System.Collections.Generic;
+using System.IO;
 
 namespace AME;
 
@@ -38,11 +40,11 @@ public static class PathExtensions
     /// <param name="excludeMatchers">多个排除项 new[] { "*.txt", "*.asciidoc", "*.md" }</param>
     /// <param name="matchfilename"></param>
     public static IEnumerable<string> GetDirFiles(
-        this string searchDirectory, 
-        string include = null, 
+        this string searchDirectory,
+        string include = null,
         string exclude = null,
-        string[] includeMatchers = null, 
-        string[] excludeMatchers = null, 
+        string[] includeMatchers = null,
+        string[] excludeMatchers = null,
         string matchfilename = null)
     {
         Matcher matcher = new Matcher();
@@ -59,5 +61,32 @@ public static class PathExtensions
         //PatternMatchingResult result = matcher.Execute(
         //    new DirectoryInfoWrapper(
         //        new DirectoryInfo(searchDirectory))); 
+    }
+
+    /// <summary>
+    /// 格式化目录名，以避免出现“Illegal characters in path”错误：
+    /// </summary>
+    /// <param name="pathName"></param>
+    /// <returns></returns>
+    public static string FormattedPathName(this string pathName)
+    {
+        var invalidChars = Path.GetInvalidPathChars();
+        var formattedPathName = string.Join("_", pathName.Split(invalidChars, StringSplitOptions.RemoveEmptyEntries));
+        return formattedPathName;
+    }
+
+    /// <summary>
+    /// 创建目录(如果目录不存在)
+    /// </summary>
+    /// <param name="path">要创建的目录</param>
+    public static void CreatePathIfNotExists(this string path)
+    {
+
+        if (!Directory.Exists(path))
+        {
+            Directory.CreateDirectory(path);
+        }
+
+
     }
 }

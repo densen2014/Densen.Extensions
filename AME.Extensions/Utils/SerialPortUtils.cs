@@ -11,6 +11,7 @@ using System.Linq;
 
 namespace AME.Util;
 #nullable enable
+#pragma warning disable CA1416 // #warning 指令
 
 public class SerialPortUtils
 {
