@@ -1,18 +1,17 @@
-﻿using Azure.AI.FormRecognizer.DocumentAnalysis;
-using BootstrapBlazor.Ocr.Services;
-using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Forms;
-using Microsoft.Azure.CognitiveServices.Vision.ComputerVision.Models;
-using Microsoft.JSInterop;
-using System.Diagnostics.CodeAnalysis;
-using System.Reflection;
+﻿// ********************************** 
+// Densen Informatica 中讯科技 
+// 作者：Alex Chow
+// e-mail:zhouchuanglin@gmail.com 
+// **********************************
+
+using Azure.AI.FormRecognizer.DocumentAnalysis;
 
 
 namespace DemoShared.Pages;
 
 public partial class AiFormPage
 {
-    List<AnalyzedDocument>? models { get; set; }
+    private List<AnalyzedDocument>? models { get; set; }
     private Task OnResult(List<AnalyzedDocument> models)
     {
         this.models = models;

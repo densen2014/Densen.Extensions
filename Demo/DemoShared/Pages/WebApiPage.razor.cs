@@ -1,5 +1,10 @@
-﻿using BootstrapBlazor.Components;
-using static BootstrapBlazor.Components.WebApi;
+﻿// ********************************** 
+// Densen Informatica 中讯科技 
+// 作者：Alex Chow
+// e-mail:zhouchuanglin@gmail.com 
+// **********************************
+
+using BootstrapBlazor.Components;
 
 namespace DemoShared.Pages;
 
@@ -41,7 +46,7 @@ public sealed partial class WebApiPage
         StateHasChanged();
         return Task.CompletedTask;
     }
-     
+
 
 
     /// <summary>

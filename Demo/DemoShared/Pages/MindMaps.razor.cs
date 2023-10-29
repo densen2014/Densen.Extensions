@@ -1,4 +1,8 @@
-﻿using AmeBlazor.Components;
+﻿// ********************************** 
+// Densen Informatica 中讯科技 
+// 作者：Alex Chow
+// e-mail:zhouchuanglin@gmail.com 
+// **********************************
 
 namespace DemoShared.Pages;
 
@@ -184,11 +188,10 @@ public sealed partial class MindMaps
         },
     };
 
-    string SampleData = """
+    private string SampleData = """
        {"root":{"data":{"text":"根节点"},"children":[{"data":{"text":"二级节点1","expand":true},"children":[{"data":{"text":"分支主题"},"children":[{"data":{"text":"分支主题"}},{"data":{"text":"分支主题"},"children":[{"data":{"text":"分支主题"}},{"data":{"text":"分支主题"}},{"data":{"text":"分支主题"},"children":[{"data":{"text":"分支主题"}},{"data":{"text":"分支主题"},"children":[{"data":{"text":"分支主题"}},{"data":{"text":"分支主题"},"children":[{"data":{"text":"分支主题"}},{"data":{"text":"分支主题"},"children":[{"data":{"text":"分支主题"}},{"data":{"text":"分支主题"}},{"data":{"text":"分支主题"}},{"data":{"text":"分支主题"}}]},{"data":{"text":"分支主题"}},{"data":{"text":"分支主题"}}]},{"data":{"text":"分支主题"}},{"data":{"text":"分支主题"}}]},{"data":{"text":"分支主题"}},{"data":{"text":"分支主题"}}]},{"data":{"text":"分支主题"}}]},{"data":{"text":"分支主题"}},{"data":{"text":"分支主题"}}]}]},{"data":{"text":"二级节点2","expand":false},"children":[{"data":{"text":"分支主题"}},{"data":{"text":"分支主题"},"children":[{"data":{"text":"分支主题"}},{"data":{"text":"分支主题"}},{"data":{"text":"分支主题"}},{"data":{"text":"分支主题"}}]},{"data":{"text":"分支主题"}},{"data":{"text":"分支主题"}}]},{"data":{"text":"二级节点3","expand":true},"children":[{"data":{"text":"分支主题"},"children":[{"data":{"text":"分支主题"}},{"data":{"text":"分支主题"},"children":[{"data":{"text":"分支主题"}},{"data":{"text":"分支主题"}},{"data":{"text":"分支主题"}},{"data":{"text":"分支主题"}}]},{"data":{"text":"分支主题"}},{"data":{"text":"分支主题"}}]}]},{"data":{"text":"二级节点4","expand":false},"children":[{"data":{"text":"分支主题"},"children":[{"data":{"text":"分支主题"},"children":[{"data":{"text":"分支主题"},"children":[{"data":{"text":"分支主题"}},{"data":{"text":"分支主题"}},{"data":{"text":"分支主题"}},{"data":{"text":"分支主题"}}]},{"data":{"text":"分支主题"}},{"data":{"text":"分支主题"}},{"data":{"text":"分支主题"}}]},{"data":{"text":"分支主题"}},{"data":{"text":"分支主题"},"children":[{"data":{"text":"分支主题"}},{"data":{"text":"分支主题"}},{"data":{"text":"分支主题"}},{"data":{"text":"分支主题"},"children":[{"data":{"text":"分支主题"},"children":[{"data":{"text":"分支主题"}},{"data":{"text":"分支主题"}},{"data":{"text":"分支主题"}},{"data":{"text":"分支主题"}}]},{"data":{"text":"分支主题"},"children":[{"data":{"text":"分支主题"}},{"data":{"text":"分支主题"},"children":[{"data":{"text":"分支主题"}},{"data":{"text":"分支主题"}},{"data":{"text":"分支主题"}},{"data":{"text":"分支主题"}}]},{"data":{"text":"分支主题"}},{"data":{"text":"分支主题"}}]},{"data":{"text":"分支主题"}},{"data":{"text":"分支主题"}}]}]},{"data":{"text":"分支主题"},"children":[{"data":{"text":"分支主题"}},{"data":{"text":"分支主题"},"children":[{"data":{"text":"分支主题"}},{"data":{"text":"分支主题"},"children":[{"data":{"text":"分支主题"}},{"data":{"text":"分支主题"}},{"data":{"text":"分支主题"}},{"data":{"text":"分支主题"}}]},{"data":{"text":"分支主题"}},{"data":{"text":"分支主题"}}]},{"data":{"text":"分支主题"},"children":[{"data":{"text":"分支主题"}},{"data":{"text":"分支主题"}},{"data":{"text":"分支主题"}},{"data":{"text":"分支主题"}}]},{"data":{"text":"分支主题"},"children":[{"data":{"text":"分支主题"}},{"data":{"text":"分支主题"}},{"data":{"text":"分支主题"}},{"data":{"text":"分支主题"}}]}]}]}]}]}}
        """;
-
-    string SampleData2 = """
+    private string SampleData2 = """
        {
            "root": {
                "data": {
@@ -471,4 +474,4 @@ public sealed partial class MindMaps
        }
        """;
 
- }
+}
