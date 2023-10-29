@@ -68,8 +68,7 @@ public class LazyHeroDataService<TModel> : DataServiceBase<TModel>
     }
 
     private static readonly ConcurrentDictionary<Type, Func<IEnumerable<TModel>, string, SortOrder, IEnumerable<TModel>>> SortLambdaCache = new();
-
-    int 计数 = 0;
+    private int 计数 = 0;
     public override Task<QueryData<TModel>> QueryAsync(QueryPageOptions options)
     {
         System.Console.WriteLine($"LazyHero QueryAsync {计数} 数据:{Items?.Count}"); 计数++;
@@ -178,7 +177,7 @@ public class LazyTools
 /// <summary>
 /// Object 扩展方法
 /// </summary>
-static partial class ObjectsExtensions
+internal static partial class ObjectsExtensions
 {
     /// <summary>
     /// 获取属性

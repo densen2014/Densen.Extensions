@@ -26,7 +26,7 @@ public partial class TableLazyHero<TItem> : BootstrapComponentBase
 
     public Table<TItem> mainTable;
 
-    [Inject] LazyHeroDataService<TItem> LazyHeroDataService { get; set; }
+    [Inject] private LazyHeroDataService<TItem> LazyHeroDataService { get; set; }
     [Inject] protected ToastService ToastService { get; set; }
 
     /// <summary>
@@ -107,7 +107,7 @@ public partial class TableLazyHero<TItem> : BootstrapComponentBase
     /// 获得/设置 导出按钮异步回调方法
     /// </summary>
     [Parameter]
-    public Func<ITableExportDataContext<TItem>, Task<bool>>? OnExportAsync { get; set; } 
+    public Func<ITableExportDataContext<TItem>, Task<bool>>? OnExportAsync { get; set; }
 
 #nullable disable
 
@@ -387,7 +387,7 @@ public partial class TableLazyHero<TItem> : BootstrapComponentBase
     /// <param name="field">列名,默认"ID"</param>
     /// <param name="fieldType">列类型,默认typeof(int)</param>
     /// <returns></returns>
-    object GetExpression(object model, string field = "ID", Type fieldType = null)
+    private object GetExpression(object model, string field = "ID", Type fieldType = null)
     {
         // ValueExpression
         var body = Expression.Property(Expression.Constant(model), typeof(TItem), field);
@@ -459,7 +459,7 @@ public partial class TableLazyHero<TItem> : BootstrapComponentBase
     private async Task OnConfirm(DateTimeRangeValue value)
     {
         DateTimeRange.Start = value.Start.FirstSecond();
-        DateTimeRange.End = value.End .Year == 1 ? value.Start.LastSecond() : value.End .LastSecond();
+        DateTimeRange.End = value.End.Year == 1 ? value.Start.LastSecond() : value.End.LastSecond();
         await Reset();
     }
 
@@ -670,7 +670,7 @@ public partial class TableLazyHero<TItem> : BootstrapComponentBase
     /// </summary>
     /// <remarks>固定表头时设置 <see cref="Height"/> 即可出现滚动条，未设置时尝试自适应</remarks>
     [Parameter]
-    public bool IsFixedHeader { get; set; } 
+    public bool IsFixedHeader { get; set; }
 
     #endregion
 }

@@ -7,6 +7,6 @@
 namespace AmeBlazor.Components;
 
 public partial class Empty
-{ 
+{
 
 }

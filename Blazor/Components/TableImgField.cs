@@ -1,4 +1,9 @@
-﻿using BootstrapBlazor.Components;
+﻿// ********************************** 
+// Densen Informatica 中讯科技 
+// 作者：Alex Chow
+// e-mail:zhouchuanglin@gmail.com 
+// **********************************
+
 using Microsoft.AspNetCore.Components;
 
 namespace AmeBlazor.Components
@@ -14,7 +19,7 @@ namespace AmeBlazor.Components
         public string ColumnText { get; set; }
         public string Title { get; set; }
         public string Name { get; set; }
-        public string BaseUrl {  get; set;}
+        public string BaseUrl { get; set; }
         public string Style { get; set; }
 
         public EventCallback<object> Callback { get; set; }
@@ -24,5 +29,5 @@ namespace AmeBlazor.Components
         /// </summary>
         public Func<object, Task> CallbackFunc { get; set; }
     }
-     
+
 }

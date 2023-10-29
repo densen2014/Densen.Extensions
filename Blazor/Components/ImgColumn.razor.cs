@@ -5,15 +5,10 @@
 // **********************************
 
 using Microsoft.AspNetCore.Components;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace AmeBlazor.Components
 {
-    public partial class ImgColumn : ComponentBase 
+    public partial class ImgColumn : ComponentBase
     {
         [Parameter] public string Url { get; set; }
         [Parameter] public string BaseUrl { get; set; } = "";
@@ -24,7 +19,7 @@ namespace AmeBlazor.Components
         protected override void OnInitialized()
         {
             base.OnInitialized();
-        } 
-         
+        }
+
     }
 }

@@ -1,5 +1,10 @@
-﻿using Microsoft.JSInterop;
-using System.Threading.Tasks;
+﻿// ********************************** 
+// Densen Informatica 中讯科技 
+// 作者：Alex Chow
+// e-mail:zhouchuanglin@gmail.com 
+// **********************************
+
+using Microsoft.JSInterop;
 
 namespace AME.Services
 {
@@ -99,7 +104,7 @@ namespace AME.Services
         {
             try
             {
-                await _js.InvokeAsync<object>("scroll", new object [] { 0,0});
+                await _js.InvokeAsync<object>("scroll", new object[] { 0, 0 });
             }
             catch
             {

@@ -1,6 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿// ********************************** 
+// Densen Informatica 中讯科技 
+// 作者：Alex Chow
+// e-mail:zhouchuanglin@gmail.com 
+// **********************************
 
 namespace AME
 {
@@ -25,6 +27,6 @@ namespace AME
             选项卡,
             表内明细II,
 
-        } 
+        }
     }
 }

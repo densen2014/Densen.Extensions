@@ -1,14 +1,15 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿// ********************************** 
+// Densen Informatica 中讯科技 
+// 作者：Alex Chow
+// e-mail:zhouchuanglin@gmail.com 
+// **********************************
+
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.StaticFiles;
 using Microsoft.Extensions.FileProviders;
-using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.IO;
-using System.Linq;
 using System.Text;
 using System.Text.Encodings.Web;
-using System.Threading.Tasks;
 
 namespace Densen.Extensions
 {
@@ -199,7 +200,7 @@ namespace Densen.Extensions
                             HtmlEncode(file.Name),
                             HtmlEncode(GetAutoSizeString(file.Length)),
                             //HtmlEncode(file.Length.ToString("n0", CultureInfo.CurrentCulture)),
-                            HtmlEncode(file.LastModified.ToLocalTime().ToString("yyyy-MM-dd HH:mm:ss",CultureInfo.CurrentCulture)));
+                            HtmlEncode(file.LastModified.ToLocalTime().ToString("yyyy-MM-dd HH:mm:ss", CultureInfo.CurrentCulture)));
                     }
                     catch (DirectoryNotFoundException)
                     {
@@ -294,7 +295,7 @@ namespace Densen.Extensions
         /// <param name="size"></param>
         /// <param name="roundCount"></param>
         /// <returns>string</returns>
-        public static string GetAutoSizeString(double size, int roundCount=2)
+        public static string GetAutoSizeString(double size, int roundCount = 2)
         {
             if (KBCount > size)
             {

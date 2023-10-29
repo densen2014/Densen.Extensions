@@ -165,7 +165,7 @@ namespace AmeBlazor.Components
 
             };
 
-            if (TabSetMenu != null) TabSetMenu.AddTab(parameters);
+            TabSetMenu?.AddTab(parameters);
         }
 
         #endregion

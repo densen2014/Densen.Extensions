@@ -4,8 +4,6 @@
 // e-mail:zhouchuanglin@gmail.com 
 // **********************************
 
-using Microsoft.AspNetCore.Components;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.JSInterop;
 
 namespace AmeBlazor.Components
@@ -23,7 +21,7 @@ namespace AmeBlazor.Components
         /// </summary>
         /// <param name="JsRuntime"></param>
         /// <param name="url"></param>
-        public static async void NavigateToNewTab(this IJSRuntime JsRuntime, string url )
+        public static async void NavigateToNewTab(this IJSRuntime JsRuntime, string url)
         {
             if (JsRuntime != null) await JsRuntime.InvokeAsync<object>("open", new object[2] { url, "_blank" });
         }

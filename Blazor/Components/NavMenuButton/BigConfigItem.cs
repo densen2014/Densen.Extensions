@@ -66,6 +66,6 @@ namespace AmeBlazor.Components
         /// <summary>
         /// 授权列表
         /// </summary>
-        public  string[] Roles { get; set; } 
+        public string[] Roles { get; set; }
     }
 }
