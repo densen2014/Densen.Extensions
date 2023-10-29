@@ -28,22 +28,24 @@ public class SerialPortUtils
     //public static string[]? RecvAry => BitConverter.ToString(Buffer.ToArray()).Split('-');
     public static SerialPort OpenClosePort(string comName, int baud, bool debug = false)
     {
-        Debug=debug;
+        Debug = debug;
 
         //串口未打开
         if (SerialPort == null || !SerialPort.IsOpen)
         {
-            SerialPort = new SerialPort();
-            //串口名称
-            SerialPort.PortName = comName;
-            //波特率
-            SerialPort.BaudRate = baud;
-            //数据位
-            SerialPort.DataBits = 8;
-            //停止位
-            SerialPort.StopBits = StopBits.One;
-            //校验位
-            SerialPort.Parity = Parity.None;
+            SerialPort = new SerialPort
+            {
+                //串口名称
+                PortName = comName,
+                //波特率
+                BaudRate = baud,
+                //数据位
+                DataBits = 8,
+                //停止位
+                StopBits = StopBits.One,
+                //校验位
+                Parity = Parity.None
+            };
             //打开串口
             SerialPort.Open();
             //串口数据接收事件实现

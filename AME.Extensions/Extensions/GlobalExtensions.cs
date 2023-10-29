@@ -1,35 +1,45 @@
-﻿using System;
+﻿// ********************************** 
+// Densen Informatica 中讯科技 
+// 作者：Alex Chow
+// e-mail:zhouchuanglin@gmail.com 
+// **********************************
+
+using System;
 using System.Text;
 
-public static class GlobalExtensions {
+public static class GlobalExtensions
+{
 
-	/// <summary>
-	/// 转格林时间，并以ISO8601格式化字符串
-	/// </summary>
-	/// <param name="time"></param>
-	/// <returns></returns>
-	public static string ToGmtISO8601(this DateTime time) {
-		return time.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ssZ");
-	}
+    /// <summary>
+    /// 转格林时间，并以ISO8601格式化字符串
+    /// </summary>
+    /// <param name="time"></param>
+    /// <returns></returns>
+    public static string ToGmtISO8601(this DateTime time)
+    {
+        return time.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ssZ");
+    }
 
-	/// <summary>
-	/// 获取时间戳，按1970-1-1
-	/// </summary>
-	/// <param name="time"></param>
-	/// <returns></returns>
-	public static long GetTime(this DateTime time) {
-		return (long)time.ToUniversalTime().Subtract(new DateTime(1970, 1, 1)).TotalSeconds;
-	}
+    /// <summary>
+    /// 获取时间戳，按1970-1-1
+    /// </summary>
+    /// <param name="time"></param>
+    /// <returns></returns>
+    public static long GetTime(this DateTime time)
+    {
+        return (long)time.ToUniversalTime().Subtract(new DateTime(1970, 1, 1)).TotalSeconds;
+    }
 
-	static readonly DateTime dt19700101 = new DateTime(1970, 1, 1);
-	/// <summary>
-	/// 获取时间戳毫秒数，按1970-1-1
-	/// </summary>
-	/// <param name="time"></param>
-	/// <returns></returns>
-	public static long GetTimeMilliseconds(this DateTime time) {
-		return (long)time.ToUniversalTime().Subtract(new DateTime(1970, 1, 1)).Ticks/1000;
-	}
+    private static readonly DateTime dt19700101 = new DateTime(1970, 1, 1);
+    /// <summary>
+    /// 获取时间戳毫秒数，按1970-1-1
+    /// </summary>
+    /// <param name="time"></param>
+    /// <returns></returns>
+    public static long GetTimeMilliseconds(this DateTime time)
+    {
+        return time.ToUniversalTime().Subtract(new DateTime(1970, 1, 1)).Ticks / 1000;
+    }
 
     /// <summary>
     /// 时间戳反转为时间，有很多中翻转方法，但是，请不要使用过字符串（string）进行操作，大家都知道字符串会很慢！
@@ -206,7 +216,7 @@ public static class GlobalExtensions {
     /// </summary>
     /// <param name="s"></param>
     /// <returns></returns>
-    public static bool? ToBool(this object s,bool 宽松策略=false)
+    public static bool? ToBool(this object s, bool 宽松策略 = false)
     {
         if (s == null) return null;
         if (宽松策略)
@@ -239,9 +249,9 @@ public static class GlobalExtensions {
     }
     public static bool IsBool<T>(this T defaultValue)
     {
-        var x= typeof(T) == typeof(bool);
+        var x = typeof(T) == typeof(bool);
         return x;
-     }
+    }
     #endregion
 
     #region ==布尔转换==

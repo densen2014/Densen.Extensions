@@ -4,11 +4,6 @@
 // e-mail:zhouchuanglin@gmail.com 
 // **********************************
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
 namespace AME.Models
 {
     //     上传组件返回类

@@ -1,4 +1,10 @@
-﻿using Newtonsoft.Json;
+﻿// ********************************** 
+// Densen Informatica 中讯科技 
+// 作者：Alex Chow
+// e-mail:zhouchuanglin@gmail.com 
+// **********************************
+
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -74,7 +80,7 @@ public static partial class ObjectExtensions
         }
     }
 
-    static JsonSerializerSettings setting2 = new JsonSerializerSettings
+    private static JsonSerializerSettings setting2 = new JsonSerializerSettings
     {
         NullValueHandling = NullValueHandling.Ignore,
         Formatting = Formatting.Indented

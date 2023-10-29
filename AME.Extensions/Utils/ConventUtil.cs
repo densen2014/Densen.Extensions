@@ -1,4 +1,10 @@
-﻿using Newtonsoft.Json;
+﻿// ********************************** 
+// Densen Informatica 中讯科技 
+// 作者：Alex Chow
+// e-mail:zhouchuanglin@gmail.com 
+// **********************************
+
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -97,7 +103,7 @@ namespace AME
         {
             try
             {
-                if (anyObject == null || anyObject is DBNull) return false;
+                if (anyObject is null or DBNull) return false;
                 string anyString = anyObject.ToString();
                 if (anyString.Length > 0)
                 {

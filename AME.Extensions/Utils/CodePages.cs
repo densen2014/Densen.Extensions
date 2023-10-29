@@ -1,4 +1,10 @@
-﻿using System;
+﻿// ********************************** 
+// Densen Informatica 中讯科技 
+// 作者：Alex Chow
+// e-mail:zhouchuanglin@gmail.com 
+// **********************************
+
+using System;
 using System.Linq;
 
 namespace AME
@@ -11,14 +17,14 @@ namespace AME
 
         public static bool IsGB2312(byte[] bytes)
         {
-            for (int i = 0; i < bytes.Length ; i+=2)
+            for (int i = 0; i < bytes.Length; i += 2)
             {
                 var x = bytes.Skip(i).Take(2).ToArray();
                 IsGB23122(x);
             }
             return true;
         }
-        public static  bool IsGB23122(byte[] bytes)
+        public static bool IsGB23122(byte[] bytes)
         {
             //在C#中，可以使用System.Text.Encoding类来判断一个中文字符串的编码是BIG5还是GB2312。具体实现方法如下：
 

@@ -1,4 +1,10 @@
-﻿using System;
+﻿// ********************************** 
+// Densen Informatica 中讯科技 
+// 作者：Alex Chow
+// e-mail:zhouchuanglin@gmail.com 
+// **********************************
+
+using System;
 using System.Globalization;
 
 namespace AME;
@@ -27,13 +33,13 @@ public static class DateTimeExtensions
            .TotalMilliseconds;
     }
 
-    public static string ToStringDate(this DateTime obj)=> obj.ToString("yyyy-MM-dd");
-    public static string ToStringTime(this DateTime obj)=> obj.ToString("HH:mm:ss");
-    public static string ToStringLong(this DateTime obj)=> obj.ToString("yyyy-MM-dd HH:mm:ss");
-    public static DateTime FirstDay(this DateTime obj)=> new DateTime(obj.Year, obj.Month, 1, 0, 0, 0);
-    
-    public static DateTime LastDay(this DateTime obj)=>  obj.FirstDay().AddMonths(1).AddDays(-1).LastSecond();
-    public static DateTime LastDayThisYear(this DateTime obj)=> new DateTime(obj.Date.Year, 12, 31);
+    public static string ToStringDate(this DateTime obj) => obj.ToString("yyyy-MM-dd");
+    public static string ToStringTime(this DateTime obj) => obj.ToString("HH:mm:ss");
+    public static string ToStringLong(this DateTime obj) => obj.ToString("yyyy-MM-dd HH:mm:ss");
+    public static DateTime FirstDay(this DateTime obj) => new DateTime(obj.Year, obj.Month, 1, 0, 0, 0);
+
+    public static DateTime LastDay(this DateTime obj) => obj.FirstDay().AddMonths(1).AddDays(-1).LastSecond();
+    public static DateTime LastDayThisYear(this DateTime obj) => new DateTime(obj.Date.Year, 12, 31);
 
     /// <summary>
     /// 日期开始范围
@@ -49,7 +55,7 @@ public static class DateTimeExtensions
     /// <param name="obj"></param>
     /// <param name="obj2"></param>
     /// <returns></returns>
-    public static DateTime FirstSecond(this DateTime obj, DateTime obj2) => new DateTime(obj.Year, obj.Month, obj.Day, obj2.Hour , obj2.Minute , obj2.Second);
+    public static DateTime FirstSecond(this DateTime obj, DateTime obj2) => new DateTime(obj.Year, obj.Month, obj.Day, obj2.Hour, obj2.Minute, obj2.Second);
 
     /// <summary>
     /// 日期结束范围 23:59:59

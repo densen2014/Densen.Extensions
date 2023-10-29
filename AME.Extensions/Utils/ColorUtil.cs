@@ -1,4 +1,10 @@
-﻿using System;
+﻿// ********************************** 
+// Densen Informatica 中讯科技 
+// 作者：Alex Chow
+// e-mail:zhouchuanglin@gmail.com 
+// **********************************
+
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 
@@ -88,10 +94,10 @@ namespace AME.Util
             lock (s_rand)
             {
                 s_rand.NextBytes(rgb);
-                alpha = s_rand.NextDouble()*255;
+                alpha = s_rand.NextDouble() * 255;
             }
 
-            return new List<int> { rgb[0], rgb[1], rgb[2], (int) alpha};
+            return new List<int> { rgb[0], rgb[1], rgb[2], (int)alpha };
         }
 
         /// <summary>

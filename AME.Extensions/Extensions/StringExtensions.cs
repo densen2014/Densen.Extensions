@@ -1,4 +1,10 @@
-﻿using System;
+﻿// ********************************** 
+// Densen Informatica 中讯科技 
+// 作者：Alex Chow
+// e-mail:zhouchuanglin@gmail.com 
+// **********************************
+
+using System;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
@@ -373,7 +379,7 @@ public static class StringExtensions
     /// <param name="x"></param>
     /// <param name="maskRate">遮罩比例,0.6表示60%</param>
     /// <returns></returns>
-    static public string MaskString(this string x, decimal maskRate = 0.6M)
+    public static string MaskString(this string x, decimal maskRate = 0.6M)
     {
         string res = "";
         if (!string.IsNullOrWhiteSpace(x))

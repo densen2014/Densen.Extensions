@@ -1,4 +1,10 @@
-﻿using Newtonsoft.Json;
+﻿// ********************************** 
+// Densen Informatica 中讯科技 
+// 作者：Alex Chow
+// e-mail:zhouchuanglin@gmail.com 
+// **********************************
+
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections;
@@ -423,7 +429,7 @@ namespace AME
         {
             try
             {
-                if (anyObject == null || anyObject is DBNull) return false;
+                if (anyObject is null or DBNull) return false;
                 string anyString = anyObject.ToString();
                 if (anyString.Length > 0)
                 {
@@ -451,7 +457,7 @@ namespace AME
 
             try
             {
-                if (anyObject == null || anyObject is DBNull) return false;
+                if (anyObject is null or DBNull) return false;
                 string anyString = anyObject.ToString();
                 if (anyString.Length > 0)
                 {
@@ -508,29 +514,29 @@ namespace AME
                 for (J = 1; J <= k; J++)
                 {
                     i = Convert.ToChar(mystr.Substring(J - 1, 1));
-                    if (i >= -20319 && i <= -20284) Py = "A";
-                    else if (i >= -20283 && i <= -19776) Py = "B";
-                    else if (i >= -19775 && i <= -19219) Py = "C";
-                    else if (i >= -19218 && i <= -18711) Py = "D";
-                    else if (i >= -18710 && i <= -18527) Py = "E";
-                    else if (i >= -18526 && i <= -18240) Py = "F";
-                    else if (i >= -18239 && i <= -17923) Py = "G";
-                    else if (i >= -17922 && i <= -17418) Py = "H";
-                    else if (i >= -17417 && i <= -16475) Py = "J";
-                    else if (i >= -16474 && i <= -16213) Py = "K";
-                    else if (i >= -16212 && i <= -15641) Py = "L";
-                    else if (i >= -15640 && i <= -15166) Py = "M";
-                    else if (i >= -15165 && i <= -14923) Py = "N";
-                    else if (i >= -14922 && i <= -14915) Py = "O";
-                    else if (i >= -14914 && i <= -14631) Py = "P";
-                    else if (i >= -14630 && i <= -14150) Py = "Q";
-                    else if (i >= -14149 && i <= -14091) Py = "R";
-                    else if (i >= -14090 && i <= -13319) Py = "S";
-                    else if (i >= -13318 && i <= -12839) Py = "T";
-                    else if (i >= -12838 && i <= -12557) Py = "W";
-                    else if (i >= -12556 && i <= -11848) Py = "X";
-                    else if (i >= -11847 && i <= -11056) Py = "Y";
-                    else if (i >= -11055 && i <= -10247) Py = "Z";
+                    if (i is >= (-20319) and <= (-20284)) Py = "A";
+                    else if (i is >= (-20283) and <= (-19776)) Py = "B";
+                    else if (i is >= (-19775) and <= (-19219)) Py = "C";
+                    else if (i is >= (-19218) and <= (-18711)) Py = "D";
+                    else if (i is >= (-18710) and <= (-18527)) Py = "E";
+                    else if (i is >= (-18526) and <= (-18240)) Py = "F";
+                    else if (i is >= (-18239) and <= (-17923)) Py = "G";
+                    else if (i is >= (-17922) and <= (-17418)) Py = "H";
+                    else if (i is >= (-17417) and <= (-16475)) Py = "J";
+                    else if (i is >= (-16474) and <= (-16213)) Py = "K";
+                    else if (i is >= (-16212) and <= (-15641)) Py = "L";
+                    else if (i is >= (-15640) and <= (-15166)) Py = "M";
+                    else if (i is >= (-15165) and <= (-14923)) Py = "N";
+                    else if (i is >= (-14922) and <= (-14915)) Py = "O";
+                    else if (i is >= (-14914) and <= (-14631)) Py = "P";
+                    else if (i is >= (-14630) and <= (-14150)) Py = "Q";
+                    else if (i is >= (-14149) and <= (-14091)) Py = "R";
+                    else if (i is >= (-14090) and <= (-13319)) Py = "S";
+                    else if (i is >= (-13318) and <= (-12839)) Py = "T";
+                    else if (i is >= (-12838) and <= (-12557)) Py = "W";
+                    else if (i is >= (-12556) and <= (-11848)) Py = "X";
+                    else if (i is >= (-11847) and <= (-11056)) Py = "Y";
+                    else if (i is >= (-11055) and <= (-10247)) Py = "Z";
                     else Py = ((char)(i)).ToString();
                     Pstr = Pstr + Py;
                 }
@@ -570,95 +576,95 @@ namespace AME
                 else
                 {
                     key = (ushort)(gbkBytes[i] * 256 + gbkBytes[i + 1]);
-                    if (key >= '\uB0A1' && key <= '\uB0C4')
+                    if (key is >= '\uB0A1' and <= '\uB0C4')
                     {
                         strResult = strResult + "A";
                     }
-                    else if (key >= '\uB0C5' && key <= '\uB2C0')
+                    else if (key is >= '\uB0C5' and <= '\uB2C0')
                     {
                         strResult = strResult + "B";
                     }
-                    else if (key >= '\uB2C1' && key <= '\uB4ED')
+                    else if (key is >= '\uB2C1' and <= '\uB4ED')
                     {
                         strResult = strResult + "C";
                     }
-                    else if (key >= '\uB4EE' && key <= '\uB6E9')
+                    else if (key is >= '\uB4EE' and <= '\uB6E9')
                     {
                         strResult = strResult + "D";
                     }
-                    else if (key >= '\uB6EA' && key <= '\uB7A1')
+                    else if (key is >= '\uB6EA' and <= '\uB7A1')
                     {
                         strResult = strResult + "E";
                     }
-                    else if (key >= '\uB7A2' && key <= '\uB8C0')
+                    else if (key is >= '\uB7A2' and <= '\uB8C0')
                     {
                         strResult = strResult + "F";
                     }
-                    else if (key >= '\uB8C1' && key <= '\uB9FD')
+                    else if (key is >= '\uB8C1' and <= '\uB9FD')
                     {
                         strResult = strResult + "G";
                     }
-                    else if (key >= '\uB9FE' && key <= '\uBBF6')
+                    else if (key is >= '\uB9FE' and <= '\uBBF6')
                     {
                         strResult = strResult + "H";
                     }
-                    else if (key >= '\uBBF7' && key <= '\uBFA5')
+                    else if (key is >= '\uBBF7' and <= '\uBFA5')
                     {
                         strResult = strResult + "J";
                     }
-                    else if (key >= '\uBFA6' && key <= '\uC0AB')
+                    else if (key is >= '\uBFA6' and <= '\uC0AB')
                     {
                         strResult = strResult + "K";
                     }
-                    else if (key >= '\uC0AC' && key <= '\uC2E7')
+                    else if (key is >= '\uC0AC' and <= '\uC2E7')
                     {
                         strResult = strResult + "L";
                     }
-                    else if (key >= '\uC2E8' && key <= '\uC4C2')
+                    else if (key is >= '\uC2E8' and <= '\uC4C2')
                     {
                         strResult = strResult + "M";
                     }
-                    else if (key >= '\uC4C3' && key <= '\uC5B5')
+                    else if (key is >= '\uC4C3' and <= '\uC5B5')
                     {
                         strResult = strResult + "N";
                     }
-                    else if (key >= '\uC5B6' && key <= '\uC5BD')
+                    else if (key is >= '\uC5B6' and <= '\uC5BD')
                     {
                         strResult = strResult + "O";
                     }
-                    else if (key >= '\uC5BE' && key <= '\uC6D9')
+                    else if (key is >= '\uC5BE' and <= '\uC6D9')
                     {
                         strResult = strResult + "P";
                     }
-                    else if (key >= '\uC6DA' && key <= '\uC8BA')
+                    else if (key is >= '\uC6DA' and <= '\uC8BA')
                     {
                         strResult = strResult + "Q";
                     }
-                    else if (key >= '\uC8BB' && key <= '\uC8F5')
+                    else if (key is >= '\uC8BB' and <= '\uC8F5')
                     {
                         strResult = strResult + "R";
                     }
-                    else if (key >= '\uC8F6' && key <= '\uCBF9')
+                    else if (key is >= '\uC8F6' and <= '\uCBF9')
                     {
                         strResult = strResult + "S";
                     }
-                    else if (key >= '\uCBFA' && key <= '\uCDD9')
+                    else if (key is >= '\uCBFA' and <= '\uCDD9')
                     {
                         strResult = strResult + "T";
                     }
-                    else if (key >= '\uCDDA' && key <= '\uCEF3')
+                    else if (key is >= '\uCDDA' and <= '\uCEF3')
                     {
                         strResult = strResult + "W";
                     }
-                    else if (key >= '\uCEF4' && key <= '\uD188')
+                    else if (key is >= '\uCEF4' and <= '\uD188')
                     {
                         strResult = strResult + "X";
                     }
-                    else if (key >= '\uD1B9' && key <= '\uD4D0')
+                    else if (key is >= '\uD1B9' and <= '\uD4D0')
                     {
                         strResult = strResult + "Y";
                     }
-                    else if (key >= '\uD4D1' && key <= '\uD7F9')
+                    else if (key is >= '\uD4D1' and <= '\uD7F9')
                     {
                         strResult = strResult + "Z";
                     }
@@ -811,10 +817,7 @@ namespace AME
             }
             finally
             {
-                if (pinger != null)
-                {
-                    pinger.Dispose();
-                }
+                pinger?.Dispose();
             }
 
             return pingable;
@@ -957,8 +960,8 @@ namespace AME
         }
 
         // Do this when you start your application
-        static public int mainThreadId = System.Threading.Thread.CurrentThread.ManagedThreadId;
-        static public int CurrentThreadID => System.Threading.Thread.CurrentThread.ManagedThreadId;
+        public static int mainThreadId = System.Threading.Thread.CurrentThread.ManagedThreadId;
+        public static int CurrentThreadID => System.Threading.Thread.CurrentThread.ManagedThreadId;
 
         /// <summary>
         /// 判断当前线程是否为主线程<para></para>

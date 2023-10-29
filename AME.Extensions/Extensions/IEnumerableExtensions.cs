@@ -1,9 +1,11 @@
-﻿using Microsoft.Extensions.FileSystemGlobbing;
-using Microsoft.Extensions.FileSystemGlobbing.Abstractions;
-using System;
+﻿// ********************************** 
+// Densen Informatica 中讯科技 
+// 作者：Alex Chow
+// e-mail:zhouchuanglin@gmail.com 
+// **********************************
+
 using System.Collections;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 
 namespace AME;
@@ -40,9 +42,9 @@ public static class IEnumerableExtensions
 
 public static class ArrayExtensions
 {
-    public static object[] Append(this object[] first, params object[] second)=> second == null ? first : first.ToList().OfType<object>().Concat(second.ToList()).ToArray();
+    public static object[] Append(this object[] first, params object[] second) => second == null ? first : first.ToList().OfType<object>().Concat(second.ToList()).ToArray();
 
-    public static T[] Append<T>(this T[] first, params T[] second) => second == null? first: first== null ? null : first.ToList().Concat(second.ToList()).ToArray();
+    public static T[] Append<T>(this T[] first, params T[] second) => second == null ? first : first?.ToList().Concat(second.ToList()).ToArray();
 
-   
+
 }

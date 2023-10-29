@@ -1,19 +1,20 @@
-﻿using Microsoft.VisualBasic;
+﻿// ********************************** 
+// Densen Informatica 中讯科技 
+// 作者：Alex Chow
+// e-mail:zhouchuanglin@gmail.com 
+// **********************************
+
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Data;
-using System.Diagnostics;
 
 namespace AME
 {
     public class DebugLog
     {
 
-        static internal bool ConsoleWriteLine = false;
+        internal static bool ConsoleWriteLine = false;
         public static void Log(string LogStr, string tag1 = "")
         {
-            if (ConsoleWriteLine) Log($"时间 {DateTime.Now.ToString()} :  {LogStr}  , Tag {tag1} ");
+            if (ConsoleWriteLine) Log($"时间 {DateTime.Now} :  {LogStr}  , Tag {tag1} ");
         }
 
     }
