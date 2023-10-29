@@ -1,9 +1,13 @@
-﻿using BootstrapBlazor.AzureServices;
+﻿// ********************************** 
+// Densen Informatica 中讯科技 
+// 作者：Alex Chow
+// e-mail:zhouchuanglin@gmail.com 
+// **********************************
+
+using BootstrapBlazor.AzureServices;
 using BootstrapBlazor.Ocr.Services;
 using BootstrapBlazor.OpenAI.Services;
 using Microsoft.AspNetCore.Mvc;
-using System.Text.RegularExpressions;
-using static OpenAI.GPT3.ObjectModels.SharedModels.IOpenAiModels;
 
 namespace AME.Controllers;
 #nullable enable 
@@ -31,12 +35,12 @@ public class SampleController : ControllerBase
         this.aiFormService = aiFormService;
         this.openaiService = openaiService;
         this.environment = environment;
-        this._logger = logger;
-        this._config = config;
+        _logger = logger;
+        _config = config;
     }
 
-    string ToolsPath => Path.Combine(environment.ContentRootPath, "Files");
- 
+    private string ToolsPath => Path.Combine(environment.ContentRootPath, "Files");
+
 
     /// <summary>
     /// json
@@ -45,7 +49,7 @@ public class SampleController : ControllerBase
     /// <returns></returns>
     [HttpPost]
     [HttpGet]
-    public IActionResult SampleJson([FromForm] string prompt= "张国立",[FromQuery] string prompt2= "2")
+    public IActionResult SampleJson([FromForm] string prompt = "张国立", [FromQuery] string prompt2 = "2")
     {
         if (string.IsNullOrWhiteSpace(prompt))
         {
@@ -59,8 +63,8 @@ public class SampleController : ControllerBase
     ""msg"": ""解析成功！""
 }}
 ";
-                return Ok(res);
-           
+            return Ok(res);
+
         }
         catch (Exception e)
         {

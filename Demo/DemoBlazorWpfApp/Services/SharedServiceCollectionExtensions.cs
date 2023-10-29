@@ -15,7 +15,7 @@ namespace Microsoft.Extensions.DependencyInjection;
 /// </summary>
 public static class SharedServiceCollectionExtensions
 {
-    
+
     /// <summary>
     /// 服务扩展类,<para></para>
     /// 包含各平台差异实现
@@ -32,7 +32,7 @@ public static class SharedServiceCollectionExtensions
 
         //据说已经修复
         //2022/8/11 测试fsql是不是这个问题
-        services.AddSingleton<IErrorBoundaryLogger, MyErrorBoundaryLogger>();        
+        services.AddSingleton<IErrorBoundaryLogger, MyErrorBoundaryLogger>();
         return services;
     }
 

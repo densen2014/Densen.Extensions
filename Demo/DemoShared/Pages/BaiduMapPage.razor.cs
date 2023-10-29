@@ -1,4 +1,10 @@
-﻿using BootstrapBlazor.Components;
+﻿// ********************************** 
+// Densen Informatica 中讯科技 
+// 作者：Alex Chow
+// e-mail:zhouchuanglin@gmail.com 
+// **********************************
+
+using BootstrapBlazor.Components;
 
 namespace DemoShared.Pages;
 
@@ -14,7 +20,7 @@ public sealed partial class BaiduMapPage
     private Task OnResult(BaiduItem geolocations)
     {
         baiduItem = geolocations;
-        this.message = baiduItem.Status;
+        message = baiduItem.Status;
         StateHasChanged();
         return Task.CompletedTask;
     }
@@ -25,7 +31,7 @@ public sealed partial class BaiduMapPage
         StateHasChanged();
         return Task.CompletedTask;
     }
-     
+
 
 
     /// <summary>

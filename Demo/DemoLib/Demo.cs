@@ -21,7 +21,7 @@ namespace AmeApi
 
         [AutoGenerateColumn(Visible = false)]
         public List<NowInfo> now { get; set; }
-        
+
         [AutoGenerateColumn(Visible = false)]
         public Refer refer { get; set; }
     }
@@ -37,27 +37,27 @@ namespace AmeApi
         public string icon { get; set; }
         public string text { get; set; }
 
-        [AutoGenerateColumn(Visible =false)]
+        [AutoGenerateColumn(Visible = false)]
         public string wind360 { get; set; }
-        
+
         [AutoGenerateColumn(Visible = false)]
         public string windDir { get; set; }
-        
+
         [AutoGenerateColumn(Visible = false)]
         public string windScale { get; set; }
-        
+
         [AutoGenerateColumn(Visible = false)]
         public string windSpeed { get; set; }
-        
+
         [AutoGenerateColumn(Visible = false)]
         public string humidity { get; set; }
-        
+
         [AutoGenerateColumn(Visible = false)]
         public string precip { get; set; }
-        
+
         [AutoGenerateColumn(Visible = false)]
         public string pressure { get; set; }
-        
+
         [AutoGenerateColumn(Visible = false)]
         public string vis { get; set; }
         public string cloud { get; set; }
@@ -88,6 +88,6 @@ namespace AmeApi
         public string[] sources { get; set; }
         public string[] license { get; set; }
     }
-     
-     
+
+
 }

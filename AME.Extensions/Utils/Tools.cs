@@ -317,8 +317,8 @@ public static class Tools
     #region runCmd
     public static string runCmd(string strCMD)
     {
-#if IOS 
-return "Unsupported";
+#if IOS
+        return "Unsupported";
 #else
         Process p = new Process();
         var _with1 = p.StartInfo;
@@ -976,7 +976,7 @@ IList<Model1> t1 = DataTableToList<Model1>(dt);
         try
         {
 #if IOS
-return;
+            return;
 #else
             Process.Start(url);
 #endif

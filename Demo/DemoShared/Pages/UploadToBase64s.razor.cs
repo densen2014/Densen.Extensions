@@ -1,4 +1,10 @@
-﻿using static BootstrapBlazor.Components.UploadToBase64;
+﻿// ********************************** 
+// Densen Informatica 中讯科技 
+// 作者：Alex Chow
+// e-mail:zhouchuanglin@gmail.com 
+// **********************************
+
+using static BootstrapBlazor.Components.UploadToBase64;
 
 namespace DemoShared.Pages;
 
@@ -7,13 +13,13 @@ namespace DemoShared.Pages;
 /// </summary>
 public partial class UploadToBase64s
 {
-     
+
     private string? message;
 
     private Task OnChanged(List<ImageFile> items)
     {
         message = string.Empty;
-        items.ForEach(item => message+=$"名称 {item.Name}{Environment.NewLine}类型 {item.ContentType}{Environment.NewLine}大小 {item.Size}{Environment.NewLine}DataUrl预览 {item.DataUrl?.Substring(0,50)}{Environment.NewLine}{Environment.NewLine}");
+        items.ForEach(item => message += $"名称 {item.Name}{Environment.NewLine}类型 {item.ContentType}{Environment.NewLine}大小 {item.Size}{Environment.NewLine}DataUrl预览 {item.DataUrl?.Substring(0, 50)}{Environment.NewLine}{Environment.NewLine}");
         StateHasChanged();
         return Task.CompletedTask;
     }
@@ -25,7 +31,7 @@ public partial class UploadToBase64s
         return Task.CompletedTask;
     }
 
- 
+
     /// <summary>
     /// 获得属性方法
     /// </summary>

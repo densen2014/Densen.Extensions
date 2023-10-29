@@ -1,16 +1,19 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿// ********************************** 
+// Densen Informatica 中讯科技 
+// 作者：Alex Chow
+// e-mail:zhouchuanglin@gmail.com 
+// **********************************
+
+using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Hosting;
-using System;
-using System.Collections;
-using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 
 namespace DemoShared.Pages;
 
 public sealed partial class SignaturePadPageResponsive
 {
-    string? SaveResult;
-    [Inject][NotNull] IHostingEnvironment? Environment { get; set; }
+    private string? SaveResult;
+    [Inject][NotNull] private IHostingEnvironment? Environment { get; set; }
     public async Task<string?> SaveImgBaseSixFour(string img)
     {
         try

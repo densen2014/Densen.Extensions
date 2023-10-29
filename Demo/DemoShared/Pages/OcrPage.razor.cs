@@ -1,8 +1,14 @@
-﻿namespace DemoShared.Pages
+﻿// ********************************** 
+// Densen Informatica 中讯科技 
+// 作者：Alex Chow
+// e-mail:zhouchuanglin@gmail.com 
+// **********************************
+
+namespace DemoShared.Pages
 {
     public partial class OcrPage
     {
-        List<string>? res { get; set; }
+        private List<string>? res { get; set; }
         private Task OnResult(List<string> res)
         {
             this.res = res;

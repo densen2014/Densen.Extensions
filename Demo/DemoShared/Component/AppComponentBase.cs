@@ -61,13 +61,13 @@ public abstract partial class AppComponentBase : ComponentBase, IDisposable
     [NotNull]
     protected Message? Message { get; set; }
 
-    protected async Task ShowBottomMessage(string message,bool error=false)
+    protected async Task ShowBottomMessage(string message, bool error = false)
     {
         await MessageService.Show(new MessageOption()
         {
             Content = message,
             Icon = "fa-solid fa-circle-info",
-            Color= error? Color.Warning: Color.Primary
+            Color = error ? Color.Warning : Color.Primary
         }, Message);
     }
 

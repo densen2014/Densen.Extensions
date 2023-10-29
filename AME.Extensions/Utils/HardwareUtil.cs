@@ -21,32 +21,32 @@ public static class HardwareUtil
 {
 
 #if NET48 || WINDOWS 
-    public static string GetFirstPhysicalMediaID()=> GetPhysicalMediaID().FirstOrDefault(); 
-    public static string GetFirstMacAddress()=> GetMacAddress().FirstOrDefault()?.MACAddress;
+    public static string GetFirstPhysicalMediaID() => GetPhysicalMediaID().FirstOrDefault();
+    public static string GetFirstMacAddress() => GetMacAddress().FirstOrDefault()?.MACAddress;
 
     public class NetworkAdapter
     {
         public string MACAddress { get; set; }
-        public string Manufacturer { get; set; } 
-        public bool PhysicalAdapter { get; set; } 
+        public string Manufacturer { get; set; }
+        public bool PhysicalAdapter { get; set; }
     }
 
-    public static List<NetworkAdapter> GetMacAddress(string filter= "Microsoft", string filter2= "PhysicalAdapter=true", string filter3 = "Manufacturer <> 'TeamViewer Germany GmbH'",bool skiploop= false)
+    public static List<NetworkAdapter> GetMacAddress(string filter = "Microsoft", string filter2 = "PhysicalAdapter=true", string filter3 = "Manufacturer <> 'TeamViewer Germany GmbH'", bool skiploop = false)
     {
         var filters = $"(MACAddress Is Not NULL) {(filter.Length > 0 ? $"AND (Manufacturer <> '{filter}')" : "")} {(filter2.Length > 0 ? $"AND ({filter2})" : "")} {(filter3.Length > 0 ? $"AND ({filter3})" : "")}";
         var searcher = new ManagementObjectSearcher($"SELECT MACAddress,Manufacturer,PhysicalAdapter FROM Win32_NetworkAdapter WHERE ({filters})");
         var items = searcher.Get().Cast<ManagementObject>().
-            Select(x=> new NetworkAdapter()
-                {
-                    MACAddress = x["MACAddress"]?.ToString(),
-                    Manufacturer = x["Manufacturer"]?.ToString(),
-                    PhysicalAdapter = x["PhysicalAdapter"]?.ToString()=="True",
-                }
+            Select(x => new NetworkAdapter()
+            {
+                MACAddress = x["MACAddress"]?.ToString(),
+                Manufacturer = x["Manufacturer"]?.ToString(),
+                PhysicalAdapter = x["PhysicalAdapter"]?.ToString() == "True",
+            }
             ).ToList();
-        items= items.Where (x=>!string.IsNullOrWhiteSpace(x.MACAddress)).ToList();
+        items = items.Where(x => !string.IsNullOrWhiteSpace(x.MACAddress)).ToList();
         if (!items.Any() && !skiploop)
         {
-            items = GetMacAddress("","", skiploop: true);
+            items = GetMacAddress("", "", skiploop: true);
         }
         return items;
     }
@@ -79,7 +79,7 @@ public static class HardwareUtil
         public string Size { get; set; }
     }
 
-    public static List<DiskDriveID> GetDiskDriveIDS(bool orderByInterfaceType=true, bool filter = true)
+    public static List<DiskDriveID> GetDiskDriveIDS(bool orderByInterfaceType = true, bool filter = true)
     {
         var ids = new List<DiskDriveID>();
         var keys = new List<string>() {
@@ -109,13 +109,13 @@ public static class HardwareUtil
                         GetSerialNumber(id, share, key);
                     }
                 }
-                if (!filter || id.SerialNumber !=null) ids.Add(id);
+                if (!filter || id.SerialNumber != null) ids.Add(id);
             }
         }
         catch
         {
         }
-        return orderByInterfaceType?ids.OrderBy(a => a.InterfaceType).ToList(): ids;
+        return orderByInterfaceType ? ids.OrderBy(a => a.InterfaceType).ToList() : ids;
     }
 
     private static void GetSerialNumber(DiskDriveID id, ManagementBaseObject share, string key)
@@ -144,7 +144,7 @@ public static class HardwareUtil
     }
 
     public static List<string> GetDiskDriveID()
-    { 
+    {
         var ids = new List<string>();
         var keys = new List<string>() {
             "MediaType",
@@ -181,10 +181,10 @@ public static class HardwareUtil
     {
         public string Dependent { get; set; }
         public string Name { get; set; }
-        public string PortNum { get; set; } 
+        public string PortNum { get; set; }
     }
 
-    public static List<USBID> GetUSBIDS(string vid_pid=null,bool getPortNum=false)
+    public static List<USBID> GetUSBIDS(string vid_pid = null, bool getPortNum = false)
     {
         var ids = new List<USBID>();
         try
@@ -248,7 +248,7 @@ public static class HardwareUtil
 
         return -1;
 
-    } 
+    }
 
 #endif
 }

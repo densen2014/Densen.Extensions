@@ -22,7 +22,7 @@ namespace DemoShared.Pages;
 public partial class PlayAudioPage
 {
     [NotNull]
-    PlayAudio? PlayAudio { get; set; }
+    private PlayAudio? PlayAudio { get; set; }
 
     [Inject]
     [NotNull]
@@ -50,7 +50,7 @@ public partial class PlayAudioPage
     [Inject]
     private IConfiguration? Config { get; set; }
 
-    string? ErrorMessage { get; set; }
+    private string? ErrorMessage { get; set; }
 
     [DisplayName("问点啥")]
     private string? InputText { get; set; } = DateTime.Now.ToString("F");
@@ -70,7 +70,7 @@ public partial class PlayAudioPage
     }
 
 
- 
+
 
     private Task OnEscAsync(string val)
     {
@@ -107,7 +107,7 @@ public partial class PlayAudioPage
 /// <summary>
 /// Enum 扩展方法
 /// </summary>
-static class EnumExtensions
+internal static class EnumExtensions
 {
 
     /// <summary>

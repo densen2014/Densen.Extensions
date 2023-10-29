@@ -1,4 +1,10 @@
-﻿using BootstrapBlazor.Components;
+﻿// ********************************** 
+// Densen Informatica 中讯科技 
+// 作者：Alex Chow
+// e-mail:zhouchuanglin@gmail.com 
+// **********************************
+
+using BootstrapBlazor.Components;
 using BootstrapBlazor.WebAPI.Services;
 using Microsoft.AspNetCore.Components;
 using System.Diagnostics.CodeAnalysis;
@@ -22,7 +28,7 @@ public sealed partial class ScreenCapturePage
     [NotNull]
     private Cams SelectedEnumItem = Cams.FHD;
 
-    enum Cams
+    private enum Cams
     {
         VGA,
         HD,
@@ -42,15 +48,15 @@ public sealed partial class ScreenCapturePage
             {
                 SelectedEnumItem = await Storage.GetValue("Cams", Cams.VGA);
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                 
+
             }
             IsInit = true;
             StateHasChanged();
         }
     }
-     
+
     private async Task OnSelectedChanged(IEnumerable<SelectedItem> values, Cams val)
     {
         await Storage.SetValue("Cams", val);
@@ -59,7 +65,7 @@ public sealed partial class ScreenCapturePage
 
     private async Task OnCaptureResult(Stream item)
     {
-        if (OCR!=null) await OCR.OCRFromStream(item);
+        if (OCR != null) await OCR.OCRFromStream(item);
         StateHasChanged();
     }
 
@@ -71,11 +77,11 @@ public sealed partial class ScreenCapturePage
     }
 
     #region 附加OCR演示
-    private OCR? OCR { get; set; } 
-    
+    private OCR? OCR { get; set; }
+
     private Task OnResult(List<string> res)
     {
-        this.message = "识别完成";
+        message = "识别完成";
         StateHasChanged();
         return Task.CompletedTask;
     }

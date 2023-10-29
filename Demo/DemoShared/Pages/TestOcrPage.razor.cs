@@ -1,9 +1,14 @@
-﻿using AME;
+﻿// ********************************** 
+// Densen Informatica 中讯科技 
+// 作者：Alex Chow
+// e-mail:zhouchuanglin@gmail.com 
+// **********************************
+
+using AME;
 using AmeBlazor.Components;
 using BootstrapBlazor.AzureServices;
 using BootstrapBlazor.Components;
 using Microsoft.AspNetCore.Components;
-using OpenAI.GPT3.ObjectModels.ResponseModels;
 using System.Diagnostics.CodeAnalysis;
 
 namespace DemoShared.Pages;
@@ -17,12 +22,12 @@ public partial class TestOcrPage
     [Inject]
     private TranslateService? TranslateService { get; set; }
 
-    List<string>? res { get; set; }
-    string? status { get; set; }
+    private List<string>? res { get; set; }
+    private string? status { get; set; }
 
-    string? resfull { get; set; }
+    private string? resfull { get; set; }
 
-    TableLazyHero<交通银行>? list1 { get; set; }
+    private TableLazyHero<交通银行>? list1 { get; set; }
     private List<交通银行>? mines;
 
     private async Task 翻译()
@@ -41,7 +46,7 @@ public partial class TestOcrPage
         }
     }
 
-    string route= "/translate?api-version=3.0&to=es";
+    private string route = "/translate?api-version=3.0&to=es";
     private async Task<string?> OnTranslate(string? val)
     {
         if (string.IsNullOrWhiteSpace(val))
@@ -49,10 +54,10 @@ public partial class TestOcrPage
             return val;
         }
 
-        this.status = "翻译中...";
+        status = "翻译中...";
         var res = await TranslateService.Translate(val, route);
 
-        return res?.First()?.text??val;
+        return res?.First()?.text ?? val;
     }
 
     private async Task 处理()
@@ -62,10 +67,10 @@ public partial class TestOcrPage
             return;
         }
 
-        mines =  new List<交通银行>();
+        mines = new List<交通银行>();
         var flag = false;
-        var line = resfull.Replace ("\r\n","\n").Split(new char[] { '\t', '\n' });
-        for (var i = 0; i < line.Length ; i++)
+        var line = resfull.Replace("\r\n", "\n").Split(new char[] { '\t', '\n' });
+        for (var i = 0; i < line.Length; i++)
         {
             try
             {
@@ -73,16 +78,18 @@ public partial class TestOcrPage
                 {
                     flag = true;
                 }
-                else if (flag && !string.IsNullOrWhiteSpace(line[i]) )
+                else if (flag && !string.IsNullOrWhiteSpace(line[i]))
                 {
                     var itemTemp = new List<string>();
 
                     for (var j = i; j < line.Length; j++)
                     {
-                       if (Loop提取(ref itemTemp, line[j]))
-                       {
-                            var item = new 交通银行();
-                            item.A序号 = itemTemp[0];
+                        if (Loop提取(ref itemTemp, line[j]))
+                        {
+                            var item = new 交通银行
+                            {
+                                A序号 = itemTemp[0]
+                            };
                             if (itemTemp.Count > 1) item.B交易日期 = itemTemp[1];
                             if (item.B交易日期 != null)
                             {
@@ -206,7 +213,7 @@ public partial class TestOcrPage
             }
             catch (Exception e)
             {
-                await ToastService.Error(e.Message);                    
+                await ToastService.Error(e.Message);
             }
         }
         //if (mines != null) await list1!.Load(mines);
@@ -214,10 +221,10 @@ public partial class TestOcrPage
 
     private static bool Loop提取(ref List<string> itemTemp, string item)
     {
-        if (item.Contains (' ') && !item.StartsWith("Abstra") && itemTemp.Count !=7)
+        if (item.Contains(' ') && !item.StartsWith("Abstra") && itemTemp.Count != 7)
         {
             //非备注继续切分
-            var tt0 = item.Split(' '); 
+            var tt0 = item.Split(' ');
             for (int k = 0; k < tt0.Length; k++)
             {
                 Loop提取(ref itemTemp, tt0[k]);
@@ -225,7 +232,7 @@ public partial class TestOcrPage
         }
         else
         {
-            if ((itemTemp.Count == 0 && item.IsNum()) || itemTemp.Count>0)
+            if ((itemTemp.Count == 0 && item.IsNum()) || itemTemp.Count > 0)
             {
                 itemTemp.Add(item);
             }
@@ -244,7 +251,7 @@ public partial class TestOcrPage
     }
     private async Task OnStatus(string message)
     {
-        this.status = message; 
+        status = message;
         StateHasChanged();
     }
 
@@ -253,7 +260,7 @@ public partial class TestOcrPage
     {
         public string? A序号 { get; set; }
 
-        [AutoGenerateColumn(FormatString = "dd/MM/yyyy",Visible =false)]
+        [AutoGenerateColumn(FormatString = "dd/MM/yyyy", Visible = false)]
         public string? B交易日期 { get; set; }
 
         [AutoGenerateColumn(FormatString = "dd/MM/yyyy")]
@@ -278,7 +285,7 @@ public partial class TestOcrPage
 
         public string? J交易地点 { get; set; }
 
-        [AutoGenerateColumn(TextEllipsis = true,ShowTips =true)]
+        [AutoGenerateColumn(TextEllipsis = true, ShowTips = true)]
         public string? K摘要 { get; set; }
 
     }

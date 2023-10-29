@@ -1,4 +1,10 @@
-﻿using BootstrapBlazor.Components;
+﻿// ********************************** 
+// Densen Informatica 中讯科技 
+// 作者：Alex Chow
+// e-mail:zhouchuanglin@gmail.com 
+// **********************************
+
+using BootstrapBlazor.Components;
 using System.ComponentModel;
 
 namespace DemoShared.Pages;
@@ -14,9 +20,9 @@ public sealed partial class PdfReaders
 
     private int Page { get; set; } = 3;
 
-    PdfReader? pdfReader { get; set; }
+    private PdfReader? pdfReader { get; set; }
 
-    PdfReader? pdfReader2 { get; set; }
+    private PdfReader? pdfReader2 { get; set; }
 
     [DisplayName("文件相对路径或者URL")]
     private string FileName { get; set; } = "/_content/DemoShared/samples/sample.pdf";
@@ -37,7 +43,7 @@ public sealed partial class PdfReaders
 
     private async Task Apply()
     {
-        if (pdfReader!=null) await pdfReader.Refresh();
+        if (pdfReader != null) await pdfReader.Refresh();
     }
 
     private async Task ApplyZoom()
@@ -57,7 +63,7 @@ public sealed partial class PdfReaders
         await Refresh();
     }
 
-    async Task Refresh()
+    private async Task Refresh()
     {
         if (pdfReader2 != null)
             await pdfReader2.Refresh(Search, Page, Pagemode, Zoom, ReadOnly, Watermark);
@@ -96,5 +102,5 @@ public sealed partial class PdfReaders
         await Refresh();
     }
 
-    private async Task ApplySearch()=> await Refresh();
+    private async Task ApplySearch() => await Refresh();
 }

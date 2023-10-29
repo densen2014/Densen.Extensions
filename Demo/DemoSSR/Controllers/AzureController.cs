@@ -1,9 +1,14 @@
-﻿using BootstrapBlazor.AzureServices;
+﻿// ********************************** 
+// Densen Informatica 中讯科技 
+// 作者：Alex Chow
+// e-mail:zhouchuanglin@gmail.com 
+// **********************************
+
+using BootstrapBlazor.AzureServices;
 using BootstrapBlazor.Ocr.Services;
 using BootstrapBlazor.OpenAI.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Text.RegularExpressions;
-using static OpenAI.GPT3.ObjectModels.SharedModels.IOpenAiModels;
 
 namespace AME.Controllers;
 #nullable enable 
@@ -31,11 +36,11 @@ public class AzureController : ControllerBase
         this.aiFormService = aiFormService;
         this.openaiService = openaiService;
         this.environment = environment;
-        this._logger = logger;
-        this._config = config;
+        _logger = logger;
+        _config = config;
     }
 
-    string ToolsPath => Path.Combine(environment.ContentRootPath, "Files");
+    private string ToolsPath => Path.Combine(environment.ContentRootPath, "Files");
 
     /// <summary>
     /// 翻译
@@ -255,36 +260,24 @@ public class AzureController : ControllerBase
     /// <returns></returns>
     [HttpPost("OpenAiGPT3")]
     [HttpGet("OpenAiGPT3")]
-    public async Task<IActionResult> OpenAiGPT3(string prompt, EnumOpenAiModel? model = EnumOpenAiModel.ChatGpt, int maxTokens = 500, float temperature = 0.5f,string? key=null)
+    public async Task<IActionResult> OpenAiGPT3(string prompt, EnumOpenAiModel? model = EnumOpenAiModel.ChatGpt, int maxTokens = 500, float temperature = 0.5f, string? key = null)
     {
         if (string.IsNullOrWhiteSpace(key) && string.IsNullOrWhiteSpace(_config["Key"]))
         {
             return BadRequest("关于这个问题，早有先哲以炯炯的目光洞察先机，那敢问佛教之出路在何方呢？如果拿这一问题去问古代的禅师，禅师定会说：“看脚下！”诚然，路就在脚下，那又应如何去走呢 ...");
         }
-        else if (key!=_config["Key"])
+        else if (key != _config["Key"])
         {
             return BadRequest("敢问施主来自何方?");
         }
         try
         {
             string? res = string.Empty;
-            switch (model)
+            res = model switch
             {
-                default:
-                    res = await openaiService.ChatGPT(prompt, maxTokens, temperature);
-                    break;
-                case EnumOpenAiModel.Completions:
-                    res = await openaiService.Completions(prompt, maxTokens, temperature);
-                    break;
-                //case EnumOpenAiModel.DALLE:
-                //    res = await openaiService.DALLE_CreateImage(prompt);
-                //    if (res != null)
-                //    {
-                //        res = $"data:image/jpg;base64,{res}";
-                //    }
-                //    break;
-            }
-
+                EnumOpenAiModel.Completions => await openaiService.Completions(prompt, maxTokens, temperature),
+                _ => await openaiService.ChatGPT(prompt, maxTokens, temperature),
+            };
             if (res != null)
             {
                 return Ok(res);
@@ -303,7 +296,7 @@ public class AzureController : ControllerBase
 
 }
 
-static class StringExtensions
+internal static class StringExtensions
 {
     private static readonly Regex cjkCharRegex = new Regex(@"\p{IsCJKUnifiedIdeographs}");
     public static bool IsChinese(this string? str)

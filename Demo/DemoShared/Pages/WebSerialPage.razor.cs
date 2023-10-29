@@ -6,11 +6,8 @@
 
 
 using BootstrapBlazor.Components;
-using System;
 using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
-using System.Net.NetworkInformation;
-using System.Threading;
 
 namespace DemoShared.Pages;
 
@@ -42,7 +39,7 @@ public partial class WebSerialPage
 
     private Task OnReceive(string? message)
     {
-        this._message = $"{DateTime.Now:hh:mm:ss} 收到数据: {message}{Environment.NewLine}" + this._message;
+        _message = $"{DateTime.Now:hh:mm:ss} 收到数据: {message}{Environment.NewLine}" + _message;
         StateHasChanged();
         return Task.CompletedTask;
     }
@@ -51,12 +48,12 @@ public partial class WebSerialPage
     {
         if (signals is null) return Task.CompletedTask;
 
-        this.Signals = signals;
+        Signals = signals;
 
         if (!options.AutoGetSignals)
         {
             // 仅在不自动获取信号时才显示
-            this._message = $"{DateTime.Now:hh:mm:ss} 收到信号数据: {Environment.NewLine}" +
+            _message = $"{DateTime.Now:hh:mm:ss} 收到信号数据: {Environment.NewLine}" +
                             $"RING:  {signals.RING}{Environment.NewLine}" +
                             $"DSR:   {signals.DSR}{Environment.NewLine}" +
                             $"CTS:   {signals.CTS}{Environment.NewLine}" +
@@ -70,7 +67,7 @@ public partial class WebSerialPage
 
     private Task OnConnect(bool flag)
     {
-        this.IsConnected = flag;
+        IsConnected = flag;
         if (flag)
         {
             _message = null;
@@ -91,14 +88,14 @@ public partial class WebSerialPage
 
     private Task OnLog(string message)
     {
-        this._statusMessage = message;
+        _statusMessage = message;
         StateHasChanged();
         return Task.CompletedTask;
     }
 
     private Task OnError(string message)
     {
-        this._errorMessage = message;
+        _errorMessage = message;
         StateHasChanged();
         return Task.CompletedTask;
     }

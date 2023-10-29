@@ -1,4 +1,10 @@
-﻿using BootstrapBlazor.Components;
+﻿// ********************************** 
+// Densen Informatica 中讯科技 
+// 作者：Alex Chow
+// e-mail:zhouchuanglin@gmail.com 
+// **********************************
+
+using BootstrapBlazor.Components;
 using Microsoft.AspNetCore.Components.Routing;
 
 namespace DemoShared.Shared;
@@ -58,7 +64,7 @@ public partial class NavMenu
                     new MenuItem() { Text = "OpenAI", Url = "/OpenAI" },
                     //new MenuItem() { Text = "AzureOpenAI", Url = "/AzureOpenAI" },
                 }
-            },        
+            },
             new MenuItem() { Text = "实验" ,Items= new List<MenuItem>
                 {
                     new MenuItem() { Text = "屏幕方向", Url = "/ScreenOrientations" },
@@ -81,7 +87,7 @@ public partial class NavMenu
                     new MenuItem() { Text = "TableLazy", Url = "/tablelazy" },
                     new MenuItem() { Text = "Clock", Url = "/clock" },
                     new MenuItem() { Text = "IP", Url = "/ip" },
-                } 
+                }
             },
         new MenuItem() { Text = "本站源码", Url = "https://github.com/densen2014/Densen.Extensions/blob/master/Demo/DemoShared/Pages?WT.mc_id=DT-MVP-5005078" },
 

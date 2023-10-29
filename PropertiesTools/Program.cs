@@ -1,4 +1,9 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿// ********************************** 
+// Densen Informatica 中讯科技 
+// 作者：Alex Chow
+// e-mail:zhouchuanglin@gmail.com 
+// **********************************
+
 Console.WriteLine("Hello, World!");
 
 

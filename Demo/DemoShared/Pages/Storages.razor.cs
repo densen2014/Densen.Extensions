@@ -1,11 +1,17 @@
-﻿using BootstrapBlazor.Components;
+﻿// ********************************** 
+// Densen Informatica 中讯科技 
+// 作者：Alex Chow
+// e-mail:zhouchuanglin@gmail.com 
+// **********************************
+
+using BootstrapBlazor.Components;
 using BootstrapBlazor.WebAPI.Services;
 using FreeSql.DataAnnotations;
 using Microsoft.AspNetCore.Components;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel;
-using System.Diagnostics.CodeAnalysis; 
 using Microsoft.AspNetCore.Components.Forms;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using System.Diagnostics.CodeAnalysis;
 
 namespace DemoShared.Pages;
 
@@ -18,9 +24,9 @@ public partial class Storages
     [Inject, NotNull] protected ICookie? Cookie { get; set; }
     [Inject, NotNull] protected ToastService? ToastService { get; set; }
 
-    Users NewUser { get; set; } = new Users();
+    private Users NewUser { get; set; } = new Users();
 
-    UsersLogin Model { get; set; } = new UsersLogin();
+    private UsersLogin Model { get; set; } = new UsersLogin();
 
 
     private string? message { get; set; } = "";
@@ -58,8 +64,7 @@ public partial class Storages
 
     }
 
-
-    async Task Login()
+    private async Task Login()
     {
         if (string.IsNullOrEmpty(Model.Username) || string.IsNullOrEmpty(Model.Password))
         {
@@ -102,7 +107,7 @@ public partial class Storages
     private IEnumerable<AttributeItem> GetAttributes() => new AttributeItem[]
     {
         new AttributeItem("GetValue","读取",  "-","Task<string>"),
-        new AttributeItem("SetValue","设置",  "-","Task"), 
+        new AttributeItem("SetValue","设置",  "-","Task"),
         new AttributeItem("RemoveValue","清除",  "-","Task"),
     };
 }

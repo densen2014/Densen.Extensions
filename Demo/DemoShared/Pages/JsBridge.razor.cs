@@ -11,20 +11,20 @@ using System.Diagnostics.CodeAnalysis;
 
 namespace DemoShared.Pages;
 
-public partial class JsBridge: IAsyncDisposable
-{  
-    string? message;
-    bool BridgeEnabled;
+public partial class JsBridge : IAsyncDisposable
+{
+    private string? message;
+    private bool BridgeEnabled;
 
-    [Inject,NotNull]
-    IJSRuntime? JS { get; set; }
+    [Inject, NotNull]
+    private IJSRuntime? JS { get; set; }
 
-    [Inject,NotNull]
-    ToastService? ToastService { get; set; }
+    [Inject, NotNull]
+    private ToastService? ToastService { get; set; }
 
     private IJSObjectReference? module;
 
-    async Task GetMacAdress()
+    private async Task GetMacAdress()
     {
         message = await module!.InvokeAsync<string>("GetMacAdress");
         await ToastService.Information("JS方式 macAdress", message);
@@ -32,7 +32,7 @@ public partial class JsBridge: IAsyncDisposable
         message = await JS!.InvokeAsync<string>("eval", $"localStorage.getItem('macAdress');");
         await ToastService.Information("eval macAdress", message);
 
-        message  = await JS!.InvokeAsync<string>("eval", "bridge.Func('测试')");
+        message = await JS!.InvokeAsync<string>("eval", "bridge.Func('测试')");
         await ToastService.Information("eval bridge.Func", message);
     }
 
@@ -44,19 +44,19 @@ public partial class JsBridge: IAsyncDisposable
             {
                 BridgeEnabled = await JS!.InvokeAsync<bool>("eval", $"typeof bridge != 'undefined'");
 
-                message = await JS!.InvokeAsync<string>("eval", $"localStorage.getItem('macAdress');"); 
+                message = await JS!.InvokeAsync<string>("eval", $"localStorage.getItem('macAdress');");
 
                 module = await JS!.InvokeAsync<IJSObjectReference>("import", "./_content/DemoShared/Pages/JsBridge.razor.js" + "?v=" + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version);
             }
         }
         catch (Exception e)
         {
-            message=e.Message;
+            message = e.Message;
         }
         StateHasChanged();
     }
 
- 
+
     async ValueTask IAsyncDisposable.DisposeAsync()
     {
         if (module is not null)

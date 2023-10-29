@@ -22,11 +22,12 @@ public partial class TableLazyHeroPage
 
     private Rootobject? mineStatus;
     private List<Rootobject>? mineStatuss;
-    private List<NowInfo>? mines; 
-    TableLazyHero<NowInfo>? list1 { get; set; }
+    private List<NowInfo>? mines;
+
+    private TableLazyHero<NowInfo>? list1 { get; set; }
 
     private CancellationTokenSource? AutoRefreshCancelTokenSource { get; set; }
- 
+
 
     protected override void OnAfterRender(bool firstRender)
     {
@@ -62,14 +63,15 @@ public partial class TableLazyHeroPage
 
     }
 
-    private async Task 刷新() {
-        Logger.LogInformation($"{DateTime.Now.ToString("HH:mm:ss")} 读API");
+    private async Task 刷新()
+    {
+        Logger.LogInformation($"{DateTime.Now:HH:mm:ss} 读API");
         var res = await Http!.GetStringAsync("https://git.app1.es/Densen.Extensions.BootstrapBlazor.json");
         Logger.LogInformation(res.Length.ToString());
         mineStatus = JsonConvert.DeserializeObject<Rootobject>(res);
         mineStatuss = new List<Rootobject> { mineStatus! };
-        mines = mineStatus!.now ;
-        for (int i = 0; i < mines.Count-1; i++)
+        mines = mineStatus!.now;
+        for (int i = 0; i < mines.Count - 1; i++)
         {
             mines[i].Photo = $"https://freepos.es/uploads/demo/Product/{i}.jpg";
         }

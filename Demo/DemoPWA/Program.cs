@@ -1,9 +1,14 @@
-﻿using DemoShared;
+﻿// ********************************** 
+// Densen Informatica 中讯科技 
+// 作者：Alex Chow
+// e-mail:zhouchuanglin@gmail.com 
+// **********************************
+
+using DemoShared;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using System.Globalization;
 using System.Reflection;
-using static System.Net.WebRequestMethods;
 
 var cultureInfo = new CultureInfo("zh-CN");
 CultureInfo.DefaultThreadCurrentCulture = cultureInfo;
