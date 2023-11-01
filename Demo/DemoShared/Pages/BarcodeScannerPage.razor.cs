@@ -46,8 +46,6 @@ public partial class BarcodeScannerPage: AppComponentBase
         return Task.CompletedTask;
     }
 
-    bool ShowCodes;
-
     private async Task ScanResult(string e)
     {
         if (!DecodeContinuously)
