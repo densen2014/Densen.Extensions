@@ -103,5 +103,8 @@ public sealed partial class ScreenCapturePage
         new AttributeItem("Quality","图像质量,默认为 0.8",  "0.8","double"),
         new AttributeItem("Width","图像宽度",  "640","int"),
         new AttributeItem("Height","图像高度",  "480","int"),
+        new AttributeItem(nameof(Capture.SelectDeviceBtnTitle),"选择设备按钮文本",  "选择设备","string"),
+        new AttributeItem(nameof(Capture.DeviceID),"指定摄像头设备ID",  "-","string"),
+        new AttributeItem(nameof(Capture.SaveDeviceID),"保存最后使用设备ID下次自动调用",  "true","bool"),
     };
 }

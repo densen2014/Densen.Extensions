@@ -44,15 +44,15 @@ public partial class NavMenu
                     new MenuItem() { Text = "视频播放器 Video Player", Url = "/videoPlayers" },
                     new MenuItem() { Text = "图片浏览 Viewer", Url = "/viewer" },
                     new MenuItem() { Text = "录屏 ScreenRecord", Url = "/ScreenRecords" },
-                    new MenuItem() { Text = "截屏/录像 Screen Capture", Url = "/screencapture" },
                     new MenuItem() { Text = "语音识别/合成 Speech", Url = "/Speechs" },
                 }
             },
             new MenuItem() { Text = "硬件" ,Items= new List<MenuItem>
                 {
+                    new MenuItem() { Text = "扫码 Barcode (条码,QR码,Pdf417)", Url = "/barcodescanner" },
+                    new MenuItem() { Text = "摄像头/截屏/录像 Screen Capture", Url = "/screencapture" },
                     new MenuItem() { Text = "蓝牙和打印 Bluetooth & Printer", Url = "/Bluetooth" },
                     new MenuItem() { Text = "串行设备 WebSerials", Url = "/WebSerials" },
-                    new MenuItem() { Text = "扫码 Barcode", Url = "/barcodescanner" },
                 }
             },
             new MenuItem() { Text = "云服务" ,Items= new List<MenuItem>
