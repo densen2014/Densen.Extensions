@@ -34,7 +34,7 @@ public partial class Testcodes
         {
             BarCodesCustom = string.Empty;
         }
-        BarCodesCustom = $"{DateTime.Now.ToString("mm:ss")} {e}{Environment.NewLine}{BarCodesCustom}";
+        BarCodesCustom = $"{DateTime.Now:mm:ss} {e}{Environment.NewLine}{BarCodesCustom}";
 
         if (CheckAPI && !IsBusy)
         {
@@ -64,10 +64,11 @@ public partial class Testcodes
         await barcodeReaderCustom!.Stop();
         CheckAPI = false;
         BarCodesCustom = string.Empty;
-        items.ForEach(item => BarCodesCustom += $"名称 {item.Name}{Environment.NewLine}类型 {item.ContentType}{Environment.NewLine}大小 {item.Size}{Environment.NewLine}DataUrl预览 {item.DataUrl?.Substring(0, 50)}{Environment.NewLine}{Environment.NewLine}");
+        items.ForEach(item => BarCodesCustom = $"{DateTime.Now:mm:ss} {item.ContentType}{Environment.NewLine} size {item.Size}{Environment.NewLine}{BarCodesCustom}");
         StateHasChanged();
         await barCodes!.DecodeFromImage(items[0].DataUrl!);
     }
+
     private async Task DecodeResult(string e)
     {
         BarCode = e;
@@ -75,7 +76,7 @@ public partial class Testcodes
         {
             BarCodesCustom = string.Empty;
         }
-        BarCodesCustom = $"{DateTime.Now.ToString("mm:ss")} {e}{Environment.NewLine}{BarCodesCustom}";
+        BarCodesCustom = $"{DateTime.Now:mm:ss} {e}{Environment.NewLine}{BarCodesCustom}";
 
         IsBusy = true;
         _ = Task.Run(async () =>

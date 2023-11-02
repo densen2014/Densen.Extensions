@@ -59,7 +59,7 @@ public partial class BarcodeScannerPage: AppComponentBase
             {
                 BarCode = string.Empty;
             }
-            BarCode = $"{DateTime.Now.ToString("mm:ss")} {e}{Environment.NewLine}{BarCode}";
+            BarCode = $"{DateTime.Now:mm:ss} {e}{Environment.NewLine}{BarCode}";
             await ToastService.Information("结果", e);
         }
     }
@@ -82,7 +82,7 @@ public partial class BarcodeScannerPage: AppComponentBase
         {
             BarCodesCustom = string.Empty;
         }
-        BarCodesCustom = $"{DateTime.Now.ToString("mm:ss")} {e}{Environment.NewLine}{BarCodesCustom}";
+        BarCodesCustom = $"{DateTime.Now:mm:ss} {e}{Environment.NewLine}{BarCodesCustom}";
         return Task.CompletedTask;
     }
 
