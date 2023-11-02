@@ -249,10 +249,11 @@ public partial class TestOcrPage
         await 处理();
         StateHasChanged();
     }
-    private async Task OnStatus(string message)
+    private Task OnStatus(string message)
     {
         status = message;
         StateHasChanged();
+        return Task.CompletedTask;
     }
 
     [AutoGenerateClass(Searchable = true, Filterable = true, Sortable = true)]

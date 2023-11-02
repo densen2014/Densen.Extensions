@@ -55,24 +55,36 @@ public partial class BarcodeScannerPage: AppComponentBase
         }
         else
         {
-            BarCode += e + Environment.NewLine;
+            if (BarCode?.Length > 200)
+            {
+                BarCode = string.Empty;
+            }
+            BarCode = $"{DateTime.Now.ToString("mm:ss")} {e}{Environment.NewLine}{BarCode}";
             await ToastService.Information("结果", e);
         }
     }
 
     #region Custom
 
-    /// <summary>
-    /// 显示扫码界面Custom
-    /// </summary>
-    bool ShowScanBarcodeCustom { get; set; } = false;
+    BarcodeReader? barcodeReaderCustom;
 
     /// <summary>
     /// 条码
     /// </summary>
     public string? BarCodeCustom { get; set; }
+    public string? BarCodesCustom { get; set; }
 
-    BarcodeReader? barcodeReaderCustom;
+
+    private Task ScanResult2(string e)
+    {
+        BarCodeCustom = e;
+        if (BarCodesCustom?.Length > 60)
+        {
+            BarCodesCustom = string.Empty;
+        }
+        BarCodesCustom = $"{DateTime.Now.ToString("mm:ss")} {e}{Environment.NewLine}{BarCodesCustom}";
+        return Task.CompletedTask;
+    }
 
     #endregion
 
