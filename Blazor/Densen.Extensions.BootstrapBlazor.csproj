@@ -24,6 +24,8 @@
 		<SignAssembly>True</SignAssembly>
         <OutputPath>..\..\Bin</OutputPath>
         <Version>7.10.4</Version>
+        <!--禁止检查EOL工作负载 NETSDK1202-->
+        <CheckEolWorkloads>false</CheckEolWorkloads>
     </PropertyGroup>
 
 	<ItemGroup>
