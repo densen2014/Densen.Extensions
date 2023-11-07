@@ -7,6 +7,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Reflection;
 
 namespace AME;
@@ -124,6 +125,9 @@ public static class EnumExtensions
         }
         return descs;
     }
+
+    public static IEnumerable<string> GetEnumDescriptions(this Type type) => type.GetEnumValueAndDescriptions().Select(x => x[1]);
+
 
     /// <summary>
     /// 从描述属性中获取枚举 
