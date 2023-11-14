@@ -7,6 +7,7 @@
 <div>
     <div style="height:250px;overflow: scroll ">
         <BarcodeReader ScanResult="ScanResult2"
+                       OnError="OnError" 
                        Decodeonce="false"
                        UseBuiltinDiv="false"
                        @ref="barcodeReaderCustom" />
@@ -30,7 +31,7 @@
         <pre>@BarCodesCustom</pre>
     </div>
     <div style="height: 400px; overflow: scroll ">
-        <BarCodes @ref="barCodes" OnDecodeFromImage="DecodeResult" QRCodeWidth="200" Options="new ZXingOptions() { TRY_HARDER=true}" />
+        <BarCodes @ref="barCodes" OnDecodeFromImage="DecodeResult" OnError="OnError" QRCodeWidth="200" Options="new ZXingOptions() { TRY_HARDER=true}" />
 
         <div class="row">
             <div class="col-12">
@@ -66,6 +67,7 @@
             </ListView>
 
         }
+        <BootstrapPassword @bind-Value="ibnumber" OnEnterAsync="_=>OnChangedCode()" />
     </div>
 
 </div> 

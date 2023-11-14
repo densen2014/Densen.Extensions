@@ -4,7 +4,11 @@
 // e-mail:zhouchuanglin@gmail.com 
 // **********************************
 
+using BootstrapBlazor.Components;
+using BootstrapBlazor.WebAPI.Services;
+using DocumentFormat.OpenXml.Wordprocessing;
 using Microsoft.AspNetCore.Components;
+using System.Diagnostics.CodeAnalysis;
 using System.Text.Json;
 using ZXingBlazor.Components;
 using static BootstrapBlazor.Components.UploadToBase64;
@@ -17,6 +21,9 @@ namespace DemoShared.Pages;
 public partial class Testcodes
 {
     BarcodeReader? barcodeReaderCustom;
+
+    [Inject, NotNull]
+    public IStorage? Storage { get; set; }
 
     /// <summary>
     /// 显示扫码界面Custom
@@ -64,7 +71,7 @@ public partial class Testcodes
         await barcodeReaderCustom!.Stop();
         CheckAPI = false;
         BarCodesCustom = string.Empty;
-        items.ForEach(item => BarCodesCustom = $"{DateTime.Now:mm:ss} {item.ContentType}{Environment.NewLine} size {item.Size}{Environment.NewLine}{BarCodesCustom}");
+        items.ForEach(item => BarCodesCustom = $"{DateTime.Now:mm:ss} {item.ContentType} size {item.Size/1024:n2}kb {Environment.NewLine}{BarCodesCustom}");
         StateHasChanged();
         await barCodes!.DecodeFromImage(items[0].DataUrl!);
     }
@@ -86,6 +93,12 @@ public partial class Testcodes
         });
         await OnAPI();
 
+    }
+    private Task OnError(string message)
+    {
+        BarCodesCustom = $"{DateTime.Now:mm:ss} 错误: {message}{Environment.NewLine}{BarCodesCustom}";
+        StateHasChanged();
+        return Task.CompletedTask;
     }
 
 
@@ -111,7 +124,7 @@ public partial class Testcodes
 
         try
         {
-            var json = httpClient!.GetStringAsync($"https://api6012.app1.es/ibProduct/GetProductsV2?pagesize=5&keyword={BarCode}");
+            var json = httpClient!.GetStringAsync($"https://api6012.app1.es/ibProduct/GetProductsV2?ibnumber={ibnumber}&pagesize=5&keyword={BarCode}");
             var result = JsonSerializer.Deserialize<Rootobject>(json.Result);
             if (result != null)
             {
@@ -155,4 +168,24 @@ public partial class Testcodes
         public string? Remark { get; set; }
     }
 
+    private string? ibnumber;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            try
+            {
+                ibnumber = await Storage.GetValue("testcode", ibnumber);
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+    }
+    private async Task OnChangedCode()
+    {
+        await Storage.SetValue("testcode", ibnumber); 
+    }
 }
