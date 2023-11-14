@@ -38,3 +38,79 @@
         </code>
     </pre>
     <p></p>*@
+
+
+<h1>@person.Name</h1>
+<h1>@person.Name2</h1>
+
+@code{
+    int index = 0;
+    int index2 = 0;
+    Person person = new Person();
+
+    protected override Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            Task.Run(async () =>
+            {
+                do
+                {
+                    index++;
+                    person.Name = "Tom" + index;
+                    await Task.Delay(1000);
+                }while (true);
+            });
+            Task.Run(async () =>
+            {
+                do
+                {
+                    index2++;
+                    person.Name2 = "Name2" + index2;
+                    await Task.Delay(500);
+                }while (true);
+            });
+            person.NameChanged += (sender, e) => InvokeAsync(StateHasChanged);
+            person.Name = "Tom";
+        }
+        return Task.CompletedTask;
+    }
+
+
+    public class Person
+    {
+        private string? name;
+        public string? Name
+        {
+            get { return name; }
+            set
+            {
+                if (name != value)
+                {
+                    name = value;
+                    OnNameChanged();
+                }
+            }
+        }
+        private string? name2;
+        public string? Name2
+        {
+            get { return name2; }
+            set
+            {
+                if (name2 != value)
+                {
+                    name2 = value;
+                    OnNameChanged();
+                }
+            }
+        }
+
+        public event EventHandler? NameChanged;
+
+        protected virtual void OnNameChanged()
+        {
+            NameChanged?.Invoke(this, EventArgs.Empty);
+        }
+    }
+}
