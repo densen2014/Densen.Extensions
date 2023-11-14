@@ -30,7 +30,7 @@
         <pre>@BarCodesCustom</pre>
     </div>
     <div style="height: 400px; overflow: scroll ">
-        <BarCodes @ref="barCodes" OnDecodeFromImage="DecodeResult" QRCodeWidth="200" />
+        <BarCodes @ref="barCodes" OnDecodeFromImage="DecodeResult" QRCodeWidth="200" Options="new ZXingOptions() { TRY_HARDER=true}" />
 
         <div class="row">
             <div class="col-12">

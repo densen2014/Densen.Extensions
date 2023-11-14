@@ -107,7 +107,7 @@
                 <Button Text="生成二维码" OnClick="GenQrcode" />
                 <Button Text="返回二维码Svg流" OnClick="GenQrcodeSvg" />
                 <Button Text="解码" OnClick="DecodeFromImage" />
-                <BarCodes @ref="barCodes" OnQRCodeGen="OnResult" OnDecodeFromImage="OnResult" OnError="OnError" QRCodeWidth="200" />
+                <BarCodes @ref="barCodes" OnQRCodeGen="OnResult" OnDecodeFromImage="OnResult" OnError="OnError" QRCodeWidth="200" Options="new ZXingOptions() { TRY_HARDER=true}" />
                 <br />
         <Textarea Value="@Result" />
                 <br />
