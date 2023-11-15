@@ -1,9 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
 
 	<PropertyGroup>
-		<!--<TargetFrameworks>net6.0;net6.0-windows10.0.19041.0;net6.0-ios;net6.0-maccatalyst;net7.0;net7.0-windows10.0.19041.0;net7.0-ios;net7.0-maccatalyst;net7.0-android</TargetFrameworks>-->
-		<TargetFrameworks>net6.0;net6.0-windows10.0.19041.0;net6.0-ios;net6.0-maccatalyst;net6.0-android;net7.0;net7.0-windows10.0.19041.0;net7.0-ios;net7.0-maccatalyst;net7.0-android</TargetFrameworks>
-		<ImplicitUsings>enable</ImplicitUsings>
+        <TargetFrameworks>
+            net6.0;net6.0-android;net6.0-windows10.0.19041.0;
+            net7.0;net7.0-ios;net7.0-maccatalyst;net7.0-windows10.0.19041.0;net7.0-android;net7.0-windows;
+            net8.0;net8.0-ios;net8.0-maccatalyst;net8.0-windows10.0.19041.0;net8.0-android;net8.0-windows;
+        </TargetFrameworks>
+        <ImplicitUsings>enable</ImplicitUsings>
 		<IsPackable>true</IsPackable>
 		<PackageIcon>logo.png</PackageIcon>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
@@ -23,7 +26,7 @@
 		<AssemblyOriginatorKeyFile>..\keys\Longbow.Utility.snk</AssemblyOriginatorKeyFile>
 		<SignAssembly>True</SignAssembly>
         <OutputPath>..\..\Bin</OutputPath>
-        <Version>7.10.4</Version>
+        <Version>7.13.0</Version>
         <!--禁止检查EOL工作负载 NETSDK1202-->
         <CheckEolWorkloads>false</CheckEolWorkloads>
     </PropertyGroup>
@@ -42,6 +45,10 @@
 
 	<ItemGroup Condition="'$(TargetFramework)' == 'net7.0'">
 		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="7.*" />
+	</ItemGroup>
+
+	<ItemGroup Condition="'$(TargetFramework)' == 'net8.0'">
+		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="8.*" />
 	</ItemGroup>
 
 	<ItemGroup>
