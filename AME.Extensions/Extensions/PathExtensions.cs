@@ -73,12 +73,13 @@ public static class PathExtensions
     /// 格式化目录名，以避免出现“Illegal characters in path”错误：
     /// </summary>
     /// <param name="pathName"></param>
+    /// <param name="replaceVolumeSeparatorChar">过滤冒号</param>
     /// <returns></returns>
-    public static string FormattedPathName(this string pathName)
+    public static string FormattedPathName(this string pathName,bool replaceVolumeSeparatorChar =true)
     {
         var invalidChars = Path.GetInvalidPathChars();
         var formattedPathName = string.Join("_", pathName.Split(invalidChars, StringSplitOptions.RemoveEmptyEntries));
-        return formattedPathName;
+        return replaceVolumeSeparatorChar?formattedPathName.Replace (":","_"): formattedPathName;
     }
 
     /// <summary>
@@ -87,10 +88,10 @@ public static class PathExtensions
     /// <param name="path">要创建的目录</param>
     public static void CreatePathIfNotExists(this string path)
     {
-
-        if (!Directory.Exists(path))
+        var directory = Path.GetDirectoryName(path);
+        if (!Directory.Exists(directory))
         {
-            Directory.CreateDirectory(path);
+            Directory.CreateDirectory(directory);
         }
 
 
