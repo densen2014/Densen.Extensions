@@ -86,9 +86,10 @@ public static class PathExtensions
     /// 创建目录(如果目录不存在)
     /// </summary>
     /// <param name="path">要创建的目录</param>
-    public static void CreatePathIfNotExists(this string path)
+    /// <param name="withFileName">路径是否带文件名,自动分离目录名称 默认 false</param>
+    public static void CreatePathIfNotExists(this string path,bool withFileName=false)
     {
-        var directory = Path.GetDirectoryName(path);
+        var directory = withFileName? Path.GetDirectoryName(path): path;
         if (!Directory.Exists(directory))
         {
             Directory.CreateDirectory(directory);
