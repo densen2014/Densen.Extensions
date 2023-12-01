@@ -50,7 +50,7 @@
             <div class="col-12">
                 <BootstrapInputGroup>
                     <BootstrapInputGroupLabel @bind-Value="@Search" />
-                    <BootstrapInput @bind-Value="@Search" />
+                    <BootstrapInput @bind-Value="@Search" OnEnterAsync="_=>ApplySearch()" OnEscAsync="_=>Clear()" />
                     <Button Icon="fa-solid fa-magnifying-glass" OnClick="ApplySearch"></Button>
                 </BootstrapInputGroup>
             </div>

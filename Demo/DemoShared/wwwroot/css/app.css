@@ -27,4 +27,7 @@
     .blazor-error-boundary::after {
         content: "An error has occurred."
     }
-    
+
+ .menu .submenu .nav-link.active {
+    background-color: unset; 
+}

@@ -15,8 +15,8 @@
  
 
 	<ItemGroup>
-		<PackageReference Include="BootstrapBlazor" Version="7.*" />
-		<PackageReference Include="BootstrapBlazor.Chart" Version="7.*" />
+		<PackageReference Include="BootstrapBlazor" Version="8.*" />
+		<PackageReference Include="BootstrapBlazor.Chart" Version="8.*" />
 		<PackageReference Include="MiniExcel" Version="1.*" />
 	</ItemGroup>
 

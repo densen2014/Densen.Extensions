@@ -103,4 +103,11 @@ public sealed partial class PdfReaders
     }
 
     private async Task ApplySearch() => await Refresh();
+
+    private Task Clear()
+    {
+        Search = string.Empty;
+        StateHasChanged();
+        return Task.CompletedTask;
+    }
 }
