@@ -1,4 +1,5 @@
 ﻿@page "/TestIframe2"
+@namespace DemoShared.Pages
 
 @using BootstrapBlazor.Components
 
@@ -6,8 +7,8 @@
 <iframe @ref="Element"
         allow="fullscreen"
         style="@($"border: none; width: {Width}; height: {Height};{StyleString}")"
-        src=@Url 
-        sandbox="allow-downloads"/>
+        src=@Url
+        sandbox="allow-downloads" />
 
 @code{
     private ElementReference Element { get; set; }

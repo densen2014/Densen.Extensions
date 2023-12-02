@@ -78,9 +78,6 @@
 	</ProjectExtensions>
 	
 	<ItemGroup> 
-		<Content Update="Pages\TestOcrPage.razor">
-		  <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-		</Content> 
 		<Content Update="wwwroot\samples\sample.docx">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</Content>
