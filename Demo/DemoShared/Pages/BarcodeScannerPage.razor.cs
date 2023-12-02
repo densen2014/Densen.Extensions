@@ -5,13 +5,6 @@
 // **********************************
 
 using BootstrapBlazor.Components;
-using BootstrapBlazor.WebAPI.Services;
-using FreeSql.DataAnnotations;
-using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Forms;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
-using System.Diagnostics.CodeAnalysis;
 using ZXingBlazor.Components;
 
 namespace DemoShared.Pages;
@@ -36,6 +29,8 @@ public partial class BarcodeScannerPage: AppComponentBase
     public bool Pdf417 { get; set; }
     public bool DecodeContinuously { get; set; }
     public bool DecodeAllFormats { get; set; }
+    public bool Screenshot { get; set; }
+    public bool StreamFromZxing { get; set; }
 
     private string? message;
 

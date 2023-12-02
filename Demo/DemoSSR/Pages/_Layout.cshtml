@@ -31,26 +31,17 @@
         <a href="" class="reload">Reload</a>
         <a class="dismiss"><i class="fa-solid fa-xmark"></i></a>
     </div>
-
+    <style>
+        #components-reconnect-modal {
+            display: none !important;
+        }
+    </style>
+    <script>
+        new MutationObserver(() => document.querySelector('#components-reconnect-modal') && location.reload())
+            .observe(document.body, { childList: true });
+    </script>
     <script src="_content/BootstrapBlazor/js/bootstrap.blazor.bundle.min.js" asp-append-version="true"></script>
     <script src="_framework/blazor.server.js" asp-append-version="true"></script>
 
-    <script>
-        //Blazor-断开连接后重新加载浏览器
-        // 等待直到出现“重新加载”按钮
-        new MutationObserver((mutations, observer) => {
-            if (document.querySelector('#components-reconnect-modal h5 a')) {
-                // 现在，每隔10秒，查看服务器是否返回，如果返回，则重新加载
-                async function attemptReload() {
-                    await fetch(''); // 检查服务器是否真的返回
-                    location.reload();
-                }
-                observer.disconnect();
-                attemptReload();
-                setInterval(attemptReload, 10000);
-            }
-        }).observe(document.body, { childList: true, subtree: true });
-
-    </script>
 </body>
 </html>

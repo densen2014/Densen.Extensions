@@ -18,16 +18,24 @@
             扫码
         </button>
         <br />
-        <input type="checkbox" @bind-value="Pdf417" />
-        只解码 Pdf417 格式
+        <input id="l1" type="checkbox" @bind-value="Pdf417" />
+        <label for="l1">只解码 Pdf417 格式</label>
         <br />
 
-        <input type="checkbox" @bind-value="DecodeContinuously" />
-        连续解码
+        <input id="l2" type="checkbox" @bind-value="DecodeContinuously" />
+        <label for="l2">连续解码</label>
         <br />
 
-        <input type="checkbox" @bind-value="DecodeAllFormats" />
-        解码所有编码形式 (+ PDF_417 / DATA_MATRIX...)
+        <input id="l3" type="checkbox" @bind-value="DecodeAllFormats" />
+        <label for="l3">解码所有编码形式 (+ PDF_417 / DATA_MATRIX...)</label>
+        <br />
+
+        <input id="l4" type="checkbox" @bind-value="Screenshot" />
+        <label for="l4">录屏解码</label>
+        <br />
+
+        <input id="l5" type="checkbox" @bind-value="StreamFromZxing" />
+        <label for="l5">使用zxing内置视频流打开方式</label>
         <br />
 
         @if (Pdf417 | DecodeAllFormats)
@@ -56,7 +64,9 @@
                            OnError="OnError"
                            Pdf417Only="Pdf417"
                            Decodeonce="!DecodeContinuously"
-                           DecodeAllFormats="DecodeAllFormats" />
+                           DecodeAllFormats="DecodeAllFormats"
+                           Screenshot="Screenshot"
+                           StreamFromZxing="StreamFromZxing" />
 
         }
         <p>@message</p>
@@ -103,15 +113,15 @@
         <h4>解码图片/QR码生成</h4>
 
         <Textarea @bind-Value="MessageString" />
-                <br />
-                <Button Text="生成二维码" OnClick="GenQrcode" />
-                <Button Text="返回二维码Svg流" OnClick="GenQrcodeSvg" />
-                <Button Text="解码" OnClick="DecodeFromImage" />
-                <BarCodes @ref="barCodes" OnQRCodeGen="OnResult" OnDecodeFromImage="OnResult" OnError="OnError" QRCodeWidth="200" Options="new ZXingOptions() { TRY_HARDER=true}" />
-                <br />
+        <br />
+        <Button Text="生成二维码" OnClick="GenQrcode" />
+        <Button Text="返回二维码Svg流" OnClick="GenQrcodeSvg" />
+        <Button Text="解码" OnClick="DecodeFromImage" />
+        <BarCodes @ref="barCodes" OnQRCodeGen="OnResult" OnDecodeFromImage="OnResult" OnError="OnError" QRCodeWidth="200" Options="new ZXingOptions() { TRY_HARDER=true}" />
+        <br />
         <Textarea Value="@Result" />
-                <br />
-                <AttributeTable Items="@GetAttributes2()" />
+        <br />
+        <AttributeTable Items="@GetAttributes2()" />
     </TabItem>
 
 </Tab>
