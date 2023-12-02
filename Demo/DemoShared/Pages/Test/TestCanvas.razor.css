@@ -1,6 +1,8 @@
-﻿ 
+﻿
 .canvas {
-    display: none;
+    width: 340px;
+    height: 340px;
+    background-color: beige;
 }
 
 .camera {
