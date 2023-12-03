@@ -4,15 +4,8 @@
 // e-mail:zhouchuanglin@gmail.com 
 // **********************************
 
-using AME;
-using AmeBlazor.Components;
-using BootstrapBlazor.AzureServices;
-using BootstrapBlazor.Components;
 using Microsoft.AspNetCore.Components;
-using Microsoft.Extensions.Options;
 using Microsoft.JSInterop;
-using System.Diagnostics.CodeAnalysis;
-using UAParser;
 
 namespace DemoShared.Pages;
 
@@ -34,9 +27,11 @@ public partial class TestCanvas
         {
             if (firstRender)
             {
+                await JS!.InvokeAsync<IJSObjectReference>("import", "./_content/DemoShared/cropper.js" + "?v=" + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version);
                 module = await JS!.InvokeAsync<IJSObjectReference>("import", "./_content/DemoShared/Pages/Test/TestCanvas.razor.js" + "?v=" + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version);
                 Instance = DotNetObjectReference.Create(this);
                 await module!.InvokeVoidAsync("init", Instance, Element);
+                await module!.InvokeVoidAsync("changeAvatar", Instance, Element);
              }
         }
         catch (Exception e)

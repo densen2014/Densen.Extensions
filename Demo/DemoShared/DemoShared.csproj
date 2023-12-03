@@ -12,6 +12,11 @@
 	  <EmbeddedResource Remove="Components\**" />
 	  <None Remove="Components\**" />
 	</ItemGroup>
+
+	<ItemGroup>
+	  <None Include="wwwroot\cropper.css" />
+	  <None Include="wwwroot\cropper.js" />
+	</ItemGroup>
  
 
 	<ItemGroup>

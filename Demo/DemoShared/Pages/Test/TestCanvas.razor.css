@@ -1,16 +1,32 @@
-﻿ 
-.canvas {
+﻿
+.container {
+    margin: 20px auto;
+    max-width: 640px;
+}
+
+img {
+    max-width: 100%;
+}
+
+.cropper-view-box,
+.cropper-face {
+    background-color: black;
+    opacity: 1;
+}
+
+.label {
+    cursor: pointer;
+}
+
+.progress {
+    display: none;
+    margin-bottom: 1rem;
+}
+
+.alert {
     display: none;
 }
 
-.camera {
-    width: 340px;
-    display: inline-block;
+.img-container img {
+    max-width: 100%;
 }
-
-.log {
-    width: 340px;
-    display: inline-block;
-    vertical-align: top;
-}
- 
