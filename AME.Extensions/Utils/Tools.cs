@@ -314,25 +314,37 @@ public static class Tools
         sw.Write(Strs);   //写入字符串
         sw.Close();
     }
+
     #region runCmd
-    public static string runCmd(string strCMD)
+
+    /// <summary>
+    /// 运行cmd命令
+    /// </summary>
+    /// <param name="cmd">执行运行命令</param>
+    /// <param name="withCmdExe">使用 cmd.exe 执行命令</param>
+    /// <returns></returns>
+    public static string runCmd(string cmd, bool withCmdExe = false)
     {
 #if IOS
         return "Unsupported";
 #else
-        Process p = new Process();
-        var _with1 = p.StartInfo;
-        _with1.FileName = "cmd.exe";
-        _with1.Arguments = "/c " + strCMD;
-        _with1.UseShellExecute = false;
-        _with1.RedirectStandardInput = true;
-        _with1.RedirectStandardOutput = true;
-        _with1.RedirectStandardError = true;
-        _with1.CreateNoWindow = true;
-        p.Start();
-        string result = p.StandardOutput.ReadToEnd();
-        p.Close();
-        return result;
+        Process CmdProcess = new Process();
+        CmdProcess.StartInfo.FileName = withCmdExe ? "cmd.exe" : cmd;
+        CmdProcess.StartInfo.RedirectStandardInput = true;
+        CmdProcess.StartInfo.RedirectStandardOutput = true;
+        CmdProcess.StartInfo.CreateNoWindow = true;
+        CmdProcess.StartInfo.UseShellExecute = false;
+        CmdProcess.Start();
+        if (withCmdExe)
+        {
+            CmdProcess.StandardInput.WriteLine(cmd);
+            CmdProcess.StandardInput.Flush();
+            CmdProcess.StandardInput.Close();
+        }
+        //CmdProcess.WaitForExit();
+        var res = CmdProcess.StandardOutput.ReadToEnd();
+        Console.WriteLine(res);
+        return res;
 #endif
     }
     #endregion
