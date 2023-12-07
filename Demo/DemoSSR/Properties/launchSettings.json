@@ -1,4 +1,4 @@
-﻿{
+{
   "profiles": {
     "DemoSSR": {
       "commandName": "Project",
@@ -12,7 +12,7 @@
     "TestCanvas": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "testcanvas",
+      "launchUrl": "ImageCroppers",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
