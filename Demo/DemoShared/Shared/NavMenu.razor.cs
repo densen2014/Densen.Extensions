@@ -45,6 +45,7 @@ public partial class NavMenu
                     new MenuItem() { Text = "图片浏览 Viewer", Url = "/viewer" },
                     new MenuItem() { Text = "录屏 ScreenRecord", Url = "/ScreenRecords" },
                     new MenuItem() { Text = "语音识别/合成 Speech", Url = "/Speechs" },
+                    new MenuItem() { Text = "图像裁剪 ImageCropper", Url = "/ImageCroppers" },
                 }
             },
             new MenuItem() { Text = "硬件" ,Items= new List<MenuItem>
