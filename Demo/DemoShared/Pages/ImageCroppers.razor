@@ -5,8 +5,18 @@
 <hr />
 <a href="https://github.com/densen2014/Densen.Extensions/blob/master/Demo/DemoShared/Pages/ImageCroppers.razor"><h5>页面源码</h5></a>
 
+<ImageCropper @ref="cropper" Url="@images[0]" DefaultButton="false" />
+<BootstrapInputGroup>
+    <Button Text="OK" OnClick="(async () => Base64 = await cropper.Crop())" />
+    <Button Text="复位" OnClick="cropper.Reset" />
+    <Button Text="替换" OnClick="(async () => {
+                                   index = index == 0 ? 1 : 0;
+                                   await cropper.Replace(images[index]);
+                               })" />
+</BootstrapInputGroup>
 
-<ImageCropper @ref="cropper" Url="./_content/DemoShared/test.jpg" OnBase64Result="OnBase64Result" />
+<br />
+<Textarea Value="@Base64" rows="3" />
 
 @code{
 
@@ -14,18 +24,9 @@
 
     string[] images = ["./_content/DemoShared/test.jpg", "./_content/DemoShared/icon-512.png"];
 
-    /// <summary>
-    /// OnInitialized 方法
-    /// </summary>
-    protected override void OnInitialized()
-    {
-        base.OnInitialized();
+    int index = 0;
 
-    }
+    string? Base64 { get; set; } 
 
-    private Task OnBase64Result(string base64)
-    {
-        return Task.CompletedTask;
-    }
-
+ 
 }
