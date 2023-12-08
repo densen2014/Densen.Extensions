@@ -1,10 +1,24 @@
 ﻿@page "/testcanvas"
 @namespace DemoShared.Pages
+@attribute [TabItemOption(Text = "条码生成器", Icon = "fa fa-barcode")]
 @inherits AppComponentBase
+@using ZXingBlazor.Components
 
 @using BootstrapBlazor.Components
 
-<div @ref="Element">
-    <canvas data-action="canvas" class="canvas"> </canvas>
-    <pre data-action="log" class="photo"></pre>
-</div>
+<BarCodeGenerator @ref="barCodes" />
+
+<Textarea @bind-Value="MessageString" />
+<br />
+<Button Text="生成二维码" OnClick="Gencode" />
+
+@code{
+    string? MessageString { get; set; } = "12345";
+    
+    BarCodeGenerator? barCodes;
+
+    private async Task Gencode()
+    {
+        await barCodes!.CodeGen(string.IsNullOrWhiteSpace(MessageString) ? "111111" : MessageString);
+    }
+}

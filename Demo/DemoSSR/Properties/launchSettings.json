@@ -12,7 +12,7 @@
     "TestCanvas": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "ImageCroppers",
+      "launchUrl": "testcanvas",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
