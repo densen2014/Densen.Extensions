@@ -6,6 +6,10 @@
 
 @using BootstrapBlazor.Components
 
+<a href="https://www.nuget.org/packages/BootstrapBlazor.Maps#readme-body-tab"><h3>条码生成器 Barcode Generator</h3></a>
+<hr />
+<a href="https://github.com/densen2014/Densen.Extensions/blob/master/Demo/DemoShared/Pages/BarcodeGenerators.razor"><h5>页面源码</h5></a>
+
 <div style="max-width: 554px;">
     <div class="col-12" style="text-align: center; vertical-align: middle;">
         <BarCodeGenerator @ref="barCodes" Value="@value" Options="Options" OnResult="OnResult" />
@@ -21,10 +25,10 @@
             <div class="col-12">
                 <Slider @bind-Value="@Options.Width" Min="1" Max="4" ShowLabel="true" OnValueChanged="_=>OnChanged()" />
             </div>
-            <div class="col-12"> 
+            <div class="col-12">
                 <Slider @bind-value="Options.Height" Min="10" Max="150" ShowLabel="true" Step="5" DisplayText="高度" OnValueChanged="_=>OnChanged()" />
             </div>
-            <div class="col-12"> 
+            <div class="col-12">
                 <Slider @bind-value="Options.Margin" Min="0" Max="25" ShowLabel="true" DisplayText="间距" OnValueChanged="_=>OnChanged()" />
             </div>
             <div class="col-12">
@@ -45,10 +49,10 @@
             <div class="col-12">
                 <Select @bind-Value="Options.FontOption" ShowLabel="true" OnValueChanged="_=>OnChanged()" />
             </div>
-            <div class="col-12"> 
+            <div class="col-12">
                 <Slider @bind-value="Options.FontSize" Min="8" Max="36" ShowLabel="true" DisplayText="字体大小" OnValueChanged="_=>OnChanged()" />
             </div>
-            <div class="col-12"> 
+            <div class="col-12">
                 <Slider @bind-value="Options.TextMargin" Min="-15" Max="40" ShowLabel="true" DisplayText="文字间距" OnValueChanged="_=>OnChanged()" />
             </div>
             <div class="col-12">
@@ -68,13 +72,13 @@
         <BarCodeGenerator Type="EnumBarcodeType.MSI" Value="@value"/>
         <BarCodeGenerator Type="EnumBarcodeType.pharmacode" Value="@value"/>*@
 
-      @*<Textarea @bind-Value="value" />*@ 
+    @*<Textarea @bind-Value="value" />*@
 </div>
 @code{
     BarcodeGeneratorOption Options { get; set; } = new();
 
     private Dictionary<string, string> defaultValues = new Dictionary<string, string>()
-    {
+{
         { "CODE128", "Example 1234"},
         { "CODE128A", "EXAMPLE"},
         { "CODE128B", "Example text"},
@@ -110,7 +114,7 @@
 
     private Task OnResult(string value)
     {
-        svg= value;
+        svg = value;
         return Task.CompletedTask;
     }
 
