@@ -17,7 +17,7 @@
 		<SupportedPlatform Include="browser" />
 	</ItemGroup>
 
-	<ItemGroup Condition="'$(Configuration)' == 'Debug' OR '$(Configuration)' == 'Release'">
+	<ItemGroup Condition="'$(Configuration)' != 'Debug'">
         <!--带源码调试环境-->
 		<ProjectReference Include="..\..\..\BootstrapBlazor.BarcodeGenerator\src\BootstrapBlazor.BarcodeGenerator\BootstrapBlazor.BarcodeGenerator.csproj" />
 		<ProjectReference Include="..\..\..\BootstrapBlazor.Bluetooth\src\BootstrapBlazor.Bluetooth\BootstrapBlazor.Bluetooth.csproj" />
@@ -39,7 +39,7 @@
 		<ProjectReference Include="..\..\..\ZXingBlazor\src\ZXingBlazor\ZXingBlazor.csproj" />
 	</ItemGroup>
 
-    <ItemGroup Condition="'$(Configuration)' == 'DebugSC'">
+    <ItemGroup Condition="'$(Configuration)' == 'Debug'">
         <!--不带源码调试-->
 		<PackageReference Include="BootstrapBlazor.BarcodeGenerator" Version="*" />
 		<PackageReference Include="BootstrapBlazor.Bluetooth" Version="*" />
