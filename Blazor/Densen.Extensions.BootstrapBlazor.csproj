@@ -21,7 +21,7 @@
 
 		<I18nTextFallBackLanguage>zh-CN</I18nTextFallBackLanguage>
 
-		<Configurations>Debug;Release;DebugSourceCode</Configurations>
+		<Configurations>Debug;Release</Configurations>
 
 		<AssemblyOriginatorKeyFile>..\keys\Longbow.Utility.snk</AssemblyOriginatorKeyFile>
 		<SignAssembly>True</SignAssembly>

@@ -5,7 +5,6 @@
 		<UserSecretsId>102ba2ce-c240-49cd-a064-deee597f8998</UserSecretsId>
 		<IsWebProject>true</IsWebProject>
 		<ImplicitUsings>enable</ImplicitUsings>
-		<Configurations>Debug;Release;DebugSourceCode</Configurations>
 	</PropertyGroup>
 
 	<ItemGroup>
