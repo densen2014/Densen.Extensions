@@ -8,16 +8,8 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <Compile Remove="Components\**" />
-	  <Content Remove="Components\**" />
-	  <EmbeddedResource Remove="Components\**" />
-	  <None Remove="Components\**" />
-	</ItemGroup>
- 
-
-	<ItemGroup>
-		<PackageReference Include="BootstrapBlazor" Version="8.*" />
-		<PackageReference Include="BootstrapBlazor.Chart" Version="8.*" />
+		<PackageReference Include="BootstrapBlazor" Version="*" />
+		<PackageReference Include="BootstrapBlazor.Chart" Version="*" />
 		<PackageReference Include="MiniExcel" Version="1.*" />
 	</ItemGroup>
 
@@ -25,9 +17,8 @@
 		<SupportedPlatform Include="browser" />
 	</ItemGroup>
 
-	<!--<ItemGroup Condition="'$(Configuration)' == 'Debug'">-->
-    <!--带源码调试环境-->
-    <ItemGroup>
+	<ItemGroup Condition="'$(Configuration)' == 'Debug' OR '$(Configuration)' == 'Release'">
+        <!--带源码调试环境-->
 		<ProjectReference Include="..\..\..\BootstrapBlazor.BarcodeGenerator\src\BootstrapBlazor.BarcodeGenerator\BootstrapBlazor.BarcodeGenerator.csproj" />
 		<ProjectReference Include="..\..\..\BootstrapBlazor.Bluetooth\src\BootstrapBlazor.Bluetooth\BootstrapBlazor.Bluetooth.csproj" />
 		<ProjectReference Include="..\..\..\BootstrapBlazor.ImageCropper\src\BootstrapBlazor.ImageCropper\BootstrapBlazor.ImageCropper.csproj" />
@@ -47,27 +38,28 @@
 		<ProjectReference Include="..\..\..\BootstrapBlazor.FileViewer\src\BootstrapBlazor.FileViewer\BootstrapBlazor.FileViewer.csproj" />
 		<ProjectReference Include="..\..\..\ZXingBlazor\src\ZXingBlazor\ZXingBlazor.csproj" />
 	</ItemGroup>
-	
-    <!--不带源码调试请手动取消注销-->
-	<!--<ItemGroup>
-		<PackageReference Include="BootstrapBlazor.Bluetooth" Version="8.*" />
-		<PackageReference Include="BootstrapBlazor.ImageCropper" Version="8.*" />
-		<PackageReference Include="BootstrapBlazor.MindMap" Version="8.*" />
-		<PackageReference Include="BootstrapBlazor.OCR" Version="8.*" />
-		<PackageReference Include="BootstrapBlazor.OnScreenKeyboard" Version="8.*" />
-		<PackageReference Include="BootstrapBlazor.OpenAI" Version="0.1.0" />
-		<PackageReference Include="BootstrapBlazor.SignaturePad" Version="8.*" />
-		<PackageReference Include="BootstrapBlazor.Maps" Version="8.*" />
-		<PackageReference Include="BootstrapBlazor.BaiduMap" Version="8.*" />
-		<PackageReference Include="BootstrapBlazor.Geolocation" Version="8.*" />
-		<PackageReference Include="BootstrapBlazor.Viewer" Version="8.*" />
-		<PackageReference Include="BootstrapBlazor.WebAPI" Version="8.*" />
-		<PackageReference Include="BootstrapBlazor.FileSystem" Version="8.*" />
-		<PackageReference Include="BootstrapBlazor.PdfReader" Version="8.*" />
-		<PackageReference Include="BootstrapBlazor.VideoPlayer" Version="8.*" />
-		<PackageReference Include="BootstrapBlazor.FileViewer" Version="8.*" />
-		<PackageReference Include="ZXingBlazor" Version="1.*" />
-	</ItemGroup>-->
+
+    <ItemGroup Condition="'$(Configuration)' == 'DebugSC'">
+        <!--不带源码调试-->
+		<PackageReference Include="BootstrapBlazor.BarcodeGenerator" Version="*" />
+		<PackageReference Include="BootstrapBlazor.Bluetooth" Version="*" />
+		<PackageReference Include="BootstrapBlazor.ImageCropper" Version="*" />
+		<PackageReference Include="BootstrapBlazor.MindMap" Version="*" />
+		<PackageReference Include="BootstrapBlazor.OCR" Version="*" />
+		<PackageReference Include="BootstrapBlazor.OnScreenKeyboard" Version="*" />
+		<PackageReference Include="BootstrapBlazor.OpenAI" Version="*" />
+		<PackageReference Include="BootstrapBlazor.SignaturePad" Version="*" />
+		<PackageReference Include="BootstrapBlazor.Maps" Version="*" />
+		<PackageReference Include="BootstrapBlazor.BaiduMap" Version="*" />
+		<PackageReference Include="BootstrapBlazor.Geolocation" Version="*" />
+		<PackageReference Include="BootstrapBlazor.Viewer" Version="*" />
+		<PackageReference Include="BootstrapBlazor.WebAPI" Version="*" />
+		<PackageReference Include="BootstrapBlazor.FileSystem" Version="*" />
+		<PackageReference Include="BootstrapBlazor.PdfReader" Version="*" />
+		<PackageReference Include="BootstrapBlazor.VideoPlayer" Version="*" />
+		<PackageReference Include="BootstrapBlazor.FileViewer" Version="*" />
+		<PackageReference Include="ZXingBlazor" Version="*" />
+	</ItemGroup>
 
 	<ItemGroup>
 		<ProjectReference Include="..\..\Blazor\Densen.Extensions.BootstrapBlazor.csproj" />

@@ -20,7 +20,7 @@ public abstract partial class AppComponentBase : ComponentBase, IDisposable
 {
     [Inject, NotNull] protected ToastService? ToastService { get; set; }
     [Inject, NotNull] protected MessageService? MessageService { get; set; }
-    [Inject, NotNull] protected IJSRuntime? JS { get; set; }
+    [Inject, NotNull] protected IJSRuntime? JSRuntime { get; set; }
     [Inject, NotNull] protected ICookie? Cookie { get; set; }
     [Inject, NotNull] protected IStorage? Storage { get; set; }
     [Inject, NotNull] protected NavigationManager? NavigationManager { get; set; }

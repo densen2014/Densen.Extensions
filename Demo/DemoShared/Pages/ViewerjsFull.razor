@@ -1,7 +1,6 @@
 ﻿@page "/Viewerfull"
 @using AME.Services
 @implements IAsyncDisposable
-@inject IJSRuntime JS
 @attribute [TabItemOption(Text = "图像浏览器")]
 
 <a href="https://www.nuget.org/packages/BootstrapBlazor.Viewer#readme-body-tab"><h3>图像浏览器</h3></a>
@@ -37,6 +36,9 @@
 </Row>
 
 @code{
+    [Inject]
+    [NotNull]
+    private IJSRuntime? JSRuntime { get; set; }
 
     List<string> Items1 { get; set; } = new List<string>();
 
@@ -61,7 +63,7 @@
     {
         if (firstRender)
         {
-            Module = await JS.InvokeAsync<IJSObjectReference>("import", "./_content/BootstrapBlazor.Viewer/lib/viewerjs/viewerjs.js" + "?v=" + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version);
+            Module = await JSRuntime.InvokeAsync<IJSObjectReference>("import", "./_content/BootstrapBlazor.Viewer/lib/viewerjs/viewerjs.js" + "?v=" + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version);
             await Module.InvokeVoidAsync("initOptions", options);
         }
     }

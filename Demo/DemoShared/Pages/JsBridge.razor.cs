@@ -17,7 +17,7 @@ public partial class JsBridge : IAsyncDisposable
     private bool BridgeEnabled;
 
     [Inject, NotNull]
-    private IJSRuntime? JS { get; set; }
+    private IJSRuntime? JSRuntime { get; set; }
 
     [Inject, NotNull]
     private ToastService? ToastService { get; set; }
@@ -29,10 +29,10 @@ public partial class JsBridge : IAsyncDisposable
         message = await Module!.InvokeAsync<string>("GetMacAdress");
         await ToastService.Information("JS方式 macAdress", message);
 
-        message = await JS!.InvokeAsync<string>("eval", $"localStorage.getItem('macAdress');");
+        message = await JSRuntime.InvokeAsync<string>("eval", $"localStorage.getItem('macAdress');");
         await ToastService.Information("eval macAdress", message);
 
-        message = await JS!.InvokeAsync<string>("eval", "bridge.Func('测试')");
+        message = await JSRuntime.InvokeAsync<string>("eval", "bridge.Func('测试')");
         await ToastService.Information("eval bridge.Func", message);
     }
 
@@ -42,11 +42,11 @@ public partial class JsBridge : IAsyncDisposable
         {
             if (firstRender)
             {
-                BridgeEnabled = await JS!.InvokeAsync<bool>("eval", $"typeof bridge != 'undefined'");
+                BridgeEnabled = await JSRuntime.InvokeAsync<bool>("eval", $"typeof bridge != 'undefined'");
 
-                message = await JS!.InvokeAsync<string>("eval", $"localStorage.getItem('macAdress');");
+                message = await JSRuntime.InvokeAsync<string>("eval", $"localStorage.getItem('macAdress');");
 
-                Module = await JS!.InvokeAsync<IJSObjectReference>("import", "./_content/DemoShared/Pages/JsBridge.razor.js" + "?v=" + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version);
+                Module = await JSRuntime.InvokeAsync<IJSObjectReference>("import", "./_content/DemoShared/Pages/JsBridge.razor.js" + "?v=" + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version);
             }
         }
         catch (Exception e)
