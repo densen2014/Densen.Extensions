@@ -6,6 +6,7 @@
 		<UserSecretsId>102ba2ce-c240-49cd-a064-deee597f8998</UserSecretsId>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<BlazorWebAssemblyEnableLinking>false</BlazorWebAssemblyEnableLinking>
+		<Configurations>Debug;Release;DebugSourceCode</Configurations>
 	</PropertyGroup>
 
 	<!--<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release' ">
