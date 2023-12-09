@@ -1,5 +1,4 @@
 ﻿@page "/barcodeGenerators"
-@namespace DemoShared.Pages
 @attribute [TabItemOption(Text = "条码生成器", Icon = "fa fa-barcode")]
 @inherits AppComponentBase
 @using System.ComponentModel
@@ -11,7 +10,7 @@
 <a href="https://github.com/densen2014/Densen.Extensions/blob/master/Demo/DemoShared/Pages/BarcodeGenerators.razor"><h5>页面源码</h5></a>
 
 <Tab IsLazyLoadTabItem>
-    <TabItem Text="常规">
+    <TabItem Text="条码生成器">
         <div style="max-width: 554px;">
             <div class="col-12" style="text-align: center; vertical-align: middle;">
                 <BarCodeGenerator @ref="barCodes" Value="@value" Options="Options" OnResult="OnResult" />
@@ -69,20 +68,58 @@
 
     </TabItem>
     <TabItem Text="批量">
-        <BarCodeGenerator Type="EnumBarcodeType.CODE128" Value="@value"/>
-        <BarCodeGenerator Type="EnumBarcodeType.EAN13" Value="@value"/>
-        <BarCodeGenerator Type="EnumBarcodeType.EAN8" Value="@value"/>
-        <BarCodeGenerator Type="EnumBarcodeType.EAN5" Value="@value"/>
-        <BarCodeGenerator Type="EnumBarcodeType.EAN2" Value="@value"/>
-        <BarCodeGenerator Type="EnumBarcodeType.UPC" Value="@value"/>
-        <BarCodeGenerator Type="EnumBarcodeType.CODE39" Value="@value"/>
-        <BarCodeGenerator Type="EnumBarcodeType.ITF14" Value="@value"/>
-        <BarCodeGenerator Type="EnumBarcodeType.MSI" Value="@value"/>
-        <BarCodeGenerator Type="EnumBarcodeType.pharmacode" Value="@value"/>
+        <BarCodeGenerator Type="EnumBarcodeType.CODE128" Value="Hi!" />
+        <BarCodeGenerator Type="EnumBarcodeType.EAN13" Value="1234567890128" />
+        <BarCodeGenerator Type="EnumBarcodeType.EAN8" Value="12345670" />
+        <BarCodeGenerator Type="EnumBarcodeType.EAN5" Value="12345" />
+        <BarCodeGenerator Type="EnumBarcodeType.EAN2" Value="12" />
+        <BarCodeGenerator Type="EnumBarcodeType.UPC" Value="123456789012" />
+        <BarCodeGenerator Type="EnumBarcodeType.CODE39" Value="Hello" />
+        <BarCodeGenerator Type="EnumBarcodeType.ITF14" Value="1234567890123" />
+        <BarCodeGenerator Type="EnumBarcodeType.MSI" Value="123456" />
+        <BarCodeGenerator Type="EnumBarcodeType.pharmacode" Value="12345" />
+    </TabItem>
+    <TabItem Text="简单配置">
+        <BarCodeGenerator Options="Options1" />
+        <BarCodeGenerator Options="Options2" />
+        <BarCodeGenerator Options="Options3" />
     </TabItem>
 </Tab>
 @code{
     BarcodeGeneratorOption Options { get; set; } = new();
+
+    BarcodeGeneratorOption Options1 { get; set; } = new()
+    {
+        FontSize = 40,
+        Value = "Hi!",
+        Background = "#4b8b7f",
+        LineColor = "#ffffff",
+        Margin = 40,
+        TextMargin = 80
+    };
+
+    BarcodeGeneratorOption Options2 { get; set; } = new()
+    {
+        TextAlign = EnumBarcodeTextAlign.Left,
+        TextPosition = EnumTextPosition.Bottom,
+        Value = "Hi!",
+        Font = EnumBarcodeFont.Cursive,
+        FontOption = EnumBarcodeFontOption.Bold,
+        FontSize = 40,
+        TextMargin = 15,
+        Text= "Special",
+    };
+
+
+    BarcodeGeneratorOption Options3 { get; set; } = new()
+    {
+        Value = "1234",
+        Type= EnumBarcodeType.pharmacode,
+        ShowText = false,
+        Height = 50,
+        Width = 6
+    };
+
 
     private Dictionary<string, string> defaultValues = new Dictionary<string, string>()
 {
