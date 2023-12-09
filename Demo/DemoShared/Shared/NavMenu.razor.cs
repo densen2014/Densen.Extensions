@@ -25,6 +25,7 @@ public partial class NavMenu
                     new MenuItem() { Text = "上传图片 (Base64)", Url = "/UploadToBase64s" },
                     new MenuItem() { Text = "分享按钮 Share", Url = "/ShareObject" },
                     new MenuItem() { Text = "思维导图 MindMap", Url = "/MindMaps" },
+                    new MenuItem() { Text = "条码生成器 BarcodeGenerator", Url = "/barcodeGenerators" },
                 }
             },
             new MenuItem() { Text = "文件" ,Items= new List<MenuItem>

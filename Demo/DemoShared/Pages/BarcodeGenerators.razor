@@ -1,0 +1,132 @@
+﻿@page "/barcodeGenerators"
+@namespace DemoShared.Pages
+@attribute [TabItemOption(Text = "条码生成器", Icon = "fa fa-barcode")]
+@inherits AppComponentBase
+@using System.ComponentModel
+
+@using BootstrapBlazor.Components
+
+<div style="max-width: 554px;">
+    <div class="col-12" style="text-align: center; vertical-align: middle;">
+        <BarCodeGenerator @ref="barCodes" Value="@value" Options="Options" OnResult="OnResult" />
+    </div>
+    <GroupBox Title="参数">
+        <div class="row g-3">
+            <div class="col-12">
+                <BootstrapInput @bind-Value="value" OnEnterAsync="_=>OnChanged()" ShowLabel="true" />
+            </div>
+            <div class="col-12">
+                <Select @bind-Value="Options.Type" ShowLabel="true" OnValueChanged="OnValueChanged" />
+            </div>
+            <div class="col-12">
+                <Slider @bind-Value="@Options.Width" Min="1" Max="4" ShowLabel="true" OnValueChanged="_=>OnChanged()" />
+            </div>
+            <div class="col-12"> 
+                <Slider @bind-value="Options.Height" Min="10" Max="150" ShowLabel="true" Step="5" DisplayText="高度" OnValueChanged="_=>OnChanged()" />
+            </div>
+            <div class="col-12"> 
+                <Slider @bind-value="Options.Margin" Min="0" Max="25" ShowLabel="true" DisplayText="间距" OnValueChanged="_=>OnChanged()" />
+            </div>
+            <div class="col-12">
+                <ColorPicker @bind-Value="Options.Background" ShowLabel="true" OnValueChanged="_=>OnChanged()" />
+            </div>
+            <div class="col-12">
+                <ColorPicker @bind-Value="Options.LineColor" ShowLabel="true" OnValueChanged="_=>OnChanged()" />
+            </div>
+            <div class="col-12">
+                <Switch @bind-Value="Options.ShowText" ShowLabel="true" OnValueChanged="_=>OnChanged()" />
+            </div>
+            <div class="col-12">
+                <Select @bind-Value="Options.TextAlign" ShowLabel="true" OnValueChanged="_=>OnChanged()" />
+            </div>
+            <div class="col-12">
+                <Select @bind-Value="Options.Font" ShowLabel="true" OnValueChanged="_=>OnChanged()" />
+            </div>
+            <div class="col-12">
+                <Select @bind-Value="Options.FontOption" ShowLabel="true" OnValueChanged="_=>OnChanged()" />
+            </div>
+            <div class="col-12"> 
+                <Slider @bind-value="Options.FontSize" Min="8" Max="36" ShowLabel="true" DisplayText="字体大小" OnValueChanged="_=>OnChanged()" />
+            </div>
+            <div class="col-12"> 
+                <Slider @bind-value="Options.TextMargin" Min="-15" Max="40" ShowLabel="true" DisplayText="文字间距" OnValueChanged="_=>OnChanged()" />
+            </div>
+            <div class="col-12">
+                <Textarea Value="@svg" ShowLabel="true" DisplayText="SVG内容" />
+            </div>
+        </div>
+    </GroupBox>
+
+    @*<BarCodeGenerator Type="EnumBarcodeType.CODE128" Value="@value"/>
+        <BarCodeGenerator Type="EnumBarcodeType.EAN13" Value="@value"/>
+        <BarCodeGenerator Type="EnumBarcodeType.EAN8" Value="@value"/>
+        <BarCodeGenerator Type="EnumBarcodeType.EAN5" Value="@value"/>
+        <BarCodeGenerator Type="EnumBarcodeType.EAN2" Value="@value"/>
+        <BarCodeGenerator Type="EnumBarcodeType.UPC" Value="@value"/>
+        <BarCodeGenerator Type="EnumBarcodeType.CODE39" Value="@value"/>
+        <BarCodeGenerator Type="EnumBarcodeType.ITF14" Value="@value"/>
+        <BarCodeGenerator Type="EnumBarcodeType.MSI" Value="@value"/>
+        <BarCodeGenerator Type="EnumBarcodeType.pharmacode" Value="@value"/>*@
+
+      @*<Textarea @bind-Value="value" />*@ 
+</div>
+@code{
+    BarcodeGeneratorOption Options { get; set; } = new();
+
+    private Dictionary<string, string> defaultValues = new Dictionary<string, string>()
+    {
+        { "CODE128", "Example 1234"},
+        { "CODE128A", "EXAMPLE"},
+        { "CODE128B", "Example text"},
+        { "CODE128C", "12345678"},
+        { "EAN13", "1234567890128"},
+        { "EAN8", "12345670"},
+        { "EAN5", "12340"},
+        { "EAN2", "10"},
+        { "UPC", "123456789999"},
+        { "CODE39", "EXAMPLE TEXT"},
+        { "ITF14", "10012345000017"},
+        { "ITF", "123456"},
+        { "MSI", "123456"},
+        { "MSI10", "123456"},
+        { "MSI11", "123456"},
+        { "MSI1010", "123456"},
+        { "MSI1110", "123456"},
+        { "pharmacode", "1234"}
+    };
+
+    [DisplayName("条码文字")]
+    string? value { get; set; } = "12345";
+
+    [DisplayName("SVG内容")]
+    string? svg { get; set; }
+
+    BarCodeGenerator? barCodes;
+
+    private async Task Gencode()
+    {
+        await barCodes!.GenerateBarcode(string.IsNullOrWhiteSpace(value) ? "111111" : value);
+    }
+
+    private Task OnResult(string value)
+    {
+        svg= value;
+        return Task.CompletedTask;
+    }
+
+    private async Task OnValueChanged(EnumBarcodeType type)
+    {
+        value = defaultValues[type.ToString()];
+        await barCodes!.GenerateBarcode(value);
+    }
+
+    private async Task OnRangeChanged(string value)
+    {
+        await barCodes!.GenerateBarcode(value);
+    }
+
+    private async Task OnChanged()
+    {
+        await barCodes!.GenerateBarcode(value);
+    }
+}

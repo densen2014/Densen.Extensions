@@ -6,7 +6,7 @@
 
 @using BootstrapBlazor.Components
 
-<BarCodeGenerator @ref="barCodes" />
+<BarCodeGenerator @ref="barCodes"  />
 
 <Textarea @bind-Value="MessageString" />
 <br />
@@ -19,6 +19,6 @@
 
     private async Task Gencode()
     {
-        await barCodes!.CodeGen(string.IsNullOrWhiteSpace(MessageString) ? "111111" : MessageString);
+        await barCodes!.GenerateBarcode(string.IsNullOrWhiteSpace(MessageString) ? "111111" : MessageString);
     }
 }

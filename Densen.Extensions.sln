@@ -87,6 +87,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BootstrapBlazor.MindMap", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BootstrapBlazor.ImageCropper", "..\BootstrapBlazor.ImageCropper\src\BootstrapBlazor.ImageCropper\BootstrapBlazor.ImageCropper.csproj", "{A6DE5C95-30F9-4BA7-982E-1DA628DB9A3A}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BootstrapBlazor.BarcodeGenerator", "..\BootstrapBlazor.BarcodeGenerator\src\BootstrapBlazor.BarcodeGenerator\BootstrapBlazor.BarcodeGenerator.csproj", "{5764F80E-AC6C-4B96-8E94-DF3719C96C68}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -606,6 +608,22 @@ Global
 		{A6DE5C95-30F9-4BA7-982E-1DA628DB9A3A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A6DE5C95-30F9-4BA7-982E-1DA628DB9A3A}.Release|x86.ActiveCfg = Release|Any CPU
 		{A6DE5C95-30F9-4BA7-982E-1DA628DB9A3A}.Release|x86.Build.0 = Release|Any CPU
+		{5764F80E-AC6C-4B96-8E94-DF3719C96C68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5764F80E-AC6C-4B96-8E94-DF3719C96C68}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5764F80E-AC6C-4B96-8E94-DF3719C96C68}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{5764F80E-AC6C-4B96-8E94-DF3719C96C68}.Debug|x86.Build.0 = Debug|Any CPU
+		{5764F80E-AC6C-4B96-8E94-DF3719C96C68}.DebugNuget|Any CPU.ActiveCfg = Debug|Any CPU
+		{5764F80E-AC6C-4B96-8E94-DF3719C96C68}.DebugNuget|Any CPU.Build.0 = Debug|Any CPU
+		{5764F80E-AC6C-4B96-8E94-DF3719C96C68}.DebugNuget|x86.ActiveCfg = Debug|Any CPU
+		{5764F80E-AC6C-4B96-8E94-DF3719C96C68}.DebugNuget|x86.Build.0 = Debug|Any CPU
+		{5764F80E-AC6C-4B96-8E94-DF3719C96C68}.Preview|Any CPU.ActiveCfg = Debug|Any CPU
+		{5764F80E-AC6C-4B96-8E94-DF3719C96C68}.Preview|Any CPU.Build.0 = Debug|Any CPU
+		{5764F80E-AC6C-4B96-8E94-DF3719C96C68}.Preview|x86.ActiveCfg = Debug|Any CPU
+		{5764F80E-AC6C-4B96-8E94-DF3719C96C68}.Preview|x86.Build.0 = Debug|Any CPU
+		{5764F80E-AC6C-4B96-8E94-DF3719C96C68}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5764F80E-AC6C-4B96-8E94-DF3719C96C68}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5764F80E-AC6C-4B96-8E94-DF3719C96C68}.Release|x86.ActiveCfg = Release|Any CPU
+		{5764F80E-AC6C-4B96-8E94-DF3719C96C68}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -641,6 +659,7 @@ Global
 		{5065A055-D478-46F5-9F8B-86C18BF75328} = {F5606303-B842-479D-B99B-4DB88AFED211}
 		{0F36714A-3351-43EF-9E1F-9D6B56D3FE72} = {7598D3CE-5270-4A5E-9A66-E8E8CC771339}
 		{A6DE5C95-30F9-4BA7-982E-1DA628DB9A3A} = {7598D3CE-5270-4A5E-9A66-E8E8CC771339}
+		{5764F80E-AC6C-4B96-8E94-DF3719C96C68} = {7598D3CE-5270-4A5E-9A66-E8E8CC771339}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2B9698BD-88AE-4165-9322-67F121A4B26B}

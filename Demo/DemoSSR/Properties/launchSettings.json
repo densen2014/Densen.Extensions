@@ -12,7 +12,7 @@
     "TestCanvas": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "testcanvas",
+      "launchUrl": "barcodeGenerators",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
