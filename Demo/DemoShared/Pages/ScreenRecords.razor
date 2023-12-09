@@ -1,12 +1,12 @@
 ﻿@page "/ScreenRecords"
 @attribute [TabItemOption(Text = "录屏")]
 
-<a href="https://www.nuget.org/packages/BootstrapBlazor.WebAPI#readme-body-tab"><h3>录屏</h3></a>
+<a href="https://www.nuget.org/packages/BootstrapBlazor.WebApi#readme-body-tab"><h3>录屏</h3></a>
 <hr />
 <a href="https://github.com/densen2014/Densen.Extensions/blob/master/Demo/DemoShared/Pages/ScreenRecords.razor"><h5>页面源码</h5></a>
 
 
-<WebApi @ref="webApi" />
+<WebApi @ref="WebApi" />
 
 <Button Text="获取录屏支持格式" OnClick="GetTypeSupported" />
 <Button Text="开始录屏" OnClick="Start" />
@@ -20,13 +20,13 @@
 @code{
 
     [NotNull]
-    WebApi? webApi;
+    WebApi? WebApi { get; set; }
 
     string? Message { get; set; } = "";
 
     async Task GetTypeSupported()
     {
-        var res = await webApi.ScreenRecordTypeSupported();
+        var res = await WebApi.ScreenRecordTypeSupported();
         if (res != null)
         {
             foreach (var item in res)
@@ -38,16 +38,16 @@
 
     async Task Start()
     {
-        await webApi.ScreenRecordStart();
+        await WebApi.ScreenRecordStart();
     }
 
     async Task Stop()
     {
-        Message = await webApi.ScreenRecordStop();
+        Message = await WebApi.ScreenRecordStop();
     }
 
     async Task StopAndUpload()
     {
-        Message = await webApi.ScreenRecordStop(true);
+        Message = await WebApi.ScreenRecordStop(true);
     }
 }

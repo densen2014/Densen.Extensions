@@ -5,11 +5,11 @@
 
 <p>测试PC和ios不支持</p>
 
-<WebApi @ref="webApi" />
+<WebApi @ref="WebApi" />
 
-<Button Text="锁定屏幕方向为竖屏" OnClick="(async()=>await webApi.ScreenOrientation(Screen.LockPortrait))" />
-<Button Text="锁定屏幕方向为横屏" OnClick="(async()=>await webApi.ScreenOrientation(Screen.LockLandscape))" />
-<Button Text="解除屏幕方向锁定" OnClick="(async()=>await webApi.ScreenOrientation(Screen.Unlock))" />
+<Button Text="锁定屏幕方向为竖屏" OnClick="(async()=>await WebApi.ScreenOrientation(Screen.LockPortrait))" />
+<Button Text="锁定屏幕方向为横屏" OnClick="(async()=>await WebApi.ScreenOrientation(Screen.LockLandscape))" />
+<Button Text="解除屏幕方向锁定" OnClick="(async()=>await WebApi.ScreenOrientation(Screen.Unlock))" />
 <Button Text="返回屏幕当前的方向" OnClick="GetScreenOrientation" />
 
 <p>
@@ -19,12 +19,11 @@
 @code{
 
     [NotNull]
-    WebApi? webApi;
-
+    WebApi? WebApi { get; set; }
     string? Message { get; set; }
 
     async Task GetScreenOrientation()
     {
-        Message= await webApi.ScreenOrientation(Screen.GetOrientation);
+        Message = await WebApi.ScreenOrientation(Screen.GetOrientation);
     }
 }

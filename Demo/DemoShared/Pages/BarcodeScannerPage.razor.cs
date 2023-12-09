@@ -5,6 +5,7 @@
 // **********************************
 
 using BootstrapBlazor.Components;
+using System.Diagnostics.CodeAnalysis;
 using ZXingBlazor.Components;
 
 namespace DemoShared.Pages;
@@ -61,7 +62,8 @@ public partial class BarcodeScannerPage: AppComponentBase
 
     #region Custom
 
-    BarcodeReader? barcodeReaderCustom;
+    [NotNull]
+    BarcodeReader? BarcodeReaderCustom { get; set; }
 
     /// <summary>
     /// 条码

@@ -5,13 +5,13 @@
 <hr />
 <a href="https://github.com/densen2014/Densen.Extensions/blob/master/Demo/DemoShared/Pages/ImageCroppers.razor"><h5>页面源码</h5></a>
 
-<ImageCropper @ref="cropper" Url="@images[0]" DefaultButton="false" />
+<ImageCropper @ref="Cropper" Url="@images[0]" DefaultButton="false" />
 <BootstrapInputGroup>
-    <Button Text="OK" OnClick="(async () => Base64 = await cropper.Crop())" />
-    <Button Text="复位" OnClick="cropper.Reset" />
+    <Button Text="OK" OnClick="(async () => Base64 = await Cropper.Crop())" />
+    <Button Text="复位" OnClick="Cropper.Reset" />
     <Button Text="替换" OnClick="(async () => {
                                    index = index == 0 ? 1 : 0;
-                                   await cropper.Replace(images[index]);
+                                   await Cropper.Replace(images[index]);
                                })" />
 </BootstrapInputGroup>
 
@@ -20,13 +20,14 @@
 
 @code{
 
-    ImageCropper? cropper;
+    [NotNull]
+    ImageCropper? Cropper { get; set; }
 
     string[] images = ["./_content/DemoShared/test.jpg", "./_content/DemoShared/icon-512.png"];
 
     int index = 0;
 
-    string? Base64 { get; set; } 
+    string? Base64 { get; set; }
 
- 
+
 }

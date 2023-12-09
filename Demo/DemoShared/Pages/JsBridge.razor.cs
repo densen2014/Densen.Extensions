@@ -22,11 +22,11 @@ public partial class JsBridge : IAsyncDisposable
     [Inject, NotNull]
     private ToastService? ToastService { get; set; }
 
-    private IJSObjectReference? module;
+    private IJSObjectReference? Module { get; set; }
 
     private async Task GetMacAdress()
     {
-        message = await module!.InvokeAsync<string>("GetMacAdress");
+        message = await Module!.InvokeAsync<string>("GetMacAdress");
         await ToastService.Information("JS方式 macAdress", message);
 
         message = await JS!.InvokeAsync<string>("eval", $"localStorage.getItem('macAdress');");
@@ -46,7 +46,7 @@ public partial class JsBridge : IAsyncDisposable
 
                 message = await JS!.InvokeAsync<string>("eval", $"localStorage.getItem('macAdress');");
 
-                module = await JS!.InvokeAsync<IJSObjectReference>("import", "./_content/DemoShared/Pages/JsBridge.razor.js" + "?v=" + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version);
+                Module = await JS!.InvokeAsync<IJSObjectReference>("import", "./_content/DemoShared/Pages/JsBridge.razor.js" + "?v=" + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version);
             }
         }
         catch (Exception e)
@@ -59,9 +59,9 @@ public partial class JsBridge : IAsyncDisposable
 
     async ValueTask IAsyncDisposable.DisposeAsync()
     {
-        if (module is not null)
+        if (Module is not null)
         {
-            await module.DisposeAsync();
+            await Module.DisposeAsync();
         }
     }
 

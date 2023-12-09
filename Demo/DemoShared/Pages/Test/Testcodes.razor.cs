@@ -18,7 +18,8 @@ namespace DemoShared.Pages;
 /// </summary>
 public partial class Testcodes
 {
-    BarcodeReader? barcodeReaderCustom;
+    [NotNull]
+    BarcodeReader? BarcodeReaderCustom { get; set; }
 
     [Inject, NotNull]
     public IStorage? Storage { get; set; }
@@ -59,14 +60,14 @@ public partial class Testcodes
     {
         CheckAPI = !CheckAPI;
         if (CheckAPI)
-            await barcodeReaderCustom!.Start();
+            await BarcodeReaderCustom!.Start();
         else
-            await barcodeReaderCustom!.Stop();
+            await BarcodeReaderCustom!.Stop();
     }
 
     private async Task OnChanged(List<ImageFile> items)
     {
-        await barcodeReaderCustom!.Stop();
+        await BarcodeReaderCustom!.Stop();
         CheckAPI = false;
         BarCodesCustom = string.Empty;
         items.ForEach(item => BarCodesCustom = $"{DateTime.Now:mm:ss} {item.ContentType} size {item.Size/1024:n2}kb {Environment.NewLine}{BarCodesCustom}");

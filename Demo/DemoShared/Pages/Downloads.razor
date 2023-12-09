@@ -8,7 +8,7 @@ Files:
 
 <pre>
 @{
-    if (Type== "BlazorHybrid" )
+    if (Type== "BlazorHybrid" && Config!=null && Config["BlazorHybridPath"] != null)
     {
         var BlazorHybrid = Config["BlazorHybridPath"];
         if (!string.IsNullOrEmpty(Config["BlazorHybridPath"]) && Directory.Exists(Config["BlazorHybridPath"]))
@@ -21,14 +21,20 @@ Files:
         }
 
     }
-    var files = Directory.GetFiles(UploadPath);
-    int i = 0;
-    foreach (var item in files)
+    if (UploadPath != null)
     {
-        i++;
-<button class="btn btn-link" @onclick="(()=>DownloadBlob.DownloadFileFromStream(item))">@($"{i}.{Path.GetFileName(item)}")</button><br />
-        }
+        var files = Directory.GetFiles(UploadPath);
+        int i = 0;
+        if (files != null)
+        {
+            foreach (var item in files)
+            {
+                i++;
+                <button class="btn btn-link" @onclick="(()=>DownloadBlob.DownloadFileFromStream(item))">@($"{i}.{Path.GetFileName(item)}")</button><br />
+            }
+        } 
     }
+}
 </pre>
 
 <p>@Message</p>
@@ -52,7 +58,7 @@ Files:
     /// 默认路径, Linux会在/root/uploads, win在 C:\Users\[username]\Documents\uploads
     /// </summary>
     [Parameter]
-    public string UploadPath { get; set; } = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "uploads");
+    public string? UploadPath { get; set; } = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "uploads");
 
     string? Message { get; set; }
 

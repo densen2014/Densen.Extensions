@@ -41,7 +41,7 @@
     List<string> Items1 { get; set; } = new List<string>();
 
     string id { get; set; } = "images";
-    private IJSObjectReference? module;
+    private IJSObjectReference? Module { get; set; }
 
     protected override void OnInitialized()
     {
@@ -61,20 +61,20 @@
     {
         if (firstRender)
         {
-            module = await JS.InvokeAsync<IJSObjectReference>("import", "./_content/BootstrapBlazor.Viewer/lib/viewerjs/viewerjs.js" + "?v=" + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version);
-            await module.InvokeVoidAsync("initOptions", options);
+            Module = await JS.InvokeAsync<IJSObjectReference>("import", "./_content/BootstrapBlazor.Viewer/lib/viewerjs/viewerjs.js" + "?v=" + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version);
+            await Module.InvokeVoidAsync("initOptions", options);
         }
     }
 
     ViewerOptions options = new ViewerOptions();
 
-    private async Task OnItemChanged(CheckboxState state, bool value) => await module!.InvokeVoidAsync("initOptions", options);
+    private async Task OnItemChanged(CheckboxState state, bool value) => await Module!.InvokeVoidAsync("initOptions", options);
 
     async ValueTask IAsyncDisposable.DisposeAsync()
     {
-        if (module is not null)
+        if (Module is not null)
         {
-            await module.DisposeAsync();
+            await Module.DisposeAsync();
         }
     }
 }
