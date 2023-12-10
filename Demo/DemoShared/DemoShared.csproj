@@ -63,7 +63,6 @@
 		<PackageReference Include="ZXingBlazor" Version="*" />
 		<PackageReference Include="Densen.Extensions.BootstrapBlazor" Version="*" />
 		<PackageReference Include="Densen.Component.Blazor" Version="*" />
-		<PackageReference Include="ZXingBlazor" Version="*" />
 	</ItemGroup> 
     
 	<ItemGroup>
