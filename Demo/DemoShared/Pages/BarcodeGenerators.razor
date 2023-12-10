@@ -13,7 +13,7 @@
     <TabItem Text="条码生成器">
         <div style="max-width: 554px;">
             <div class="col-12" style="text-align: center; vertical-align: middle;">
-                <BarCodeGenerator @ref="barCodes" Value="@value" Options="Options" OnResult="OnResult" />
+                <BarCodeGenerator Value="@value" Options="Options" OnResult="OnResult" />
             </div>
             <GroupBox  Title="参数">
                     <div class="row g-3">
@@ -156,8 +156,6 @@
 
     [DisplayName("SVG内容")]
     private string? svg { get; set; }
-
-    private BarCodeGenerator? barCodes;
 
     private Task OnResult(string value)
     {
