@@ -17,46 +17,55 @@
             </div>
             <GroupBox Title="参数">
                 <div class="row g-3">
-                    <div class="col-12">
-                        <BootstrapInput @bind-Value="value" OnEnterAsync="_=>OnChanged()" ShowLabel="true" />
+                    <div class="col-12 col-sm-6">
+                        <BootstrapInput @bind-Value="value" OnEnterAsync="_=>OnChanged()" ShowLabel="true" OnValueChanged="_=>OnChanged()" />
                     </div>
-                    <div class="col-12">
+                    <div class="col-12 col-sm-6">
                         <Select @bind-Value="Options.Type" ShowLabel="true" OnValueChanged="OnValueChanged" />
                     </div>
-                    <div class="col-12">
+                    <div class="col-12 col-sm-6">
                         <Slider @bind-Value="@Options.Width" Min="1" Max="4" ShowLabel="true" OnValueChanged="_=>OnChanged()" />
                     </div>
-                    <div class="col-12">
+                    <div class="col-12 col-sm-6">
                         <Slider @bind-value="Options.Height" Min="10" Max="150" ShowLabel="true" Step="5" DisplayText="高度" OnValueChanged="_=>OnChanged()" />
                     </div>
-                    <div class="col-12">
+                    <div class="col-12 col-sm-6">
                         <Slider @bind-value="Options.Margin" Min="0" Max="25" ShowLabel="true" DisplayText="间距" OnValueChanged="_=>OnChanged()" />
                     </div>
-                    <div class="col-12">
+                    <div class="col-12 col-sm-6">
+                        <Switch @bind-Value="Options.Flat" ShowLabel="true" OnValueChanged="_=>OnChanged()" />
+                    </div>
+                    <div class="col-12 col-sm-6">
                         <ColorPicker @bind-Value="Options.Background" ShowLabel="true" OnValueChanged="_=>OnChanged()" />
                     </div>
-                    <div class="col-12">
+                    <div class="col-12 col-sm-6">
                         <ColorPicker @bind-Value="Options.LineColor" ShowLabel="true" OnValueChanged="_=>OnChanged()" />
                     </div>
-                    <div class="col-12">
-                        <Switch @bind-Value="Options.ShowText" ShowLabel="true" OnValueChanged="_=>OnChanged()" />
+                    <div class="col-12 col-sm-6">
+                        <Switch @bind-Value="Options.DisplayValue" ShowLabel="true" OnValueChanged="_=>OnChanged()" />
                     </div>
-                    <div class="col-12">
+                    <div class="col-12 col-sm-6">
+                        <BootstrapInput @bind-Value="Options.Text" ShowLabel="true" OnEnterAsync="_=>OnChanged()" OnValueChanged="_=>OnChanged()"/>
+                    </div>
+                    <div class="col-12 col-sm-6">
                         <Select @bind-Value="Options.TextAlign" ShowLabel="true" OnValueChanged="_=>OnChanged()" />
                     </div>
-                    <div class="col-12">
+                    <div class="col-12 col-sm-6">
+                        <Select @bind-Value="Options.TextPosition" ShowLabel="true" OnValueChanged="_=>OnChanged()" />
+                    </div>
+                    <div class="col-12 col-sm-6">
                         <Select @bind-Value="Options.Font" ShowLabel="true" OnValueChanged="_=>OnChanged()" />
                     </div>
-                    <div class="col-12">
-                        <Select @bind-Value="Options.FontOption" ShowLabel="true" OnValueChanged="_=>OnChanged()" />
+                    <div class="col-12 col-sm-6">
+                        <Select @bind-Value="Options.FontOptions" ShowLabel="true" OnValueChanged="_=>OnChanged()" />
                     </div>
-                    <div class="col-12">
+                    <div class="col-12 col-sm-6">
                         <Slider @bind-value="Options.FontSize" Min="8" Max="36" ShowLabel="true" DisplayText="字体大小" OnValueChanged="_=>OnChanged()" />
                     </div>
-                    <div class="col-12">
+                    <div class="col-12 col-sm-6">
                         <Slider @bind-value="Options.TextMargin" Min="-15" Max="40" ShowLabel="true" DisplayText="文字间距" OnValueChanged="_=>OnChanged()" />
                     </div>
-                    <div class="col-12">
+                    <div class="col-12 col-sm-6">
                         <Textarea Value="@svg" ShowLabel="true" DisplayText="SVG内容" />
                     </div>
                 </div>
@@ -65,7 +74,6 @@
 
             @*<Textarea @bind-Value="value" />*@
         </div>
-
     </TabItem>
     <TabItem Text="批量">
         <BarCodeGenerator Type="EnumBarcodeType.CODE128" Value="Hi!" />
@@ -76,8 +84,8 @@
         <BarCodeGenerator Type="EnumBarcodeType.UPC" Value="123456789012" />
         <BarCodeGenerator Type="EnumBarcodeType.CODE39" Value="Hello" />
         <BarCodeGenerator Type="EnumBarcodeType.ITF14" Value="1234567890123" />
-        <BarCodeGenerator Type="EnumBarcodeType.MSI" Value="123456" />
-        <BarCodeGenerator Type="EnumBarcodeType.pharmacode" Value="12345" />
+        <BarCodeGenerator Type="EnumBarcodeType.ITF14" Value="123456" />
+        <BarCodeGenerator Type="EnumBarcodeType.MSI" Value="12345" />
     </TabItem>
     <TabItem Text="简单配置">
         <BarCodeGenerator Options="Options1" />
@@ -90,8 +98,8 @@
 
     BarcodeGeneratorOption Options1 { get; set; } = new()
     {
-        FontSize = 40,
         Value = "Hi!",
+        FontSize = 40,
         Background = "#4b8b7f",
         LineColor = "#ffffff",
         Margin = 40,
@@ -100,22 +108,22 @@
 
     BarcodeGeneratorOption Options2 { get; set; } = new()
     {
-        TextAlign = EnumBarcodeTextAlign.Left,
-        TextPosition = EnumTextPosition.Bottom,
         Value = "Hi!",
+        TextAlign = EnumBarcodeTextAlign.left,
+        TextPosition = EnumTextPosition.top,
         Font = EnumBarcodeFont.Cursive,
-        FontOption = EnumBarcodeFontOption.Bold,
+        FontOptions = EnumBarcodeFontOption.bold,
         FontSize = 40,
         TextMargin = 15,
-        Text= "Special",
+        Text = "Special"
     };
 
 
     BarcodeGeneratorOption Options3 { get; set; } = new()
     {
         Value = "1234",
-        Type= EnumBarcodeType.pharmacode,
-        ShowText = false,
+        Type = EnumBarcodeType.pharmacode,
+        DisplayValue = false,
         Height = 50,
         Width = 6
     };
