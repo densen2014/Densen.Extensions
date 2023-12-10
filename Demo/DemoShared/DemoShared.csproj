@@ -37,6 +37,8 @@
 		<ProjectReference Include="..\..\..\BootstrapBlazor.VideoPlayer\src\BootstrapBlazor.VideoPlayer\BootstrapBlazor.VideoPlayer.csproj" />
 		<ProjectReference Include="..\..\..\BootstrapBlazor.FileViewer\src\BootstrapBlazor.FileViewer\BootstrapBlazor.FileViewer.csproj" />
 		<ProjectReference Include="..\..\..\ZXingBlazor\src\ZXingBlazor\ZXingBlazor.csproj" />
+		<ProjectReference Include="..\..\Blazor\Densen.Extensions.BootstrapBlazor.csproj" />
+		<ProjectReference Include="..\..\Densen.Component.Blazor\Densen.Component.Blazor.csproj" />
 	</ItemGroup>
 
     <ItemGroup Condition="'$(Configuration)' == 'Debug'">
@@ -59,13 +61,14 @@
 		<PackageReference Include="BootstrapBlazor.VideoPlayer" Version="*" />
 		<PackageReference Include="BootstrapBlazor.FileViewer" Version="*" />
 		<PackageReference Include="ZXingBlazor" Version="*" />
-	</ItemGroup>
-
+		<PackageReference Include="Densen.Extensions.BootstrapBlazor" Version="*" />
+		<PackageReference Include="Densen.Component.Blazor" Version="*" />
+		<PackageReference Include="ZXingBlazor" Version="*" />
+	</ItemGroup> 
+    
 	<ItemGroup>
-		<ProjectReference Include="..\..\Blazor\Densen.Extensions.BootstrapBlazor.csproj" />
-		<ProjectReference Include="..\..\Densen.Component.Blazor\Densen.Component.Blazor.csproj" />
-		<ProjectReference Include="..\DemoLib\DemoLib.csproj" />
-	</ItemGroup>
+        <ProjectReference Include="..\DemoLib\DemoLib.csproj" />
+    </ItemGroup> 
 
 	<ProjectExtensions>
 		<VisualStudio>
