@@ -1,6 +1,24 @@
-{
+﻿{
   "profiles": {
     "DemoSSR": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "http://localhost:5000;",
+      "dotnetRunMessages": true
+    },
+    "Https": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:5011;http://localhost:5000;",
+      "dotnetRunMessages": true
+    },
+    "Https_0.0.0.0": {
       "commandName": "Project",
       "launchBrowser": true,
       "environmentVariables": {
@@ -9,7 +27,27 @@
       "applicationUrl": "https://localhost:5011;http://localhost:5000;https://0.0.0.0:5011;http://0.0.0.0:5000",
       "dotnetRunMessages": true
     },
-    "TestCanvas": {
+    "ZXing": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "launchUrl": "barcodescanner",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:5011;http://localhost:5000;https://0.0.0.0:5011;http://0.0.0.0:5000",
+      "dotnetRunMessages": true
+    },
+    "BarcodeGenerators": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "launchUrl": "barcodeGenerators",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:5011;http://localhost:5000;https://0.0.0.0:5011;http://0.0.0.0:5000",
+      "dotnetRunMessages": true
+    },
+    "Canvas": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "barcodeGenerators",
