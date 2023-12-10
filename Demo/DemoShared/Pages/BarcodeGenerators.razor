@@ -169,16 +169,4 @@
         return Task.CompletedTask;
     }
 
-    private Task OnChanged()
-    {
-        StateHasChanged();
-        return Task.CompletedTask;
-    }
-
-    private Task OnSearchKeyUp(KeyboardEventArgs args)
-    {
-        Options.Text = value;
-        return Task.CompletedTask;
-
-    }
 }
