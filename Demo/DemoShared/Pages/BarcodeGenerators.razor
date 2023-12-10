@@ -15,60 +15,60 @@
             <div class="col-12" style="text-align: center; vertical-align: middle;">
                 <BarCodeGenerator @ref="barCodes" Value="@value" Options="Options" OnResult="OnResult" />
             </div>
-            <GroupBox Title="参数">
-                <div class="row g-3">
-                    <div class="col-12 col-sm-6">
-                        <BootstrapInput @bind-Value="value" OnEnterAsync="_=>OnChanged()" ShowLabel="true" OnValueChanged="_=>OnChanged()" />
+            <GroupBox  Title="参数">
+                    <div class="row g-3">
+                        <div class="col-12 col-sm-6">
+                            <InputOnKeyup @bind-Value="value" ShowLabel="true" OnInput="true" />
+                        </div>
+                        <div class="col-12 col-sm-6">
+                            <Select @bind-Value="Options.Type" OnValueChanged="OnValueChanged" ShowLabel="true" />
+                        </div>
+                        <div class="col-12 col-sm-6">
+                            <Slider @bind-Value="Options.Width" Min="1" Max="6" ShowLabel="true" />
+                        </div>
+                        <div class="col-12 col-sm-6">
+                            <Slider @bind-Value="Options.Height" Min="10" Max="300" Step="5" ShowLabel="true" />
+                        </div>
+                        <div class="col-12 col-sm-6">
+                            <Slider @bind-Value="Options.Margin" Min="-30" Max="100" ShowLabel="true" />
+                        </div>
+                        <div class="col-12 col-sm-6">
+                            <Switch @bind-Value="Options.Flat" ShowLabel="true" />
+                        </div>
+                        <div class="col-12 col-sm-6">
+                            <ColorPicker @bind-Value="Options.Background" ShowLabel="true" />
+                        </div>
+                        <div class="col-12 col-sm-6">
+                            <ColorPicker @bind-Value="Options.LineColor" ShowLabel="true" />
+                        </div>
+                        <div class="col-12 col-sm-6">
+                            <Switch @bind-Value="Options.DisplayValue" ShowLabel="true" />
+                        </div>
+                        <div class="col-12 col-sm-6">
+                            <InputOnKeyup ShowLabel="true" @bind-Value="Options.Text" OnInput="true" />
+                        </div>
+                        <div class="col-12 col-sm-6">
+                            <Select @bind-Value="Options.TextAlign" ShowLabel="true" />
+                        </div>
+                        <div class="col-12 col-sm-6">
+                            <Select @bind-Value="Options.TextPosition" ShowLabel="true" />
+                        </div>
+                        <div class="col-12 col-sm-6">
+                            <Select @bind-Value="Options.Font" ShowLabel="true" />
+                        </div>
+                        <div class="col-12 col-sm-6">
+                            <Select @bind-Value="Options.FontOptions" ShowLabel="true" />
+                        </div>
+                        <div class="col-12 col-sm-6">
+                            <Slider @bind-Value="Options.FontSize" Min="8" Max="52" ShowLabel="true" />
+                        </div>
+                        <div class="col-12 col-sm-6">
+                            <Slider @bind-Value="Options.TextMargin" Min="-30" Max="100" ShowLabel="true" />
+                        </div>
+                        <div class="col-12 col-sm-6">
+                            <Textarea Value="@svg" DisplayText="SVG内容" ShowLabel="true" />
+                        </div>
                     </div>
-                    <div class="col-12 col-sm-6">
-                        <Select @bind-Value="Options.Type" ShowLabel="true" OnValueChanged="OnValueChanged" />
-                    </div>
-                    <div class="col-12 col-sm-6">
-                        <Slider @bind-Value="Options.Width" Min="1" Max="4" ShowLabel="true" OnValueChanged="_=>OnChanged()" />
-                    </div>
-                    <div class="col-12 col-sm-6">
-                        <Slider @bind-Value="Options.Height" Min="10" Max="150" ShowLabel="true" Step="5" OnValueChanged="_=>OnChanged()" />
-                    </div>
-                    <div class="col-12 col-sm-6">
-                        <Slider @bind-Value="Options.Margin" Min="0" Max="25" ShowLabel="true" OnValueChanged="_=>OnChanged()" />
-                    </div>
-                    <div class="col-12 col-sm-6">
-                        <Switch @bind-Value="Options.Flat" ShowLabel="true" OnValueChanged="_=>OnChanged()" />
-                    </div>
-                    <div class="col-12 col-sm-6">
-                        <ColorPicker @bind-Value="Options.Background" ShowLabel="true" OnValueChanged="_=>OnChanged()" />
-                    </div>
-                    <div class="col-12 col-sm-6">
-                        <ColorPicker @bind-Value="Options.LineColor" ShowLabel="true" OnValueChanged="_=>OnChanged()" />
-                    </div>
-                    <div class="col-12 col-sm-6">
-                        <Switch @bind-Value="Options.DisplayValue" ShowLabel="true" OnValueChanged="_=>OnChanged()" />
-                    </div>
-                    <div class="col-12 col-sm-6">
-                        <BootstrapInput @bind-Value="Options.Text" ShowLabel="true" OnEnterAsync="_=>OnChanged()" OnValueChanged="_=>OnChanged()"/>
-                    </div>
-                    <div class="col-12 col-sm-6">
-                        <Select @bind-Value="Options.TextAlign" ShowLabel="true" OnValueChanged="_=>OnChanged()" />
-                    </div>
-                    <div class="col-12 col-sm-6">
-                        <Select @bind-Value="Options.TextPosition" ShowLabel="true" OnValueChanged="_=>OnChanged()" />
-                    </div>
-                    <div class="col-12 col-sm-6">
-                        <Select @bind-Value="Options.Font" ShowLabel="true" OnValueChanged="_=>OnChanged()" />
-                    </div>
-                    <div class="col-12 col-sm-6">
-                        <Select @bind-Value="Options.FontOptions" ShowLabel="true" OnValueChanged="_=>OnChanged()" />
-                    </div>
-                    <div class="col-12 col-sm-6">
-                        <Slider @bind-value="Options.FontSize" Min="8" Max="36" ShowLabel="true" DisplayText="字体大小" OnValueChanged="_=>OnChanged()" />
-                    </div>
-                    <div class="col-12 col-sm-6">
-                        <Slider @bind-value="Options.TextMargin" Min="-15" Max="40" ShowLabel="true" DisplayText="文字间距" OnValueChanged="_=>OnChanged()" />
-                    </div>
-                    <div class="col-12 col-sm-6">
-                        <Textarea Value="@svg" ShowLabel="true" DisplayText="SVG内容" />
-                    </div>
-                </div>
             </GroupBox>
 
 
@@ -94,9 +94,9 @@
     </TabItem>
 </Tab>
 @code{
-    BarcodeGeneratorOption Options { get; set; } = new();
+    private BarcodeGeneratorOption Options { get; set; } = new();
 
-    BarcodeGeneratorOption Options1 { get; set; } = new()
+    private BarcodeGeneratorOption Options1 { get; set; } = new()
     {
         Value = "Hi!",
         FontSize = 40,
@@ -106,7 +106,7 @@
         TextMargin = 80
     };
 
-    BarcodeGeneratorOption Options2 { get; set; } = new()
+    private BarcodeGeneratorOption Options2 { get; set; } = new()
     {
         Value = "Hi!",
         TextAlign = EnumBarcodeTextAlign.left,
@@ -119,7 +119,7 @@
     };
 
 
-    BarcodeGeneratorOption Options3 { get; set; } = new()
+    private BarcodeGeneratorOption Options3 { get; set; } = new()
     {
         Value = "1234",
         Type = EnumBarcodeType.pharmacode,
@@ -130,7 +130,7 @@
 
 
     private Dictionary<string, string> defaultValues = new Dictionary<string, string>()
-{
+    {
         { "CODE128", "Example 1234"},
         { "CODE128A", "EXAMPLE"},
         { "CODE128B", "Example text"},
@@ -152,17 +152,12 @@
     };
 
     [DisplayName("条码文字")]
-    string? value { get; set; } = "12345";
+    private string? value { get; set; } = "12345";
 
     [DisplayName("SVG内容")]
-    string? svg { get; set; }
+    private string? svg { get; set; }
 
-    BarCodeGenerator? barCodes;
-
-    private async Task Gencode()
-    {
-        await barCodes!.GenerateBarcode(string.IsNullOrWhiteSpace(value) ? "111111" : value);
-    }
+    private BarCodeGenerator? barCodes;
 
     private Task OnResult(string value)
     {
@@ -170,19 +165,22 @@
         return Task.CompletedTask;
     }
 
-    private async Task OnValueChanged(EnumBarcodeType type)
+    private Task OnValueChanged(EnumBarcodeType type)
     {
         value = defaultValues[type.ToString()];
-        await barCodes!.GenerateBarcode(value);
+        return Task.CompletedTask;
     }
 
-    private async Task OnRangeChanged(string value)
+    private Task OnChanged()
     {
-        await barCodes!.GenerateBarcode(value);
+        StateHasChanged();
+        return Task.CompletedTask;
     }
 
-    private async Task OnChanged()
+    private Task OnSearchKeyUp(KeyboardEventArgs args)
     {
-        await barCodes!.GenerateBarcode(value);
+        Options.Text = value;
+        return Task.CompletedTask;
+
     }
 }
