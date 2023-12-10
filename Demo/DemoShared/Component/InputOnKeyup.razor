@@ -1,0 +1,30 @@
+﻿@namespace BootstrapBlazor.Components
+@typeparam TValue
+@inherits BootstrapInputBase<TValue>
+
+@if (IsShowLabel)
+{
+    <BootstrapLabel Value="@DisplayText" ShowLabelTooltip="ShowLabelTooltip" required="@Required" for="@Id" />
+}
+
+<input @attributes="@AdditionalAttributes" type="@Type" placeholder="@PlaceHolder" id="@Id" class="@ClassName" readonly="@ReadonlyString" disabled="@Disabled" @bind-value="CurrentValueAsString" @bind-value:event="@EventString" @ref="FocusElement" />
+
+@code{
+
+    /// <summary>
+    /// 获得/设置 是否为只读 默认 false
+    /// </summary>
+    [Parameter]
+    public bool Readonly { get; set; }
+
+    private string? ReadonlyString => Readonly ? "true" : null;
+
+    /// <summary>
+    /// 获得/设置 是否在文本框的值更改时触发 默认 false
+    /// </summary>
+    [Parameter]
+    public bool OnInput { get; set; }=false;
+
+    private string EventString => OnInput ? "oninput" : "onchange";
+
+}
