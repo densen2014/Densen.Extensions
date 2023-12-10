@@ -1,7 +1,7 @@
 # Densen.Extensions
 Densen's Blazor component library and BootstrapBlazor service extension package
 
- [demo](https://blazor.app1.es/) | [English](README.md) | [中文](README.zh-CN.md) | [github](https://github.com/densen2014/Densen.Extensions) | [gitee(mirror only)](https://gitee.com/densen2014/Densen.Extensions)
+ [Demo](https://blazor.app1.es/) | [English](README.md) | [中文](README.zh-CN.md) | [github](https://github.com/densen2014/Densen.Extensions) | [gitee(mirror only)](https://gitee.com/densen2014/Densen.Extensions)
 
 ---
 
