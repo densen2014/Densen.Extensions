@@ -24,13 +24,13 @@
                         <Select @bind-Value="Options.Type" ShowLabel="true" OnValueChanged="OnValueChanged" />
                     </div>
                     <div class="col-12 col-sm-6">
-                        <Slider @bind-Value="@Options.Width" Min="1" Max="4" ShowLabel="true" OnValueChanged="_=>OnChanged()" />
+                        <Slider @bind-Value="Options.Width" Min="1" Max="4" ShowLabel="true" OnValueChanged="_=>OnChanged()" />
                     </div>
                     <div class="col-12 col-sm-6">
-                        <Slider @bind-value="Options.Height" Min="10" Max="150" ShowLabel="true" Step="5" DisplayText="高度" OnValueChanged="_=>OnChanged()" />
+                        <Slider @bind-Value="Options.Height" Min="10" Max="150" ShowLabel="true" Step="5" OnValueChanged="_=>OnChanged()" />
                     </div>
                     <div class="col-12 col-sm-6">
-                        <Slider @bind-value="Options.Margin" Min="0" Max="25" ShowLabel="true" DisplayText="间距" OnValueChanged="_=>OnChanged()" />
+                        <Slider @bind-Value="Options.Margin" Min="0" Max="25" ShowLabel="true" OnValueChanged="_=>OnChanged()" />
                     </div>
                     <div class="col-12 col-sm-6">
                         <Switch @bind-Value="Options.Flat" ShowLabel="true" OnValueChanged="_=>OnChanged()" />
