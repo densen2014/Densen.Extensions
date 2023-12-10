@@ -10,16 +10,20 @@ Nuget
  [Densen.Component.Blazor](https://www.nuget.org/packages/Densen.Component.Blazor/) | [Densen.Extensions.BootstrapBlazor](https://www.nuget.org/packages/Densen.Extensions.BootstrapBlazor/)  | [FreeSql.Extensionsr.BootstrapBlazor](https://www.nuget.org/packages/Densen.FreeSql.Extensions.BootstrapBlazor/)  | [ZXingBlazor](https://www.nuget.org/packages/ZXingBlazor/)
  
 ---
+
+Debugging source code instructions:
+The default Densen.Extensions.sln project is based on Nuget package debugging. If you want to debug the source code, please download the component project source code yourself, and then use Densen.Extensions.Debug.Source Code.sln to open and use the Debug SC configuration file to run debugging.
+
+---
+
 # Blazor complement
 
 [ZXingBlazor](https://www.nuget.org/packages/ZXingBlazor#readme-body-tab)
+[![nuget](https://img.shields.io/nuget/v/ZXingBlazor.svg?style=flat-square)](https://www.nuget.org/packages/ZXingBlazor) 
 [![stats](https://img.shields.io/nuget/dt/ZXingBlazor.svg?style=flat-square)](https://www.nuget.org/stats/packages/ZXingBlazor?groupby=Version)
 
+
 [Viewer](https://www.nuget.org/packages/BootstrapBlazor.Viewer#readme-body-tab)
-  
-[BarcodeScanner](Densen.Component.Blazor/BarcodeScanner.md)
-   
-[Handwritten](Densen.Component.Blazor/Handwritten.md)
 
 [SignaturePad](https://www.nuget.org/packages/BootstrapBlazor.SignaturePad#readme-body-tab)
 
@@ -40,6 +44,14 @@ Nuget
 [OCR](https://www.nuget.org/packages/BootstrapBlazor.OCR#readme-body-tab)
 
 [WebAPI](https://www.nuget.org/packages/BootstrapBlazor.WebAPI#readme-body-tab)
+
+[FileViewer](https://www.nuget.org/packages/BootstrapBlazor.FileViewer#readme-body-tab)
+
+[VideoPlayer](https://www.nuget.org/packages/BootstrapBlazor.VideoPlayer#readme-body-tab)
+
+[ImageCropper](https://www.nuget.org/packages/BootstrapBlazor.ImageCropper#readme-body-tab)
+
+[BarcodeGenerator](https://www.nuget.org/packages/BootstrapBlazor.BarcodeGenerator#readme-body-tab)
 
 
 ---
