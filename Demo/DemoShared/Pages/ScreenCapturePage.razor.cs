@@ -8,6 +8,7 @@ using BootstrapBlazor.Components;
 using BootstrapBlazor.WebAPI.Services;
 using Microsoft.AspNetCore.Components;
 using System.Diagnostics.CodeAnalysis;
+using ZXingBlazor.Components;
 
 namespace DemoShared.Pages;
 
@@ -23,11 +24,11 @@ public sealed partial class ScreenCapturePage
     public IStorage? Storage { get; set; }
 
     private CaptureOptions Options { get; set; } = new CaptureOptions();
+    private CaptureOptions OptionsEff { get; set; } = new CaptureOptions() { Effect = EnmuCaptureEffect.None };
     private string? message;
 
     [NotNull]
-    private Cams SelectedEnumItem = Cams.FHD;
-
+    private Cams SelectedEnumItem { get; set; } = Cams.FHD;
     private enum Cams
     {
         VGA,
@@ -36,6 +37,10 @@ public sealed partial class ScreenCapturePage
         QHD,
         UHD,
     }
+
+    [NotNull]
+    private EnmuCaptureEffect Effect { get; set; } = EnmuCaptureEffect.None; 
+
 
     public bool IsInit { get; set; }
 
@@ -63,9 +68,21 @@ public sealed partial class ScreenCapturePage
         //StateHasChanged();
     }
 
+    private Task OnSelectedEffectChanged(IEnumerable<SelectedItem> values, EnmuCaptureEffect val)
+    {
+        OptionsEff.Effect = val;
+        return Task.CompletedTask;
+    }
+
     private async Task OnCaptureResult(Stream item)
     {
         if (OCR != null) await OCR.OCRFromStream(item);
+        StateHasChanged();
+    }
+
+    private async Task OnCapture(string dataurl)
+    {
+        await barCodes!.DecodeFromImage(dataurl);
         StateHasChanged();
     }
 
@@ -86,8 +103,16 @@ public sealed partial class ScreenCapturePage
         return Task.CompletedTask;
     }
 
-    #endregion 
+    #endregion
 
+    BarCodes? barCodes;
+    string? Result { get; set; }
+    private Task OnResult(string message)
+    {
+        this.Result = message;
+        StateHasChanged();
+        return Task.CompletedTask;
+    }
     /// <summary>
     /// 获得属性方法
     /// </summary>

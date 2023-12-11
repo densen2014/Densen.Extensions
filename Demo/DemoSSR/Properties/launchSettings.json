@@ -47,6 +47,16 @@
       "applicationUrl": "https://localhost:5011;http://localhost:5000;https://0.0.0.0:5011;http://0.0.0.0:5000",
       "dotnetRunMessages": true
     },
+    "Capture": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "launchUrl": "screencapture",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:5011;http://localhost:5000;https://0.0.0.0:5011;http://0.0.0.0:5000",
+      "dotnetRunMessages": true
+    },
     "Canvas": {
       "commandName": "Project",
       "launchBrowser": true,

@@ -1,5 +1,6 @@
 ﻿@page "/screencapture"
 @attribute [TabItemOption(Text = "截屏/录像")]
+@using ZXingBlazor.Components
 
 <a href="https://www.nuget.org/packages/BootstrapBlazor.WebAPI#readme-body-tab"><h3>截屏/录像</h3></a>
 <hr />
@@ -57,7 +58,7 @@
         <Capture OnCaptureResult="@OnCaptureResult" OnError="@OnError" Camera="false" />
     </TabItem>
     <TabItem Text="自定义UI">
-        <Capture @ref="Capture" ShowUI="false" OnCaptureResult="@OnCaptureResult" OnError="@OnError" Width=1280 Height=720 />
+        <Capture @ref="Capture" ShowUI="false" OnCaptureResult="@OnCaptureResult" OnCapture="@OnCapture" OnError="@OnError" Width=1280 Height=720 Options="OptionsEff"  />
         <div @ref="Capture.Element">
 
             <div data-action="camera" class="camera2">
@@ -78,6 +79,19 @@
             </div>
 
         </div>
+
+        <br />
+        <RadioList IsButton="true" Color="Color.Success" @bind-Value="@Effect" OnSelectedChanged="@OnSelectedEffectChanged" />
+        <Button Text="截图" OnClick="(async()=>await Capture.Start(effect:Effect))" />
+        <br />
+
+        <p>附加扫码演示:</p>
+
+        <BarCodes @ref="barCodes" OnDecodeFromImage="OnResult" OnError="OnResult" Options="new ZXingOptions() { TRY_HARDER=true}" />
+        <br />
+        @Result
+        <br />
+
     </TabItem>
     <TabItem Text="摄像头连续截图">
         <Capture OnCaptureResult="@OnCaptureResult" OnError="@OnError" Continuous="true" />
