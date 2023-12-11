@@ -1,0 +1,67 @@
+﻿.video2 {
+    border: 1px solid black;
+    width: 640px;
+    height: 480px;
+    border-radius: 25px;
+}
+
+.photo2 {
+    border: 1px solid black;
+    width: 640px;
+    height: 480px;
+    border-radius: 25px;
+}
+
+.canvas2 {
+    display: none;
+}
+
+.camera2 {
+    width: 660px;
+    display: inline-block;
+    border-radius: 25px;
+}
+
+.startbutton2 {
+    display: block;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    bottom: 32px;
+    border-radius: 10px;
+    background-color: rgb(255, 106, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    font-size: 14px;
+    font-family: "Lucida Grande", "Arial", sans-serif;
+    color: rgba(255, 255, 255, 1);
+}
+
+.contentarea2 {
+    font-size: 16px;
+    font-family: "Lucida Grande", "Arial", sans-serif;
+    width: 760px;
+    border-radius: 25px;
+}
+
+.video3 {
+    width: 320px;
+    height: 240px;
+    border-radius: 18px;
+}
+
+.photo3 {
+    width: 320px;
+    height: 240px;
+    border-radius: 18px;
+}
+
+.canvas3 {
+    width: 320px;
+    height: 240px;
+}
+
+.camera3 {
+    width: 400px;
+    display: inline-block;
+    border-radius: 18px;
+}

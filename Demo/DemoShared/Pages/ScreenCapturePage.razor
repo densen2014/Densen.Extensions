@@ -9,6 +9,60 @@
 <p>@message</p>
 
 <Tab IsOnlyRenderActiveTab IsLazyLoadTabItem ShowClose ShowExtendButtons>
+    <TabItem Text="图像效果">
+        <Capture @ref="Capture" ShowUI="false" OnCaptureResult="@OnCaptureResult" OnCapture="@OnCapture" OnError="@OnError" Width=640 Height=480 Options="OptionsEff" ShowCaptureButton="false" />
+        <RadioList IsButton="true" Color="Color.Success" @bind-Value="@Effect" OnSelectedChanged="@OnSelectedEffectChanged" />
+        <Button Text="截图" OnClick='(async()=>await Capture.Start(effect:Effect,cmd:"TakePicture"))' />
+        <BarCodes @ref="barCodes" OnDecodeFromImage="OnResult" OnError="OnResult" Options="new ZXingOptions() { TRY_HARDER=true}" />
+        <h5>扫码: @Result</h5>
+
+        <div @ref="Capture.Element">
+
+            <div data-action="camera" class="camera3">
+                <video data-action="video" class="video3">Video stream not available.</video>
+                <button data-action="startbutton" class="startbutton2">截图</button>
+            </div>
+
+            <div data-action="sourceSelectPanel" style="display:none">
+                <label for="sourceSelect">选择设备:</label>
+                <select data-action="sourceSelect" style="max-width:100%" class="form-select form-control">
+                </select>
+            </div>
+
+            <canvas data-action="canvas" class="canvas3"> </canvas>
+
+            <div class="output">
+                <img data-action="photo" class="photo3" alt="屏幕截图结果." />
+            </div>
+
+        </div>
+
+    </TabItem>
+    <TabItem Text="自定义UI">
+        <Capture @ref="Capture" ShowUI="false" OnCaptureResult="@OnCaptureResult" OnError="@OnError" Width=1280 Height=720 />
+
+        <div @ref="Capture.Element">
+
+            <div data-action="camera" class="camera2">
+                <video data-action="video" class="video2">Video stream not available.</video>
+                <button data-action="startbutton" class="startbutton2">截图</button>
+            </div>
+
+            <div data-action="sourceSelectPanel" style="display:none">
+                <label for="sourceSelect">选择设备:</label>
+                <select data-action="sourceSelect" style="max-width:100%" class="form-select form-control">
+                </select>
+            </div>
+
+            <canvas data-action="canvas" class="canvas2"> </canvas>
+
+            <div class="output">
+                <img data-action="photo" class="photo2" alt="屏幕截图结果." />
+            </div>
+
+        </div>
+
+    </TabItem>
     <TabItem Text="摄像头">
         @if (IsInit)
         {
@@ -57,42 +111,6 @@
     <TabItem Text="窗口">
         <Capture OnCaptureResult="@OnCaptureResult" OnError="@OnError" Camera="false" />
     </TabItem>
-    <TabItem Text="自定义UI">
-        <Capture @ref="Capture" ShowUI="false" OnCaptureResult="@OnCaptureResult" OnCapture="@OnCapture" OnError="@OnError" Width=1280 Height=720 Options="OptionsEff"  />
-        <div @ref="Capture.Element">
-
-            <div data-action="camera" class="camera2">
-                <video data-action="video" class="video2">Video stream not available.</video>
-                <button data-action="startbutton" class="startbutton2">截图</button>
-            </div>
-
-            <div data-action="sourceSelectPanel" style="display:none">
-                <label for="sourceSelect">选择设备:</label>
-                <select data-action="sourceSelect" style="max-width:100%" class="form-select form-control">
-                </select>
-            </div>
-
-            <canvas data-action="canvas" class="canvas2"> </canvas>
-
-            <div class="output">
-                <img data-action="photo" class="photo2" alt="屏幕截图结果." />
-            </div>
-
-        </div>
-
-        <br />
-        <RadioList IsButton="true" Color="Color.Success" @bind-Value="@Effect" OnSelectedChanged="@OnSelectedEffectChanged" />
-        <Button Text="截图" OnClick="(async()=>await Capture.Start(effect:Effect))" />
-        <br />
-
-        <p>附加扫码演示:</p>
-
-        <BarCodes @ref="barCodes" OnDecodeFromImage="OnResult" OnError="OnResult" Options="new ZXingOptions() { TRY_HARDER=true}" />
-        <br />
-        @Result
-        <br />
-
-    </TabItem>
     <TabItem Text="摄像头连续截图">
         <Capture OnCaptureResult="@OnCaptureResult" OnError="@OnError" Continuous="true" />
     </TabItem>
@@ -110,50 +128,4 @@
 <OCR @ref="OCR" ShowUI="false" Debug="true" OnResult="OnResult" />
 
 <AttributeTable Items="@GetAttributes()" />
-
-<style>
-    .video2 {
-        border: 1px solid black;
-        width: 640px;
-        height: 480px;
-        border-radius: 25px;
-    }
-
-    .photo2 {
-        border: 1px solid black;
-        width: 640px;
-        height: 480px;
-        border-radius: 25px;
-    }
-
-    .canvas2 {
-        display: none;
-    }
-
-    .camera2 {
-        width: 660px;
-        display: inline-block;
-        border-radius: 25px;
-    }
-
-    .startbutton2 {
-        display: block;
-        position: relative;
-        margin-left: auto;
-        margin-right: auto;
-        bottom: 32px;
-        border-radius: 10px;
-        background-color: rgb(255, 106, 0, 0.5);
-        border: 1px solid rgba(255, 255, 255, 0.7);
-        font-size: 14px;
-        font-family: "Lucida Grande", "Arial", sans-serif;
-        color: rgba(255, 255, 255, 1);
-    }
-
-    .contentarea2 {
-        font-size: 16px;
-        font-family: "Lucida Grande", "Arial", sans-serif;
-        width: 760px;
-        border-radius: 25px;
-    }
-</style>
+ 
