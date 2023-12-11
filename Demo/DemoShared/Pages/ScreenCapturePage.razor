@@ -10,7 +10,7 @@
 
 <Tab IsOnlyRenderActiveTab IsLazyLoadTabItem ShowClose ShowExtendButtons>
     <TabItem Text="图像效果">
-        <Capture @ref="Capture" ShowUI="false" OnCaptureResult="@OnCaptureResult" OnCapture="@OnCapture" OnError="@OnError" Width=640 Height=480 Options="OptionsEff" ShowCaptureButton="false" />
+        <Capture @ref="Capture" ShowUI="false" OnCaptureResult="@OnCaptureResult" OnCapture="@OnCapture" OnError="@OnError" Width=640 Height=480 Options="OptionsEff" ShowCaptureButton="false" ShowResult="false" />
         <RadioList IsButton="true" Color="Color.Success" @bind-Value="@Effect" OnSelectedChanged="@OnSelectedEffectChanged" />
         <Button Text="截图" OnClick='(async()=>await Capture.Start(effect:Effect,cmd:"TakePicture"))' />
         <BarCodes @ref="barCodes" OnDecodeFromImage="OnResult" OnError="OnResult" Options="new ZXingOptions() { TRY_HARDER=true}" />
