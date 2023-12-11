@@ -7,6 +7,7 @@
 using BootstrapBlazor.Components;
 using BootstrapBlazor.WebAPI.Services;
 using Microsoft.AspNetCore.Components;
+using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 using ZXingBlazor.Components;
 
@@ -24,7 +25,7 @@ public sealed partial class ScreenCapturePage
     public IStorage? Storage { get; set; }
 
     private CaptureOptions Options { get; set; } = new CaptureOptions();
-    private CaptureOptions OptionsEff { get; set; } = new CaptureOptions() { Effect = EnmuCaptureEffect.None };
+    private CaptureOptions OptionsEff { get; set; } = new CaptureOptions() { Effect = EnmuCaptureEffect.None, EffectPreview=true };
     private string? message;
 
     [NotNull]
@@ -76,13 +77,13 @@ public sealed partial class ScreenCapturePage
 
     private async Task OnCaptureResult(Stream item)
     {
-        if (OCR != null) await OCR.OCRFromStream(item);
+        if (EnableOCR && OCR != null) await OCR.OCRFromStream(item);
         StateHasChanged();
     }
 
     private async Task OnCapture(string dataurl)
     {
-        await barCodes!.DecodeFromImage(dataurl);
+        if (EnableQR) await barCodes!.DecodeFromImage(dataurl);
         StateHasChanged();
     }
 
@@ -94,6 +95,10 @@ public sealed partial class ScreenCapturePage
     }
 
     #region 附加OCR演示
+
+    [DisplayName("启用OCR识别")]
+    private bool EnableOCR { get; set; }
+
     private OCR? OCR { get; set; }
 
     private Task OnResult(List<string> res)
@@ -105,6 +110,8 @@ public sealed partial class ScreenCapturePage
 
     #endregion
 
+    [DisplayName("启用条码识别")]
+    private bool EnableQR { get; set; }
     BarCodes? barCodes;
     string? Result { get; set; }
     private Task OnResult(string message)
@@ -113,6 +120,7 @@ public sealed partial class ScreenCapturePage
         StateHasChanged();
         return Task.CompletedTask;
     }
+
     /// <summary>
     /// 获得属性方法
     /// </summary>

@@ -43,25 +43,31 @@
     border-radius: 25px;
 }
 
+.sourceSelect {
+    width: 100%;
+    max-width: 300px;
+}
+
 .video3 {
     width: 320px;
     height: 240px;
-    border-radius: 18px;
+    border-radius: 6px;
 }
 
 .photo3 {
     width: 320px;
     height: 240px;
-    border-radius: 18px;
+    border-radius: 6px;
 }
 
 .canvas3 {
     width: 320px;
     height: 240px;
+    border-radius: 6px;
 }
 
 .camera3 {
     width: 400px;
     display: inline-block;
-    border-radius: 18px;
+    border-radius: 6px;
 }
