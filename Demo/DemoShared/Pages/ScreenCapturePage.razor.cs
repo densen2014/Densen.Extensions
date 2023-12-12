@@ -26,7 +26,7 @@ public sealed partial class ScreenCapturePage
 
     private CaptureOptions Options { get; set; } = new CaptureOptions();
     private CaptureOptions OptionsEff { get; set; } = new CaptureOptions() { Effect = EnmuCaptureEffect.None, EffectPreview=true };
-    private string? message;
+    private string? Message { get; set; }
 
     [NotNull]
     private Cams SelectedEnumItem { get; set; } = Cams.FHD;
@@ -83,13 +83,13 @@ public sealed partial class ScreenCapturePage
 
     private async Task OnCapture(string dataurl)
     {
-        if (EnableQR) await barCodes!.DecodeFromImage(dataurl);
+        if (EnableQR) await BarCodes!.DecodeFromImage(dataurl);
         StateHasChanged();
     }
 
     private Task OnError(string message)
     {
-        this.message = message;
+        Message = message;
         StateHasChanged();
         return Task.CompletedTask;
     }
@@ -103,7 +103,7 @@ public sealed partial class ScreenCapturePage
 
     private Task OnResult(List<string> res)
     {
-        message = "识别完成";
+        Message = "识别完成";
         StateHasChanged();
         return Task.CompletedTask;
     }
@@ -112,11 +112,12 @@ public sealed partial class ScreenCapturePage
 
     [DisplayName("启用条码识别")]
     private bool EnableQR { get; set; }
-    BarCodes? barCodes;
+    BarCodes? BarCodes { get; set; }
     string? Result { get; set; }
     private Task OnResult(string message)
     {
-        this.Result = message;
+        Message = string.Empty;
+        Result = message;
         StateHasChanged();
         return Task.CompletedTask;
     }

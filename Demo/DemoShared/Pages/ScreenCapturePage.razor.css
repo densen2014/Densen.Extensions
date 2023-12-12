@@ -59,17 +59,18 @@
     height: 240px;
     border-radius: 6px;
     vertical-align: unset;
-    margin-left: 20px;
+    /*margin-left: 20px;*/
 }
 
 .canvas3 {
     width: 320px;
     height: 240px;
     border-radius: 6px;
+    /*display: none;*/
 }
 
 .camera3 {
-    width: 400px;
+    width: 340px;
     display: inline-block;
     border-radius: 6px;
 }
