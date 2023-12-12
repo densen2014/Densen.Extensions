@@ -115,8 +115,8 @@ public static class DateTimeExtensions
     public static DateTime TransStrToDateTime(this string strDateTime)
     {
         DateTime now;
-        string[] format = new string[]
-        {
+        string[] format =
+        [
             "yyyy.M.d","yyyy/M/d","yyyy-M-d","d-M-yyyy","d/M/yyyy","d/M/yyyy ",
             "yyyy.M.dd","yyyy/M/dd","yyyy-M-dd","dd-M-yyyy","dd/M/yyyy","dd/M/yyyy ",
             "yyyy.MM.d","yyyy/MM/d","yyyy-MM-d", "d-MM-yyyy","d/MM/yyyy","d/MM/yyyy ",
@@ -124,7 +124,7 @@ public static class DateTimeExtensions
             "yyyy-MM-dd HH:mm:ss", "yyyy-M-dd HH:mm:ss", "yyyy.M.d H:mm:ss", "yyyy.MM.dd HH:mm:ss", "dd-MM-yyyy HH:mm:ss","dd.MM.yyyy HH:mm:ss",
             "yyyy年MM月dd日 HH时mm分ss秒","yyyy年M月d日 H时mm分ss秒",
             "yyyyMMddHHmmss","yyyyMdHHmmss","ddMMyyyyHHmmss"
-        };
+        ];
         if (DateTime.TryParseExact(strDateTime, format, CultureInfo.InvariantCulture, DateTimeStyles.None, out now))
         {
             return now;
