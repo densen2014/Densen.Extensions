@@ -93,7 +93,7 @@ public sealed partial class MindMaps
         new()
         {
             Name = "SetTheme",
-            Description = "动态切换主题",
+            Description = "切换主题",
             Type = "Task",
             ValueList = " — ",
             DefaultValue = " — "
@@ -101,8 +101,16 @@ public sealed partial class MindMaps
         new()
         {
             Name = "SetLayout",
-            Description = "动态切换结构",
+            Description = "切换布局",
             Type = "Task",
+            ValueList = " — ",
+            DefaultValue = " — "
+        },
+        new()
+        {
+            Name = "Options",
+            Description = "配置选项",
+            Type = "MindMapOption",
             ValueList = " — ",
             DefaultValue = " — "
         }

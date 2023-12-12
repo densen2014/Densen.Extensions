@@ -2,6 +2,7 @@
 @attribute [TabItemOption(Text = "思维导图")]
 @inherits AppComponentBase
 @using static BootstrapBlazor.Components.MindMapNode
+@using System.ComponentModel
 
 <a href="https://www.nuget.org/packages/BootstrapBlazor.MindMap#readme-body-tab"><h3>思维导图 MindMap</h3></a>
 <hr />
@@ -10,30 +11,32 @@
 <p>Tab:添加新节点</p>
 <p>鼠标可拖动节点排列</p>
 
-<MindMap @ref="MindMap" Data="@Data" OnReceive="@OnReceive" OnError="@OnError" StyleCss="height: 55vh;" />
+<MindMap @ref="MindMap" Options="Options" Data="@Data" OnReceive="@OnReceive" OnError="@OnError" StyleCss="height: 55vh;" />
 
-
-<Button Text="例子1" OnClick="Sample" />
-<Button Text="一周安排" OnClick="Sample2" />
-<Button Text="下载为PNG" OnClick="Export" />
-<Button Text="下载为json" OnClick="ExportJson" />
-@*<Button Text="导出PNG" OnClick="ExportPng" />*@
-<Button Text="导出对象" OnClick="GetFullData" />
-<Button Text="导出json对象" OnClick="GetData" />
-<Button Text="导入数据(json)" OnClick="SetData" />
-<Button Text="复位" OnClick="Reset" /> 
-
-<div class="mt-3" style="overflow: scroll;">
-    <RadioList IsButton="true" Color="Color.Success" @bind-Value="@Layout" OnSelectedChanged="@OnSelectedLayoutChanged" />
+<div class="row mt-3">
+    <div class="col-12 mt-3">
+        <Button Text="例子1" OnClick="Sample" />
+        <Button Text="一周安排" OnClick="Sample2" />
+        <Button Text="下载为PNG" OnClick="Export" />
+        <Button Text="下载为json" OnClick="ExportJson" />
+        @*<Button Text="导出PNG" OnClick="ExportPng" />*@
+        <Button Text="导出对象" OnClick="GetFullData" />
+        <Button Text="导出json对象" OnClick="GetData" />
+        <Button Text="导入数据(json)" OnClick="SetData" />
+        <Button Text="复位" OnClick="Reset" />
+    </div>
+    <div class="col-12 col-sm-3 mt-3">
+        <Select @bind-Value="Options.Layout" ShowLabel="true" />
+    </div>
+    <div class="col-12 col-sm-3 mt-3">
+        <Select @bind-Value="Options.Theme" ShowLabel="true" />
+    </div>
+    <div class="col-12 mt-3">
+        <Textarea @bind-Value="Message" rows="10" />
+        <a href="https://github.com/wanglin2/mind-map/blob/main/simple-mind-map/example/exampleData.js?WT.mc_id=DT-MVP-5005078"><h6>数据示例</h6></a>
+    </div>
 </div>
 
-<div class="mt-3"  style="overflow: scroll;">
-    <RadioList IsButton="true" Color="Color.Success" @bind-Value="@Theme" OnSelectedChanged="@OnSelectedThemeChanged" />
-</div>
-
-<Textarea @bind-Value="Message" rows="10" />
-
-<a href="https://github.com/wanglin2/mind-map/blob/main/simple-mind-map/example/exampleData.js?WT.mc_id=DT-MVP-5005078"><h6>数据示例</h6></a>
 
 <AttributeTable Items="@GetAttributes()" />
 
@@ -46,10 +49,14 @@
 
     new string? Message { get; set; } = "";
 
+    private MindMapOption Options { get; set; } = new();
+
     [NotNull]
+    [DisplayName("布局")]
     private EnumMindMapLayout Layout { get; set; } = EnumMindMapLayout.mindMap;
 
     [NotNull]
+    [DisplayName("主题")]
     private EnumMindMapTheme Theme { get; set; } = EnumMindMapTheme.defaultTheme;
 
     /// <summary>
@@ -75,7 +82,7 @@
                     Text = "二级节点1",
                 },
                     Children = new List<MindMapNode>()
-    {
+{
                         new MindMapNode
                         {
                             Data = new NodeData
@@ -187,6 +194,6 @@
     {
         await MindMap.SetTheme(val);
     }
- 
+
 
 }
