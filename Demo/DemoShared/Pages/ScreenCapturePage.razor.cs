@@ -25,7 +25,7 @@ public sealed partial class ScreenCapturePage
     public IStorage? Storage { get; set; }
 
     private CaptureOptions Options { get; set; } = new CaptureOptions();
-    private CaptureOptions OptionsEff { get; set; } = new CaptureOptions() { Effect = EnmuCaptureEffect.None, EffectPreview=true };
+    private CaptureOptions OptionsEff { get; set; } = new CaptureOptions() { Effect = EnmuCaptureEffect.无, EffectPreview=true };
     private string? Message { get; set; }
 
     [NotNull]
@@ -38,10 +38,6 @@ public sealed partial class ScreenCapturePage
         QHD,
         UHD,
     }
-
-    [NotNull]
-    private EnmuCaptureEffect Effect { get; set; } = EnmuCaptureEffect.None; 
-
 
     public bool IsInit { get; set; }
 

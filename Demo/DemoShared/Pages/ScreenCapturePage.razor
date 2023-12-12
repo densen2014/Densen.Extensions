@@ -61,43 +61,54 @@
     </TabItem>
     <TabItem Text="图像效果">
         <Capture @ref="Capture" ShowUI="false" OnCaptureResult="@OnCaptureResult" OnCapture="@OnCapture" OnDecode="OnResult" OnError="@OnError" Width=640 Height=480 Options="OptionsEff" />
-        <div style="overflow: scroll;">
-            <RadioList IsButton="true" Color="Color.Success" @bind-Value="@Effect" OnSelectedChanged="@OnSelectedEffectChanged" />
-        </div>
-        <Button Text="截图" OnClick='(async()=>await Capture.Start(effect:Effect,cmd:"takepicture"))' />
-        <Button Text="主动扫码" OnClick='(async()=>await Capture.Start(effect:Effect,cmd:"decode"))' />
-
-        <Switch @bind-Value="@EnableQR" ShowLabel="true" />
-        @if (EnableQR)
-        {
-            <BarCodes @ref="BarCodes" OnDecodeFromImage="OnResult" OnError="OnResult" Options="new ZXingOptions() { TRY_HARDER=true}" />
-        }
-        <h6>扫码: @Result</h6>
-
-        <div @ref="Capture.Element">
-
-            <div data-action="camera" class="camera3">
-                <video data-action="video" class="video3"
-                       muted
-                       webkit-playsinline
-                       playsinline
-                       x-webkit-airplay="allow"
-                       x5-video-player-type="h5"
-                       x5-video-player-fullscreen="true"
-                       x5-video-orientation="portraint">
-                    Video stream not available.
-                </video>
+        <div class="row mt-3">
+            <div class="col-12 col-sm-3 mt-3">
+                <BootstrapInputGroup>
+                    <Select @bind-Value="OptionsEff.Effect" ShowLabel="true" />
+                    <Button Text="-" OnClick='(async()=>await Capture.Exec("reduceluminance"))' IsDisabled="@(OptionsEff.Effect!=EnmuCaptureEffect.调亮 && OptionsEff.Effect!=EnmuCaptureEffect.调暗)" />
+                    <Button Text="+" OnClick='(async()=>await Capture.Exec("addluminance"))' IsDisabled="@(OptionsEff.Effect!=EnmuCaptureEffect.调亮 && OptionsEff.Effect!=EnmuCaptureEffect.调暗)" />
+                </BootstrapInputGroup>
             </div>
-            <canvas data-action="canvas" class="canvas3"> </canvas>
-            <img data-action="photo" class="photo3" alt="屏幕截图结果." />
-
-            <div data-action="sourceSelectPanel" style="display:none">
-                <label for="sourceSelect">选择设备:</label>
-                <select data-action="sourceSelect" class="form-select form-control sourceSelect">
-                </select>
+            <div class="col-12 mt-3">
+                <Button Text="截图" OnClick='(async()=>await Capture.Start(cmd:"takepicture"))' />
+                <Button Text="主动扫码" OnClick='(async()=>await Capture.Start(cmd:"decode"))' />
             </div>
+            <div class="col-12 mt-3">
+                <Switch @bind-Value="@EnableQR" ShowLabel="true" />
+                @if (EnableQR)
+                {
+                    <BarCodes @ref="BarCodes" OnDecodeFromImage="OnResult" OnError="OnResult" Options="new ZXingOptions() { TRY_HARDER=true}" />
+                }
+                <h6>扫码: @Result</h6>
+            </div>
+            <div class="col-12 mt-3">
+                <div @ref="Capture.Element">
 
+                    <div data-action="camera" class="camera3">
+                        <video data-action="video" class="video3"
+                               muted
+                               webkit-playsinline
+                               playsinline
+                               x-webkit-airplay="allow"
+                               x5-video-player-type="h5"
+                               x5-video-player-fullscreen="true"
+                               x5-video-orientation="portraint">
+                            Video stream not available.
+                        </video>
+                    </div>
+                    <canvas data-action="canvas" class="canvas3"> </canvas>
+                    <img data-action="photo" class="photo3" alt="屏幕截图结果." />
+
+                    <div data-action="sourceSelectPanel" style="display:none">
+                        <label for="sourceSelect">选择设备:</label>
+                        <select data-action="sourceSelect" class="form-select form-control sourceSelect">
+                        </select>
+                    </div>
+
+                </div>
+            </div>
         </div>
+
 
     </TabItem>
     <TabItem Text="自定义UI">
