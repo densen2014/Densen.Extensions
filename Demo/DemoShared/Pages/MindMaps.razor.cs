@@ -89,6 +89,22 @@ public sealed partial class MindMaps
             Type = "Task",
             ValueList = " — ",
             DefaultValue = " — "
+        },
+        new()
+        {
+            Name = "SetTheme",
+            Description = "动态切换主题",
+            Type = "Task",
+            ValueList = " — ",
+            DefaultValue = " — "
+        },
+        new()
+        {
+            Name = "SetLayout",
+            Description = "动态切换结构",
+            Type = "Task",
+            ValueList = " — ",
+            DefaultValue = " — "
         }
     };
 

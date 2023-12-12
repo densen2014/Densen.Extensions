@@ -16,7 +16,8 @@ public partial class JsBridge : IAsyncDisposable
     private string? message;
     private bool BridgeEnabled;
 
-    [Inject, NotNull]
+    [Inject]
+    [NotNull]
     private IJSRuntime? JSRuntime { get; set; }
 
     [Inject, NotNull]

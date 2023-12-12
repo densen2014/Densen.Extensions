@@ -20,7 +20,7 @@ else
         基本用法
     </span>
     <Printer @ref="printer" OnResult="OnResult" OnError="OnError" OnUpdateStatus="OnUpdateStatus" OnUpdateError="OnError" OnGetDevices="OnGetDevices" />
-    <div @ref="printer.PrinterElement">
+    <div @ref="printer.Element">
         <button data-action="btnConnect" class="btn btn-outline-primary">连接</button>
         <button data-action="btnDisconnect" class="btn btn-outline-danger">断开</button>
         @*<button data-action="btnReconnect" class="btn btn-outline-secondary">重连</button>*@

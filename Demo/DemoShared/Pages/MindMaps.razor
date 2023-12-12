@@ -21,7 +21,15 @@
 <Button Text="导出对象" OnClick="GetFullData" />
 <Button Text="导出json对象" OnClick="GetData" />
 <Button Text="导入数据(json)" OnClick="SetData" />
-<Button Text="复位" OnClick="Reset" />
+<Button Text="复位" OnClick="Reset" /> 
+
+<div class="mt-3" style="overflow: scroll;">
+    <RadioList IsButton="true" Color="Color.Success" @bind-Value="@Layout" OnSelectedChanged="@OnSelectedLayoutChanged" />
+</div>
+
+<div class="mt-3"  style="overflow: scroll;">
+    <RadioList IsButton="true" Color="Color.Success" @bind-Value="@Theme" OnSelectedChanged="@OnSelectedThemeChanged" />
+</div>
 
 <Textarea @bind-Value="Message" rows="10" />
 
@@ -38,6 +46,12 @@
 
     new string? Message { get; set; } = "";
 
+    [NotNull]
+    private EnumMindMapLayout Layout { get; set; } = EnumMindMapLayout.mindMap;
+
+    [NotNull]
+    private EnumMindMapTheme Theme { get; set; } = EnumMindMapTheme.defaultTheme;
+
     /// <summary>
     /// 初始化数据
     /// </summary>
@@ -53,7 +67,7 @@
 
         },
         Children = new List<MindMapNode>()
-        {
+{
             new MindMapNode
             {
                 Data = new NodeData
@@ -61,7 +75,7 @@
                     Text = "二级节点1",
                 },
                     Children = new List<MindMapNode>()
-                    {
+    {
                         new MindMapNode
                         {
                             Data = new NodeData
@@ -114,54 +128,65 @@
         return Task.CompletedTask;
     }
 
-    async Task Export()
+    private async Task Export()
     {
         await MindMap.Export();
         await ShowBottomMessage("下载Png");
     }
 
-    async Task ExportJson()
+    private async Task ExportJson()
     {
         await MindMap.Export("json", WithConfig: false);
         await ShowBottomMessage("下载Json");
     }
 
-    async Task ExportPng()
+    private async Task ExportPng()
     {
         await MindMap.Export(IsDownload: false, WithConfig: false);
         await ShowBottomMessage("已导出Png");
     }
 
-    async Task GetFullData()
+    private async Task GetFullData()
     {
         await MindMap.GetData();
     }
 
-    async Task GetData()
+    private async Task GetData()
     {
         await MindMap.GetData(false);
     }
 
-    async Task SetData()
+    private async Task SetData()
     {
         if (Message != null) await MindMap.SetData(Message);
     }
 
-    async Task Reset()
+    private async Task Reset()
     {
         await MindMap.Reset();
     }
 
-    async Task Sample()
+    private async Task Sample()
     {
         Message = SampleData;
         await SetData();
     }
 
-    async Task Sample2()
+    private async Task Sample2()
     {
         Message = SampleData2;
         await SetData();
     }
+
+    private async Task OnSelectedLayoutChanged(IEnumerable<SelectedItem> values, EnumMindMapLayout val)
+    {
+        await MindMap.SetLayout(val);
+    }
+
+    private async Task OnSelectedThemeChanged(IEnumerable<SelectedItem> values, EnumMindMapTheme val)
+    {
+        await MindMap.SetTheme(val);
+    }
+ 
 
 }

@@ -8,7 +8,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <!-- Edit form for the current item -->
-                <div class="modal-body" @ref="barcodeScannerElement">
+                <div class="modal-body" @ref="Element">
 
                     <button class="btn btn-primary p-2 m-1 w-25" data-action="startButton">@ScanBtnTitle</button>
                     <button class="btn btn-secondary p-2 m-1 w-25" data-action="resetButton">@ResetBtnTitle</button>
@@ -93,13 +93,13 @@
     [Obsolete]
     public bool ShowScanBarcode { get; set; }
 
-    private IJSObjectReference? module;
-    private DotNetObjectReference<BarcodeScanner>? objRef;
+    private IJSObjectReference? Module{ get; set; }
+    private DotNetObjectReference<BarcodeScanner>? Instance{ get; set; }
 
     /// <summary>
-    ///
+    /// UI界面元素的引用对象
     /// </summary>
-    public ElementReference barcodeScannerElement { get; set; }
+    private ElementReference Element { get; set; }
 
     // To prevent making JavaScript interop calls during prerendering
     protected override async Task OnAfterRenderAsync(bool firstRender)
@@ -107,10 +107,10 @@
         try
         {
             if (!firstRender) return;
-            objRef = DotNetObjectReference.Create(this);
-            module = await JS.InvokeAsync<IJSObjectReference>("import", "./_content/Densen.Component.Blazor/lib/zxing/zxingjs.js" + "?v=" + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version);
+            Instance = DotNetObjectReference.Create(this);
+            Module = await JS.InvokeAsync<IJSObjectReference>("import", "./_content/Densen.Component.Blazor/lib/zxing/zxingjs.js" + "?v=" + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version);
 
-            await module.InvokeVoidAsync("init", true, objRef, barcodeScannerElement, barcodeScannerElement.Id);
+            await Module.InvokeVoidAsync("init", true, Instance, Element, Element.Id);
         }
         catch (Exception e)
         {
@@ -133,12 +133,12 @@
 
     async ValueTask IAsyncDisposable.DisposeAsync()
     {
-        if (module is not null)
+        if (Module is not null)
         {
-            await module.InvokeVoidAsync("destroy", barcodeScannerElement.Id);
-            await module.DisposeAsync();
+            await Module.InvokeVoidAsync("destroy", Element.Id);
+            await Module.DisposeAsync();
         }
-        objRef?.Dispose();
+        Instance?.Dispose();
     }
 
 }
