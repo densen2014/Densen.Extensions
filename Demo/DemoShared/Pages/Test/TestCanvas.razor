@@ -1,11 +1,22 @@
 ﻿@page "/testcanvas"
 @namespace DemoShared.Pages
 @attribute [TabItemOption(Text = "图像测试")]
-@inherits AppComponentBase
 
 @using BootstrapBlazor.Components
 
-<ImageHelper @ref="ImageHelper" Options="Options" OnResult="OnResult"  />
+<Tab IsLazyLoadTabItem>
+    <TabItem Text="OpenCvSharpSample">
+        <OpenCvSharpSample />
+    </TabItem>
+    <TabItem Text="Canvas">
+        <Canvas />
+    </TabItem>
+    <TabItem Text="原生JS">
+        <ImageHelper @ref="ImageHelper" Options="Options" OnResult="OnResult" />
+    </TabItem>
+
+</Tab>
+
 
 @*<Select @bind-Value="Options.Type" ShowLabel="true" />*@
 

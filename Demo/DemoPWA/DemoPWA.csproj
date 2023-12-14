@@ -6,26 +6,36 @@
 		<UserSecretsId>102ba2ce-c240-49cd-a064-deee597f8998</UserSecretsId>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<BlazorWebAssemblyEnableLinking>false</BlazorWebAssemblyEnableLinking>
-	</PropertyGroup>
+        <StaticWebAssetProjectMode>Default</StaticWebAssetProjectMode>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    </PropertyGroup>
+    
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+        <RunAOTCompilation>True</RunAOTCompilation>
+    </PropertyGroup>
 
-	<!--<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release' ">
-    <InvariantGlobalization>true</InvariantGlobalization>
-  </PropertyGroup>-->
-
-	<!--<PropertyGroup>
-    <BlazorEnableTimeZoneSupport>false</BlazorEnableTimeZoneSupport> 
-  </PropertyGroup>-->
-	
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+        <RunAOTCompilation>True</RunAOTCompilation>
+    </PropertyGroup>
+    
 	<ItemGroup Condition="'$(TargetFramework)' == 'net6.0'">
 		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="6.*" />
-		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.*" PrivateAssets="all" />
+        <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.*" />
+        <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.*" PrivateAssets="all" />
 	</ItemGroup>
 
 	<ItemGroup Condition="'$(TargetFramework)' == 'net7.0'">
 		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="7.*" />
-		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="7.*" PrivateAssets="all" />
+        <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="7.*" />
+        <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="7.*" PrivateAssets="all" />
 	</ItemGroup>
-	
+
+    <ItemGroup Condition="'$(TargetFramework)' == 'net8.0'">
+        <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="8.0" />
+        <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="8.*" />
+        <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="8.*" PrivateAssets="all" />
+    </ItemGroup>
+    
 	<ItemGroup>
 		<ProjectReference Include="..\DemoShared\DemoShared.csproj" />
 	</ItemGroup>
