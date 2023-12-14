@@ -89,6 +89,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BootstrapBlazor.ImageCroppe
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BootstrapBlazor.BarcodeGenerator", "..\BootstrapBlazor.BarcodeGenerator\src\BootstrapBlazor.BarcodeGenerator\BootstrapBlazor.BarcodeGenerator.csproj", "{5764F80E-AC6C-4B96-8E94-DF3719C96C68}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BootstrapBlazor.ImageHelper", "..\BootstrapBlazor.ImageHelper\src\BootstrapBlazor.ImageHelper\BootstrapBlazor.ImageHelper.csproj", "{D84B1765-2838-4896-B39F-D47B35231028}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -455,6 +457,18 @@ Global
 		{5764F80E-AC6C-4B96-8E94-DF3719C96C68}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5764F80E-AC6C-4B96-8E94-DF3719C96C68}.Release|x86.ActiveCfg = Release|Any CPU
 		{5764F80E-AC6C-4B96-8E94-DF3719C96C68}.Release|x86.Build.0 = Release|Any CPU
+		{D84B1765-2838-4896-B39F-D47B35231028}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D84B1765-2838-4896-B39F-D47B35231028}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D84B1765-2838-4896-B39F-D47B35231028}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{D84B1765-2838-4896-B39F-D47B35231028}.Debug|x86.Build.0 = Debug|Any CPU
+		{D84B1765-2838-4896-B39F-D47B35231028}.DebugSC|Any CPU.ActiveCfg = Debug|Any CPU
+		{D84B1765-2838-4896-B39F-D47B35231028}.DebugSC|Any CPU.Build.0 = Debug|Any CPU
+		{D84B1765-2838-4896-B39F-D47B35231028}.DebugSC|x86.ActiveCfg = Debug|Any CPU
+		{D84B1765-2838-4896-B39F-D47B35231028}.DebugSC|x86.Build.0 = Debug|Any CPU
+		{D84B1765-2838-4896-B39F-D47B35231028}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D84B1765-2838-4896-B39F-D47B35231028}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D84B1765-2838-4896-B39F-D47B35231028}.Release|x86.ActiveCfg = Release|Any CPU
+		{D84B1765-2838-4896-B39F-D47B35231028}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -491,6 +505,7 @@ Global
 		{0F36714A-3351-43EF-9E1F-9D6B56D3FE72} = {7598D3CE-5270-4A5E-9A66-E8E8CC771339}
 		{A6DE5C95-30F9-4BA7-982E-1DA628DB9A3A} = {7598D3CE-5270-4A5E-9A66-E8E8CC771339}
 		{5764F80E-AC6C-4B96-8E94-DF3719C96C68} = {7598D3CE-5270-4A5E-9A66-E8E8CC771339}
+		{D84B1765-2838-4896-B39F-D47B35231028} = {7598D3CE-5270-4A5E-9A66-E8E8CC771339}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2B9698BD-88AE-4165-9322-67F121A4B26B}

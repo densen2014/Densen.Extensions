@@ -39,6 +39,7 @@
 		<ProjectReference Include="..\..\..\ZXingBlazor\src\ZXingBlazor\ZXingBlazor.csproj" />
 		<ProjectReference Include="..\..\Blazor\Densen.Extensions.BootstrapBlazor.csproj" />
 		<ProjectReference Include="..\..\Densen.Component.Blazor\Densen.Component.Blazor.csproj" />
+        <ProjectReference Include="..\..\..\BootstrapBlazor.ImageHelper\src\BootstrapBlazor.ImageHelper\BootstrapBlazor.ImageHelper.csproj" />
 	</ItemGroup>
 
     <ItemGroup Condition="'$(Configuration)' == 'Debug'">
@@ -60,6 +61,7 @@
 		<PackageReference Include="BootstrapBlazor.PdfReader" Version="*" />
 		<PackageReference Include="BootstrapBlazor.VideoPlayer" Version="*" />
 		<PackageReference Include="BootstrapBlazor.FileViewer" Version="*" />
+		<PackageReference Include="BootstrapBlazor.ImageHelper" Version="*" />
 		<PackageReference Include="ZXingBlazor" Version="*" />
 		<PackageReference Include="Densen.Extensions.BootstrapBlazor" Version="*" />
 		<PackageReference Include="Densen.Component.Blazor" Version="*" />

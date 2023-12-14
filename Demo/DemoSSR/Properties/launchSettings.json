@@ -70,7 +70,7 @@
     "Canvas": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "barcodeGenerators",
+      "launchUrl": "testcanvas",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
