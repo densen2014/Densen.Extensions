@@ -29,7 +29,7 @@ public static class Tools
     /// <param name="dblAmt">保留几位小数</param>
     /// <param name="intSumDec">格式化的double数值</param>
     /// <returns></returns>
-    public static string FormatNumber(object dblAmt, int intSumDec = 2)
+    public static string FormatDecimal(object dblAmt, int intSumDec = 2)
     {
         try
         {
