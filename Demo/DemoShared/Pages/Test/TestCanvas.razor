@@ -5,24 +5,22 @@
 @using BootstrapBlazor.Components
 
 <Tab IsLazyLoadTabItem>
-    <TabItem Text="OpenCvSharpSample">
-        <OpenCvSharpSample />
+    <TabItem Text="Demo">
+        <ImageHelper @ref="ImageHelper" Options="Options" OnResult="OnResult" />
     </TabItem>
     <TabItem Text="Canvas">
         <Canvas />
     </TabItem>
-    <TabItem Text="原生JS">
-        <ImageHelper @ref="ImageHelper" Options="Options" OnResult="OnResult" />
-    </TabItem>
 
 </Tab>
 
+@MessageString
 
 @*<Select @bind-Value="Options.Type" ShowLabel="true" />*@
 
 
 @code{
-    string? MessageString { get; set; } = "12345";
+    string? MessageString { get; set; } 
 
     ImageHelper? ImageHelper { get; set; }
 

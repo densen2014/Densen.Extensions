@@ -1,0 +1,38 @@
+﻿@page "/ImageHelpers"
+@namespace DemoShared.Pages
+@attribute [TabItemOption(Text = "图像助手")]
+
+@using BootstrapBlazor.Components
+
+<a href="https://www.nuget.org/packages/BootstrapBlazor.ImageHelper#readme-body-tab"><h4>图像助手 ImageHelper</h4></a>
+<hr />
+<a href="https://github.com/densen2014/Densen.Extensions/blob/master/Demo/DemoShared/Pages/ImageHelpers.razor"><h5>页面源码</h5></a>
+
+<br/>
+<h5>介绍</h5>
+
+<p>opencv.js是opencv利用了emscripten将原本的C++版本编译成了WebAssembly，让js可以直接调用C++版本的opencv方法</p>
+
+<p>c++的库转wasm(运行在客户端) ,当然ssr也能用, 语法全部用opencv的c++版本, 由于本人精力有限, 不能一一封装所有的功能, 欢迎有兴趣的小伙伴一起<a href="https://github.com/densen2014/BootstrapBlazor.ImageHelper">[参与项目]</a></p>
+
+
+
+
+
+<ImageHelper @ref="ImageHelper" Options="Options" OnResult="OnResult" />
+
+@MessageString
+
+@code{
+    string? MessageString { get; set; }
+
+    ImageHelper? ImageHelper { get; set; }
+
+    private ImageHelperOption Options { get; set; } = new();
+
+    private Task OnResult(string value)
+    {
+        MessageString = value;
+        return Task.CompletedTask;
+    }
+}
