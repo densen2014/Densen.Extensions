@@ -4,15 +4,15 @@
 
 @using BootstrapBlazor.Components
 
-<Tab IsLazyLoadTabItem>
+@*<Tab IsLazyLoadTabItem>
+    <TabItem Text="WxQrCode">*@
+        <WxQrCode />
+    @*</TabItem>
     <TabItem Text="Demo">
         <ImageHelper @ref="ImageHelper" Options="Options" OnResult="OnResult" />
     </TabItem>
-    <TabItem Text="Canvas">
-        <Canvas />
-    </TabItem>
 
-</Tab>
+</Tab>*@
 
 @MessageString
 
