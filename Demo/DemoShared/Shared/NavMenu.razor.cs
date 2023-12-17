@@ -26,7 +26,6 @@ public partial class NavMenu
                     new MenuItem() { Text = "分享按钮 Share", Url = "/ShareObject" },
                     new MenuItem() { Text = "思维导图 MindMap", Url = "/MindMaps" },
                     new MenuItem() { Text = "条码生成器 BarcodeGenerator", Url = "/barcodeGenerators" },
-                    new MenuItem() { Text = "微信扫码 WxQrCode", Url = "/testcanvas" },
                 }
             },
             new MenuItem() { Text = "文件" ,Items= new List<MenuItem>
@@ -54,6 +53,7 @@ public partial class NavMenu
             new MenuItem() { Text = "硬件" ,Items= new List<MenuItem>
                 {
                     new MenuItem() { Text = "扫码 Barcode (条码,QR码,Pdf417)", Url = "/barcodescanner" },
+                    new MenuItem() { Text = "微信扫码 WxQrCode", Url = "/WxQrCodes" },
                     new MenuItem() { Text = "摄像头/截屏/录像 Screen Capture", Url = "/screencapture" },
                     new MenuItem() { Text = "蓝牙和打印 Bluetooth & Printer", Url = "/Bluetooth" },
                     new MenuItem() { Text = "串行设备 WebSerials", Url = "/WebSerials" },
