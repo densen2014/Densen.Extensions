@@ -88,14 +88,20 @@ public partial class NavMenu
                     new MenuItem() { Text = "谷歌地图 Maps", Url = "/maps" },
                 }
             },
+            new MenuItem() { Text = "博客配套" , Items = new List<MenuItem>{
+                    new MenuItem() { Text = "b05tree", Url = "/b05tree" },
+                    new MenuItem() { Text = "b19LongPressButton", Url = "/b19LongPressButton" },
+                    new MenuItem() { Text = "b20Gesture", Url = "/b20Gesture" },
+                }
+            },
             new MenuItem() { Text = "图表", Url = "/charts" },
-           new MenuItem() { Text = "其他" , Items = new List<MenuItem>{
+            new MenuItem() { Text = "其他" , Items = new List<MenuItem>{
                     new MenuItem() { Text = "TableLazy", Url = "/tablelazy" },
                     new MenuItem() { Text = "Clock", Url = "/clock" },
                     new MenuItem() { Text = "IP", Url = "/ip" },
                 }
             },
-        new MenuItem() { Text = "本站源码", Url = "https://github.com/densen2014/Densen.Extensions/blob/master/Demo/DemoShared/Pages?WT.mc_id=DT-MVP-5005078" },
+            new MenuItem() { Text = "本站源码", Url = "https://github.com/densen2014/Densen.Extensions/blob/master/Demo/DemoShared/Pages?WT.mc_id=DT-MVP-5005078" },
 
     };
 }
