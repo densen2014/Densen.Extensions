@@ -118,6 +118,10 @@ var provider = new FileExtensionContentTypeProvider();
 provider.Mappings[".properties"] = "application/octet-stream";
 provider.Mappings[".apk"] = "application/octet-stream";
 
+//opencv 模型
+provider.Mappings[".caffemodel"] = "application/octet-stream";
+provider.Mappings[".prototxt"] = "application/octet-stream";
+
 provider.Mappings.Remove(".ts");
 provider.Mappings.Add(".key", "text/plain");
 provider.Mappings.Add(".m3u8", "application/x-mpegURL");
@@ -157,7 +161,13 @@ app.UseStaticFiles(new StaticFileOptions
 {
     FileProvider = new PhysicalFileProvider(dir),
     RequestPath = new PathString("/stream"),
-    ContentTypeProvider = provider
+    ContentTypeProvider = provider,
+    OnPrepareResponse = ctx =>
+    {
+        const int durationInSeconds = 60 * 60 * 24 * 7; //自动缓存这些文件24*7小时
+        ctx.Context.Response.Headers[Microsoft.Net.Http.Headers.HeaderNames.CacheControl] =
+           "public,max-age=" + durationInSeconds;
+    }
 });
 
 app.UseDirectoryBrowser(new DirectoryBrowserOptions
@@ -181,6 +191,20 @@ app.UseDirectoryBrowser(new DirectoryBrowserOptions
     FileProvider = new PhysicalFileProvider(dir),
     Formatter = new AME.HtmlDirectoryFormatterChsSorted(HtmlEncoder.Default),
     RequestPath = new PathString("/BlazorHybrid")
+});
+
+dir = Path.Combine(app.Environment.WebRootPath, "_content", "BootstrapBlazor.ImageHelper", "models");
+if (!Directory.Exists(dir)) Directory.CreateDirectory(dir);
+app.UseStaticFiles(new StaticFileOptions
+{
+    FileProvider = new PhysicalFileProvider(dir), 
+    ContentTypeProvider = provider,
+    OnPrepareResponse = ctx =>
+    {
+        const int durationInSeconds = 60 * 60 * 24 * 7; //自动缓存这些文件24*7小时
+        ctx.Context.Response.Headers[Microsoft.Net.Http.Headers.HeaderNames.CacheControl] =
+           "public,max-age=" + durationInSeconds;
+    }
 });
 
 app.UseRouting();
