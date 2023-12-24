@@ -4,4 +4,26 @@
 
 @using BootstrapBlazor.Components
 
-<WxQrCode /> 
+<WxQrCode @ref="WxQrCode" Options="Options" OnResult="OnResult"> 
+    <Switch Width="75" ShowInnerText="true" OnInnerText="单次解码" OffInnerText="连续解码" @bind-Value="@Options.DecodeOnce" />
+    <Switch Width="75" ShowInnerText="true" OnInnerText="居中剪裁" OffInnerText="不剪裁" @bind-Value="@Options.AutoCaputeCrop" />
+    <Switch Width="75" ShowInnerText="true" OnInnerText="自动重试" OffInnerText="不重试" @bind-Value="@Options.AutoCaputeCrop" />
+    <Switch Width="75" ShowInnerText="true" OnInnerText="调试" OffInnerText="禁用调试" @bind-Value="@Options.Debug" />
+</WxQrCode>
+
+
+@MessageString
+
+@code{
+    string? MessageString { get; set; }
+
+    WxQrCode? WxQrCode { get; set; }
+
+    private WxQrCodeOption Options { get; set; } = new();
+
+    private Task OnResult(string value)
+    {
+        MessageString = value;
+        return Task.CompletedTask;
+    }
+}
