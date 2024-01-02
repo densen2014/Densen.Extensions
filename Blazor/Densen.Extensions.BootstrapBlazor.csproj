@@ -32,7 +32,7 @@
     </PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="BootstrapBlazor" Version="8.*" />
+		<PackageReference Include="BootstrapBlazor" Version="8.0.6" />
 		<PackageReference Include="BootstrapBlazor.FontAwesome" Version="8.*" />
 		<PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.*" />
 		<PackageReference Include="Toolbelt.Blazor.I18nText" Version="12.*" />
