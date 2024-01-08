@@ -101,8 +101,7 @@ public static class Tools
             }
 
             //4.轉成Byte
-            byte[] DescByte = new byte[1];
-            DescByte[0] = Convert.ToByte(Data);
+            byte[] DescByte = [Convert.ToByte(Data)];
             //5.取出ASCII碼的String
             TempString = TempString + acsii.GetString(DescByte);
         }

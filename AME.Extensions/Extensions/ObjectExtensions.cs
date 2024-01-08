@@ -353,9 +353,9 @@ public static partial class ObjectExtensions
             if (m != null && m.IsPublic)
             {
                 // 进行判NULL处理
-                if (m.Invoke(obj, new object[] { }) != null)
+                if (m.Invoke(obj, []) != null)
                 {
-                    map.Add(p.Name, m.Invoke(obj, new object[] { }).ToString()); // 向字典添加元素
+                    map.Add(p.Name, m.Invoke(obj, []).ToString()); // 向字典添加元素
                 }
             }
         }

@@ -52,7 +52,7 @@ namespace AME.Extensions
                     return;
                 }
                 //参数
-                object[] parameters1 = new object[] { 值 };
+                object[] parameters1 = [值];
                 //使用参数调用该方法
 
                 generic.Invoke(tmp_Class, parameters1);

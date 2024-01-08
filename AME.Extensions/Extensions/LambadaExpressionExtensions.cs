@@ -144,7 +144,7 @@ public static partial class LambadaExpression
     {
         ParameterExpression parameter = Expression.Parameter(typeof(T), "p");
         MemberExpression member = Expression.PropertyOrField(parameter, propertyName);
-        MethodInfo method = typeof(string).GetMethod("Contains", new[] { typeof(string) });
+        MethodInfo method = typeof(string).GetMethod("Contains", [typeof(string)]);
         ConstantExpression constant = Expression.Constant(propertyValue, typeof(string));
         return Expression.Lambda<Func<T, bool>>(Expression.Call(member, method, constant), parameter);
     }
@@ -160,7 +160,7 @@ public static partial class LambadaExpression
     {
         ParameterExpression parameter = Expression.Parameter(typeof(T), "p");
         MemberExpression member = Expression.PropertyOrField(parameter, propertyName);
-        MethodInfo method = typeof(string).GetMethod("Contains", new[] { typeof(string) });
+        MethodInfo method = typeof(string).GetMethod("Contains", [typeof(string)]);
         ConstantExpression constant = Expression.Constant(propertyValue, typeof(string));
         return Expression.Lambda<Func<T, bool>>(Expression.Not(Expression.Call(member, method, constant)), parameter);
     }

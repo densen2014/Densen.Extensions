@@ -35,7 +35,7 @@ public static class IQueryableExtensions
         MemberExpression selector = Expression.MakeMemberAccess(param, pi);
         LambdaExpression le = Expression.Lambda(selector, param);
         string methodName = (descending) ? "OrderByDescending" : "OrderBy";
-        MethodCallExpression resultExp = Expression.Call(typeof(Queryable), methodName, new Type[] { typeof(TSource), pi.PropertyType }, source.Expression, le);
+        MethodCallExpression resultExp = Expression.Call(typeof(Queryable), methodName, [typeof(TSource), pi.PropertyType], source.Expression, le);
         return source.Provider.CreateQuery<TSource>(resultExp);
     }
 

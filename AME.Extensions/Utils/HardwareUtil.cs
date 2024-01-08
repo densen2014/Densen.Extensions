@@ -194,7 +194,7 @@ public static class HardwareUtil
             foreach (var share in searcher)
             {
                 id = new USBID();
-                var Dependent = (share["Dependent"] as string).Split(new char[] { '=' })[1];
+                var Dependent = (share["Dependent"] as string).Split(['='])[1];
 
                 var PnPEntityCollection = new ManagementObjectSearcher("SELECT * FROM Win32_PnPEntity WHERE DeviceID=" + Dependent).Get();
                 if (PnPEntityCollection != null)
@@ -228,7 +228,7 @@ public static class HardwareUtil
         {
             foreach (var USBControllerDevice in USBControllerDeviceCollection)
             {
-                var Dependent = (USBControllerDevice["Dependent"] as string).Split(new char[] { '=' })[1];
+                var Dependent = (USBControllerDevice["Dependent"] as string).Split(['='])[1];
                 if (Dependent.Contains(vid_pid))
                 {
                     var PnPEntityCollection = new ManagementObjectSearcher("SELECT * FROM Win32_PnPEntity WHERE DeviceID=" + Dependent).Get();
