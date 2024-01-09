@@ -23,6 +23,7 @@
 		<EnableWindowsTargeting>true</EnableWindowsTargeting>
         <!--禁止检查EOL工作负载 NETSDK1202-->
         <CheckEolWorkloads>false</CheckEolWorkloads>
+        <DocumentationFile>$(MSBuildProjectName).xml</DocumentationFile>
     </PropertyGroup>
 	<ItemGroup>
 		<PackageReference Include="Newtonsoft.Json" Version="13.*" />
