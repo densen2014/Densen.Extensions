@@ -4,6 +4,11 @@
         <name>AME.Extensions</name>
     </assembly>
     <members>
+        <member name="T:AME.BytesExtensions">
+            <summary>
+            Byte[] 扩展方法
+            </summary>
+        </member>
         <member name="T:AME.DateTimeExtensions">
             <summary>
             Date 扩展方法
@@ -116,6 +121,11 @@
         <member name="T:AME.IEnumerableExtensions">
             <summary>
             IEnumerable 扩展方法
+            </summary>
+        </member>
+        <member name="T:AME.ArrayExtensions">
+            <summary>
+            Array 扩展方法
             </summary>
         </member>
         <member name="T:AME.IQueryableExtensions">
@@ -380,6 +390,27 @@
             <param name="propertyName">需要判断的属性</param>
             <returns>是否包含</returns>
         </member>
+        <member name="M:AME.ObjectExtensions.ObjectToMap(System.Object)">
+            <summary>
+            对象转换为字典
+            </summary>
+            <param name="obj">待转化的对象</param>
+            <returns></returns>
+        </member>
+        <member name="M:AME.ObjectExtensions.EntityToMap(System.Object)">
+            <summary>
+            实体类对象转换为字典
+            <para>实体类打上特性 [Serializable, DataContract] </para>
+            <para>实体类字段打上特性 [DataMember] </para>
+            </summary>
+            <param name="obj">实体类</param>
+            <returns></returns>
+        </member>
+        <member name="T:AME.ObjectExtensions.proc1">
+            <summary>
+            对象转换为字典 Demo
+            </summary>
+        </member>
         <member name="M:AME.StringExt.ToDecimal(System.String,System.Decimal)">
             <summary>
             String转Decimal
@@ -419,11 +450,57 @@
              <param name="excludeMatchers">多个排除项 new[] { "*.txt", "*.asciidoc", "*.md" }</param>
              <param name="matchfilename"></param>
         </member>
+        <member name="M:AME.PathExtensions.FormattedPathName(System.String,System.Boolean)">
+            <summary>
+            格式化目录名，以避免出现“Illegal characters in path”错误：
+            </summary>
+            <param name="pathName"></param>
+            <param name="replaceVolumeSeparatorChar">过滤冒号</param>
+            <returns></returns>
+        </member>
+        <member name="M:AME.PathExtensions.CreatePathIfNotExists(System.String,System.Boolean)">
+            <summary>
+            创建目录(如果目录不存在)
+            </summary>
+            <param name="path">要创建的目录</param>
+            <param name="withFileName">路径是否带文件名,自动分离目录名称 默认 false</param>
+        </member>
         <member name="M:AME.StringExtensions.ToCamelCase(System.String)">
             <summary>将大驼峰命名转为小驼峰命名</summary>
         </member>
         <member name="M:AME.StringExtensions.ToSnakeCase(System.String)">
             <summary>将大驼峰命名转为蛇形命名</summary>
+        </member>
+        <member name="M:AME.StringExtensions.RemoveAllNonNumericValuesFromString(System.String)">
+            <summary>
+            R从字符串中删除所有非数字值
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AME.StringExtensions.ReplaceSpecialCharacters(System.String)">
+            <summary>
+            替换特殊字符
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AME.StringExtensions.BxSubstring(System.String,System.Int32,System.Boolean)">
+            <summary>
+            截取字符串
+            </summary>
+            <param name="inputString">输入字符串</param>
+            <param name="maxLength">最大长度(按半角计算, 全角按半角的2倍计算)</param>
+            <param name="appendEllipsis">是否需要添加省略号</param>
+            <returns>截取后的字符串</returns>
+        </member>
+        <member name="M:AME.StringExtensions.MaskString(System.String,System.Decimal)">
+            <summary>
+            遮罩中间部分字符串
+            </summary>
+            <param name="x"></param>
+            <param name="maskRate">遮罩比例,0.6表示60%</param>
+            <returns></returns>
         </member>
         <member name="P:AME.Models.CheckNewResponse.Filename">
             <summary>
@@ -444,6 +521,52 @@
             <summary>
             刷新时间
             </summary>
+        </member>
+        <member name="M:AME.ConventUtil.ObjectToJSON2``1(``0)">
+            <summary>
+            对象转换成JSON
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AME.ConventUtil.JsonToObject2``1(System.String)">
+            <summary>
+            Json转换成对象
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="jsonText"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AME.ConventUtil.GenericToDataTable``1(System.Collections.Generic.IList{``0})">
+            <summary>
+            转换List到DataTable
+            </summary>
+            <param name="list"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AME.ConventUtil.DataTableToGeneric``1(System.Data.DataTable)">
+            <summary>
+            转换DataTable到List
+            </summary>
+            <param name="dt"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AME.ConventUtil.DataUrl2Stream(System.String)">
+            <summary>
+            从 DataUrl 转换为 Stream
+            <para>Convert from a DataUrl to an Stream</para>
+            </summary>
+            <param name="base64encodedstring"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AME.ConventUtil.Base642Stream(System.String)">
+            <summary>
+            从 base64 转换为 Stream
+            <para>Convert from a base64 to an Stream</para>
+            </summary>
+            <param name="base64encodedstring"></param>
+            <returns></returns>
         </member>
         <member name="T:AME.Util.ColorUtil">
             <summary>
@@ -525,36 +648,6 @@
             <param name="url"></param>
             <returns></returns>
         </member>
-        <member name="M:AME.ConventUtil.ObjectToJSON2``1(``0)">
-            <summary>
-            对象转换成JSON
-            </summary>
-            <typeparam name="T"></typeparam>
-            <param name="obj"></param>
-            <returns></returns>
-        </member>
-        <member name="M:AME.ConventUtil.JsonToObject2``1(System.String)">
-            <summary>
-            Json转换成对象
-            </summary>
-            <typeparam name="T"></typeparam>
-            <param name="jsonText"></param>
-            <returns></returns>
-        </member>
-        <member name="M:AME.ConventUtil.GenericToDataTable``1(System.Collections.Generic.IList{``0})">
-            <summary>
-            转换List到DataTable
-            </summary>
-            <param name="list"></param>
-            <returns></returns>
-        </member>
-        <member name="M:AME.ConventUtil.DataTableToGeneric``1(System.Data.DataTable)">
-            <summary>
-            转换DataTable到List
-            </summary>
-            <param name="dt"></param>
-            <returns></returns>
-        </member>
         <member name="M:AME.Extensions.Reflections.GetTypes(System.String,System.String)">
             <summary>  
             获取一个命名空间下的所有类  
@@ -563,7 +656,7 @@
             <param name="assemblyString"></param>   
             <returns></returns>  
         </member>
-        <member name="M:AME.Tools.FormatNumber(System.Object,System.Int32)">
+        <member name="M:AME.Tools.FormatDecimal(System.Object,System.Int32)">
             <summary>
             格式化小数
             </summary>
@@ -588,9 +681,26 @@
             <param name="Strs">字符串</param>
             <param name="IsCleanFile">是否先清空文件</param>
         </member>
-        <member name="M:AME.Tools.GetProperties``1(``0)">
+        <member name="M:AME.Tools.runCmd(System.String,System.Boolean)">
+            <summary>
+            运行cmd命令
+            </summary>
+            <param name="cmd">执行运行命令</param>
+            <param name="withCmdExe">使用 cmd.exe 执行命令</param>
+            <returns></returns>
+        </member>
+        <member name="M:AME.Tools.GetPropertiesToDict``1(``0)">
             <summary>
             反射得到实体类的字段名称和值
+            var dict = GetProperties(model);
+            </summary>
+            <typeparam name="T">实体类</typeparam>
+            <param name="t">实例化</param>
+            <returns></returns>
+        </member>
+        <member name="M:AME.Tools.GetProperties2``1(``0)">
+            <summary>
+            反射得到实体类的字段名称
             var dict = GetProperties(model);
             </summary>
             <typeparam name="T">实体类</typeparam>
@@ -640,18 +750,179 @@
             If called in the non main thread, will return false;
             </summary>
         </member>
-        <member name="T:Extensions.File">
+        <member name="T:Extensions.FileExtensions">
             <summary>
             System.IO 扩展方法
             </summary>
         </member>
-        <member name="M:Extensions.File.GetAutoSizeString(System.Int64,System.Int32)">
+        <member name="M:Extensions.FileExtensions.GetAutoSizeString(System.Int64,System.Int32)">
             <summary>
             得到适应的大小
             </summary>
             <param name="sizes"></param>
             <param name="roundCount"></param> 
             <returns>string</returns>
+        </member>
+        <member name="M:Extensions.FileExtensions.FormattedFileName(System.String)">
+            <summary>
+            格式化文件名，以避免出现“Illegal characters in path”错误：
+            </summary>
+            <param name="fileName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GlobalExtensions.ToGmtISO8601(System.DateTime)">
+            <summary>
+            转格林时间，并以ISO8601格式化字符串
+            </summary>
+            <param name="time"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GlobalExtensions.GetTime(System.DateTime)">
+            <summary>
+            获取时间戳，按1970-1-1
+            </summary>
+            <param name="time"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GlobalExtensions.GetTimeMilliseconds(System.DateTime)">
+            <summary>
+            获取时间戳毫秒数，按1970-1-1
+            </summary>
+            <param name="time"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GlobalExtensions.GetTime(System.Int64,System.Boolean)">
+            <summary>
+            时间戳反转为时间，有很多中翻转方法，但是，请不要使用过字符串（string）进行操作，大家都知道字符串会很慢！
+            </summary>
+            <param name="TimeStamp">时间戳</param>
+            <param name="AccurateToMilliseconds">是否精确到毫秒</param>
+            <returns>返回一个日期时间</returns>
+        </member>
+        <member name="M:GlobalExtensions.ToByte(System.Object)">
+            <summary>
+            转换成Byte
+            </summary>
+            <param name="s">输入字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:GlobalExtensions.ToShort(System.Object)">
+            <summary>
+            转换成short/Int16
+            </summary>
+            <param name="s"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GlobalExtensions.ToInt(System.Object,System.Boolean)">
+            <summary>
+            转换成Int/Int32
+            </summary>
+            <param name="s"></param>
+            <param name="round">是否四舍五入，默认false</param>
+            <returns></returns>
+        </member>
+        <member name="M:GlobalExtensions.ToLong(System.Object)">
+            <summary>
+            转换成Long/Int64
+            </summary>
+            <param name="s"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GlobalExtensions.ToFloat(System.Object,System.Nullable{System.Int32})">
+            <summary>
+            转换成Float/Single
+            </summary>
+            <param name="s"></param>
+            <param name="decimals">小数位数</param>
+            <returns></returns>
+        </member>
+        <member name="M:GlobalExtensions.ToDouble(System.Object,System.Nullable{System.Int32})">
+            <summary>
+            转换成Double/Single
+            </summary>
+            <param name="s"></param>
+            <param name="digits">小数位数</param>
+            <returns></returns>
+        </member>
+        <member name="M:GlobalExtensions.ToDecimal(System.Object,System.Nullable{System.Int32})">
+            <summary>
+            转换成Decimal
+            </summary>
+            <param name="s"></param>
+            <param name="decimals">小数位数</param>
+            <returns></returns>
+        </member>
+        <member name="M:GlobalExtensions.ToDateTime(System.Object)">
+            <summary>
+            转换成DateTime
+            </summary>
+            <param name="s"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GlobalExtensions.ToDate(System.Object)">
+            <summary>
+            转换成Date
+            </summary>
+            <param name="s"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GlobalExtensions.ToBool(System.Object,System.Boolean)">
+            <summary>
+            转换成Boolean
+            </summary>
+            <param name="s"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GlobalExtensions.To``1(System.Object)">
+            <summary>
+            泛型转换，转换失败会抛出异常
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="s"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GlobalExtensions.ToIntString(System.Boolean)">
+            <summary>
+            布尔值转换为字符串1或者0
+            </summary>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GlobalExtensions.ToInt(System.Boolean)">
+            <summary>
+            布尔值转换为整数1或者0
+            </summary>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GlobalExtensions.ToZhCn(System.Boolean)">
+            <summary>
+            布尔值转换为中文
+            </summary>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GlobalExtensions.ToHex(System.Byte[],System.Boolean)">
+            <summary>
+            转换为16进制
+            </summary>
+            <param name="bytes"></param>
+            <param name="lowerCase">是否小写</param>
+            <returns></returns>
+        </member>
+        <member name="M:GlobalExtensions.HexToBytes(System.String)">
+            <summary>
+            16进制转字节数组
+            </summary>
+            <param name="s"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GlobalExtensions.ToBase64(System.Byte[])">
+            <summary>
+            转换为Base64
+            </summary>
+            <param name="bytes"></param>
+            <returns></returns>
         </member>
         <member name="M:System.Linq.Expressions.LambadaExpression.True``1">
             <summary>
