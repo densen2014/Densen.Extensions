@@ -17,7 +17,7 @@ namespace AME.Services;
 public class LazyHeroDataService<TModel> : DataServiceBase<TModel>
         where TModel : class, new()
 {
-    public List<TModel> Items { get; set; } = new List<TModel>();
+    public List<TModel> Items { get; set; } = [];
     public IEnumerable<int> PageItemsSource => new int[] { 10, 20, 100, 500 };
     public IEnumerable<int> PageItemsSource50 => new int[] { 50, 100, 200, 500 };
 
@@ -47,7 +47,10 @@ public class LazyHeroDataService<TModel> : DataServiceBase<TModel>
             var oldItem = Items.FirstOrDefault();
             try
             {
-                if (!string.IsNullOrEmpty(Field)) oldItem = Items.Where(a => a.GetField(Field).Equals(model.GetField(Field))).FirstOrDefault();
+                if (!string.IsNullOrEmpty(Field))
+                {
+                    oldItem = Items.Where(a => a.GetField(Field).Equals(model.GetField(Field))).FirstOrDefault();
+                }
                 //var oldItem = LazyHeroDataService.Items.Where(a => a.UUID.Equals(model.UUID)).FirstOrDefault();
                 if (oldItem != null)
                 {
@@ -117,9 +120,13 @@ public class LazyHeroDataService<TModel> : DataServiceBase<TModel>
 
         // 内存分页
         if (options.IsPage)
+        {
             items = items.Skip((options.PageIndex - 1) * options.PageItems).Take(options.PageItems);
+        }
         else if (options.IsVirtualScroll)
+        {
             items = items.Skip(options.StartIndex).Take(options.PageItems);
+        }
 
         return Task.FromResult(new QueryData<TModel>()
         {

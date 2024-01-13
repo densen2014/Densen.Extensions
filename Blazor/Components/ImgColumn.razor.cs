@@ -6,20 +6,19 @@
 
 using Microsoft.AspNetCore.Components;
 
-namespace AmeBlazor.Components
+namespace AmeBlazor.Components;
+
+public partial class ImgColumn : ComponentBase
 {
-    public partial class ImgColumn : ComponentBase
+    [Parameter] public string Url { get; set; }
+    [Parameter] public string BaseUrl { get; set; } = "";
+    [Parameter] public string Name { get; set; } = "Name";
+    [Parameter] public string Title { get; set; } = "Title";
+    [Parameter] public string Style { get; set; } = "max-height:50px;max-width:50px;";
+
+    protected override void OnInitialized()
     {
-        [Parameter] public string Url { get; set; }
-        [Parameter] public string BaseUrl { get; set; } = "";
-        [Parameter] public string Name { get; set; } = "Name";
-        [Parameter] public string Title { get; set; } = "Title";
-        [Parameter] public string Style { get; set; } = "max-height:50px;max-width:50px;";
-
-        protected override void OnInitialized()
-        {
-            base.OnInitialized();
-        }
-
+        base.OnInitialized();
     }
+
 }

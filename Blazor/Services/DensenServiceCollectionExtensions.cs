@@ -9,35 +9,33 @@ using AME.Services;
 using Microsoft.AspNetCore.Http;
 using ClipboardService = AME.Services.ClipboardService;
 
-namespace Microsoft.Extensions.DependencyInjection
+namespace Microsoft.Extensions.DependencyInjection;
+
+/// <summary>
+/// Densen BootstrapBlazor 服务扩展类
+/// </summary>
+public static class DensenServiceCollectionExtensions
 {
+
     /// <summary>
-    /// Densen BootstrapBlazor 服务扩展类
+    /// 增加 BootstrapBlazor Table 服务扩展类,<para></para>
+    /// 包含BootstrapBlazor/LazyHero/WebClientInfo/BrowserService/Clipboard
     /// </summary>
-    public static class DensenServiceCollectionExtensions
+    /// <param name="services"></param> 
+    /// <returns></returns>
+    public static IServiceCollection AddDensenExtensions(this IServiceCollection services)
     {
-
-        /// <summary>
-        /// 增加 BootstrapBlazor Table 服务扩展类,<para></para>
-        /// 包含BootstrapBlazor/LazyHero/WebClientInfo/BrowserService/Clipboard
-        /// </summary>
-        /// <param name="services"></param> 
-        /// <returns></returns>
-        public static IServiceCollection AddDensenExtensions(this IServiceCollection services)
-        {
-            services.AddBootstrapBlazor();
-            //Table附加内存数据操作服务
-            services.AddTransient(typeof(LazyHeroDataService<>));
-            services.AddTransient<BrowserService>();
-            services.AddScoped<ClipboardService>();
-            services.AddHttpContextAccessor();
-            services.AddScoped<HttpContextAccessor>();
-            services.AddHttpClient();
-            services.AddScoped<HttpClient>();
-            services.AddScoped<WebClientInfoProvider>();
-            return services;
-        }
-
+        services.AddBootstrapBlazor();
+        //Table附加内存数据操作服务
+        services.AddTransient(typeof(LazyHeroDataService<>));
+        services.AddTransient<BrowserService>();
+        services.AddScoped<ClipboardService>();
+        services.AddHttpContextAccessor();
+        services.AddScoped<HttpContextAccessor>();
+        services.AddHttpClient();
+        services.AddScoped<HttpClient>();
+        services.AddScoped<WebClientInfoProvider>();
+        return services;
     }
 
 }

@@ -6,42 +6,41 @@
 
 using Microsoft.AspNetCore.Components;
 
-namespace AmeBlazor.Components
+namespace AmeBlazor.Components;
+
+public partial class TimerAme : ComponentBase, IDisposable
 {
-    public partial class TimerAme : ComponentBase, IDisposable
+    private CancellationTokenSource AutoRefreshCancelTokenSource { get; set; }
+
+    protected override void OnInitialized()
     {
-        private CancellationTokenSource AutoRefreshCancelTokenSource { get; set; }
+        base.OnInitialized();
+        worker();
+    }
 
-        protected override void OnInitialized()
-        {
-            base.OnInitialized();
-            worker();
-        }
+    /// <summary>
+    /// Dispose 方法
+    /// </summary>
+    public void Dispose()
+    {
+        AutoRefreshCancelTokenSource = null;
+    }
 
-        /// <summary>
-        /// Dispose 方法
-        /// </summary>
-        public void Dispose()
+    public void worker()
+    {
+        AutoRefreshCancelTokenSource = new CancellationTokenSource();
+        _ = Task.Run(async () =>
         {
-            AutoRefreshCancelTokenSource = null;
-        }
-
-        public void worker()
-        {
-            AutoRefreshCancelTokenSource = new CancellationTokenSource();
-            _ = Task.Run(async () =>
+            try
             {
-                try
+                while (!(AutoRefreshCancelTokenSource?.IsCancellationRequested ?? true))
                 {
-                    while (!(AutoRefreshCancelTokenSource?.IsCancellationRequested ?? true))
-                    {
-                        await InvokeAsync(StateHasChanged);
-                        await Task.Delay(TimeSpan.FromSeconds(1), AutoRefreshCancelTokenSource?.Token ?? new CancellationToken(true));
-                    }
+                    await InvokeAsync(StateHasChanged);
+                    await Task.Delay(TimeSpan.FromSeconds(1), AutoRefreshCancelTokenSource?.Token ?? new CancellationToken(true));
                 }
-                catch (TaskCanceledException) { }
-            });
+            }
+            catch (TaskCanceledException) { }
+        });
 
-        }
     }
 }

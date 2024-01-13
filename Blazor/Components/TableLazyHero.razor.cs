@@ -119,8 +119,7 @@ public partial class TableLazyHero<TItem> : BootstrapComponentBase
     [Parameter] public EventCallback<string> 查询 { get; set; }
     [Parameter] public EventCallback<string> 多点数据 { get; set; }
     [Parameter]
-    public List<SelectedItem> 多点数据Items { get; set; } = new List<SelectedItem>()
-    { new SelectedItem { Text = "本机", Value = "",Active=true }};
+    public List<SelectedItem> 多点数据Items { get; set; } = [new SelectedItem { Text = "本机", Value = "", Active = true }];
 
 
     /// <summary>
@@ -137,7 +136,10 @@ public partial class TableLazyHero<TItem> : BootstrapComponentBase
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         await base.OnAfterRenderAsync(firstRender);
-        if (!firstRender) return;
+        if (!firstRender)
+        {
+            return;
+        }
 
         InitDateTimeRange();
     }
@@ -177,9 +179,13 @@ public partial class TableLazyHero<TItem> : BootstrapComponentBase
 
         // 开启后台进程进行数据处理
         if (!Excel导入.HasDelegate)
+        {
             await MockDownLoadAsync();
+        }
         else
+        {
             await Excel导入.InvokeAsync("");
+        }
 
         // 关闭 option 相关联的弹窗
         option.Close();
@@ -291,9 +297,13 @@ public partial class TableLazyHero<TItem> : BootstrapComponentBase
 
         // 开启后台进程进行数据处理
         if (!执行添加.HasDelegate)
+        {
             await MockDownLoadAsync();
+        }
         else
+        {
             await 执行添加.InvokeAsync("");
+        }
 
         // 关闭 option 相关联的弹窗
         option.Close();
@@ -323,9 +333,13 @@ public partial class TableLazyHero<TItem> : BootstrapComponentBase
 
         // 开启后台进程进行数据处理
         if (!导出.HasDelegate)
+        {
             await MockDownLoadAsync();
+        }
         else
+        {
             await 导出.InvokeAsync(item);
+        }
 
         // 关闭 option 相关联的弹窗
         option.Close();
@@ -418,10 +432,18 @@ public partial class TableLazyHero<TItem> : BootstrapComponentBase
             var value = (context.Row).GetIdentityKey(tableImgField.Field);
             buttonBuilder.AddAttribute(3, nameof(ImgColumn.Url), value);
             buttonBuilder.AddAttribute(4, nameof(ImgColumn.BaseUrl), tableImgField.BaseUrl);
-            if (!string.IsNullOrEmpty(tableImgField.Style)) buttonBuilder.AddAttribute(5, nameof(ImgColumn.Style), tableImgField.Style);
+            if (!string.IsNullOrEmpty(tableImgField.Style))
+            {
+                buttonBuilder.AddAttribute(5, nameof(ImgColumn.Style), tableImgField.Style);
+            }
+
             buttonBuilder.CloseComponent();
         }));
-        if (!string.IsNullOrEmpty(tableImgField.ColumnText)) builder.AddAttribute(4, "Text", tableImgField.ColumnText);
+        if (!string.IsNullOrEmpty(tableImgField.ColumnText))
+        {
+            builder.AddAttribute(4, "Text", tableImgField.ColumnText);
+        }
+
         builder.CloseComponent();
     };
 
@@ -587,7 +609,7 @@ public partial class TableLazyHero<TItem> : BootstrapComponentBase
     /// 获得/设置 数据集合
     /// </summary>
     [Parameter]
-    public List<TItem> Items { get; set; } = new List<TItem>();
+    public List<TItem> Items { get; set; } = [];
 
     /// <summary>
     /// 获取/设置 表格 thead 样式 <see cref="TableHeaderStyle"/>，默认<see cref="TableHeaderStyle.Light"/>

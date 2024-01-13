@@ -4,13 +4,12 @@
 // e-mail:zhouchuanglin@gmail.com 
 // **********************************
 
-namespace AmeBlazor.Components
+namespace AmeBlazor.Components;
+
+/// <summary>
+/// 一个假的类
+/// </summary>
+public class NullClass
 {
-    /// <summary>
-    /// 一个假的类
-    /// </summary>
-    public class NullClass
-    {
-        public int ID { get; set; }
-    }
+    public int ID { get; set; }
 }

@@ -4,13 +4,11 @@
 // e-mail:zhouchuanglin@gmail.com 
 // **********************************
 
-namespace AME.CommonUtils
-{
-    public interface IWebClientInfoProvider
-    {
-        string BrowserInfo { get; }
-        string ClientIpAddress { get; }
-        string ComputerName { get; }
-    }
+namespace AME.CommonUtils;
 
+public interface IWebClientInfoProvider
+{
+    string BrowserInfo { get; }
+    string ClientIpAddress { get; }
+    string ComputerName { get; }
 }
