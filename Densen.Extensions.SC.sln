@@ -91,6 +91,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BootstrapBlazor.BarcodeGene
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BootstrapBlazor.ImageHelper", "..\BootstrapBlazor.ImageHelper\src\BootstrapBlazor.ImageHelper\BootstrapBlazor.ImageHelper.csproj", "{D84B1765-2838-4896-B39F-D47B35231028}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BootstrapBlazor.Table.ImportExportsMiniService", "..\Densen.Freesql\src\BootstrapBlazor.Table.ImportExportsMiniService\BootstrapBlazor.Table.ImportExportsMiniService.csproj", "{00B32B15-FEBC-4972-9D4F-CC13BBFE07B3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -469,6 +471,18 @@ Global
 		{D84B1765-2838-4896-B39F-D47B35231028}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D84B1765-2838-4896-B39F-D47B35231028}.Release|x86.ActiveCfg = Release|Any CPU
 		{D84B1765-2838-4896-B39F-D47B35231028}.Release|x86.Build.0 = Release|Any CPU
+		{00B32B15-FEBC-4972-9D4F-CC13BBFE07B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00B32B15-FEBC-4972-9D4F-CC13BBFE07B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00B32B15-FEBC-4972-9D4F-CC13BBFE07B3}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{00B32B15-FEBC-4972-9D4F-CC13BBFE07B3}.Debug|x86.Build.0 = Debug|Any CPU
+		{00B32B15-FEBC-4972-9D4F-CC13BBFE07B3}.DebugSC|Any CPU.ActiveCfg = DebugSC|Any CPU
+		{00B32B15-FEBC-4972-9D4F-CC13BBFE07B3}.DebugSC|Any CPU.Build.0 = DebugSC|Any CPU
+		{00B32B15-FEBC-4972-9D4F-CC13BBFE07B3}.DebugSC|x86.ActiveCfg = DebugSC|Any CPU
+		{00B32B15-FEBC-4972-9D4F-CC13BBFE07B3}.DebugSC|x86.Build.0 = DebugSC|Any CPU
+		{00B32B15-FEBC-4972-9D4F-CC13BBFE07B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00B32B15-FEBC-4972-9D4F-CC13BBFE07B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{00B32B15-FEBC-4972-9D4F-CC13BBFE07B3}.Release|x86.ActiveCfg = Release|Any CPU
+		{00B32B15-FEBC-4972-9D4F-CC13BBFE07B3}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -506,6 +520,7 @@ Global
 		{A6DE5C95-30F9-4BA7-982E-1DA628DB9A3A} = {7598D3CE-5270-4A5E-9A66-E8E8CC771339}
 		{5764F80E-AC6C-4B96-8E94-DF3719C96C68} = {7598D3CE-5270-4A5E-9A66-E8E8CC771339}
 		{D84B1765-2838-4896-B39F-D47B35231028} = {7598D3CE-5270-4A5E-9A66-E8E8CC771339}
+		{00B32B15-FEBC-4972-9D4F-CC13BBFE07B3} = {84BC19E7-598D-4FA2-9B3B-5049B420A0CD}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2B9698BD-88AE-4165-9322-67F121A4B26B}

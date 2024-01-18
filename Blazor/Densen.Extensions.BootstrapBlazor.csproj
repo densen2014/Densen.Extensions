@@ -26,13 +26,13 @@
 		<AssemblyOriginatorKeyFile>..\keys\Longbow.Utility.snk</AssemblyOriginatorKeyFile>
 		<SignAssembly>True</SignAssembly>
         <OutputPath>..\..\Bin</OutputPath>
-        <Version>8.1.6</Version>
+        <Version>8.1.10</Version>
         <!--禁止检查EOL工作负载 NETSDK1202-->
         <CheckEolWorkloads>false</CheckEolWorkloads>
     </PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="BootstrapBlazor" Version="8.1.6" />
+		<PackageReference Include="BootstrapBlazor" Version="8.*" />
 		<PackageReference Include="BootstrapBlazor.FontAwesome" Version="8.*" />
 		<PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.1.1" />
 		<PackageReference Include="Toolbelt.Blazor.I18nText" Version="12.*" />
@@ -54,11 +54,15 @@
 	<ItemGroup>
 		<ProjectReference Include="..\AME.Extensions\AME.Extensions.csproj" />
 	</ItemGroup>
-	<!--<ItemGroup Condition="'$(Configuration)' == 'Debug'">
-		<ProjectReference Include="..\AME.Extensions\AME.Extensions.csproj" />
-	</ItemGroup>
-	<ItemGroup Condition="'$(Configuration)' != 'Debug'">
-		<PackageReference Include="AME.Extensions" Version="7.*" />
-	</ItemGroup>-->
+
+    <ItemGroup Condition="'$(Configuration)' != 'DebugSC'">
+        <PackageReference Include="BootstrapBlazor.Table.ImportExportsMiniService" Version="8.*" />
+    </ItemGroup>
+
+    <ItemGroup Condition="'$(Configuration)' == 'DebugSC'">
+        <!--带外部源码调试环境-->
+        <ProjectReference Include="..\..\Densen.Freesql\src\BootstrapBlazor.Table.ImportExportsMiniService\BootstrapBlazor.Table.ImportExportsMiniService.csproj" />
+    </ItemGroup> 
+ 
 
 </Project>
