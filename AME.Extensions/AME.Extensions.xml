@@ -871,6 +871,7 @@
             转换成Boolean
             </summary>
             <param name="s"></param>
+            <param name="宽松策略"></param>
             <returns></returns>
         </member>
         <member name="M:GlobalExtensions.To``1(System.Object)">

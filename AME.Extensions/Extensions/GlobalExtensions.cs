@@ -215,6 +215,7 @@ public static class GlobalExtensions
     /// 转换成Boolean
     /// </summary>
     /// <param name="s"></param>
+    /// <param name="宽松策略"></param>
     /// <returns></returns>
     public static bool? ToBool(this object s, bool 宽松策略 = false)
     {
