@@ -11,10 +11,6 @@
 	<ItemGroup>
 		<ProjectReference Include="..\DemoShared\DemoShared.csproj" />
 	</ItemGroup>
-
-	<ItemGroup>
-	  <Folder Include="wwwroot\" />
-	</ItemGroup>
 	
 	<ItemGroup>
 		<PackageReference Include="AME.SortedDirectoryChs" Version="6.5.0" />
@@ -22,6 +18,15 @@
 	
 	<ItemGroup>
 		<RuntimeHostConfigurationOption Include="System.Drawing.EnableUnixSupport" Value="true" />
+	</ItemGroup>
+	
+	<ItemGroup>
+	  <Content Update="wwwroot\fxf5kv2kjka8vfwgvim6.pdf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </Content>
+	  <Content Update="wwwroot\mljq8tr2k29nbrbanmci.pdf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </Content>
 	</ItemGroup>
 	
 </Project>

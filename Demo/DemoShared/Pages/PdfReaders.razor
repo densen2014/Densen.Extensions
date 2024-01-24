@@ -90,4 +90,32 @@
                    ReadOnly="ReadOnly"
                    Watermark="@Watermark" />
     </TabItem>
+    <TabItem Text="本地文件">
+        <Button IsAsync="true" OnClick="@(() => ShowFile("fxf5kv2kjka8vfwgvim6.pdf"))">Sample 1</Button>
+        <Button IsAsync="true" OnClick="@(() => ShowFile("mljq8tr2k29nbrbanmci.pdf"))">Sample 2</Button>
+
+        <PdfReader @ref="PdfReader" StreamMode="true" Height="800px" ReadOnly="true" Debug="true" LocalFileName="@LocalFileName" AutoStreamMode="true" Toolbar="false" Statusbar="false"></PdfReader>
+
+        <Badge>@ShowingSample</Badge>
+
+        @code
+        {
+            private string? LocalFileName { get; set; } = null;
+            private PdfReader? PdfReader { get; set; } = default!;
+
+            private string? ShowingSample { get; set; }
+
+            private async Task ShowFile(string fileName)
+            {
+                ShowingSample = fileName;
+                //var fileContent = await File.ReadAllBytesAsync(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", fileName));
+                //using var memStream = new MemoryStream(fileContent);
+                //await PdfReader.ShowPdf(memStream);
+
+                LocalFileName = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", fileName);
+                if (PdfReader != null) await PdfReader.ShowPdf(LocalFileName);
+
+            }
+        }
+    </TabItem>
 </Tab> 
