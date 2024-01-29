@@ -82,6 +82,7 @@ public static class EnumExtensions
 
     public static string GetDescription(this Enum en)
     {
+        if (en == null) return string.Empty;
         Type temType = en.GetType();
         MemberInfo[] memberInfos = temType.GetMember(en.ToString());
         if (memberInfos != null && memberInfos.Length > 0)
