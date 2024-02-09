@@ -755,22 +755,6 @@
             System.IO 扩展方法
             </summary>
         </member>
-        <member name="M:Extensions.FileExtensions.WriteAllTextAsync(System.String,System.String,System.Int32)">
-            <summary>
-            以异步形式创建一个新文件，在其中写入指定的字符串，然后关闭该文件。 如果目标文件已存在，则覆盖该文件。
-            </summary>
-            <param name="path"></param>
-            <param name="content"></param>
-            <param name="delay"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Extensions.FileExtensions.ReadAllTextAsync(System.String)">
-            <summary>
-            以异步形式打开一个文本文件，读取文件中的所有文本，然后关闭此文件。
-            </summary>
-            <param name="Path"></param>
-            <returns></returns> 
-        </member>
         <member name="M:Extensions.FileExtensions.GetAutoSizeString(System.Int64,System.Int32)">
             <summary>
             得到适应的大小
