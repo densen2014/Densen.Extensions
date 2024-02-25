@@ -26,7 +26,7 @@
 		<AssemblyOriginatorKeyFile>..\keys\Longbow.Utility.snk</AssemblyOriginatorKeyFile>
 		<SignAssembly>True</SignAssembly>
         <OutputPath>..\..\Bin</OutputPath>
-        <Version>8.2.0</Version>
+        <Version>8.3.0</Version>
         <!--禁止检查EOL工作负载 NETSDK1202-->
         <CheckEolWorkloads>false</CheckEolWorkloads>
     </PropertyGroup>
@@ -51,9 +51,10 @@
 		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="8.*" />
 	</ItemGroup>
 
-	<ItemGroup>
-		<ProjectReference Include="..\AME.Extensions\AME.Extensions.csproj" />
-	</ItemGroup>
+    <ItemGroup Condition="'$(Configuration)' == 'Release'">
+        <PackageReference Include="AME.Extensions" Version="*" /> 
+    </ItemGroup>
+
 
     <ItemGroup Condition="'$(Configuration)' != 'DebugSC'">
         <PackageReference Include="BootstrapBlazor.Table.ImportExportsMiniService" Version="8.*" />
@@ -62,6 +63,7 @@
     <ItemGroup Condition="'$(Configuration)' == 'DebugSC'">
         <!--带外部源码调试环境-->
         <ProjectReference Include="..\..\Densen.Freesql\src\BootstrapBlazor.Table.ImportExportsMiniService\BootstrapBlazor.Table.ImportExportsMiniService.csproj" />
+		<ProjectReference Include="..\AME.Extensions\AME.Extensions.csproj" />
     </ItemGroup> 
  
 
