@@ -188,7 +188,7 @@ public partial class TableLazyHero<TItem> : BootstrapComponentBase
         }
 
         // 关闭 option 相关联的弹窗
-        option.Close();
+        await option.Close();
 
         // 弹窗告知下载完毕
         await ToastService.Show(new ToastOption()
@@ -229,7 +229,7 @@ public partial class TableLazyHero<TItem> : BootstrapComponentBase
         await 导入.InvokeAsync("");
 
         // 关闭 option 相关联的弹窗
-        option.Close();
+        await option.Close();
 
         // 弹窗告知下载完毕
         await ToastService.Show(new ToastOption()
@@ -269,7 +269,7 @@ public partial class TableLazyHero<TItem> : BootstrapComponentBase
         await 导入II.InvokeAsync("");
 
         // 关闭 option 相关联的弹窗
-        option.Close();
+        await option.Close();
 
         // 弹窗告知下载完毕
         await ToastService.Show(new ToastOption()
@@ -306,7 +306,7 @@ public partial class TableLazyHero<TItem> : BootstrapComponentBase
         }
 
         // 关闭 option 相关联的弹窗
-        option.Close();
+        await option.Close();
 
         // 弹窗告知下载完毕
         await ToastService.Show(new ToastOption()
@@ -342,7 +342,7 @@ public partial class TableLazyHero<TItem> : BootstrapComponentBase
         }
 
         // 关闭 option 相关联的弹窗
-        option.Close();
+        await option.Close();
 
         // 弹窗告知下载完毕
         await ToastService.Show(new ToastOption()
