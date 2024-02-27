@@ -40,7 +40,8 @@
 		<ProjectReference Include="..\..\Blazor\Densen.Extensions.BootstrapBlazor.csproj" />
 		<ProjectReference Include="..\..\Densen.Component.Blazor\Densen.Component.Blazor.csproj" />
         <ProjectReference Include="..\..\..\BootstrapBlazor.ImageHelper\src\BootstrapBlazor.ImageHelper\BootstrapBlazor.ImageHelper.csproj" />
-	</ItemGroup>
+        <ProjectReference Include="..\..\..\BootstrapBlazor.OfdReader\src\BootstrapBlazor.OfdReader\BootstrapBlazor.OfdReader.csproj" />
+    </ItemGroup>
 
     <ItemGroup Condition="'$(Configuration)' == 'Debug'">
         <!--不带源码调试-->
@@ -88,6 +89,9 @@
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</Content>
 		<Content Update="wwwroot\samples\sample2.docx">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+		<Content Update="wwwroot\samples\sample2.ofd">
 		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</Content>
 		<Content Update="wwwroot\samples\sample2.pdf">

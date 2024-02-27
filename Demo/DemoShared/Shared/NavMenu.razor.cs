@@ -32,6 +32,7 @@ public partial class NavMenu
                 {
                     new MenuItem() { Text = "文件预览 FileViewer", Url = "/fileViewers" },
                     new MenuItem() { Text = "PDF阅读器 PDF Reader", Url = "/pdfReaders" },
+                    new MenuItem() { Text = "OFD阅读器 OFD Reader", Url = "/ofdReaders" },
                     new MenuItem() { Text = "文件", Url = "/Files" },
                     new MenuItem() { Text = "上传文件", Url = "/FileUpload" },
                     new MenuItem() { Text = "文件夹", Url = "/AppFiles" },

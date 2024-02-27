@@ -58,6 +58,7 @@
 
     <ItemGroup Condition="'$(Configuration)' != 'DebugSC'">
         <PackageReference Include="BootstrapBlazor.Table.ImportExportsMiniService" Version="8.*" />
+        <PackageReference Include="AME.Extensions" Version="*" />
     </ItemGroup>
 
     <ItemGroup Condition="'$(Configuration)' == 'DebugSC'">
