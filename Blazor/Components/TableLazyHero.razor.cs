@@ -24,29 +24,29 @@ public partial class TableLazyHero<TItem> : BootstrapComponentBase
     where TItem : class, new()
 {
 
-    public Table<TItem> mainTable;
+    public Table<TItem>? mainTable;
 
-    [Inject] private LazyHeroDataService<TItem> LazyHeroDataService { get; set; }
-    [Inject] protected ToastService ToastService { get; set; }
+    [Inject, NotNull] private LazyHeroDataService<TItem>? LazyHeroDataService { get; set; }
+    [Inject,NotNull] protected ToastService? ToastService { get; set; }
 
     /// <summary>
     /// 获得/设置 IJSRuntime 实例
     /// </summary>
     [Inject]
     [NotNull]
-    protected IJSRuntime JsRuntime { get; set; }
+    protected IJSRuntime? JsRuntime { get; set; }
 
     /// <summary>
     /// 动态附加查询条件, 详表关联字段名称, 当Field!=FieldD才需要设置
     /// </summary>
-    [Parameter] public string FieldD { get; set; } = null;
+    [Parameter] public string? FieldD { get; set; } = null;
 
     /// <summary>
     /// 获得/设置 显示导入,执行添加工具栏按钮
     /// </summary>
     [Parameter] public ShowToolbarType ShowToolbarType { get; set; } = ShowToolbarType.无;
-    protected Modal ExtraLargeModal { get; set; }
-    public TItem SelectOneItem { get; set; }
+    protected Modal? ExtraLargeModal { get; set; }
+    public TItem? SelectOneItem { get; set; }
 
     [Parameter] public EventCallback<string> Excel导入 { get; set; }
     [Parameter] public string Excel导入文本 { get; set; } = "Excel导入";
@@ -63,15 +63,15 @@ public partial class TableLazyHero<TItem> : BootstrapComponentBase
     [Parameter] public string 打印文本 { get; set; } = "打印";
     [Parameter] public string 查询文本 { get; set; } = "查询";
     [Parameter] public string 新窗口打开文字 { get; set; } = "新窗口打开";
-    [Parameter] public string 新窗口打开Url { get; set; }
+    [Parameter] public string? 新窗口打开Url { get; set; }
     [Parameter] public int Footercolspan1 { get; set; } = 3;
     [Parameter] public int Footercolspan2 { get; set; }
     [Parameter] public int Footercolspan3 { get; set; }
     [Parameter] public int FootercolspanTotal { get; set; } = 2;
-    [Parameter] public string FooterText { get; set; }
-    [Parameter] public string FooterText2 { get; set; }
-    [Parameter] public string FooterText3 { get; set; }
-    [Parameter] public string FooterTotal { get; set; }
+    [Parameter] public string? FooterText { get; set; }
+    [Parameter] public string? FooterText2 { get; set; }
+    [Parameter] public string? FooterText3 { get; set; }
+    [Parameter] public string? FooterTotal { get; set; }
     [Parameter] public bool ShowDateTimeRange { get; set; }
     [Parameter] public bool DateTimeRangeDefaultMotherly { get; set; }
     /// <summary>
@@ -80,7 +80,6 @@ public partial class TableLazyHero<TItem> : BootstrapComponentBase
     [Parameter] public Type FieldType { get; set; } = typeof(int);
     [Parameter] public string Field { get; set; } = "ID";
 
-#nullable enable 
     /// <summary>
     /// 图片列参数,图片列参数集合优先
     /// </summary>
@@ -106,18 +105,20 @@ public partial class TableLazyHero<TItem> : BootstrapComponentBase
     /// <summary>
     /// 获得/设置 导出按钮异步回调方法
     /// </summary>
-    [Parameter]
+    [Parameter,NotNull]
     public Func<ITableExportDataContext<TItem>, Task<bool>>? OnExportAsync { get; set; }
-
-#nullable disable
 
     /// <summary>
     /// 使用日期范围
     /// </summary>
     public bool EnableDateTimeRange { get; set; } = true;
-    public string SearchText { get; set; }
+
+    public string? SearchText { get; set; }
+
     [Parameter] public EventCallback<string> 查询 { get; set; }
+
     [Parameter] public EventCallback<string> 多点数据 { get; set; }
+
     [Parameter]
     public List<SelectedItem> 多点数据Items { get; set; } = [new SelectedItem { Text = "本机", Value = "", Active = true }];
 
@@ -125,7 +126,7 @@ public partial class TableLazyHero<TItem> : BootstrapComponentBase
     /// <summary>
     /// 标题
     /// </summary>
-    [Parameter] public string Title { get; set; }
+    [Parameter] public string? Title { get; set; }
 
     protected override void OnInitialized()
     {
@@ -155,7 +156,10 @@ public partial class TableLazyHero<TItem> : BootstrapComponentBase
         //if (!string.IsNullOrEmpty(FooterTotal)) await InvokeAsync(StateHasChanged);
         Items = items;
         LazyHeroDataService.Items = items;
-        await mainTable.QueryAsync();
+        if (mainTable != null)
+        {
+            await mainTable.QueryAsync();
+        } 
     }
 
     private async Task ImportExcel()
@@ -198,7 +202,10 @@ public partial class TableLazyHero<TItem> : BootstrapComponentBase
             Content = "操作成功,请检查数据",
         });
 
-        await mainTable.QueryAsync();
+        if (mainTable != null)
+        {
+            await mainTable.QueryAsync();
+        }
     }
 
     private async Task ImportItems()
@@ -239,7 +246,10 @@ public partial class TableLazyHero<TItem> : BootstrapComponentBase
             Content = "操作成功,请检查数据",
         });
 
-        await mainTable.QueryAsync();
+        if (mainTable != null)
+        {
+            await mainTable.QueryAsync();
+        }
     }
     private async Task ImportItemsII()
     {
@@ -279,7 +289,10 @@ public partial class TableLazyHero<TItem> : BootstrapComponentBase
             Content = "操作成功,请检查数据",
         });
 
-        await mainTable.QueryAsync();
+        if (mainTable != null)
+        {
+            await mainTable.QueryAsync();
+        }
     }
     private async Task 执行添加Cmd()
     {
@@ -366,7 +379,10 @@ public partial class TableLazyHero<TItem> : BootstrapComponentBase
         if (刷新.HasDelegate)
         {
             await 刷新.InvokeAsync("");
-            await mainTable.QueryAsync();
+            if (mainTable != null)
+            {
+                await mainTable.QueryAsync();
+            }
         }
     }
     private async Task 查询Click()
@@ -374,7 +390,10 @@ public partial class TableLazyHero<TItem> : BootstrapComponentBase
         if (查询.HasDelegate)
         {
             await 查询.InvokeAsync("");
-            await mainTable.QueryAsync();
+            if (mainTable != null)
+            {
+                await mainTable.QueryAsync();
+            }
         }
     }
 
@@ -401,7 +420,7 @@ public partial class TableLazyHero<TItem> : BootstrapComponentBase
     /// <param name="field">列名,默认"ID"</param>
     /// <param name="fieldType">列类型,默认typeof(int)</param>
     /// <returns></returns>
-    private object GetExpression(object model, string field = "ID", Type fieldType = null)
+    private object GetExpression(object model, string field = "ID", Type? fieldType = null)
     {
         // ValueExpression
         var body = Expression.Property(Expression.Constant(model), typeof(TItem), field);
@@ -417,9 +436,13 @@ public partial class TableLazyHero<TItem> : BootstrapComponentBase
     /// <param name="model"></param>
     /// <param name="tableImgField"></param>
     /// <returns></returns>
-    private RenderFragment RenderTableImgColumn(TItem model, TableImgField tableImgField = null) => builder =>
+    private RenderFragment RenderTableImgColumn(TItem model, TableImgField? tableImgField = null) => builder =>
     {
         tableImgField = tableImgField ?? TableImgField;
+        if (tableImgField == null || !tableImgField.Render)
+        {
+            return;
+        }
         var fieldExpresson = GetExpression(model, tableImgField.Field, tableImgField.FieldType);
         builder.OpenComponent(0, typeof(TableColumn<,>).MakeGenericType(typeof(TItem), tableImgField.FieldType));
         builder.AddAttribute(1, "FieldExpression", fieldExpresson);

@@ -8,7 +8,7 @@ namespace AME.CommonUtils;
 
 public interface IWebClientInfoProvider
 {
-    string BrowserInfo { get; }
-    string ClientIpAddress { get; }
-    string ComputerName { get; }
+    string? BrowserInfo { get; }
+    string? ClientIpAddress { get; }
+    string? ComputerName { get; }
 }

@@ -24,32 +24,32 @@ public class BigConfigItem
     /// <summary>
     ///  组件 class
     /// </summary>
-    public string Class { get; set; }
+    public string? Class { get; set; }
 
     /// <summary>
     /// 组件 oi 图标,InputBox,CHeckBox无效
     /// </summary>
-    public string ClassOi { get; set; }
+    public string? ClassOi { get; set; }
 
     /// <summary>
     /// 组件Style, Button无效
     /// </summary>
-    public string Style { get; set; }
+    public string? Style { get; set; }
 
     /// <summary>
     /// 组件显示文本
     /// </summary>
-    public string Text { get; set; }
+    public string? Text { get; set; }
 
     /// <summary>
     /// 绑定字段名称, Button无效
     /// </summary>
-    public string FiledName { get; set; }
+    public string? FiledName { get; set; }
 
     /// <summary>
     /// Button跳转Url,InputBox,CHeckBox无效
     /// </summary>
-    public string Url { get; set; }
+    public string? Url { get; set; }
 
     /// <summary>
     /// 按钮高度<para></para>默认120px
@@ -66,5 +66,5 @@ public class BigConfigItem
     /// <summary>
     /// 授权列表
     /// </summary>
-    public string[] Roles { get; set; }
+    public string[]? Roles { get; set; }
 }

@@ -10,10 +10,10 @@ namespace AmeBlazor.Components;
 
 public class AmeMenuItem
 {
-    public string Link { get; set; }
-    public string Text { get; set; }
+    public string? Link { get; set; }
+    public string? Text { get; set; }
     public NavLinkMatch Match { get; set; }
-    public string AuthorizeRoles { get; set; }
-    public List<AmeMenuItem> SubItems { get; set; }
+    public string? AuthorizeRoles { get; set; }
+    public List<AmeMenuItem>? SubItems { get; set; }
 
 }

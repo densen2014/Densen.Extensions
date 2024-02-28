@@ -7,6 +7,7 @@
 
 using BootstrapBlazor.Components;
 using Microsoft.AspNetCore.Components;
+using System.Diagnostics.CodeAnalysis;
 
 namespace AmeBlazor.Components;
 
@@ -16,11 +17,8 @@ namespace AmeBlazor.Components;
 public abstract partial class AmeBlazorComponentBase : ComponentBase, IDisposable
 {
 
-#nullable enable 
-
     [Parameter]
     public Dictionary<string, BootstrapDynamicComponent>? TabPages { get; set; }
-#nullable disable 
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
@@ -48,7 +46,8 @@ public abstract partial class AmeBlazorComponentBase : ComponentBase, IDisposabl
     /// 使用方法: <para></para>
     /// &lt;Tab @ref="TabSetMenu" OnClickTab="@OnClickTabItem" /&gt; 
     /// </summary>
-    protected Tab TabSetMenu { get; set; }
+    [NotNull]
+    protected Tab? TabSetMenu { get; set; }
 
     #region Tab控件
 
@@ -95,7 +94,7 @@ public abstract partial class AmeBlazorComponentBase : ComponentBase, IDisposabl
         //var flag = false;
         foreach (var item in AllPages ? Pages : Pages.Take(PagesTake))
         {
-            TabSetMenu.AddTab(new Dictionary<string, object>
+            TabSetMenu.AddTab(new Dictionary<string, object?>
             {
                 [nameof(TabItem.Text)] = item.Key,
                 //[nameof(TabItem.ChildContent)] = flag ? null : item.Value.Render()
@@ -104,7 +103,7 @@ public abstract partial class AmeBlazorComponentBase : ComponentBase, IDisposabl
             //flag = true;
         }
 
-        TabSetMenu.ActiveTab(TabSetMenu.Items.FirstOrDefault());
+        TabSetMenu.ActiveTab(TabSetMenu.Items.First());
     }
 
     #endregion
@@ -159,7 +158,7 @@ public abstract partial class AmeBlazorComponentBase : ComponentBase, IDisposabl
     {
         var component = (Pages.Where(a => a.Key == text).FirstOrDefault().Value);
         var item = new TabItem();
-        var parameters = new Dictionary<string, object>
+        var parameters = new Dictionary<string, object?>
         {
             [nameof(TabItem.Text)] = text,
             [nameof(TabItem.IsActive)] = true,
@@ -174,7 +173,7 @@ public abstract partial class AmeBlazorComponentBase : ComponentBase, IDisposabl
 
         };
 
-        TabSetMenu?.AddTab(parameters);
+        TabSetMenu.AddTab(parameters);
     }
 
     #endregion

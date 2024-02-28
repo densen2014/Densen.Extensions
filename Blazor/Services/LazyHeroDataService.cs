@@ -25,7 +25,7 @@ public class LazyHeroDataService<TModel> : DataServiceBase<TModel>
     /// 设置主表主键,用于保存临时数据
     /// </summary>
     [NotNull]
-    public string Field { get; set; }
+    public string? Field { get; set; }
 
     /// <summary>
     /// 保存方法
@@ -33,14 +33,14 @@ public class LazyHeroDataService<TModel> : DataServiceBase<TModel>
     /// <param name="model"></param>
     /// <param name="changedType"></param>
     /// <returns></returns>
-    public override Task<bool> SaveAsync(TModel model, ItemChangedType changedType)
+    public override Task<bool> SaveAsync(TModel? model, ItemChangedType changedType)
     {
         // 增加数据演示代码
 
         if (model == null)
         {
             //model.FieldSetValue(Field,value);
-            Items.Add(model);
+            Items.Add(new TModel());
         }
         else
         {
@@ -49,7 +49,7 @@ public class LazyHeroDataService<TModel> : DataServiceBase<TModel>
             {
                 if (!string.IsNullOrEmpty(Field))
                 {
-                    oldItem = Items.Where(a => a.GetField(Field).Equals(model.GetField(Field))).FirstOrDefault();
+                    oldItem = Items.Where(a => a.GetField(Field)!.Equals(model.GetField(Field))).FirstOrDefault();
                 }
                 //var oldItem = LazyHeroDataService.Items.Where(a => a.UUID.Equals(model.UUID)).FirstOrDefault();
                 if (oldItem != null)
@@ -76,7 +76,7 @@ public class LazyHeroDataService<TModel> : DataServiceBase<TModel>
     {
         System.Console.WriteLine($"LazyHero QueryAsync {计数} 数据:{Items?.Count}"); 计数++;
 
-        IEnumerable<TModel> items = Items;
+        IEnumerable<TModel> items = Items??new();
 
         // 处理 Searchable=true 列与 SeachText 模糊搜索
         if (options.Searches.Any())
@@ -192,7 +192,7 @@ internal static partial class ObjectsExtensions
     /// <param name="instance">object</param>
     /// <param name="propertyName">需要判断的属性</param>
     /// <returns>是否包含</returns>
-    public static object GetField<TItem>(this TItem instance, string propertyName)
+    public static object? GetField<TItem>(this TItem instance, string propertyName)
     {
 
         if (instance != null && !string.IsNullOrEmpty(propertyName))

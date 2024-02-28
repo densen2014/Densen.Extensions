@@ -20,27 +20,27 @@ namespace AmeBlazor.Components;
 /// </summary>
 public abstract partial class AmeBlazorComponentBase : ComponentBase, IDisposable
 {
-    [Inject] protected NavigationManager NavigationManager { get; set; }
-    [Inject] protected I18nText I18nText { get; set; }
-    [Inject] protected IConfiguration config { get; set; }
-    [Inject] protected BrowserService browserService { get; set; }
-    [Inject] protected ToastService ToastService { get; set; }
-    [Inject] protected SwalService SwalService { get; set; }
-    [Inject] protected DialogService DialogService { get; set; }
+    [Inject,NotNull] protected NavigationManager? NavigationManager { get; set; }
+    [Inject,NotNull] protected I18nText? I18nText { get; set; }
+    [Inject,NotNull] protected IConfiguration? config { get; set; }
+    [Inject,NotNull] protected BrowserService? browserService { get; set; }
+    [Inject,NotNull] protected ToastService? ToastService { get; set; }
+    [Inject,NotNull] protected SwalService? SwalService { get; set; }
+    [Inject,NotNull] protected DialogService? DialogService { get; set; }
 
 
     /// <summary>
     /// 获得/设置 用户自定义属性
     /// </summary>
     [Parameter(CaptureUnmatchedValues = true)]
-    public IDictionary<string, object> AdditionalAttributes { get; set; }
+    public IDictionary<string, object>? AdditionalAttributes { get; set; }
 
     /// <summary>
     /// 获得/设置 IJSRuntime 实例
     /// </summary>
     [Inject]
     [NotNull]
-    protected IJSRuntime JsRuntime { get; set; }
+    protected IJSRuntime? JsRuntime { get; set; }
 
     /// <summary>
     /// Dispose 方法

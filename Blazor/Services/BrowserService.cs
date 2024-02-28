@@ -88,13 +88,14 @@ public class BrowserService
         IsLoading = false;
         await StopScrollListListenerAsync();
     }
+
     [JSInvokable]
     public void LoadMore()
     {
         OnBoilerEventLog(false);
     }
     public delegate void SyncLogHandler(bool firstRender);
-    public event SyncLogHandler SyncEventLog;
+    public event SyncLogHandler? SyncEventLog;
     protected void OnBoilerEventLog(bool firstRender)
     {
         SyncEventLog?.Invoke(firstRender);

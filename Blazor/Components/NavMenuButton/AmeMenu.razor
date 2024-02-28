@@ -1,29 +1,31 @@
 ﻿@namespace AmeBlazor.Components
 
-@foreach (var menu in Items)
+@if (Items != null)
 {
-    <li class="nav-item px-3">
-        <div class="nav-menu">
-            <AmeMenuBase Text="@menu.Text" Link="@menu.Link" />
-        </div>
-        @if (menu.SubItems != null && menu.SubItems.Any())
-        {
-            <button class="nav-toggler" @onclick="ToggleNavMenu">
-                <span class="navbar-toggler-icon">开</span>
-            </button>
-            <div class="@NavMenuCssClass">
-                <AmeMenu Items="@menu.SubItems" />
+    @foreach (var menu in Items)
+    {
+        <li class="nav-item px-3">
+            <div class="nav-menu">
+                <AmeMenuBase Text="@menu.Text" Link="@menu.Link" />
             </div>
-        }
-    </li>
+            @if (menu.SubItems != null && menu.SubItems.Any())
+            {
+                <button class="nav-toggler" @onclick="ToggleNavMenu">
+                    <span class="navbar-toggler-icon">开</span>
+                </button>
+                <div class="@NavMenuCssClass">
+                    <AmeMenu Items="@menu.SubItems" />
+                </div>
+            }
+        </li>
+    }
 }
 
-
 @code {
-    [Parameter] public List<AmeMenuItem> Items { get; set; }
+    [Parameter] public List<AmeMenuItem>? Items { get; set; }
 
     private bool collapseNavMenu = true;
-    private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+    private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
 
     private void ToggleNavMenu() => collapseNavMenu = !collapseNavMenu;
 }

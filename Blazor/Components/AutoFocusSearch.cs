@@ -19,9 +19,7 @@ public class AutoFocusSearch : Search, IDisposable
     [Parameter]
     public int FocusInterval { get; set; } = 5000;
 
-#nullable enable
     private CancellationTokenSource? CancellationToken { get; set; }
-#nullable disable
 
     /// <summary>
     /// OnAfterRender

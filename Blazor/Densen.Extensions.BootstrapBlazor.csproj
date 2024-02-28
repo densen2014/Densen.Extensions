@@ -18,15 +18,16 @@
 		<PackageTags>Densen Extensions for BootstrapBlazor</PackageTags>
 		<AssemblyName>Densen.Extensions.BootstrapBlazor</AssemblyName>
 		<RootNamespace>Densen.Extensions.BootstrapBlazor</RootNamespace>
+        <Nullable>enable</Nullable>
 
-		<I18nTextFallBackLanguage>zh-CN</I18nTextFallBackLanguage>
+        <I18nTextFallBackLanguage>zh-CN</I18nTextFallBackLanguage>
 
 		<Configurations>Debug;Release;DebugSC</Configurations>
 
 		<AssemblyOriginatorKeyFile>..\keys\Longbow.Utility.snk</AssemblyOriginatorKeyFile>
 		<SignAssembly>True</SignAssembly>
         <OutputPath>..\..\Bin</OutputPath>
-        <Version>8.3.0</Version>
+        <Version>8.3.1</Version>
         <!--禁止检查EOL工作负载 NETSDK1202-->
         <CheckEolWorkloads>false</CheckEolWorkloads>
     </PropertyGroup>
