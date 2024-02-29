@@ -15,7 +15,7 @@ public sealed partial class OfdReaders
 {
 
     [DisplayName("文件相对路径或者URL")]
-    private string FileName { get; set; } = "/_content/DemoShared/samples/sample2.ofd";
+    private string FileName { get; set; } = "/_content/DemoShared/samples/sample.ofd";
 
     private Task Apply()
     {
