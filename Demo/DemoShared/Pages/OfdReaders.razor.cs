@@ -24,19 +24,23 @@ public sealed partial class OfdReaders
 
     private Task Apply1()
     {
-        FileName= "/_content/DemoShared/samples/sample2.ofd";
+        FileName = "/_content/DemoShared/samples/sample.ofd";
         return Task.CompletedTask;
     }
 
     private Task Apply2()
     {
-        FileName = "http://localhost:5000/_content/DemoShared/samples/sample.ofd";
+        FileName = "/_content/DemoShared/samples/sample2.ofd";
         return Task.CompletedTask;
     }
 
     private Task Apply3()
     {
+#if DEBUGSC || DEBUG
+        FileName = "http://localhost:5000/_content/DemoShared/samples/sample.ofd";
+#else
         FileName = "https://blazor.app1.es/_content/DemoShared/samples/sample.ofd";
+#endif
         return Task.CompletedTask;
     }
 
@@ -57,7 +61,7 @@ public sealed partial class OfdReaders
             //文件名自己处理一下
             var filename = $"{DateTime.Now:MMdd_hhmmss}_{item.Name}";
             await OnSubmit(item, filename);
-            uploadstatus += Environment.NewLine + $"[{i}]: " + item.Name; 
+            uploadstatus += Environment.NewLine + $"[{i}]: " + item.Name;
             FileName = $"/uploads/{filename}";
 
         }

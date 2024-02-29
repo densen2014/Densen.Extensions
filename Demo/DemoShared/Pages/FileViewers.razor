@@ -42,7 +42,7 @@
 
     private static string CombineFilename(string filename)
     {
-#if DEBUG
+#if DEBUGSC || DEBUG
         filename = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "wwwroot", "samples", filename);
 #else
     filename = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "wwwroot", "_content","DemoShared","samples", filename);

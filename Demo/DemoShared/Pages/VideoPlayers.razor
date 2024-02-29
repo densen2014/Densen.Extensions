@@ -56,7 +56,7 @@
         }
         Items.Add(new SelectedItem { Text = "Mp4", Value = "//vjs.zencdn.net/v/oceans.mp4" });
         Items.Add(new SelectedItem { Text = "Mp4Local", Value = "https://blazor.app1.es/samples/ColorFlow2.mp4" });
-#if DEBUG
+#if DEBUGSC || DEBUG
         Items.Add(new SelectedItem { Text = "playlist.m3u8", Value = "https://localhost:5011/stream/cache/playlist.m3u8" });
         Items.Add(new SelectedItem { Text = "live.m3u8", Value = "https://localhost:5011/stream/cache/live.m3u8" });
 #else

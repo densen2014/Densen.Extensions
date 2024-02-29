@@ -36,7 +36,7 @@ namespace DemoBlazorWpfApp
             services.AddSharedExtensions();
             services.AddOcrExtensions();
             services.AddAIFormExtensions();
-#if DEBUG
+#if DEBUGSC || DEBUG
             services.AddBlazorWebViewDeveloperTools();
 #endif
         }
