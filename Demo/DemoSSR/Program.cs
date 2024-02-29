@@ -17,9 +17,6 @@ using System.Text.Encodings.Web;
 using AzureOpenAIClient.Http;
 #endif
 
-//默认路径, Linux会在/root/uploads, win在 C:\Users\[username]\Documents\uploads
-string UploadPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "uploads");
-if (!Directory.Exists(UploadPath)) Directory.CreateDirectory(UploadPath);
 
 var builder = WebApplication.CreateBuilder(args); //    webBuilder.UseContentRoot("D:\\T9WMS\\publish");
 
@@ -206,6 +203,23 @@ app.UseStaticFiles(new StaticFileOptions
         ctx.Context.Response.Headers[Microsoft.Net.Http.Headers.HeaderNames.CacheControl] =
            "public,max-age=" + durationInSeconds;
     }
+});
+
+//默认路径, Linux会在/root/uploads, win在 C:\Users\[username]\Documents\uploads
+string UploadPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "uploads");
+if (!Directory.Exists(UploadPath)) Directory.CreateDirectory(UploadPath);
+
+app.UseStaticFiles(new StaticFileOptions
+{
+    FileProvider = new PhysicalFileProvider(UploadPath),
+    RequestPath = new PathString("/uploads"),
+    ContentTypeProvider = provider
+});
+app.UseDirectoryBrowser(new DirectoryBrowserOptions
+{
+    FileProvider = new PhysicalFileProvider(UploadPath),
+    Formatter = new AME.HtmlDirectoryFormatterChsSorted(HtmlEncoder.Default),
+    RequestPath = new PathString("/uploads")
 });
 
 app.UseRouting();

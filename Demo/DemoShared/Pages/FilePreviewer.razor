@@ -11,6 +11,10 @@ else if (FilePreview != null)
 {
     <FileViewer Filename="@FilePreview" />
 }
+else if (OfdPreview != null)
+{
+    <OfdReader FileName=@OfdPreview />
+}
 else if (ImagePreview != null)
 {
     <Viewer Src="@ImagePreview" Width="600px" Height="300px" LocalFileToStream />
@@ -34,6 +38,8 @@ else
     Stream? stream { get; set; }
 
     string? FilePreview { get; set; }
+
+    string? OfdPreview { get; set; }
 
     string? ImagePreview { get; set; }
 
@@ -68,6 +74,10 @@ else
             if (extension == ".pdf")
             {
                 stream = File.OpenRead(filename);
+            }
+            else if (extension == ".ofd")
+            {
+                OfdPreview = $"/uploads/{Path.GetFileName(filename)}";
             }
             else if (extension == ".xlsx" || extension == ".docx")
             {

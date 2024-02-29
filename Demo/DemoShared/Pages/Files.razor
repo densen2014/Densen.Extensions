@@ -81,63 +81,8 @@
 
     string? Status { get; set; }
 
-    bool HideTools { get; set; }
-
-    async Task PreviewFile(string filename)
-    {
-        Reset();
-
-        Status = "处理中";
-        StateHasChanged();
-        await Task.Delay(100);
-
-        filename = Path.Combine(UploadPath, filename);
-
-        if (File.Exists(filename))
-        {
-            var extension = Path.GetExtension(filename);
-            if (extension == ".pdf")
-            {
-                stream = File.OpenRead(filename);
-            }
-            else if (extension == ".xlsx" || extension == ".docx")
-            {
-                FilePreview = filename;
-            }
-            else if (extension == ".png" || extension == ".jpg" || extension == ".jpeg" || extension == ".gif" || extension == ".bmp")
-            {
-                ImagePreview = filename;
-
-                //不用组件就自己处理
-                //ImagePreview = PopulateImageFromStream(File.OpenRead(filename));
-            }
-            else if (extension == ".txt" || extension == ".csv" || extension == ".xml" || extension == ".log" || extension == ".htm" || extension == ".html" || extension == ".css" || extension == ".js")
-            {
-                Message = File.ReadAllText(filename);
-            }
-            else
-            {
-                Message = $"目前还无法预览{extension}类型文件";
-            }
-        }
-        else
-        {
-            stream = null;
-            FilePreview = null;
-        }
-
-        Status = null;
-
-    }
-
-    private string PopulateImageFromStream(Stream stream)
-    {
-        MemoryStream ms = new MemoryStream();
-        stream.CopyTo(ms);
-        byte[] byteArray = ms.ToArray();
-        var b64String = Convert.ToBase64String(byteArray);
-        return "data:image/png;base64," + b64String;
-    }
+    bool HideTools { get; set; } 
+ 
 
     void Reset()
     {
@@ -162,7 +107,8 @@
             "sample.png",
             "sample.xlsx", "sample2.xlsx", "sample3.xlsx",
             "sample.pdf", "sample2.pdf",
-            "sample.docx", "sample2.docx"
+            "sample.docx", "sample2.docx",
+            "sample.ofd", "sample2.ofd"
         };
 
         using (HttpClient client = new HttpClient())

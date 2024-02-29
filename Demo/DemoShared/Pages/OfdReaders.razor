@@ -9,8 +9,13 @@
 <div class="row g-3">
     <div class="col-12">
         <BootstrapInputGroup>
+            <Button Color="Color.Primary" OnClick="Apply1">文件1</Button>
+            <Button Color="Color.Primary" OnClick="Apply2">文件2</Button>
+            <Button Color="Color.Primary" OnClick="Apply3">文件3</Button>
             <BootstrapInput @bind-Value="@FileName" />
-            <Button Color="Color.Primary" OnClick="Apply">加载</Button>
+            <Button Color="Color.Primary" OnClick="Apply">加载</Button> 
+            <InputFile OnChange="OnChange" style="max-width: 400px" class="form-control" multiple accept='ofd/*' />
+
         </BootstrapInputGroup>
     </div>
 </div>
