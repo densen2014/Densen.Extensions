@@ -126,6 +126,7 @@ provider.Mappings.Remove(".ts");
 provider.Mappings.Add(".key", "text/plain");
 provider.Mappings.Add(".m3u8", "application/x-mpegURL");
 provider.Mappings.Add(".ts", "video/MP2T");
+provider.Mappings[".ofd"] = "application/octet-stream";
 
 app.UseStaticFiles(new StaticFileOptions
 {

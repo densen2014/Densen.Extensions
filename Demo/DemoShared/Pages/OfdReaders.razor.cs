@@ -16,6 +16,9 @@ public sealed partial class OfdReaders
     private string FileName { get; set; } = "/_content/DemoShared/samples/sample2.ofd";
 
     private string FileNameStream { get; set; } = "https://blazor.app1.es/samples/sample2.ofd";
-     
-     
+
+    private Task Apply()
+    {
+        return Task.CompletedTask;
+    }
 }

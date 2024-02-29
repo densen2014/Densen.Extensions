@@ -6,4 +6,12 @@
 <hr />
 <a href="https://github.com/densen2014/Densen.Extensions/blob/master/Demo/DemoShared/Pages/OfdReaders.razor"><h5>页面源码</h5></a>
 
+<div class="row g-3">
+    <div class="col-12">
+        <BootstrapInputGroup>
+            <BootstrapInput @bind-Value="@FileName" />
+            <Button Color="Color.Primary" OnClick="Apply">加载</Button>
+        </BootstrapInputGroup>
+    </div>
+</div>
 <OfdReader FileName=@FileName /> 
