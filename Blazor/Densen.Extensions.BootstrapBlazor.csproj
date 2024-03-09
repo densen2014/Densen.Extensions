@@ -27,7 +27,7 @@
 		<AssemblyOriginatorKeyFile>..\keys\Longbow.Utility.snk</AssemblyOriginatorKeyFile>
 		<SignAssembly>True</SignAssembly>
         <OutputPath>..\..\Bin</OutputPath>
-        <Version>8.3.1</Version>
+        <Version>8.3.2</Version>
         <!--禁止检查EOL工作负载 NETSDK1202-->
         <CheckEolWorkloads>false</CheckEolWorkloads>
     </PropertyGroup>
@@ -53,13 +53,13 @@
 	</ItemGroup>
 
     <ItemGroup Condition="'$(Configuration)' == 'Release'">
-        <PackageReference Include="AME.Extensions" Version="*" /> 
+        <PackageReference Include="AME.Extensions" Version="8.*" /> 
     </ItemGroup>
 
 
     <ItemGroup Condition="'$(Configuration)' != 'DebugSC'">
         <PackageReference Include="BootstrapBlazor.Table.ImportExportsMiniService" Version="8.*" />
-        <PackageReference Include="AME.Extensions" Version="*" />
+        <PackageReference Include="AME.Extensions" Version="8.*" />
     </ItemGroup>
 
     <ItemGroup Condition="'$(Configuration)' == 'DebugSC'">
