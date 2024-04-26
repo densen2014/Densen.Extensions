@@ -19,6 +19,7 @@
 		<AssemblyName>Densen.Extensions.BootstrapBlazor</AssemblyName>
 		<RootNamespace>Densen.Extensions.BootstrapBlazor</RootNamespace>
         <Nullable>enable</Nullable>
+		<EnableWindowsTargeting>true</EnableWindowsTargeting>
 
         <I18nTextFallBackLanguage>zh-CN</I18nTextFallBackLanguage>
 
