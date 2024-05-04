@@ -33,22 +33,30 @@ public static class HardwareUtil
 
     public static List<NetworkAdapter> GetMacAddress(string filter = "Microsoft", string filter2 = "PhysicalAdapter=true", string filter3 = "Manufacturer <> 'TeamViewer Germany GmbH'", bool skiploop = false)
     {
-        var filters = $"(MACAddress Is Not NULL) {(filter.Length > 0 ? $"AND (Manufacturer <> '{filter}')" : "")} {(filter2.Length > 0 ? $"AND ({filter2})" : "")} {(filter3.Length > 0 ? $"AND ({filter3})" : "")}";
-        var searcher = new ManagementObjectSearcher($"SELECT MACAddress,Manufacturer,PhysicalAdapter FROM Win32_NetworkAdapter WHERE ({filters})");
-        var items = searcher.Get().Cast<ManagementObject>().
-            Select(x => new NetworkAdapter()
-            {
-                MACAddress = x["MACAddress"]?.ToString(),
-                Manufacturer = x["Manufacturer"]?.ToString(),
-                PhysicalAdapter = x["PhysicalAdapter"]?.ToString() == "True",
-            }
-            ).ToList();
-        items = items.Where(x => !string.IsNullOrWhiteSpace(x.MACAddress)).ToList();
-        if (!items.Any() && !skiploop)
+        try
         {
-            items = GetMacAddress("", "", skiploop: true);
+            var filters = $"(MACAddress Is Not NULL) {(filter.Length > 0 ? $"AND (Manufacturer <> '{filter}')" : "")} {(filter2.Length > 0 ? $"AND ({filter2})" : "")} {(filter3.Length > 0 ? $"AND ({filter3})" : "")}";
+            var searcher = new ManagementObjectSearcher($"SELECT MACAddress,Manufacturer,PhysicalAdapter FROM Win32_NetworkAdapter WHERE ({filters})");
+            var items = searcher.Get().Cast<ManagementObject>().
+                Select(x => new NetworkAdapter()
+                {
+                    MACAddress = x["MACAddress"]?.ToString(),
+                    Manufacturer = x["Manufacturer"]?.ToString(),
+                    PhysicalAdapter = x["PhysicalAdapter"]?.ToString() == "True",
+                }
+                ).ToList();
+            items = items.Where(x => !string.IsNullOrWhiteSpace(x.MACAddress)).ToList();
+            if (!items.Any() && !skiploop)
+            {
+                items = GetMacAddress("", "", skiploop: true);
+            }
+            return items;
+
         }
-        return items;
+        catch  
+        {
+            return null;
+        }
     }
 
     public static List<string> GetPhysicalMediaID()
