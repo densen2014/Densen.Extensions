@@ -10,21 +10,17 @@ namespace AmeBlazor.Components;
 
 public partial class TimerAme : ComponentBase, IDisposable
 {
+    [Parameter]
+    public string Label { get; set; } = "时间:";
+
     private CancellationTokenSource? AutoRefreshCancelTokenSource { get; set; }
 
-    protected override void OnInitialized()
-    {
-        base.OnInitialized();
-        worker();
-    }
+    protected override void OnInitialized() => worker();
 
     /// <summary>
     /// Dispose 方法
     /// </summary>
-    public void Dispose()
-    {
-        AutoRefreshCancelTokenSource = null;
-    }
+    public void Dispose() => AutoRefreshCancelTokenSource = null;
 
     public void worker()
     {
