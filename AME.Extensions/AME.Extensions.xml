@@ -507,6 +507,11 @@
             文件名,带相对路径
             </summary>
         </member>
+        <member name="P:AME.Models.CheckNewResponse.Version">
+            <summary>
+            文件版本
+            </summary>
+        </member>
         <member name="P:AME.Models.CheckNewResponse.Size">
             <summary>
             文件大小

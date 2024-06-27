@@ -15,6 +15,11 @@ public class CheckNewResponse
     public string Filename { get; set; }
 
     /// <summary>
+    /// 文件版本
+    /// </summary>
+    public string Version { get; set; }
+
+    /// <summary>
     /// 文件大小
     /// </summary>
     public string Size { get; set; }
