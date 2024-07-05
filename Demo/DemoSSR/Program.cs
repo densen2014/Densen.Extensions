@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.StaticFiles;
 using Microsoft.Extensions.FileProviders;
 using System.Globalization;
 using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Text.Encodings.Web;
 #if NET7_0_OR_GREATER
 using AzureOpenAIClient.Http;
@@ -207,6 +208,15 @@ app.UseStaticFiles(new StaticFileOptions
 
 //默认路径, Linux会在/root/uploads, win在 C:\Users\[username]\Documents\uploads
 string UploadPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "uploads");
+
+//is linux
+if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+{
+    //https://learn.microsoft.com/en-us/dotnet/core/compatibility/core-libraries/8.0/getfolderpath-unix
+
+    UploadPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "uploads");
+}
+
 if (!Directory.Exists(UploadPath)) Directory.CreateDirectory(UploadPath);
 
 app.UseStaticFiles(new StaticFileOptions
