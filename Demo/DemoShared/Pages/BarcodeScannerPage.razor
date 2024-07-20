@@ -9,7 +9,7 @@
 <hr />
 <a href="https://github.com/densen2014/Densen.Extensions/blob/master/Demo/DemoShared/Pages/BarcodeScannerPage.razor"><h5>页面源码</h5></a>
 
-<Tab IsOnlyRenderActiveTab>
+<Tab IsLazyLoadTabItem IsOnlyRenderActiveTab>
     <TabItem Text="扫码">
 
         <button class="btn btn-primary"
@@ -99,13 +99,31 @@
                     </div>
                 </div>
             </div>
-            <div style="height: 300px; overflow: scroll ">
+            <div style="width: 90%; height: 300px; overflow: auto;">
                 <pre>@BarCodesCustom</pre>
 
                 <p>@message</p>
             </div>
         </div>
+    </TabItem>
+    <TabItem Text="内嵌">
+        <BarcodeReader ScanResult="ScanResultEmbedded"
+                       OnError="OnError"
+                       Decodeonce="false"
+                       Style="ZXingBlazorStyle.Embedded"
+                       @ref="BarcodeReaderEmbedded" />
 
+        <BootstrapInputGroup class="float-md-start md-1 barcode-toolbar">
+            <Button OnClick="BarcodeReaderEmbedded.Start" Icon="fas fa-barcode" Color="Color.Secondary"><span class="d-none d-sm-inline-block">扫码</span></Button>
+            <Button OnClick="BarcodeReaderEmbedded.Stop" Color="Color.Secondary">停止</Button>
+            <Button OnClick="BarcodeReaderEmbedded.Reload" Color="Color.Secondary">重载</Button>
+        </BootstrapInputGroup>
+
+        <div style="width: 90%; height: 300px; overflow: auto;">
+            <pre>@BarCodesEmbedded</pre>
+
+            <p>@message</p>
+        </div>
     </TabItem>
 
     <TabItem Text="解码图片/QR码生成">

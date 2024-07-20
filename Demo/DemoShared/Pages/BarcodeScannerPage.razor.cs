@@ -75,7 +75,7 @@ public partial class BarcodeScannerPage: AppComponentBase
     private Task ScanResult2(string e)
     {
         BarCodeCustom = e;
-        if (BarCodesCustom?.Length > 60)
+        if (BarCodesCustom?.Length > 200)
         {
             BarCodesCustom = string.Empty;
         }
@@ -83,6 +83,29 @@ public partial class BarcodeScannerPage: AppComponentBase
         return Task.CompletedTask;
     }
 
+    #endregion
+
+    #region Embedded
+
+    [NotNull]
+    BarcodeReader? BarcodeReaderEmbedded { get; set; }
+    /// <summary>
+    /// 条码
+    /// </summary>
+    public string? BarCodeEmbedded { get; set; }
+    public string? BarCodesEmbedded { get; set; }
+
+
+    private Task ScanResultEmbedded(string e)
+    {
+        BarCodeEmbedded = e;
+        if (BarCodesEmbedded?.Length > 200)
+        {
+            BarCodesEmbedded = string.Empty;
+        }
+        BarCodesEmbedded = $"{DateTime.Now:mm:ss} {e}{Environment.NewLine}{BarCodesEmbedded}";
+        return Task.CompletedTask;
+    }
     #endregion
 
     BarCodes? barCodes;
