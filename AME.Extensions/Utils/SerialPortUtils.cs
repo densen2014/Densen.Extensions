@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.IO.Ports;
 using System.Linq;
+using System.Text;
 
 namespace AME.Util;
 #nullable enable
@@ -15,6 +16,12 @@ namespace AME.Util;
 
 public class SerialPortUtils
 {
+    public static bool Debug = false;
+    public static string 截断字符 = "\r\n";
+    public static SerialPort? SerialPort = null;
+    public static List<byte> Buffer = new List<byte>();
+    public static string BufferString => Buffer?.ToArray() == null?"": Encoding.UTF8.GetString(Buffer.ToArray());
+    public static Action<string>? On截断;
 
     public static List<string> GetPortNames()
     {
@@ -22,9 +29,6 @@ public class SerialPortUtils
     }
 
 
-    public static bool Debug = false;
-    public static SerialPort? SerialPort = null;
-    public static List<byte> Buffer = new List<byte>();
     //public static string[]? RecvAry => BitConverter.ToString(Buffer.ToArray()).Split('-');
     public static SerialPort OpenClosePort(string comName, int baud, bool debug = false)
     {
@@ -33,6 +37,8 @@ public class SerialPortUtils
         //串口未打开
         if (SerialPort == null || !SerialPort.IsOpen)
         {
+            if (Debug) Console.WriteLine($"打开串口");
+
             SerialPort = new SerialPort
             {
                 //串口名称
@@ -56,6 +62,7 @@ public class SerialPortUtils
         //串口已经打开
         else
         {
+            if (Debug) Console.WriteLine($"关闭打开的串口");
             SerialPort.Close();
             return SerialPort;
         }
@@ -63,22 +70,41 @@ public class SerialPortUtils
 
     public static void ReceiveData(object sender, SerialDataReceivedEventArgs e)
     {
+        if (Debug) Console.WriteLine($"接收数据");
         var _SerialPort = (SerialPort)sender;
-        do
+        try
         {
-            var _bytesToRead = _SerialPort.BytesToRead;
-            var recvData = new byte[_bytesToRead];
 
-            _SerialPort.Read(recvData, 0, _bytesToRead);
+            do
+            {
+                var _bytesToRead = _SerialPort.BytesToRead;
+                var recvData = new byte[_bytesToRead];
 
-            //1.缓存数据
-            Buffer.AddRange(recvData);
-        } while (_SerialPort.BytesToRead > 0);
+                _SerialPort.Read(recvData, 0, _bytesToRead);
 
-        //向控制台打印数据
-        //Console.WriteLine($"{Environment.NewLine}收到数据：{RecvData.ByteArrayToHexString()}");
-        var Recv = BitConverter.ToString(Buffer.ToArray());   // 82-C8-EA-17
-        if (Debug) Console.WriteLine($"{Environment.NewLine}收到数据：{Recv}");
+                //1.缓存数据
+                Buffer.AddRange(recvData);
+            } while (_SerialPort.BytesToRead > 0);
+
+            //向控制台打印数据
+            //Console.WriteLine($"{Environment.NewLine}收到数据：{RecvData.ByteArrayToHexString()}");
+            var Recv = BitConverter.ToString(Buffer.ToArray());   // 82-C8-EA-17
+            if (Debug)
+            {
+                Console.WriteLine($"{Environment.NewLine}收到数据：\n{Recv}\n{BufferString}");
+            }
+            if (On截断 != null)
+            {
+                if (Recv.Contains(截断字符))
+                {
+                    On截断.Invoke(Recv);
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            if (Debug) Console.WriteLine($"{Environment.NewLine}收数据错误：{ex.Message}");
+        }
     }
 
     public static void ClearRecvData()
