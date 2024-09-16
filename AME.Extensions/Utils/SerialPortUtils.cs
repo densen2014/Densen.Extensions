@@ -17,11 +17,12 @@ namespace AME.Util;
 public class SerialPortUtils
 {
     public static bool Debug = false;
-    public static string 截断字符 = "\r\n";
+    //public static string FrameBreakChar = "\r\n";
+    public static string FrameBreakChar = "\n";
     public static SerialPort? SerialPort = null;
     public static List<byte> Buffer = new List<byte>();
     public static string BufferString => Buffer?.ToArray() == null?"": Encoding.UTF8.GetString(Buffer.ToArray());
-    public static Action<string>? On截断;
+    public static Action<string>? OnFrame;
 
     public static List<string> GetPortNames()
     {
@@ -67,6 +68,7 @@ public class SerialPortUtils
             return SerialPort;
         }
     }
+    static string recvString = string.Empty;
 
     public static void ReceiveData(object sender, SerialDataReceivedEventArgs e)
     {
@@ -74,7 +76,6 @@ public class SerialPortUtils
         var _SerialPort = (SerialPort)sender;
         try
         {
-
             do
             {
                 var _bytesToRead = _SerialPort.BytesToRead;
@@ -84,6 +85,7 @@ public class SerialPortUtils
 
                 //1.缓存数据
                 Buffer.AddRange(recvData);
+                recvString+= Encoding.UTF8.GetString(recvData);
             } while (_SerialPort.BytesToRead > 0);
 
             //向控制台打印数据
@@ -91,13 +93,14 @@ public class SerialPortUtils
             var Recv = BitConverter.ToString(Buffer.ToArray());   // 82-C8-EA-17
             if (Debug)
             {
-                Console.WriteLine($"{Environment.NewLine}收到数据：\n{Recv}\n{BufferString}");
+                Console.WriteLine($"{Environment.NewLine}收到数据：\n{Recv.Replace("-", "")}\n\n{BufferString}");
             }
-            if (On截断 != null)
+            if (OnFrame != null)
             {
-                if (Recv.Contains(截断字符))
+                if (recvString.Contains(FrameBreakChar))
                 {
-                    On截断.Invoke(Recv);
+                    OnFrame.Invoke(recvString);
+                    recvString = string.Empty;
                 }
             }
         }
