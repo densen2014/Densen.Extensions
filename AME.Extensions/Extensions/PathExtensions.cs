@@ -79,7 +79,7 @@ public static class PathExtensions
     {
         var invalidChars = Path.GetInvalidPathChars();
         var formattedPathName = string.Join("_", pathName.Split(invalidChars, StringSplitOptions.RemoveEmptyEntries));
-        return replaceVolumeSeparatorChar?formattedPathName.Replace (":","_"): formattedPathName;
+        return replaceVolumeSeparatorChar?formattedPathName.Replace ("*","").Replace (":","_"): formattedPathName;
     }
 
     /// <summary>
