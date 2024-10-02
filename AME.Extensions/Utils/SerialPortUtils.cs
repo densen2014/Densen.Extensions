@@ -23,6 +23,9 @@ public class SerialPortUtils
     public static List<byte> Buffer = new List<byte>();
     public static string BufferString => Buffer?.ToArray() == null?"": Encoding.UTF8.GetString(Buffer.ToArray());
     public static Action<string>? OnFrame;
+    public static int FrameBreakTimeOut = 0;
+    private static DateTime lastTime = DateTime.Now;
+    public static bool FrameAlwaysInvoke = false;
 
     public static List<string> GetPortNames()
     {
@@ -97,10 +100,11 @@ public class SerialPortUtils
             }
             if (OnFrame != null)
             {
-                if (recvString.Contains(FrameBreakChar))
+                if (recvString.Contains(FrameBreakChar) || FrameAlwaysInvoke || (FrameBreakTimeOut > 0 && DateTime.Now> lastTime.AddMilliseconds(FrameBreakTimeOut)))
                 {
                     OnFrame.Invoke(recvString);
                     recvString = string.Empty;
+                    lastTime = DateTime.Now;
                 }
             }
         }
