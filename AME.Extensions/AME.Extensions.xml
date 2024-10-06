@@ -471,6 +471,13 @@
         <member name="M:AME.StringExtensions.ToSnakeCase(System.String)">
             <summary>将大驼峰命名转为蛇形命名</summary>
         </member>
+        <member name="M:AME.StringExtensions.IsNullPlus(System.String)">
+            <summary>
+             string 扩展执行 IsNullOrWhiteSpace
+            </summary>
+            <param name="val"></param>
+            <returns></returns>
+        </member>
         <member name="M:AME.StringExtensions.RemoveAllNonNumericValuesFromString(System.String)">
             <summary>
             R从字符串中删除所有非数字值

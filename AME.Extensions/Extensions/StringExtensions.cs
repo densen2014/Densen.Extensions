@@ -253,6 +253,13 @@ public static class StringExtensions
 
     public static string Latin1ToGB2312(this string latin1String) => string.IsNullOrWhiteSpace(latin1String) ? "" : Encoding.GetEncoding("gb2312").GetString(Encoding.GetEncoding("iso-8859-1").GetBytes(latin1String));
 
+    /// <summary>
+    ///  string 扩展执行 IsNullOrWhiteSpace
+    /// </summary>
+    /// <param name="val"></param>
+    /// <returns></returns>
+    public static bool IsNullPlus(this string val) => string.IsNullOrWhiteSpace(val);
+
     //public static string PadLeft(this string str, int x)
     //{
     //    return str + "".PadLeft(x, ' ');
