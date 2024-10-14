@@ -107,6 +107,13 @@
             <param name="type">Typeof(你的Enum)</param>
             <returns>name, Description , value</returns>
         </member>
+        <member name="M:AME.EnumExtensions.EnumToDict(System.Type)">
+            <summary>
+            Eunm转Dictionary,备注,value, 无备注回落为name
+            </summary>
+            <param name="type">Typeof(你的Enum)</param>
+            <returns>name, Description , value</returns>
+        </member>
         <member name="M:AME.EnumExtensions.GetValueFromDescription``1(System.String)">
             <summary>
             从描述属性中获取枚举 

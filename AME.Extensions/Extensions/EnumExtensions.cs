@@ -129,6 +129,35 @@ public static class EnumExtensions
 
     public static IEnumerable<string> GetEnumDescriptions(this Type type) => type.GetEnumValueAndDescriptions().Select(x => x[1]);
 
+    /// <summary>
+    /// Eunm转Dictionary,备注,value, 无备注回落为name
+    /// </summary>
+    /// <param name="type">Typeof(你的Enum)</param>
+    /// <returns>name, Description , value</returns>
+    public static Dictionary<int, string> EnumToDict(this Type type)
+    {
+        var descs = new Dictionary<int, string>();
+        var values = Enum.GetValues(type);
+        foreach (int value in values)
+        {
+            var name = Enum.GetName(type, value);
+            var field = type.GetField(name);
+            var fds = field.GetCustomAttributes(typeof(DescriptionAttribute), true);
+            if (fds != null && fds.Length > 0)
+            {
+                foreach (DescriptionAttribute fd in fds)
+                {
+                    descs.Add(value, (fd.Description ?? name));
+                }
+            }
+            else
+            {
+                //无DescriptionAttribute回落
+                descs.Add(value, name);
+            }
+        }
+        return descs;
+    }
 
     /// <summary>
     /// 从描述属性中获取枚举 
