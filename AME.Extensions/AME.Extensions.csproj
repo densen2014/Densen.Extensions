@@ -25,23 +25,9 @@
         <CheckEolWorkloads>false</CheckEolWorkloads>
         <DocumentationFile>$(MSBuildProjectName).xml</DocumentationFile>
     </PropertyGroup>
+
 	<ItemGroup>
 		<PackageReference Include="Newtonsoft.Json" Version="13.*" />
-	</ItemGroup>
-
-    <ItemGroup Condition="'$(TargetFramework)' != 'net7.0' AND '$(TargetFramework)' != 'net8.0'">
-        <PackageReference Include="Microsoft.Extensions.FileSystemGlobbing" Version="6.*" />
-		<PackageReference Include="System.Management" Version="6.*" />
-        <PackageReference Include="System.IO.Ports" Version="6.*" />
-    </ItemGroup>
-
-	<ItemGroup Condition="'$(TargetFramework)' == 'net7.0'">
-		<PackageReference Include="Microsoft.Extensions.FileSystemGlobbing" Version="7.*" />
-		<PackageReference Include="System.Management" Version="7.*" />
-        <PackageReference Include="System.IO.Ports" Version="7.*" />
-    </ItemGroup>
-
-	<ItemGroup Condition="'$(TargetFramework)' == 'net8.0'">
 		<PackageReference Include="Microsoft.Extensions.FileSystemGlobbing" Version="8.*" />
 		<PackageReference Include="System.Management" Version="8.*" />
         <PackageReference Include="System.IO.Ports" Version="8.*" />
@@ -49,7 +35,7 @@
     
     <PropertyGroup>
         <OutputPath>..\..\Bin</OutputPath>
-        <Version>8.7.5</Version>
+        <Version>8.10.4</Version>
     </PropertyGroup>
 
 </Project>
