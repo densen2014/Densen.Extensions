@@ -28,15 +28,15 @@
 		<AssemblyOriginatorKeyFile>..\keys\Longbow.Utility.snk</AssemblyOriginatorKeyFile>
 		<SignAssembly>True</SignAssembly>
         <OutputPath>..\..\Bin</OutputPath>
-        <Version>8.10.4</Version>
+        <Version>8.10.5</Version>
         <!--禁止检查EOL工作负载 NETSDK1202-->
         <CheckEolWorkloads>false</CheckEolWorkloads>
     </PropertyGroup>
 
 	<ItemGroup>
 		<PackageReference Include="BootstrapBlazor" Version="8.*" />
-		<PackageReference Include="BootstrapBlazor.FontAwesome" Version="8.*" />
-		<PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.1.1" />
+		<PackageReference Include="BootstrapBlazor.FontAwesome" Version="8.2.0" />
+		<PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.2.0" />
 		<PackageReference Include="Toolbelt.Blazor.I18nText" Version="12.*" />
 		<PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />
 	</ItemGroup>
