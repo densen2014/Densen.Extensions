@@ -486,9 +486,9 @@ IList<Model1> t1 = DataTableToList<Model1>(dt);
 
     }
     #region   日期转换
-    public static string ConvDate(DateTime data_v)
+    public static string ConvDate(DateTime data_v,bool endOfDate=false)
     {
-        return data_v.ToString("yyyy/M/d");
+        return data_v.ToString("yyyy/M/d") + (endOfDate ? " 23:59:59":"");
     }
     public static string ConvDateES(DateTime data_v)
     {

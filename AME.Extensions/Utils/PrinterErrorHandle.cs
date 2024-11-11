@@ -4,6 +4,7 @@
 // e-mail:zhouchuanglin@gmail.com 
 // **********************************
 
+using AME.Base;
 using System;
 using System.Linq;
 
@@ -11,11 +12,8 @@ namespace AME.Util;
 #nullable enable
 #pragma warning disable CA1416 // #warning 指令
 
-
-public class PrinterError
+public class PrinterError: GeneralResponse
 {
-    public int Code { get; set; }
-    public string? Message { get; set; }
     public string? Printer { get; set; }
 
     public static PrinterError GetMessage(string message, bool isH5 = true)
