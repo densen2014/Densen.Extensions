@@ -27,7 +27,7 @@
 		<AssemblyOriginatorKeyFile>..\keys\Longbow.Utility.snk</AssemblyOriginatorKeyFile>
 		<SignAssembly>True</SignAssembly>
         <OutputPath>..\..\Bin</OutputPath>
-        <Version>9.0.0</Version>
+        <Version>9.0.1</Version>
     </PropertyGroup>
 
 	<ItemGroup>
@@ -53,7 +53,7 @@
     </ItemGroup> 
 
     <ItemGroup Condition="'$(Configuration)' != 'DebugSC'">
-        <PackageReference Include="BootstrapBlazor.Table.ImportExportsMiniService" Version="9.*" />
+        <PackageReference Include="BootstrapBlazor.Table.ImportExportsMiniService" Version="9.0.1" />
         <PackageReference Include="AME.Extensions" Version="9.*" />
     </ItemGroup>
 
