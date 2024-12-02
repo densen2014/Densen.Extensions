@@ -692,14 +692,23 @@ IList<Model1> t1 = DataTableToList<Model1>(dt);
 
     #endregion
     #region  将 Stream 转成 byte[] 
+    //public static byte[] StreamToBytes(Stream stream)
+    //{
+    //    if (stream == null) return null;
+    //    byte[] bytes = new byte[stream.Length];
+    //    stream.Read(bytes, 0, bytes.Length); 
+    //    // 设置当前流的位置为流的开始
+    //    stream.Seek(0, SeekOrigin.Begin);
+    //    return bytes;
+    //}
     public static byte[] StreamToBytes(Stream stream)
     {
         if (stream == null) return null;
-        byte[] bytes = new byte[stream.Length];
-        stream.Read(bytes, 0, bytes.Length);
-        // 设置当前流的位置为流的开始
-        stream.Seek(0, SeekOrigin.Begin);
-        return bytes;
+        using (MemoryStream memoryStream = new MemoryStream())
+        {
+            stream.CopyTo(memoryStream);
+            return memoryStream.ToArray();
+        }
     }
     #endregion
     #region   将 byte[] 转成 Stream 
@@ -712,11 +721,30 @@ IList<Model1> t1 = DataTableToList<Model1>(dt);
     #endregion
     #region 将 Stream 写入文件
 
+    //public static void StreamToFile(Stream stream, string fileName)
+    //{
+    //    // 把 Stream 转换成 byte[]
+    //    byte[] bytes = new byte[stream.Length];
+    //    stream.Read(bytes, 0, bytes.Length);
+    //    // 设置当前流的位置为流的开始
+    //    stream.Seek(0, SeekOrigin.Begin);
+    //    // 把 byte[] 写入文件
+    //    FileStream fs = new FileStream(fileName, FileMode.Create);
+    //    BinaryWriter bw = new BinaryWriter(fs);
+    //    bw.Write(bytes);
+    //    bw.Close();
+    //    fs.Close();
+    //}
     public static void StreamToFile(Stream stream, string fileName)
     {
         // 把 Stream 转换成 byte[]
         byte[] bytes = new byte[stream.Length];
-        stream.Read(bytes, 0, bytes.Length);
+        int bytesRead;
+        int totalBytesRead = 0;
+        while ((bytesRead = stream.Read(bytes, totalBytesRead, bytes.Length - totalBytesRead)) > 0)
+        {
+            totalBytesRead += bytesRead;
+        }
         // 设置当前流的位置为流的开始
         stream.Seek(0, SeekOrigin.Begin);
         // 把 byte[] 写入文件
@@ -726,6 +754,7 @@ IList<Model1> t1 = DataTableToList<Model1>(dt);
         bw.Close();
         fs.Close();
     }
+
     public static void BytesToFile(byte[] bytes, string fileName)
     {
         // 把 byte[] 写入文件
@@ -738,18 +767,36 @@ IList<Model1> t1 = DataTableToList<Model1>(dt);
     #endregion
     #region 从文件读取 Stream
 
+    //public static Stream FileToStream(string fileName)
+    //{
+    //    // 打开文件
+    //    FileStream fileStream = new FileStream(fileName, FileMode.Open, FileAccess.Read, FileShare.Read);
+    //    // 读取文件的 byte[]
+    //    byte[] bytes = new byte[fileStream.Length];
+    //    fileStream.Read(bytes, 0, bytes.Length);
+    //    fileStream.Close();
+    //    // 把 byte[] 转换成 Stream
+    //    Stream stream = new MemoryStream(bytes);
+    //    return stream;
+    //}
     public static Stream FileToStream(string fileName)
     {
         // 打开文件
         FileStream fileStream = new FileStream(fileName, FileMode.Open, FileAccess.Read, FileShare.Read);
         // 读取文件的 byte[]
         byte[] bytes = new byte[fileStream.Length];
-        fileStream.Read(bytes, 0, bytes.Length);
+        int bytesRead;
+        int totalBytesRead = 0;
+        while ((bytesRead = fileStream.Read(bytes, totalBytesRead, bytes.Length - totalBytesRead)) > 0)
+        {
+            totalBytesRead += bytesRead;
+        }
         fileStream.Close();
         // 把 byte[] 转换成 Stream
         Stream stream = new MemoryStream(bytes);
         return stream;
     }
+
     #endregion
 
     #region 从文件读取 Stream
