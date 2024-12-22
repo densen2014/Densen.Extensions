@@ -143,7 +143,7 @@ public class UsersLogin
 public class Users
 {
 
-    [AutoGenerateColumn(Visible = false, Editable = false)]
+    [AutoGenerateColumn(Visible = false, IsReadonlyWhenEdit = true)]
     [Column(IsIdentity = true, IsPrimary = true)]
     [DisplayName("序号")]
     public Guid UserID { get; set; }
@@ -162,7 +162,7 @@ public class Users
     [Required]
     public string? Company { get; set; }
 
-    [AutoGenerateColumn(Visible = false, Editable = false, ComponentType = typeof(BootstrapPassword))]
+    [AutoGenerateColumn(Visible = false, IsReadonlyWhenEdit = true, ComponentType = typeof(BootstrapPassword))]
     [DisplayName("用户密码")]
     [Required]
     [DataType(DataType.Password)]
