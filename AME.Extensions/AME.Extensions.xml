@@ -885,12 +885,16 @@
             <param name="s"></param>
             <returns></returns>
         </member>
-        <member name="M:GlobalExtensions.ToBool(System.Object,System.Boolean)">
+        <member name="M:GlobalExtensions.ToBooldefaultFalse(System.Object,System.Boolean,System.Nullable{System.Boolean})">
             <summary>
             转换成Boolean
             </summary>
-            <param name="s"></param>
-            <param name="宽松策略"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GlobalExtensions.ToBool(System.Object,System.Boolean,System.Nullable{System.Boolean})">
+            <summary>
+            转换成Boolean
+            </summary>
             <returns></returns>
         </member>
         <member name="M:GlobalExtensions.To``1(System.Object)">

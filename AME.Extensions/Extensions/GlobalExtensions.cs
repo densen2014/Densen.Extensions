@@ -214,12 +214,15 @@ public static class GlobalExtensions
     /// <summary>
     /// 转换成Boolean
     /// </summary>
-    /// <param name="s"></param>
-    /// <param name="宽松策略"></param>
     /// <returns></returns>
-    public static bool? ToBool(this object s, bool 宽松策略 = false)
+    public static bool ToBooldefaultFalse(this object s, bool 宽松策略 = false, bool? defaultValue = null) => s.ToBool(宽松策略,false)??false;
+    /// <summary>
+    /// 转换成Boolean
+    /// </summary>
+    /// <returns></returns>
+    public static bool? ToBool(this object s, bool 宽松策略 = false, bool? defaultValue = null)
     {
-        if (s == null) return null;
+        if (s == null) return defaultValue;
         if (宽松策略)
         {
             s = s.ToString().ToLower();
