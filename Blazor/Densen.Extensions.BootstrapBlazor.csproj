@@ -31,7 +31,7 @@
     </PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="BootstrapBlazor" Version="9.*" />
+		<PackageReference Include="BootstrapBlazor" Version="9.1.9" />
 		<PackageReference Include="BootstrapBlazor.FontAwesome" Version="9.*" />
 		<PackageReference Include="Toolbelt.Blazor.I18nText" Version="12.*" />
 		<PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />

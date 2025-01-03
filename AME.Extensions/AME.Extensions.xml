@@ -485,6 +485,13 @@
             <param name="val"></param>
             <returns></returns>
         </member>
+        <member name="M:AME.StringExtensions.IsNotNullPlus(System.String)">
+            <summary>
+             string 扩展执行 !IsNullOrWhiteSpace
+            </summary>
+            <param name="val"></param>
+            <returns></returns>
+        </member>
         <member name="M:AME.StringExtensions.RemoveAllNonNumericValuesFromString(System.String)">
             <summary>
             R从字符串中删除所有非数字值

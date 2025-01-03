@@ -260,6 +260,13 @@ public static class StringExtensions
     /// <returns></returns>
     public static bool IsNullPlus(this string val) => string.IsNullOrWhiteSpace(val);
 
+    /// <summary>
+    ///  string 扩展执行 !IsNullOrWhiteSpace
+    /// </summary>
+    /// <param name="val"></param>
+    /// <returns></returns>
+    public static bool IsNotNullPlus(this string val) => !string.IsNullOrWhiteSpace(val);
+
     //public static string PadLeft(this string str, int x)
     //{
     //    return str + "".PadLeft(x, ' ');
