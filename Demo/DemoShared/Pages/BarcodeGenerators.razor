@@ -9,11 +9,11 @@
 <hr />
 <a href="https://github.com/densen2014/Densen.Extensions/blob/master/Demo/DemoShared/Pages/BarcodeGenerators.razor"><h5>页面源码</h5></a>
 
-<Tab IsLazyLoadTabItem>
+<!--<Tab IsLazyLoadTabItem>
     <TabItem Text="条码生成器">
         <div style="max-width: 554px;">
             <div class="col-12" style="text-align: center; vertical-align: middle;">
-                <BarCodeGenerator Value="@value" Options="Options" OnResult="OnResult" />
+                <BarCodeGenerator Value="@value" Options="Options" OnCompletedAsync="OnResult" />
             </div>
             <GroupBox  Title="参数">
                     <div class="row g-3">
@@ -21,7 +21,7 @@
                             <InputOnKeyup @bind-Value="value" ShowLabel="true" OnInput="true" />
                         </div>
                         <div class="col-12 col-sm-6">
-                            <Select @bind-Value="Options.Type" OnValueChanged="OnValueChanged" ShowLabel="true" />
+                            <Select @bind-Value="Options.Format" OnValueChanged="OnValueChanged" ShowLabel="true" />
                         </div>
                         <div class="col-12 col-sm-6">
                             <Slider @bind-Value="Options.Width" Min="1" Max="6" ShowLabel="true" />
@@ -69,23 +69,23 @@
                             <Textarea Value="@svg" DisplayText="SVG内容" ShowLabel="true" />
                         </div>
                     </div>
-            </GroupBox>
+            </GroupBox>-->
 
 
             @*<Textarea @bind-Value="value" />*@
-        </div>
+        <!--</div>
     </TabItem>
     <TabItem Text="批量">
-        <BarCodeGenerator Type="EnumBarcodeType.CODE128" Value="Hi!" />
-        <BarCodeGenerator Type="EnumBarcodeType.EAN13" Value="1234567890128" />
-        <BarCodeGenerator Type="EnumBarcodeType.EAN8" Value="12345670" />
-        <BarCodeGenerator Type="EnumBarcodeType.EAN5" Value="12345" />
-        <BarCodeGenerator Type="EnumBarcodeType.EAN2" Value="12" />
-        <BarCodeGenerator Type="EnumBarcodeType.UPC" Value="123456789012" />
-        <BarCodeGenerator Type="EnumBarcodeType.CODE39" Value="Hello" />
-        <BarCodeGenerator Type="EnumBarcodeType.ITF14" Value="1234567890123" />
-        <BarCodeGenerator Type="EnumBarcodeType.ITF14" Value="123456" />
-        <BarCodeGenerator Type="EnumBarcodeType.MSI" Value="12345" />
+        <BarCodeGenerator Format="EnumBarcodeType.CODE128" Value="Hi!" />
+        <BarCodeGenerator Format="EnumBarcodeType.EAN13" Value="1234567890128" />
+        <BarCodeGenerator Format="EnumBarcodeType.EAN8" Value="12345670" />
+        <BarCodeGenerator Format="EnumBarcodeType.EAN5" Value="12345" />
+        <BarCodeGenerator Format="EnumBarcodeType.EAN2" Value="12" />
+        <BarCodeGenerator Format="EnumBarcodeType.UPC" Value="123456789012" />
+        <BarCodeGenerator Format="EnumBarcodeType.CODE39" Value="Hello" />
+        <BarCodeGenerator Format="EnumBarcodeType.ITF14" Value="1234567890123" />
+        <BarCodeGenerator Format="EnumBarcodeType.ITF14" Value="123456" />
+        <BarCodeGenerator Format="EnumBarcodeType.MSI" Value="12345" />
     </TabItem>
     <TabItem Text="简单配置">
         <BarCodeGenerator Options="Options1" />
@@ -122,7 +122,7 @@
     private BarcodeGeneratorOption Options3 { get; set; } = new()
     {
         Value = "1234",
-        Type = EnumBarcodeType.pharmacode,
+        Format = EnumBarcodeType.pharmacode,
         DisplayValue = false,
         Height = 50,
         Width = 6
@@ -163,10 +163,10 @@
         return Task.CompletedTask;
     }
 
-    private Task OnValueChanged(EnumBarcodeType type)
+    private Task OnValueChanged(EnumBarcodeFormat type)
     {
         value = defaultValues[type.ToString()];
         return Task.CompletedTask;
     }
 
-}
+}-->
