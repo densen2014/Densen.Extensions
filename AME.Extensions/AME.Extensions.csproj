@@ -1,35 +1,35 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-	<PropertyGroup>
-		<TargetFrameworks>
+    <PropertyGroup>
+        <TargetFrameworks>
             netstandard2.0;netstandard2.1;net48;
             net8.0;net8.0-ios;net8.0-maccatalyst;net8.0-windows10.0.19041.0;net8.0-android;net8.0-windows;
             net9.0;net9.0-ios;net9.0-maccatalyst;net9.0-windows10.0.19041.0;net9.0-android;net9.0-windows;
         </TargetFrameworks>
-		<!--<TargetFrameworks>netstandard2.0;netstandard2.1;net48;net6.0;net7.0;net8.0</TargetFrameworks>-->
-		<IsPackable>true</IsPackable>
-		<PackageIcon>logo.png</PackageIcon>
-		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-		<Description>Densen的.net常用扩展库</Description>
-		<PackageLicenseExpression>MIT</PackageLicenseExpression>
-		<PackageProjectUrl>https://github.com/densen2014/Densen.Extensions</PackageProjectUrl>
-		<RepositoryUrl>https://github.com/densen2014/Densen.Extensions</RepositoryUrl>
-		<RepositoryType>git</RepositoryType>
-		<PackageTags>Densen.Extensions</PackageTags>
-		<AssemblyName>AME.Extensions</AssemblyName>
-		<RootNamespace>AME.Extensions</RootNamespace>
-		<Configurations>Debug;Release;Preview</Configurations>
-		<EnableWindowsTargeting>true</EnableWindowsTargeting>
+        <!--<TargetFrameworks>netstandard2.0;netstandard2.1;net48;net6.0;net7.0;net8.0</TargetFrameworks>-->
+        <IsPackable>true</IsPackable>
+        <PackageIcon>logo.png</PackageIcon>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <Description>Densen的.net常用扩展库</Description>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageProjectUrl>https://github.com/densen2014/Densen.Extensions</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/densen2014/Densen.Extensions</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+        <PackageTags>Densen.Extensions</PackageTags>
+        <AssemblyName>AME.Extensions</AssemblyName>
+        <RootNamespace>AME.Extensions</RootNamespace>
+        <Configurations>Debug;Release;Preview</Configurations>
+        <EnableWindowsTargeting>true</EnableWindowsTargeting>
         <DocumentationFile>$(MSBuildProjectName).xml</DocumentationFile>
     </PropertyGroup>
 
     <ItemGroup>
-		<PackageReference Include="Newtonsoft.Json" Version="13.*" />
+        <PackageReference Include="Newtonsoft.Json" Version="13.*" />
     </ItemGroup>
 
     <ItemGroup Condition="'$(TargetFramework)' != 'net9.0'">
-		<PackageReference Include="Microsoft.Extensions.FileSystemGlobbing" Version="8.*" />
-		<PackageReference Include="System.Management" Version="8.*" />
+        <PackageReference Include="Microsoft.Extensions.FileSystemGlobbing" Version="8.*" />
+        <PackageReference Include="System.Management" Version="8.*" />
         <PackageReference Include="System.IO.Ports" Version="8.*" />
     </ItemGroup>
 
@@ -38,10 +38,10 @@
         <PackageReference Include="System.Management" Version="9.*" />
         <PackageReference Include="System.IO.Ports" Version="9.*" />
     </ItemGroup>
-    
+
     <PropertyGroup>
         <OutputPath>..\..\Bin</OutputPath>
-        <Version>9.0.0</Version>
+        <Version>9.3.0</Version>
     </PropertyGroup>
 
 </Project>
