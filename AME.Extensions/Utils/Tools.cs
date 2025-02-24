@@ -568,6 +568,9 @@ IList<Model1> t1 = DataTableToList<Model1>(dt);
     /// <returns>首字母</returns>
     public static string 汉字转换成拼音(string UnName)
     {
+#if NET6_0_OR_GREATER
+        Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+#endif
         int i = 0;
         ushort key = 0;
         string strResult = string.Empty;
@@ -919,6 +922,9 @@ IList<Model1> t1 = DataTableToList<Model1>(dt);
 
     public static string LanChange(string str)
     {
+#if NET6_0_OR_GREATER
+        Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+#endif
         Encoding utf8;
         Encoding gb2312;
         utf8 = Encoding.GetEncoding("ASCII");

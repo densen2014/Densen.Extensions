@@ -251,7 +251,13 @@ public static class StringExtensions
         return Thread.CurrentThread.CurrentUICulture.Name == "es-ES" ? es : Thread.CurrentThread.CurrentUICulture.Name == "en-EN" ? (en ?? chn) : chn;
     }
 
-    public static string Latin1ToGB2312(this string latin1String) => string.IsNullOrWhiteSpace(latin1String) ? "" : Encoding.GetEncoding("gb2312").GetString(Encoding.GetEncoding("iso-8859-1").GetBytes(latin1String));
+    public static string Latin1ToGB2312(this string latin1String)
+    {
+#if NET6_0_OR_GREATER
+        Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+#endif
+        return string.IsNullOrWhiteSpace(latin1String) ? "" : Encoding.GetEncoding("gb2312").GetString(Encoding.GetEncoding("iso-8859-1").GetBytes(latin1String));
+    }
 
     /// <summary>
     ///  string 扩展执行 IsNullOrWhiteSpace
