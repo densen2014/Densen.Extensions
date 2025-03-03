@@ -84,9 +84,9 @@ public partial class ConventUtil
     {
         return JsonConvert.DeserializeObject(jsonString, obj.GetType());
     }
-    public static T JsonToObjectT<T>(string jsonString )
+    public static T JsonToObjectT<T>(string jsonString)
     {
-        return JsonConvert.DeserializeObject<T>(jsonString );
+        return JsonConvert.DeserializeObject<T>(jsonString);
     }
 
     public static IEnumerable<string> GetEnumDescriptions(Enum value)
@@ -181,6 +181,19 @@ public partial class ConventUtil
         var bytes = Convert.FromBase64String(base64Data);
         var stream = new MemoryStream(bytes);
         return stream;
+    }
+
+    /// <summary>
+    /// 从 DataUrl 转换为 Byte[]
+    /// <para>Convert from a DataUrl to an Stream</para>
+    /// </summary>
+    /// <param name="base64encodedstring"></param>
+    /// <returns></returns>
+    public static byte[] DataUrl2Bytes(string base64encodedstring)
+    {
+        var base64Data = Regex.Match(base64encodedstring, @"data:image/(?<type>.+?),(?<data>.+)").Groups["data"].Value;
+        var bytes = Convert.FromBase64String(base64Data);
+        return bytes;
     }
 
 

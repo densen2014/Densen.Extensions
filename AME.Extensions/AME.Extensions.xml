@@ -586,6 +586,14 @@
             <param name="base64encodedstring"></param>
             <returns></returns>
         </member>
+        <member name="M:AME.ConventUtil.DataUrl2Bytes(System.String)">
+            <summary>
+            从 DataUrl 转换为 Byte[]
+            <para>Convert from a DataUrl to an Stream</para>
+            </summary>
+            <param name="base64encodedstring"></param>
+            <returns></returns>
+        </member>
         <member name="M:AME.ConventUtil.Base642Stream(System.String)">
             <summary>
             从 base64 转换为 Stream
