@@ -54,6 +54,14 @@ public class PrinterError: GeneralResponse
                 error.Message = error.Message.Replace("\n", "<br/>");
             }
         }
+        else if (message.Contains("ERR:"))
+        {
+            error.Message ??= message;
+            if (isH5)
+            {
+                error.Message = error.Message.Replace("\n", "<br/>");
+            }
+        }
         return error;
     }
 }
