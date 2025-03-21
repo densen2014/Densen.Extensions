@@ -732,6 +732,15 @@
             <param name="t">实例化</param>
             <returns></returns>
         </member>
+        <member name="M:AME.Tools.GetPropertiesToDictstring``1(``0)">
+            <summary>
+            反射得到实体类的字段名称和值
+            var dict = GetProperties(model);
+            </summary>
+            <typeparam name="T">实体类</typeparam>
+            <param name="t">实例化</param>
+            <returns></returns>
+        </member>
         <member name="M:AME.Tools.GetProperties2``1(``0)">
             <summary>
             反射得到实体类的字段名称
