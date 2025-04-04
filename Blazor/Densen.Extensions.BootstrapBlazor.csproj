@@ -22,16 +22,16 @@
 
         <I18nTextFallBackLanguage>zh-CN</I18nTextFallBackLanguage>
 
-        <Configurations>Debug;Release;DebugSC</Configurations>
+        <Configurations>Debug;Release</Configurations>
 
         <AssemblyOriginatorKeyFile>..\keys\Longbow.Utility.snk</AssemblyOriginatorKeyFile>
         <SignAssembly>True</SignAssembly>
         <OutputPath>..\..\Bin</OutputPath>
-        <Version>9.3.1</Version>
+        <Version>9.4.0</Version>
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="BootstrapBlazor" Version="9.1.9" />
+        <PackageReference Include="BootstrapBlazor" Version="9.5.3" />
         <PackageReference Include="BootstrapBlazor.FontAwesome" Version="9.*" />
         <PackageReference Include="Toolbelt.Blazor.I18nText" Version="12.*" />
         <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />
@@ -49,16 +49,11 @@
     </ItemGroup>
 
     <ItemGroup Condition="'$(Configuration)' == 'Release'">
-        <PackageReference Include="AME.Extensions" Version="9.*" />
+        <PackageReference Include="AME.Extensions" Version="9.4.0" />
+        <PackageReference Include="BootstrapBlazor.Table.ImportExportsMiniService" Version="9.4.0" />
     </ItemGroup>
 
-    <ItemGroup Condition="'$(Configuration)' != 'DebugSC'">
-        <PackageReference Include="BootstrapBlazor.Table.ImportExportsMiniService" Version="9.0.1" />
-        <PackageReference Include="AME.Extensions" Version="9.*" />
-    </ItemGroup>
-
-    <ItemGroup Condition="'$(Configuration)' == 'DebugSC'">
-        <!--带外部源码调试环境-->
+    <ItemGroup Condition="'$(Configuration)' == 'Debug'"> 
         <ProjectReference Include="..\..\Densen.Freesql\src\BootstrapBlazor.Table.ImportExportsMiniService\BootstrapBlazor.Table.ImportExportsMiniService.csproj" />
         <ProjectReference Include="..\AME.Extensions\AME.Extensions.csproj" />
     </ItemGroup>
