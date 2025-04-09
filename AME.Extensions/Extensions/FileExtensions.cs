@@ -40,10 +40,24 @@ public static class FileExtensions
     /// <returns></returns>
     public static async Task WriteAllTextAsync(string path, string content, int delay = 0)
     {
-        if (delay > 0) Thread.Sleep(delay);
-        using (var sw = new StreamWriter(path))
+        if (delay > 0)
         {
-            await sw.WriteAsync(content);
+            await Task.Delay(delay);
+        }
+        try
+        {
+            using (var sw = new StreamWriter(path))
+            {
+                await sw.WriteAsync(content);
+            }
+        }
+        catch  
+        {
+            await Task.Delay(100);
+            using (var sw = new StreamWriter(path))
+            {
+                await sw.WriteAsync(content);
+            }
         }
     }
 
