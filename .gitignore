@@ -365,3 +365,4 @@ FodyWeavers.xsd
 # JetBrains Rider
 .idea/
 *.sln.iml
+AME.Extensions/AME.Extensions.xml
