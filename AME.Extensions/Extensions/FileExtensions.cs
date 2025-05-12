@@ -19,17 +19,7 @@ namespace Extensions;
 /// </summary>
 public static class FileExtensions
 {
-    public static async void test()
-    {
-#if NET48 || NETSTANDARD2_0
-        await WriteAllTextAsync("testFileAsync.txt", "111111111");
-        await ReadAllTextAsync("testFileAsync.txt");
-#else
-        await System.IO.File.WriteAllTextAsync("testFileAsync.txt", "22222");
-        await System.IO.File.ReadAllTextAsync("testFileAsync.txt");
-#endif
-
-    }
+ 
 #if NET48 || NETSTANDARD2_0
     /// <summary>
     /// 以异步形式创建一个新文件，在其中写入指定的字符串，然后关闭该文件。 如果目标文件已存在，则覆盖该文件。
