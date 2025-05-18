@@ -71,7 +71,9 @@ public static class GlobalExtensions
     public static byte ToByte(this object s)
     {
         if (s == null || s == DBNull.Value)
+        {
             return 0;
+        }
 
         byte.TryParse(s.ToString(), out byte result);
         return result;
@@ -85,7 +87,9 @@ public static class GlobalExtensions
     public static short ToShort(this object s)
     {
         if (s == null || s == DBNull.Value)
+        {
             return 0;
+        }
 
         short.TryParse(s.ToString(), out short result);
         return result;
@@ -100,7 +104,9 @@ public static class GlobalExtensions
     public static int ToInt(this object s, bool round = false)
     {
         if (s == null || s == DBNull.Value)
+        {
             return 0;
+        }
 
         if (s.GetType().IsEnum)
         {
@@ -108,10 +114,14 @@ public static class GlobalExtensions
         }
 
         if (s is bool b)
+        {
             return b ? 1 : 0;
+        }
 
         if (int.TryParse(s.ToString(), out int result))
+        {
             return result;
+        }
 
         var f = s.ToFloat();
         return round ? Convert.ToInt32(f) : (int)f;
@@ -125,7 +135,9 @@ public static class GlobalExtensions
     public static long ToLong(this object s)
     {
         if (s == null || s == DBNull.Value)
+        {
             return 0L;
+        }
 
         long.TryParse(s.ToString(), out long result);
         return result;
@@ -140,14 +152,13 @@ public static class GlobalExtensions
     public static float ToFloat(this object s, int? decimals = null)
     {
         if (s == null || s == DBNull.Value)
+        {
             return 0f;
+        }
 
         float.TryParse(s.ToString(), out float result);
 
-        if (decimals == null)
-            return result;
-
-        return (float)Math.Round(result, decimals.Value);
+        return decimals == null ? result : (float)Math.Round(result, decimals.Value);
     }
 
     /// <summary>
@@ -159,14 +170,13 @@ public static class GlobalExtensions
     public static double ToDouble(this object s, int? digits = null)
     {
         if (s == null || s == DBNull.Value)
+        {
             return 0d;
+        }
 
         double.TryParse(s.ToString(), out double result);
 
-        if (digits == null)
-            return result;
-
-        return Math.Round(result, digits.Value);
+        return digits == null ? result : Math.Round(result, digits.Value);
     }
 
     /// <summary>
@@ -177,14 +187,14 @@ public static class GlobalExtensions
     /// <returns></returns>
     public static decimal ToDecimal(this object s, int? decimals = null)
     {
-        if (s == null || s == DBNull.Value) return 0m;
+        if (s == null || s == DBNull.Value)
+        {
+            return 0m;
+        }
 
         decimal.TryParse(s.ToString(), out decimal result);
 
-        if (decimals == null)
-            return result;
-
-        return Math.Round(result, decimals.Value);
+        return decimals == null ? result : Math.Round(result, decimals.Value);
     }
 
     /// <summary>
@@ -195,7 +205,9 @@ public static class GlobalExtensions
     public static DateTime ToDateTime(this object s)
     {
         if (s == null || s == DBNull.Value)
+        {
             return DateTime.MinValue;
+        }
 
         DateTime.TryParse(s.ToString(), out DateTime result);
         return result;
