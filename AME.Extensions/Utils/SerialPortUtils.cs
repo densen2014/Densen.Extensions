@@ -21,7 +21,7 @@ public class SerialPortUtils
     public static string FrameBreakChar = "\n";
     public static SerialPort? SerialPort = null;
     public static List<byte> Buffer = new List<byte>();
-    public static string BufferString => Buffer?.ToArray() == null?"": Encoding.UTF8.GetString(Buffer.ToArray());
+    public static string BufferString => Buffer?.ToArray() == null ? "" : Encoding.UTF8.GetString(Buffer.ToArray());
     public static Action<string>? OnFrame;
     public static int FrameBreakTimeOut = 0;
     private static DateTime lastTime = DateTime.Now;
@@ -34,7 +34,7 @@ public class SerialPortUtils
 
 
     //public static string[]? RecvAry => BitConverter.ToString(Buffer.ToArray()).Split('-');
-    public static SerialPort OpenClosePort(string comName, int baud, bool debug = false)
+    public static SerialPort? OpenClosePort(string comName, int baud, bool debug = false)
     {
         Debug = debug;
 
@@ -42,26 +42,35 @@ public class SerialPortUtils
         if (SerialPort == null || !SerialPort.IsOpen)
         {
             if (Debug) Console.WriteLine($"打开串口");
-
-            SerialPort = new SerialPort
+            var port = SerialPort.GetPortNames().FirstOrDefault(a => a == comName.ToUpper());
+            if (port != null)
             {
-                //串口名称
-                PortName = comName,
-                //波特率
-                BaudRate = baud,
-                //数据位
-                DataBits = 8,
-                //停止位
-                StopBits = StopBits.One,
-                //校验位
-                Parity = Parity.None
-            };
-            //打开串口
-            SerialPort.Open();
-            //串口数据接收事件实现
-            SerialPort.DataReceived += new SerialDataReceivedEventHandler(ReceiveData);
 
-            return SerialPort;
+                SerialPort = new SerialPort
+                {
+                    //串口名称
+                    PortName = port,
+                    //波特率
+                    BaudRate = baud,
+                    //数据位
+                    DataBits = 8,
+                    //停止位
+                    StopBits = StopBits.One,
+                    //校验位
+                    Parity = Parity.None
+                };
+
+                //打开串口
+                SerialPort.Open();
+                //串口数据接收事件实现
+                SerialPort.DataReceived += new SerialDataReceivedEventHandler(ReceiveData);
+
+                return SerialPort;
+            }
+            else
+            {
+                return null;
+            }
         }
         //串口已经打开
         else
@@ -88,7 +97,7 @@ public class SerialPortUtils
 
                 //1.缓存数据
                 Buffer.AddRange(recvData);
-                recvString+= Encoding.UTF8.GetString(recvData);
+                recvString += Encoding.UTF8.GetString(recvData);
             } while (_SerialPort.BytesToRead > 0);
 
             //向控制台打印数据
@@ -100,7 +109,7 @@ public class SerialPortUtils
             }
             if (OnFrame != null)
             {
-                if (recvString.Contains(FrameBreakChar) || FrameAlwaysInvoke || (FrameBreakTimeOut > 0 && DateTime.Now> lastTime.AddMilliseconds(FrameBreakTimeOut)))
+                if (recvString.Contains(FrameBreakChar) || FrameAlwaysInvoke || (FrameBreakTimeOut > 0 && DateTime.Now > lastTime.AddMilliseconds(FrameBreakTimeOut)))
                 {
                     OnFrame.Invoke(recvString);
                     recvString = string.Empty;
