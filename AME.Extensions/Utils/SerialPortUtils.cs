@@ -41,8 +41,13 @@ public class SerialPortUtils
         //串口未打开
         if (SerialPort == null || !SerialPort.IsOpen)
         {
-            if (Debug) Console.WriteLine($"打开串口");
-            var port = SerialPort.GetPortNames().FirstOrDefault(a => a == comName.ToUpper());
+            if (Debug)
+            {
+                Console.WriteLine($"打开串口");
+            }
+
+            var ports = SerialPort.GetPortNames();
+            var port = ports.FirstOrDefault(a => a == comName.ToUpper());
             if (port != null)
             {
 
@@ -75,7 +80,11 @@ public class SerialPortUtils
         //串口已经打开
         else
         {
-            if (Debug) Console.WriteLine($"关闭打开的串口");
+            if (Debug)
+            {
+                Console.WriteLine($"关闭打开的串口");
+            }
+
             SerialPort.Close();
             return SerialPort;
         }
@@ -119,7 +128,10 @@ public class SerialPortUtils
         }
         catch (Exception ex)
         {
-            if (Debug) Console.WriteLine($"{Environment.NewLine}收数据错误：{ex.Message}");
+            if (Debug)
+            {
+                Console.WriteLine($"{Environment.NewLine}收数据错误：{ex.Message}");
+            }
         }
     }
 
@@ -135,7 +147,11 @@ public class SerialPortUtils
         {
             SerialPort.Write(data, 0, data.Length);
             //Console.WriteLine($"发送数据：{data.ByteArrayToHexString()}");
-            if (Debug) Console.WriteLine($"发送数据：{BitConverter.ToString(data)}{Environment.NewLine}");
+            if (Debug)
+            {
+                Console.WriteLine($"发送数据：{BitConverter.ToString(data)}{Environment.NewLine}");
+            }
+
             return true;
         }
         else
