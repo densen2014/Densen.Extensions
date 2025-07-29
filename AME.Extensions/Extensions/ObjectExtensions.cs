@@ -318,8 +318,11 @@ public static partial class ObjectExtensions
     //扩展方法必须是静态的，第一个参数必须加上this  
     public static bool IsEmail(this string _input)
     {
-        return Regex.IsMatch(_input, @"^\\w+@\\w+\\.\\w+$");
+        if (string.IsNullOrWhiteSpace(_input)) return false;
+        // 更通用的邮箱正则
+        return Regex.IsMatch(_input, @"^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$");
     }
+
     //带多个参数的扩展方法  
     //在原始字符串前后加上指定的字符  
     public static string Quot(this string _input, string _quot)
