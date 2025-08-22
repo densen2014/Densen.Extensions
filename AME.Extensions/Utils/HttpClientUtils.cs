@@ -94,4 +94,22 @@ public static class HttpClientUtils
             return result;
         }
     }
+
+    public static async Task<bool> DownloadFileAsync(string url, string destinationFileName)
+    { 
+        using (var httpClient = new HttpClient())
+        {
+            var response = await httpClient.GetAsync(url);
+            if (!response.IsSuccessStatusCode)
+            {
+                return false;
+            }
+
+            using (var fs = new System.IO.FileStream(destinationFileName, System.IO.FileMode.Create, System.IO.FileAccess.Write, System.IO.FileShare.None))
+            {
+                await response.Content.CopyToAsync(fs);
+            }
+            return true;
+        }
+    }
 }
