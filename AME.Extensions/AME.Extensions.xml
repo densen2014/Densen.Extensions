@@ -523,6 +523,13 @@
             <param name="maskRate">遮罩比例,0.6表示60%</param>
             <returns></returns>
         </member>
+        <member name="M:AME.StringExtensions.AddNumber(System.String)">
+            <summary>
+            把字符串中的数字加1
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
         <member name="P:AME.Models.CheckNewResponse.Filename">
             <summary>
             文件名,带相对路径

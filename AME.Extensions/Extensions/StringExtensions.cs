@@ -427,6 +427,26 @@ public static class StringExtensions
 
     }
 
+    /// <summary>
+    /// 把字符串中的数字加1
+    /// </summary>
+    /// <param name="input"></param>
+    /// <returns></returns>
+    public static string AddNumber(this string input)
+    {
+        if (string.IsNullOrWhiteSpace(input))
+        {
+            return null;
+        }
+
+        string pattern = @"\d+";
+        Regex regex = new Regex(pattern);
+
+        string result = regex.Replace(input, m => (int.Parse(m.Value) + 1).ToString());
+
+        return result == input ? null : result;
+
+    }
 }
 
 public static class ConsoleExt
