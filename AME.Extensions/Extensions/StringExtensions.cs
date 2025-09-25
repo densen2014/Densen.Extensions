@@ -442,7 +442,7 @@ public static class StringExtensions
         string pattern = @"\d+";
         Regex regex = new Regex(pattern);
 
-        string result = regex.Replace(input, m => (int.Parse(m.Value) + 1).ToString());
+        string result = regex.Replace(input, m => (long.Parse(m.Value) + 1).ToString());
 
         return result == input ? null : result;
 
