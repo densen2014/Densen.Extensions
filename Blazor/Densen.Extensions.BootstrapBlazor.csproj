@@ -2,6 +2,7 @@
 
     <PropertyGroup>
         <TargetFrameworks>
+            net8.0;net8.0-windows10.0.19041.0;net8.0-android;net8.0-windows;
             net9.0;net9.0-ios;net9.0-maccatalyst;net9.0-windows10.0.19041.0;net9.0-android;net9.0-windows;
         </TargetFrameworks>
         <ImplicitUsings>enable</ImplicitUsings>

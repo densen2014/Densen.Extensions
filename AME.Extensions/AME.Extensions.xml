@@ -697,12 +697,6 @@
             <param name="assemblyString"></param>   
             <returns></returns>  
         </member>
-        <member name="T:AME.Extensions.Resource">
-            <summary>
-            Android Resource Designer class.
-            Exposes the Android Resource designer assembly into the project Namespace.
-            </summary>
-        </member>
         <member name="M:AME.Tools.FormatDecimal(System.Object,System.Int32)">
             <summary>
             格式化小数
