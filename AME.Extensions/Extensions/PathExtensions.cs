@@ -8,6 +8,7 @@ using Microsoft.Extensions.FileSystemGlobbing;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Text;
 
 namespace AME;
 
@@ -97,4 +98,25 @@ public static class PathExtensions
 
 
     }
-}
+
+    /// <summary>
+    /// 将字符串转换为安全的文件名，移除或替换非法字符。
+    /// </summary>
+    public static string SafeFilename(this string filename)
+    {
+        if (string.IsNullOrWhiteSpace(filename))
+        {
+            return "file";
+        }
+
+        // 获取系统不允许的文件名字符
+        var invalidChars = Path.GetInvalidFileNameChars();
+        var sb = new StringBuilder(filename.Length);
+        foreach (var c in filename)
+        {
+            sb.Append(Array.IndexOf(invalidChars, c) >= 0 ? '_' : c);
+        }
+        // 可选：去除首尾空格
+        return sb.ToString().Trim();
+    }
+} 

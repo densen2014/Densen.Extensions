@@ -472,6 +472,11 @@
             <param name="path">要创建的目录</param>
             <param name="withFileName">路径是否带文件名,自动分离目录名称 默认 false</param>
         </member>
+        <member name="M:AME.PathExtensions.SafeFilename(System.String)">
+            <summary>
+            将字符串转换为安全的文件名，移除或替换非法字符。
+            </summary>
+        </member>
         <member name="M:AME.StringExtensions.ToCamelCase(System.String)">
             <summary>将大驼峰命名转为小驼峰命名</summary>
         </member>
@@ -696,6 +701,12 @@
             <param name="amespaceName"></param>
             <param name="assemblyString"></param>   
             <returns></returns>  
+        </member>
+        <member name="T:AME.Extensions.Resource">
+            <summary>
+            Android Resource Designer class.
+            Exposes the Android Resource designer assembly into the project Namespace.
+            </summary>
         </member>
         <member name="M:AME.Tools.FormatDecimal(System.Object,System.Int32)">
             <summary>
