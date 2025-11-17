@@ -28,6 +28,7 @@
         <SignAssembly>True</SignAssembly>
         <OutputPath>..\..\Bin</OutputPath>
         <Version>9.4.0</Version>
+        <CheckEolWorkloads>false</CheckEolWorkloads>
     </PropertyGroup>
 
     <ItemGroup>
