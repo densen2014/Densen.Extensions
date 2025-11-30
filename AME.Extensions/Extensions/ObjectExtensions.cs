@@ -35,13 +35,13 @@ public static partial class ObjectExtensions
             var type = item.GetType();
             if (typeof(ICloneable).IsAssignableFrom(type))
             {
-                var clv = type.GetMethod("Clone")?.Invoke(item, null);
+                var clv = type.GetMethod("Clone")?.Invoke(type, null);
                 if (clv != null)
                 {
                     ret = (TItem)clv;
                 }
             }
-            else if (type.IsClass)
+            if (type.IsClass)
             {
                 ret = Activator.CreateInstance<TItem>();
                 var valType = ret?.GetType();
