@@ -663,10 +663,12 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:AME.Util.ColorUtil.RandomColorArgb">
+        <member name="M:AME.Util.ColorUtil.RandomColorArgb(System.Boolean)">
             <summary>
-            Produces a string of the form 'rgba(r, g, b, alpha)' with random values for rgb and alpha
+            Produces a list of the form [r, g, b, alpha] with random values for rgb and alpha
+            可选只生成淡色
             </summary>
+            <param name="lightOnly">是否只生成淡色</param>
             <returns></returns>
         </member>
         <member name="M:AME.Util.ColorUtil.RandomColorHexString">
@@ -701,12 +703,6 @@
             <param name="amespaceName"></param>
             <param name="assemblyString"></param>   
             <returns></returns>  
-        </member>
-        <member name="T:AME.Extensions.Resource">
-            <summary>
-            Android Resource Designer class.
-            Exposes the Android Resource designer assembly into the project Namespace.
-            </summary>
         </member>
         <member name="M:AME.Tools.FormatDecimal(System.Object,System.Int32)">
             <summary>

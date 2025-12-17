@@ -83,17 +83,29 @@ namespace AME.Util
             return ColorString(rgb[0], rgb[1], rgb[2], alpha);
         }
         /// <summary>
-        /// Produces a string of the form 'rgba(r, g, b, alpha)' with random values for rgb and alpha
+        /// Produces a list of the form [r, g, b, alpha] with random values for rgb and alpha
+        /// 可选只生成淡色
         /// </summary>
+        /// <param name="lightOnly">是否只生成淡色</param>
         /// <returns></returns>
-        public static List<int> RandomColorArgb()
+        public static List<int> RandomColorArgb(bool lightOnly = true)
         {
             byte[] rgb = new byte[3];
             double alpha;
 
             lock (s_rand)
             {
-                s_rand.NextBytes(rgb);
+                if (lightOnly)
+                {
+                    // 生成180~255之间的淡色
+                    rgb[0] = (byte)(s_rand.Next(180, 256));
+                    rgb[1] = (byte)(s_rand.Next(180, 256));
+                    rgb[2] = (byte)(s_rand.Next(180, 256));
+                }
+                else
+                {
+                    s_rand.NextBytes(rgb);
+                }
                 alpha = s_rand.NextDouble() * 255;
             }
 
