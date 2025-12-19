@@ -230,16 +230,16 @@ public static class Tools
     public static string MD5Crypto2(string key)
     {
         byte[] hash = (new ASCIIEncoding()).GetBytes(key);
-        using (var md5 = MD5.Create())
-            hash = md5.ComputeHash(hash);
+        using var md5 = MD5.Create();
+        hash = md5.ComputeHash(hash);
         return System.BitConverter.ToString(hash).Replace("-", "");
     }
     //加密
     public static string MD5Crypto(string key)
     {
         byte[] hash = (new ASCIIEncoding()).GetBytes(key);
-        using (var md5 = MD5.Create())
-            hash = md5.ComputeHash(hash);
+        using var md5 = MD5.Create();
+        hash = md5.ComputeHash(hash);
         return (new ASCIIEncoding()).GetString(hash);
     }
 
@@ -299,7 +299,10 @@ public static class Tools
     public static void WriteTxtToFile(string DirPath, string FileName, string Strs, bool IsCleanFile = false)
     {
         if (string.IsNullOrEmpty(Strs))
+        {
             return;
+        }
+
         if (!Directory.Exists(DirPath))  //如果不存在就创建file文件夹
         {
             Directory.CreateDirectory(DirPath);
@@ -464,7 +467,11 @@ IList<Model1> t1 = DataTableToList<Model1>(dt);
     {
         try
         {
-            if (anyObject is null or DBNull) return false;
+            if (anyObject is null or DBNull)
+            {
+                return false;
+            }
+
             string anyString = anyObject.ToString();
             if (anyString.Length > 0)
             {
@@ -492,7 +499,11 @@ IList<Model1> t1 = DataTableToList<Model1>(dt);
 
         try
         {
-            if (anyObject is null or DBNull) return false;
+            if (anyObject is null or DBNull)
+            {
+                return false;
+            }
+
             string anyString = anyObject.ToString();
             if (anyString.Length > 0)
             {
