@@ -27,13 +27,13 @@
         <AssemblyOriginatorKeyFile>..\keys\Longbow.Utility.snk</AssemblyOriginatorKeyFile>
         <SignAssembly>True</SignAssembly>
         <OutputPath>..\..\Bin</OutputPath>
-        <Version>9.4.0</Version>
+        <Version>10.0.0</Version>
         <CheckEolWorkloads>false</CheckEolWorkloads>
     </PropertyGroup>
 
     <ItemGroup>
         <PackageReference Include="BootstrapBlazor" Version="9.5.8" />
-        <PackageReference Include="BootstrapBlazor.FontAwesome" Version="9.*" />
+        <PackageReference Include="BootstrapBlazor.FontAwesome" Version="9.1.2" />
         <PackageReference Include="Toolbelt.Blazor.I18nText" Version="12.*" />
         <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.3.0" />
         <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.3.0" />
@@ -50,8 +50,8 @@
     </ItemGroup>
 
     <ItemGroup Condition="'$(Configuration)' == 'Release'">
-        <PackageReference Include="AME.Extensions" Version="9.4.0" />
-        <PackageReference Include="BootstrapBlazor.Table.ImportExportsMiniService" Version="9.4.0" />
+        <PackageReference Include="AME.Extensions" Version="10.0.0" />
+        <PackageReference Include="BootstrapBlazor.Table.ImportExportsMiniService" Version="10.0.0" />
     </ItemGroup>
 
     <ItemGroup Condition="'$(Configuration)' == 'Debug'"> 

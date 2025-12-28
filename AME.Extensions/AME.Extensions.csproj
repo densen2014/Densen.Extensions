@@ -42,7 +42,7 @@
 
     <PropertyGroup>
         <OutputPath>..\..\Bin</OutputPath>
-        <Version>9.4.0</Version>
+        <Version>10.0.0</Version>
     </PropertyGroup>
 
 </Project>
