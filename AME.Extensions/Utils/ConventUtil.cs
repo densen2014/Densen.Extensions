@@ -5,6 +5,7 @@
 // **********************************
 
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -62,12 +63,16 @@ public partial class ConventUtil
 
 
     }
-
+ 
     public static void TaskMethod2(object dd, bool ThreadInfo = true)
     {
 
         Console.WriteLine(dd);
-        if (ThreadInfo == false) return;
+        if (ThreadInfo == false)
+        {
+            return;
+        }
+
         Console.WriteLine("Task id :{0},Thread :{1}", Task.CurrentId, Thread.CurrentThread.ManagedThreadId);
         Console.WriteLine("Is pool thread :{0}", Thread.CurrentThread.IsThreadPoolThread);
         Console.WriteLine("Is background thread:{0}", Thread.CurrentThread.IsBackground);

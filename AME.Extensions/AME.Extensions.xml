@@ -535,6 +535,11 @@
             <param name="input"></param>
             <returns></returns>
         </member>
+        <member name="T:AME.Models.CheckNewResponse">
+            <summary>
+            表示包含有关文件的元数据的响应，包括文件的名称、版本、大小和时间戳。
+            </summary>
+        </member>
         <member name="P:AME.Models.CheckNewResponse.Filename">
             <summary>
             文件名,带相对路径
@@ -558,6 +563,41 @@
         <member name="P:AME.Models.CheckNewResponse.LasFetch">
             <summary>
             刷新时间
+            </summary>
+        </member>
+        <member name="T:AME.Models.UploadFile">
+            <summary>
+            上传组件返回类
+            </summary>
+        </member>
+        <member name="P:AME.Models.UploadFile.FileName">
+            <summary>
+            文件名
+            </summary>
+        </member>
+        <member name="P:AME.Models.UploadFile.OriginFileName">
+            <summary>
+            原始文件名
+            </summary>
+        </member>
+        <member name="P:AME.Models.UploadFile.Size">
+            <summary>
+            文件大小
+            </summary>
+        </member>
+        <member name="P:AME.Models.UploadFile.Code">
+            <summary>
+            文件上传结果 0 表示成功 非零表示失败
+            </summary>
+        </member>
+        <member name="P:AME.Models.UploadFile.PrevUrl">
+            <summary>
+            文件预览地址
+            </summary>
+        </member>
+        <member name="P:AME.Models.UploadFile.Error">
+            <summary>
+            错误信息
             </summary>
         </member>
         <member name="M:AME.ConventUtil.ObjectToJSON2``1(``0)">
@@ -709,6 +749,32 @@
             Android Resource Designer class.
             Exposes the Android Resource designer assembly into the project Namespace.
             </summary>
+        </member>
+        <member name="M:AME.SettingsUtil.LoadJsonConfig``1(System.String,System.Boolean)">
+            <summary>
+            从指定路径的 JSON 文件加载 T 类型的配置对象。如果文件不存在则新建一个实例被创建并可选择保存到磁盘。
+            </summary>
+            <remarks>如果文件存在但为空或包含无效 JSON，则返回 T 的新实例。该方法尝试在反序列化之前验证并清理 JSON 文件。如果保存时文件不存在为 true 且文件不存在，则将新实例保存到指定路径。</remarks>
+            <typeparam name="T">要加载的配置对象的类型。必须有一个无参数构造函数。</typeparam>
+            <param name="filePath">要加载的 JSON 配置文件的路径。</param>
+            <param name="saveWhenFileNoExist">true 将配置的新实例保存到指定文件（如果不存在, 默认为 true。</param>
+            <returns>从 JSON 文件加载类型 T 的实例，如果文件不存在或为空，则为新实例。</returns>
+        </member>
+        <member name="M:AME.SettingsUtil.ValidateAndCleanJsonFile(System.String)">
+            <summary>
+            读取配置文件内容，只保留第一个有效的JSON对象（或数组），并自动清理多余内容。这样可以防止JsonConvert.DeserializeObject因多余内容报错
+            </summary>
+            <param name="filePath"></param>
+        </member>
+        <member name="M:AME.SettingsUtil.LoadTextJsonConfig``1(System.String,System.Boolean)">
+            <summary>
+            从指定路径的 JSON 文件加载 T 类型的配置对象。如果文件不存在则新建一个实例被创建并可选择保存到磁盘。
+            </summary>
+            <remarks>如果文件存在但为空或包含无效 JSON，则返回 T 的新实例。该方法尝试在反序列化之前验证并清理 JSON 文件。如果保存时文件不存在为 true 且文件不存在，则将新实例保存到指定路径。</remarks>
+            <typeparam name="T">要加载的配置对象的类型。必须有一个无参数构造函数。</typeparam>
+            <param name="filePath">要加载的 JSON 配置文件的路径。</param>
+            <param name="saveWhenFileNoExist">true 将配置的新实例保存到指定文件（如果不存在, 默认为 true。</param>
+            <returns>从 JSON 文件加载类型 T 的实例，如果文件不存在或为空，则为新实例。</returns>
         </member>
         <member name="M:AME.Tools.FormatDecimal(System.Object,System.Int32)">
             <summary>

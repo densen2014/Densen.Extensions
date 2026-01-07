@@ -32,12 +32,14 @@
         <PackageReference Include="Microsoft.Extensions.FileSystemGlobbing" Version="$(NET8Version)" />
         <PackageReference Include="System.Management" Version="$(NET8Version)" />
         <PackageReference Include="System.IO.Ports" Version="$(NET8Version)" />
+        <PackageReference Include="System.Text.Json" Version="$(NET8Version)" />
     </ItemGroup>
     
     <ItemGroup Condition="'$(TargetFramework)' != 'net8.0'">
         <PackageReference Include="Microsoft.Extensions.FileSystemGlobbing" Version="$(NET9Version)" />
         <PackageReference Include="System.Management" Version="$(NET9Version)" />
         <PackageReference Include="System.IO.Ports" Version="$(NET9Version)" />
+        <PackageReference Include="System.Text.Json" Version="$(NET9Version)" />
     </ItemGroup>
 
     <PropertyGroup>

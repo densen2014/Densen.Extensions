@@ -6,7 +6,9 @@
 
 namespace AME.Models;
 
-
+/// <summary>
+/// 表示包含有关文件的元数据的响应，包括文件的名称、版本、大小和时间戳。
+/// </summary>
 public class CheckNewResponse
 {
     /// <summary>
