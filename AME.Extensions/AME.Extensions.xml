@@ -744,12 +744,6 @@
             <param name="assemblyString"></param>   
             <returns></returns>  
         </member>
-        <member name="T:AME.Extensions.Resource">
-            <summary>
-            Android Resource Designer class.
-            Exposes the Android Resource designer assembly into the project Namespace.
-            </summary>
-        </member>
         <member name="M:AME.SettingsUtil.LoadJsonConfig``1(System.String,System.Boolean)">
             <summary>
             从指定路径的 JSON 文件加载 T 类型的配置对象。如果文件不存在则新建一个实例被创建并可选择保存到磁盘。
