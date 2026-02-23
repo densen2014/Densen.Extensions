@@ -10,7 +10,7 @@
     </PropertyGroup>
 
     <PropertyGroup>
-        <Version>9.0.0</Version>
+        <Version>10.0.0</Version>
         <PackageIcon>logo.png</PackageIcon>
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <NoWarn>1701;1702;1705;1591</NoWarn>
@@ -36,6 +36,8 @@
         <NET7Version>7.0.*</NET7Version>
         <NET8Version>8.0.*</NET8Version>
         <NET9Version>9.0.*</NET9Version>
+        <NET10Version>10.0.*</NET10Version>
+        <NET11Version>11.0.0-preview.1.26104.118</NET11Version>
     </PropertyGroup>
 
 </Project>
