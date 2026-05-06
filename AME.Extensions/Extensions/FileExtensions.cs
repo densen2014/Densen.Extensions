@@ -7,7 +7,6 @@
 using System;
 using System.IO;
 using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 
 
@@ -19,7 +18,7 @@ namespace Extensions;
 /// </summary>
 public static class FileExtensions
 {
- 
+
 #if NET48 || NETSTANDARD2_0
     /// <summary>
     /// 以异步形式创建一个新文件，在其中写入指定的字符串，然后关闭该文件。 如果目标文件已存在，则覆盖该文件。
@@ -41,7 +40,7 @@ public static class FileExtensions
                 await sw.WriteAsync(content);
             }
         }
-        catch  
+        catch
         {
             await Task.Delay(100);
             using (var sw = new StreamWriter(path))

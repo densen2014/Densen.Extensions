@@ -57,7 +57,8 @@ public class Reflections
 
             generic.Invoke(tmp_Class, parameters1);
         }
-        catch { 
+        catch
+        {
         }
         finally
         {

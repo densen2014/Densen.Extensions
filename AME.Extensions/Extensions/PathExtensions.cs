@@ -76,11 +76,11 @@ public static class PathExtensions
     /// <param name="pathName"></param>
     /// <param name="replaceVolumeSeparatorChar">过滤冒号</param>
     /// <returns></returns>
-    public static string FormattedPathName(this string pathName,bool replaceVolumeSeparatorChar =true)
+    public static string FormattedPathName(this string pathName, bool replaceVolumeSeparatorChar = true)
     {
         var invalidChars = Path.GetInvalidPathChars();
         var formattedPathName = string.Join("_", pathName.Split(invalidChars, StringSplitOptions.RemoveEmptyEntries));
-        return replaceVolumeSeparatorChar?formattedPathName.Replace ("*","").Replace (":","_"): formattedPathName;
+        return replaceVolumeSeparatorChar ? formattedPathName.Replace("*", "").Replace(":", "_") : formattedPathName;
     }
 
     /// <summary>
@@ -88,9 +88,9 @@ public static class PathExtensions
     /// </summary>
     /// <param name="path">要创建的目录</param>
     /// <param name="withFileName">路径是否带文件名,自动分离目录名称 默认 false</param>
-    public static void CreatePathIfNotExists(this string path,bool withFileName=false)
+    public static void CreatePathIfNotExists(this string path, bool withFileName = false)
     {
-        var directory = withFileName? Path.GetDirectoryName(path): path;
+        var directory = withFileName ? Path.GetDirectoryName(path) : path;
         if (!Directory.Exists(directory))
         {
             Directory.CreateDirectory(directory);
@@ -119,4 +119,4 @@ public static class PathExtensions
         // 可选：去除首尾空格
         return sb.ToString().Trim();
     }
-} 
+}

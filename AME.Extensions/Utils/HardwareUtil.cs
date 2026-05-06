@@ -53,7 +53,7 @@ public static class HardwareUtil
             return items;
 
         }
-        catch  
+        catch
         {
             return null;
         }

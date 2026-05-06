@@ -397,7 +397,7 @@ public static class Tools
             object value = item.GetValue(t, null);
             if (item.PropertyType.IsValueType || item.PropertyType.Name.StartsWith("String", StringComparison.CurrentCulture))
             {
-                ret.Add(name, value==null? "" : value.ToString());
+                ret.Add(name, value == null ? "" : value.ToString());
             }
         }
         return ret;
@@ -522,9 +522,9 @@ IList<Model1> t1 = DataTableToList<Model1>(dt);
 
     }
     #region   日期转换
-    public static string ConvDate(DateTime data_v,bool endOfDate=false)
+    public static string ConvDate(DateTime data_v, bool endOfDate = false)
     {
-        return data_v.ToString("yyyy/M/d") + (endOfDate ? " 23:59:59":"");
+        return data_v.ToString("yyyy/M/d") + (endOfDate ? " 23:59:59" : "");
     }
     public static string ConvDateES(DateTime data_v)
     {

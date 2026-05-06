@@ -185,11 +185,11 @@ public partial class SettingsUtil
 
     }
 
-    public static void SaveTextJsonConfig<T>(string filePath, T config, JsonSerializerOptions options=null)
+    public static void SaveTextJsonConfig<T>(string filePath, T config, JsonSerializerOptions options = null)
     {
         if (config != null)
         {
-            string json = System.Text.Json.JsonSerializer.Serialize(config, options??optionsTextJson);
+            string json = System.Text.Json.JsonSerializer.Serialize(config, options ?? optionsTextJson);
             File.WriteAllText(filePath, json);
         }
     }

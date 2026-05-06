@@ -15,9 +15,9 @@ namespace DirectoryGet;
 public class Library : IEnumerable<string>
 {
 
-// warning IL3000: 'System.Reflection.Assembly.Loc
-// ation' always returns an empty string for assemblies embedded in a single-file app. If the path to the app directory is
-//  needed, consider calling 'System.AppContext.BaseDirectory'. 
+    // warning IL3000: 'System.Reflection.Assembly.Loc
+    // ation' always returns an empty string for assemblies embedded in a single-file app. If the path to the app directory is
+    //  needed, consider calling 'System.AppContext.BaseDirectory'. 
     public IEnumerator<string> GetEnumerator()
     {
         yield return $"{Environment.CurrentDirectory}";

@@ -4,9 +4,6 @@
 // e-mail:zhouchuanglin@gmail.com 
 // **********************************
 
-using System;
-using System.Linq;
-
 namespace AME.Base;
 #nullable enable
 #pragma warning disable CA1416 // #warning 指令

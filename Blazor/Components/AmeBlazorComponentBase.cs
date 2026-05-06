@@ -20,13 +20,13 @@ namespace AmeBlazor.Components;
 /// </summary>
 public abstract partial class AmeBlazorComponentBase : ComponentBase, IDisposable
 {
-    [Inject,NotNull] protected NavigationManager? NavigationManager { get; set; }
-    [Inject,NotNull] protected I18nText? I18nText { get; set; }
-    [Inject,NotNull] protected IConfiguration? config { get; set; }
-    [Inject,NotNull] protected BrowserService? browserService { get; set; }
-    [Inject,NotNull] protected ToastService? ToastService { get; set; }
-    [Inject,NotNull] protected SwalService? SwalService { get; set; }
-    [Inject,NotNull] protected DialogService? DialogService { get; set; }
+    [Inject, NotNull] protected NavigationManager? NavigationManager { get; set; }
+    [Inject, NotNull] protected I18nText? I18nText { get; set; }
+    [Inject, NotNull] protected IConfiguration? config { get; set; }
+    [Inject, NotNull] protected BrowserService? browserService { get; set; }
+    [Inject, NotNull] protected ToastService? ToastService { get; set; }
+    [Inject, NotNull] protected SwalService? SwalService { get; set; }
+    [Inject, NotNull] protected DialogService? DialogService { get; set; }
 
 
     /// <summary>

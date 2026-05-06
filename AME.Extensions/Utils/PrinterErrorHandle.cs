@@ -12,7 +12,7 @@ namespace AME.Util;
 #nullable enable
 #pragma warning disable CA1416 // #warning 指令
 
-public class PrinterError: GeneralResponse
+public class PrinterError : GeneralResponse
 {
     public string? Printer { get; set; }
 

@@ -41,7 +41,7 @@ public class WebClientInfoProvider : IWebClientInfoProvider
             var httpContext = _httpContextAccessor.HttpContext ?? _httpContext;
 
             var headers = httpContext?.Request.Headers;
-            if (httpContext !=null && headers != null && headers.ContainsKey("X-Forwarded-For"))
+            if (httpContext != null && headers != null && headers.ContainsKey("X-Forwarded-For"))
             {
                 httpContext.Connection.RemoteIpAddress = IPAddress.Parse(headers["X-Forwarded-For"].ToString().Split(',', StringSplitOptions.RemoveEmptyEntries)[0]);
             }

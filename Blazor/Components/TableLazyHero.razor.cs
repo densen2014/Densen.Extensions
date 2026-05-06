@@ -27,7 +27,7 @@ public partial class TableLazyHero<TItem> : BootstrapComponentBase
     public Table<TItem>? mainTable;
 
     [Inject, NotNull] private LazyHeroDataService<TItem>? LazyHeroDataService { get; set; }
-    [Inject,NotNull] protected ToastService? ToastService { get; set; }
+    [Inject, NotNull] protected ToastService? ToastService { get; set; }
 
     /// <summary>
     /// 获得/设置 IJSRuntime 实例
@@ -105,7 +105,7 @@ public partial class TableLazyHero<TItem> : BootstrapComponentBase
     /// <summary>
     /// 获得/设置 导出按钮异步回调方法
     /// </summary>
-    [Parameter,NotNull]
+    [Parameter, NotNull]
     public Func<ITableExportDataContext<TItem>, Task<bool>>? OnExportAsync { get; set; }
 
     /// <summary>
@@ -159,7 +159,7 @@ public partial class TableLazyHero<TItem> : BootstrapComponentBase
         if (mainTable != null)
         {
             await mainTable.QueryAsync();
-        } 
+        }
     }
 
     private async Task ImportExcel()

@@ -96,7 +96,7 @@ public static class HttpClientUtils
     }
 
     public static async Task<bool> DownloadFileAsync(string url, string destinationFileName)
-    { 
+    {
         using (var httpClient = new HttpClient())
         {
             var response = await httpClient.GetAsync(url);

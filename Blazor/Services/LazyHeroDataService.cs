@@ -76,7 +76,7 @@ public class LazyHeroDataService<TModel> : DataServiceBase<TModel>
     {
         System.Console.WriteLine($"LazyHero QueryAsync {计数} 数据:{Items?.Count}"); 计数++;
 
-        IEnumerable<TModel> items = Items??new();
+        IEnumerable<TModel> items = Items ?? new();
 
         // 处理 Searchable=true 列与 SeachText 模糊搜索
         if (options.Searches.Any())
