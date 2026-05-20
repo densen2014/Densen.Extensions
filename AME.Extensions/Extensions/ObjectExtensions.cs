@@ -121,9 +121,12 @@ public static partial class ObjectExtensions
     {
         string retVal = string.Empty;
         foreach (T item in l)
+        {
             retVal += string.Format("{0}{1}", string.IsNullOrEmpty(retVal) ?
                                                         "" : ", ",
                                      item);
+        }
+
         return string.IsNullOrEmpty(retVal) ? "{}" : "{ " + retVal + " }";
     }
 
