@@ -83,6 +83,29 @@ public static class PathExtensions
         return replaceVolumeSeparatorChar ? formattedPathName.Replace("*", "").Replace(":", "_") : formattedPathName;
     }
 
+
+    /// <summary>
+    /// 格式化目录名，以避免出现“Illegal characters in path”错误：
+    /// </summary>
+    /// <param name="pathName"></param>
+    /// <param name="replaceVolumeSeparatorChar">过滤冒号</param>
+    /// <param name="replaceDirectorySeparatorChar">过滤目录分割符号，例如 \ 替换成 _</param>
+    /// <returns></returns>
+    public static string FormattedPathNameDS(this string pathName, bool replaceVolumeSeparatorChar = true, bool replaceDirectorySeparatorChar = true)
+    {
+        var invalidChars = Path.GetInvalidPathChars();
+        var formattedPathName = string.Join("_", pathName.Split(invalidChars, StringSplitOptions.RemoveEmptyEntries));
+        if (replaceVolumeSeparatorChar)
+        {
+            formattedPathName = formattedPathName.Replace("*", "").Replace(":", "_");
+        }
+        if (replaceDirectorySeparatorChar)
+        {
+            formattedPathName = formattedPathName.Replace(Path.DirectorySeparatorChar.ToString(), "_").Replace(Path.AltDirectorySeparatorChar.ToString(), "_");
+        }
+        return formattedPathName;
+    }
+
     /// <summary>
     /// 创建目录(如果目录不存在)
     /// </summary>
