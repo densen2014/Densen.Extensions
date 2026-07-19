@@ -1,11 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFrameworks>
-            netstandard2.0;netstandard2.1;net48;
-            net8.0;net8.0-windows10.0.19041.0;net8.0-android;net8.0-windows;
-            net9.0;net9.0-ios;net9.0-maccatalyst;net9.0-windows10.0.19041.0;net9.0-android;net9.0-windows;
-        </TargetFrameworks>
+        <BaseTargetFrameworks>netstandard2.0;netstandard2.1;net48;net8.0;net8.0-windows10.0.19041.0;net8.0-windows;net9.0;net9.0-windows10.0.19041.0;net9.0-windows</BaseTargetFrameworks>
+        <MobileTargetFrameworks>net8.0-android;net9.0-ios;net9.0-maccatalyst;net9.0-android</MobileTargetFrameworks>
+        <EnableMobileTargetFrameworks Condition="'$(EnableMobileTargetFrameworks)' == ''">false</EnableMobileTargetFrameworks>
+        <TargetFrameworks>$(BaseTargetFrameworks)</TargetFrameworks>
+        <TargetFrameworks Condition="'$(EnableMobileTargetFrameworks)' == 'true'">$(BaseTargetFrameworks);$(MobileTargetFrameworks)</TargetFrameworks>
         <!--<TargetFrameworks>netstandard2.0;netstandard2.1;net48;net6.0;net7.0;net8.0</TargetFrameworks>-->
         <IsPackable>true</IsPackable>
         <PackageIcon>logo.png</PackageIcon>
