@@ -218,6 +218,22 @@ public static class StringExtensions
         return new String(name);
     }
 
+    /// <summary>将小驼峰命名转为大驼峰命名</summary>
+    public static string ToPascalCase(this string str)
+    {
+        var firstChar = str[0];
+
+        if (firstChar == char.ToUpperInvariant(firstChar))
+        {
+            return str;
+        }
+
+        var name = str.ToCharArray();
+        name[0] = char.ToUpperInvariant(firstChar);
+
+        return new String(name);
+    }
+
     /// <summary>将大驼峰命名转为蛇形命名</summary>
     public static string ToSnakeCase(this string str)
     {

@@ -489,6 +489,9 @@
         <member name="M:AME.StringExtensions.ToCamelCase(System.String)">
             <summary>将大驼峰命名转为小驼峰命名</summary>
         </member>
+        <member name="M:AME.StringExtensions.ToPascalCase(System.String)">
+            <summary>将小驼峰命名转为大驼峰命名</summary>
+        </member>
         <member name="M:AME.StringExtensions.ToSnakeCase(System.String)">
             <summary>将大驼峰命名转为蛇形命名</summary>
         </member>
