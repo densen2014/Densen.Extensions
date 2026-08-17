@@ -15,11 +15,13 @@ using Toolbelt.Blazor.I18nText;
 
 namespace AmeBlazor.Components;
 
+
 /// <summary>
 /// AME组件基类
 /// </summary>
 public abstract partial class AmeBlazorComponentBase : ComponentBase, IDisposable
 {
+
     [Inject, NotNull] protected NavigationManager? NavigationManager { get; set; }
     [Inject, NotNull] protected I18nText? I18nText { get; set; }
     [Inject, NotNull] protected IConfiguration? config { get; set; }
