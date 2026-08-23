@@ -103,7 +103,7 @@ public static class PathExtensions
         {
             formattedPathName = formattedPathName.Replace(Path.DirectorySeparatorChar.ToString(), "_").Replace(Path.AltDirectorySeparatorChar.ToString(), "_");
         }
-        return formattedPathName;
+        return formattedPathName.Replace(".", "_");
     }
 
     /// <summary>
