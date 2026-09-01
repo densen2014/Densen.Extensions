@@ -16,6 +16,8 @@ namespace AME.Util;
 
 public class SerialPortUtils
 {
+    private static readonly object PortSyncRoot = new object();
+
     public static bool Debug = false;
     //public static string FrameBreakChar = "\r\n";
     public static string FrameBreakChar = "\n";
@@ -30,6 +32,63 @@ public class SerialPortUtils
     public static List<string> GetPortNames()
     {
         return SerialPort.GetPortNames().ToList();
+    }
+
+    public static SerialPort? EnsurePortOpen(string comName, int baud, bool debug = false)
+    {
+        lock (PortSyncRoot)
+        {
+            Debug = debug;
+            if (SerialPort?.IsOpen == true)
+            {
+                if (string.Equals(SerialPort.PortName, comName, StringComparison.OrdinalIgnoreCase) && SerialPort.BaudRate == baud)
+                {
+                    return SerialPort;
+                }
+
+                ClosePort();
+            }
+
+            var portName = SerialPort.GetPortNames()
+                .FirstOrDefault(port => string.Equals(port, comName, StringComparison.OrdinalIgnoreCase));
+            if (portName == null)
+            {
+                return null;
+            }
+
+            SerialPort = new SerialPort
+            {
+                PortName = portName,
+                BaudRate = baud,
+                DataBits = 8,
+                StopBits = StopBits.One,
+                Parity = Parity.None
+            };
+            SerialPort.DataReceived += ReceiveData;
+            SerialPort.Open();
+            return SerialPort;
+        }
+    }
+
+    public static void ClosePort()
+    {
+        lock (PortSyncRoot)
+        {
+            if (SerialPort == null)
+            {
+                return;
+            }
+
+            SerialPort.DataReceived -= ReceiveData;
+            if (SerialPort.IsOpen)
+            {
+                SerialPort.Close();
+            }
+
+            SerialPort.Dispose();
+            SerialPort = null;
+            ClearRecvData();
+        }
     }
 
 
