@@ -22,12 +22,12 @@ public static class HardwareUtil
 
 #if NET48 || WINDOWS 
     public static string GetFirstPhysicalMediaID() => GetPhysicalMediaID().FirstOrDefault();
-    public static string GetFirstMacAddress() => GetMacAddress().FirstOrDefault()?.MACAddress;
+    public static string GetFirstMacAddress() => GetMacAddress().FirstOrDefault()?.MACAddress ?? string.Empty;
 
     public class NetworkAdapter
     {
-        public string MACAddress { get; set; }
-        public string Manufacturer { get; set; }
+        public string MACAddress { get; set; } = string.Empty;
+        public string Manufacturer { get; set; } = string.Empty;
         public bool PhysicalAdapter { get; set; }
     }
 
@@ -40,8 +40,8 @@ public static class HardwareUtil
             var items = searcher.Get().Cast<ManagementObject>().
                 Select(x => new NetworkAdapter()
                 {
-                    MACAddress = x["MACAddress"]?.ToString(),
-                    Manufacturer = x["Manufacturer"]?.ToString(),
+                    MACAddress = x["MACAddress"]?.ToString() ?? string.Empty,
+                    Manufacturer = x["Manufacturer"]?.ToString() ?? string.Empty,
                     PhysicalAdapter = x["PhysicalAdapter"]?.ToString() == "True",
                 }
                 ).ToList();
@@ -55,7 +55,7 @@ public static class HardwareUtil
         }
         catch
         {
-            return null;
+            return new List<NetworkAdapter>();
         }
     }
 
