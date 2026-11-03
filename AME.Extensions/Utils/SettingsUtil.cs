@@ -36,22 +36,34 @@ public partial class SettingsUtil
         }
         else
         {
-            ValidateAndCleanJsonFile(filePath);
-
             string TestFileStream = File.ReadAllText(filePath);
             try
             {
                 if (string.IsNullOrWhiteSpace(TestFileStream) == false)
                 {
-                    var instance = JsonConvert.DeserializeObject<T>(TestFileStream);//反序列化
-                    if (instance != null)
+                    try
                     {
-                        return instance;
+                        var instance = JsonConvert.DeserializeObject<T>(TestFileStream);//反序列化
+                        if (instance != null)
+                        {
+                            return instance;
+                        }
                     }
-                    else
+                    catch (JsonReaderException)
                     {
-                        return new T();
+                        ValidateAndCleanJsonFile(filePath);
+                        TestFileStream = File.ReadAllText(filePath);
+                        if (string.IsNullOrWhiteSpace(TestFileStream) == false)
+                        {
+                            var instance = JsonConvert.DeserializeObject<T>(TestFileStream);
+                            if (instance != null)
+                            {
+                                return instance;
+                            }
+                        }
                     }
+
+                    return new T();
                 }
             }
             finally
