@@ -264,7 +264,8 @@ public static class StringExtensions
 
     public static string ToI18n(this string chn, string es, string en = null)
     {
-        return Thread.CurrentThread.CurrentUICulture.Name == "es-ES" ? es : Thread.CurrentThread.CurrentUICulture.Name == "en-EN" ? (en ?? chn) : chn;
+        var language = Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName;
+        return language == "es" ? es : language == "en" ? (en ?? chn) : chn;
     }
 
     public static string Latin1ToGB2312(this string latin1String)
